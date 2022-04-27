@@ -1,32 +1,32 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Dan\\Desktop\\TCC - Xispirito\\Xispirito\\Xispirito\\Xispirito.csproj": {}
+    "C:\\Users\\Dan\\Desktop\\TCC - Xispirito\\Xispirito\\Models\\Models.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Dan\\Desktop\\TCC - Xispirito\\Xispirito\\Xispirito\\Xispirito.csproj": {
+    "C:\\Users\\Dan\\Desktop\\TCC - Xispirito\\Xispirito\\Models\\Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Dan\\Desktop\\TCC - Xispirito\\Xispirito\\Xispirito\\Xispirito.csproj",
-        "projectName": "Xispirito",
-        "projectPath": "C:\\Users\\Dan\\Desktop\\TCC - Xispirito\\Xispirito\\Xispirito\\Xispirito.csproj",
+        "projectUniqueName": "C:\\Users\\Dan\\Desktop\\TCC - Xispirito\\Xispirito\\Models\\Models.csproj",
+        "projectName": "Models",
+        "projectPath": "C:\\Users\\Dan\\Desktop\\TCC - Xispirito\\Xispirito\\Models\\Models.csproj",
         "packagesPath": "C:\\Users\\Dan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Dan\\Desktop\\TCC - Xispirito\\Xispirito\\Xispirito\\obj\\",
+        "outputPath": "C:\\Users\\Dan\\Desktop\\TCC - Xispirito\\Xispirito\\Models\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Dan\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net5.0"
+          "net6.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net5.0": {
-            "targetAlias": "net5.0",
+          "net6.0": {
+            "targetAlias": "net6.0",
             "projectReferences": {}
           }
         },
@@ -37,8 +37,8 @@
         }
       },
       "frameworks": {
-        "net5.0": {
-          "targetAlias": "net5.0",
+        "net6.0": {
+          "targetAlias": "net6.0",
           "imports": [
             "net461",
             "net462",
@@ -50,9 +50,6 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
