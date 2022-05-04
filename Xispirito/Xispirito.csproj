@@ -67,10 +67,26 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="View\Home\Home-style.css" />
+    <Content Include="View\Home\Home.aspx" />
+    <Content Include="View\Home\menu.js" />
+    <Content Include="View\Home\print.css" />
+    <Content Include="View\Home\responsive.css" />
+    <Content Include="View\Images\Presentation.png" />
+    <Content Include="View\Images\Test.png" />
+    <Content Include="View\Images\Xispirito.png" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Enum\LectureType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\Home\Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Home\Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -82,7 +98,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="View\" />
+    <Folder Include="Controllers\" />
+    <Folder Include="Models\Classes\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
