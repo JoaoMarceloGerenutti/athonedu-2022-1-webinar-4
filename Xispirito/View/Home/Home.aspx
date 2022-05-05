@@ -162,27 +162,34 @@
 
         <section id="form">
             <div class="form-group">
-                <div>
+                <div class="left-footer">
                     <p class="text--medium">
                         Sobre Nós
-                    </p>
-
-                    <p class="text--medium">
+                        <br />
                         Somos uma empresa de tecnologia a desenvolvimento de software.
-                    </p>
-
-                    <p class="text--medium">
+                        <br />
                         Para suporte e assistência, entre em contato conosco atáves do e-mail:
-                    </p>
-
-                    <p class="text--medium">
+                        <br />
                         suporte@xispirito.com.br
                     </p>
-
                 </div>
-                <div>
+                <div class="line">
+                </div>
+                <div class="right-footer">
                     <p class="text--medium">
-                        TESTE !@34124124123123
+                        Ajuda
+                    </p>
+
+                    <p class="text--medium">
+                        Fazer Cadastro
+                    </p>
+
+                    <p class="text--medium">
+                        Encontrar um Evento
+                    </p>
+
+                    <p class="text--medium">
+                        Certificados
                     </p>
                 </div>
             </div>
