@@ -340,20 +340,9 @@ FORM
 #form {
     width: 100%;
     background: #70160E;
-    padding: 80px 0;
-    margin: 0;
     display: flex;
     align-items: center;
-    justify-content: center;
 }
-
-    #form form {
-        width: 90%;
-        max-width: 980px;
-        background: white;
-        padding: 40px;
-        box-shadow: 0px 2px 2px 2px rgba(0, 0, 0, 0.15), 0px 10px 20px -10px rgba(0, 0, 0, 0.1)
-    }
 
     #form h3 {
         margin-bottom: 30px
@@ -366,6 +355,10 @@ FORM
 .form-group {
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    width: 90%;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
     .form-group label.right-inline {
@@ -375,14 +368,22 @@ FORM
         width: auto;
     }
 
-    .form-group .input-control {
-        flex: 1 1;
-        display: block;
-        margin: -4px 8px 10px;
-        padding: 12px;
-        font-size: 1.6rem;
-    }
+.line {
+    margin-left: 2rem;
+    border: 1px black solid;
+}
 
-#form .button {
-    margin: 20px 8px 10px;
+.left-footer, .right-footer {
+    padding: 20px 0;
+}
+
+.left-footer {
+    min-width: 45%;
+    margin-right: 2rem;
+}
+
+.right-footer {
+    align-self: center;
+    min-width: 45%;
+    margin-left: 4rem;
 }
