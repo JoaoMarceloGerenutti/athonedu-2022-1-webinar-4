@@ -369,7 +369,7 @@ FORM
     }
 
 .line {
-    margin-left: 2rem;
+    margin-left: 4rem;
     border: 1px black solid;
 }
 
@@ -379,7 +379,6 @@ FORM
 
 .left-footer {
     min-width: 45%;
-    margin-right: 2rem;
 }
 
 .right-footer {

@@ -93,7 +93,7 @@
                     </div>
                     <div class="content">
                         <p class="title text--medium">
-                            Palestra 2
+                            XIV Encontro Nacional de Educação Matemática
                         </p>
                         <div class="info">
                             <asp:Label ID="lblTipoEvento2" runat="server" Text="Evento Online" class="type text--medium"></asp:Label>
@@ -107,7 +107,7 @@
                     </div>
                     <div class="content">
                         <p class="title text--medium">
-                            Palestra 3
+                            XIV CASI
                         </p>
                         <div class="info">
                             <asp:Label ID="lblTipoEvento3" runat="server" Text="Evento Online" class="type text--medium"></asp:Label>
@@ -121,7 +121,7 @@
                     </div>
                     <div class="content">
                         <p class="title text--medium">
-                            Palestra 4
+                            Encontro Holístico - Passo Fundo
                         </p>
                         <div class="info">
                             <asp:Label ID="lblTipoEvento4" runat="server" Text="Evento Online" class="type text--medium"></asp:Label>
@@ -135,7 +135,7 @@
                     </div>
                     <div class="content">
                         <p class="title text--medium">
-                            Palestra 5
+                            VIII Congresso de Gestalt-terapia do Estado de Rio de Janeiro
                         </p>
                         <div class="info">
                             <asp:Label ID="lblTipoEvento5" runat="server" Text="Evento Online" class="type text--medium"></asp:Label>
@@ -149,7 +149,7 @@
                     </div>
                     <div class="content">
                         <p class="title text--medium">
-                            Palestra 6
+                            35º Congresso Odontológico de Bauru
                         </p>
                         <div class="info">
                             <asp:Label ID="lblTipoEvento6" runat="server" Text="Evento Online" class="type text--medium"></asp:Label>

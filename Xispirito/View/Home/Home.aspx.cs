@@ -20,17 +20,17 @@ namespace Xispirito.View.Home
         {
             Random randomGenerator = new Random();
 
-            EventRandomizer(CardImage1, lblTipoEvento1, lblTempoEvento1, randomGenerator);
-            EventRandomizer(CardImage2, lblTipoEvento2, lblTempoEvento2, randomGenerator);
-            EventRandomizer(CardImage3, lblTipoEvento3, lblTempoEvento3, randomGenerator);
-            EventRandomizer(CardImage4, lblTipoEvento4, lblTempoEvento4, randomGenerator);
-            EventRandomizer(CardImage5, lblTipoEvento5, lblTempoEvento5, randomGenerator);
-            EventRandomizer(CardImage6, lblTipoEvento6, lblTempoEvento6, randomGenerator);
+            EventRandomizer(CardImage1, lblTipoEvento1, lblTempoEvento1, randomGenerator, 1);
+            EventRandomizer(CardImage2, lblTipoEvento2, lblTempoEvento2, randomGenerator, 2);
+            EventRandomizer(CardImage3, lblTipoEvento3, lblTempoEvento3, randomGenerator, 3);
+            EventRandomizer(CardImage4, lblTipoEvento4, lblTempoEvento4, randomGenerator, 4);
+            EventRandomizer(CardImage5, lblTipoEvento5, lblTempoEvento5, randomGenerator, 5);
+            EventRandomizer(CardImage6, lblTipoEvento6, lblTempoEvento6, randomGenerator, 6);
         }
 
-        private void EventRandomizer(AspImage cardImage, Label lblEventType, Label lblEventTime, Random randomGenerator)
+        private void EventRandomizer(AspImage cardImage, Label lblEventType, Label lblEventTime, Random randomGenerator, int cardNumber)
         {
-            cardImage.ImageUrl = "\\View\\Images\\Test.png";
+            cardImage.ImageUrl = "\\View\\Images\\Test\\Lecture" + cardNumber + ".png";
 
             int lectureTypeLenght = (Enum.GetValues(typeof(LectureType)).Length);
 

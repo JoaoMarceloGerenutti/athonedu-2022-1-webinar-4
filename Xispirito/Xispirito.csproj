@@ -73,7 +73,12 @@
     <Content Include="View\Home\print.css" />
     <Content Include="View\Home\responsive.css" />
     <Content Include="View\Images\Presentation.png" />
-    <Content Include="View\Images\Test.png" />
+    <Content Include="View\Images\Test\Lecture1.png" />
+    <Content Include="View\Images\Test\Lecture2.png" />
+    <Content Include="View\Images\Test\Lecture3.png" />
+    <Content Include="View\Images\Test\Lecture4.png" />
+    <Content Include="View\Images\Test\Lecture5.png" />
+    <Content Include="View\Images\Test\Lecture6.png" />
     <Content Include="View\Images\Xispirito.png" />
     <Content Include="Web.config" />
   </ItemGroup>
