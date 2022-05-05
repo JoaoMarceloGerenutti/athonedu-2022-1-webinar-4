@@ -4,8 +4,8 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title> Home - Xispirito </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Home - Xispirito </title>
 
     <link rel="stylesheet" href="Home-style.css" />
     <link rel="stylesheet" href="responsive.css" media="screen and (max-width: 768px)" />
@@ -57,8 +57,7 @@
             <div class="container">
                 <div>
                     <h2>
-                        <b>
-                            Cadastrar-se em um evento nunca foi tão simples.
+                        <b>Cadastrar-se em um evento nunca foi tão simples.
                         </b>
                     </h2>
                     <p>
@@ -76,7 +75,7 @@
             <section class="cards">
                 <div class="card">
                     <div class="image">
-                        <asp:Image ID="CardImage1" runat="server"/>
+                        <asp:Image ID="CardImage1" runat="server" />
                     </div>
                     <div class="content">
                         <p class="title text--medium">
@@ -90,7 +89,7 @@
                 </div>
                 <div class="card">
                     <div class="image">
-                        <asp:Image ID="CardImage2" runat="server"/>
+                        <asp:Image ID="CardImage2" runat="server" />
                     </div>
                     <div class="content">
                         <p class="title text--medium">
@@ -104,7 +103,7 @@
                 </div>
                 <div class="card">
                     <div class="image">
-                        <asp:Image ID="CardImage3" runat="server"/>
+                        <asp:Image ID="CardImage3" runat="server" />
                     </div>
                     <div class="content">
                         <p class="title text--medium">
@@ -118,7 +117,7 @@
                 </div>
                 <div class="card">
                     <div class="image">
-                        <asp:Image ID="CardImage4" runat="server"/>
+                        <asp:Image ID="CardImage4" runat="server" />
                     </div>
                     <div class="content">
                         <p class="title text--medium">
@@ -132,7 +131,7 @@
                 </div>
                 <div class="card">
                     <div class="image">
-                        <asp:Image ID="CardImage5" runat="server"/>
+                        <asp:Image ID="CardImage5" runat="server" />
                     </div>
                     <div class="content">
                         <p class="title text--medium">
@@ -146,7 +145,7 @@
                 </div>
                 <div class="card">
                     <div class="image">
-                        <asp:Image ID="CardImage6" runat="server"/>
+                        <asp:Image ID="CardImage6" runat="server" />
                     </div>
                     <div class="content">
                         <p class="title text--medium">
@@ -163,60 +162,54 @@
 
         <section id="form">
             <div class="form-group">
-                <nav>
-                    <ul>
-                        <li>
-                            <p class="text--medium">
-                                Sobre Nós
-                            </p>
-                        </li>
-                        <li>
-                            <p class="text--medium">
-                                Somos uma empresa de tecnologia a desenvolvimento de software.
-                            </p>
-                        </li>
-                        <li>
-                            <p class="text--medium">
-                                Para suporte e assistência, entre em contato conosco atáves do e-mail:
-                            </p>
-                        </li>
-                        <li>
-                            <p class="text--medium">
-                                suporte@xispirito.com.br
-                            </p>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-            <div class="form-group">
-                <p class="text--medium">
-                    TESTE !@34124124123123
-                </p>
+                <div>
+                    <p class="text--medium">
+                        Sobre Nós
+                    </p>
+
+                    <p class="text--medium">
+                        Somos uma empresa de tecnologia a desenvolvimento de software.
+                    </p>
+
+                    <p class="text--medium">
+                        Para suporte e assistência, entre em contato conosco atáves do e-mail:
+                    </p>
+
+                    <p class="text--medium">
+                        suporte@xispirito.com.br
+                    </p>
+
+                </div>
+                <div>
+                    <p class="text--medium">
+                        TESTE !@34124124123123
+                    </p>
+                </div>
             </div>
         </section>
     </form>
 
     <div class="modal-overlay">
-            <div class="modal">
-                <a class="close-modal">
-                    <svg viewBox="0 0 20 20">
-                        <path
-                            fill="#000000"
-                            d="M15.898,4.045c-0.271-0.272-0.713-0.272-0.986,0l-4.71,4.711L5.493,4.045c-0.272-0.272-0.714-0.272-0.986,0s-0.272,0.714,0,0.986l4.709,4.711l-4.71,4.711c-0.272,0.271-0.272,0.713,0,0.986c0.136,0.136,0.314,0.203,0.492,0.203c0.179,0,0.357-0.067,0.493-0.203l4.711-4.711l4.71,4.711c0.137,0.136,0.314,0.203,0.494,0.203c0.178,0,0.355-0.067,0.492-0.203c0.273-0.273,0.273-0.715,0-0.986l-4.711-4.711l4.711-4.711C16.172,4.759,16.172,4.317,15.898,4.045z">
-                        </path>
-                    </svg>
-                </a>
-                <div class="modal-content">
-                    <div class="video-background">
-                        <div class="video-foreground">
-                            <iframe src="" frameborder="0" allowfullscreen=""></iframe>
-                        </div>
+        <div class="modal">
+            <a class="close-modal">
+                <svg viewBox="0 0 20 20">
+                    <path
+                        fill="#000000"
+                        d="M15.898,4.045c-0.271-0.272-0.713-0.272-0.986,0l-4.71,4.711L5.493,4.045c-0.272-0.272-0.714-0.272-0.986,0s-0.272,0.714,0,0.986l4.709,4.711l-4.71,4.711c-0.272,0.271-0.272,0.713,0,0.986c0.136,0.136,0.314,0.203,0.492,0.203c0.179,0,0.357-0.067,0.493-0.203l4.711-4.711l4.71,4.711c0.137,0.136,0.314,0.203,0.494,0.203c0.178,0,0.355-0.067,0.492-0.203c0.273-0.273,0.273-0.715,0-0.986l-4.711-4.711l4.711-4.711C16.172,4.759,16.172,4.317,15.898,4.045z">
+                    </path>
+                </svg>
+            </a>
+            <div class="modal-content">
+                <div class="video-background">
+                    <div class="video-foreground">
+                        <iframe src="" frameborder="0" allowfullscreen=""></iframe>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <script src="scripts.js"></script>
-        <script src="menu.js"></script>
+    <script src="scripts.js"></script>
+    <script src="menu.js"></script>
 </body>
 </html>
