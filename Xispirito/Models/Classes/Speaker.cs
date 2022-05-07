@@ -9,14 +9,15 @@ namespace Xispirito.Models.Classes
     {
         private string SpeakerProfession { get; set; }
 
-        public Speaker(int speakerId, string speakerName, string speakerEmail, string speakerPicture, string speakerProfession, string speakerPassword)
+        public Speaker(int speakerId, string speakerName, string speakerEmail, string speakerPicture, string speakerProfession, string speakerPassword, bool isActive)
         {
-            UserId = speakerId;
-            UserName = speakerName;
-            UserEmail = speakerEmail;
-            UserPicture = speakerPicture;
+            Id = speakerId;
+            Name = speakerName;
+            Email = speakerEmail;
+            Picture = speakerPicture;
             SpeakerProfession = speakerProfession;
-            UserPassword = speakerPassword;
+            Password = speakerPassword;
+            IsActive = isActive;
         }
 
         public string GetSpeakerProfession()

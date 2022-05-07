@@ -7,13 +7,14 @@ namespace Xispirito.Models.Classes
 {
     public class Administrator : BaseUser
     {
-        public Administrator(int administratorId, string administratorName, string administratorEmail, string administratorPicture, string administratorPassword)
+        public Administrator(int administratorId, string administratorName, string administratorEmail, string administratorPicture, string administratorPassword, bool isActive)
         {
-            UserId = administratorId;
-            UserName = administratorName;
-            UserEmail = administratorEmail;
-            UserPicture = administratorPicture;
-            UserPassword = administratorPassword;
+            Id = administratorId;
+            Name = administratorName;
+            Email = administratorEmail;
+            Picture = administratorPicture;
+            Password = administratorPassword;
+            IsActive = isActive;
         }
     }
 }

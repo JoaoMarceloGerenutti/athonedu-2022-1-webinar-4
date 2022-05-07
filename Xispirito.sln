@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xispirito", "Xispirito\Xispirito.csproj", "{62113102-CCB3-4C3C-B04A-8C105EF44E12}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{A3508FFB-57CA-441E-A055-41F49C329646}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\XispiritoDB.sql = ..\..\XispiritoDB.sql
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
