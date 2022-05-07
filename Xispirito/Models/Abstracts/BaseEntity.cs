@@ -8,5 +8,15 @@ namespace Xispirito.Models.Classes
     public abstract class BaseEntity
     {
         public bool IsActive { get; protected set; }
+
+        public bool GetIsActive()
+        {
+            return IsActive;
+        }
+
+        public void Deactivate()
+        {
+            IsActive = true;
+        }
     }
 }

@@ -7,51 +7,86 @@ namespace Xispirito.Models.Classes
 {
     public class Lecture : BaseEntity
     {
-        private int IdLecture { get; set; }
-        private string NameLecture { get; set; }
-        private Area AreaLecture { get; set; }
-        private int TimeLecture { get; set; }
-        private DateTime DateLecture { get; set; }
-        private string DescriptionLecture { get; set; }
-        private Modality ModalityLecture { get; set; }
+        private int LectureId { get; set; }
+        private string LectureName { get; set; }
+        private List<Area> AreaList { get; set; }
+        private int LectureTime { get; set; }
+        private DateTime LectureDate { get; set; }
+        private string LectureDescription { get; set; }
+        private Modality LectureModality { get; set; }
         private bool IsLectureLimited { get; set; }
         private int LectureLimit { get; set; }
         private List<Speaker> SpeakerList { get; set; }
         private List<Viewer> ViewerList { get; set; }
 
-        public Lecture(int idLecture, string nameLecture, Area areaLecture, int timeLecture, DateTime dateLecture, string descriptionLecture, Modality modalityLecture, bool isLectureLimited, int lectureLimit, List<Speaker> speakerList, List<Viewer> viewerList)
+        public Lecture(int lectureId, string lectureName, List<Area> areaList, int lectureTime, DateTime lectureDate, string lectureDescription, Modality lectureModality, bool isLectureLimited, int lectureLimit, List<Speaker> speakerList, List<Viewer> viewerList)
         {
-            IdLecture = idLecture;
-            NameLecture = nameLecture;
-            AreaLecture = areaLecture;
-            TimeLecture = timeLecture;
-            DateLecture = dateLecture;
-            DescriptionLecture = descriptionLecture;
-            ModalityLecture = modalityLecture;
+            LectureId = lectureId;
+            LectureName = lectureName;
+            AreaList = areaList;
+            LectureTime = lectureTime;
+            LectureDate = lectureDate;
+            LectureDescription = lectureDescription;
+            LectureModality = lectureModality;
             IsLectureLimited = isLectureLimited;
             LectureLimit = lectureLimit;
             SpeakerList = speakerList;
             ViewerList = viewerList;
         }
 
-        public int GetIdLecture()
+        public int GetLectureId()
         {
-            return IdLecture;
+            return LectureId;
         }
 
-        public string GetNameLecture()
+        public string GetLectureName()
         {
-            return NameLecture;
+            return LectureName;
         }
 
-        public bool GetIsActive()
+        public List<Area> GetAreaList()
         {
-            return IsActive;
+            return AreaList;
         }
 
-        public void Deactivate()
+        public int GetLectureTime()
         {
-            IsActive = true;
+            return LectureTime;
+        }
+
+        public DateTime GetLectureDate()
+        {
+            return LectureDate;
+        }
+
+        public string GetLectureDescription()
+        {
+            return LectureDescription;
+        }
+
+        public Modality GetLectureModality()
+        {
+            return LectureModality;
+        }
+
+        public bool GetIsLectureLimited()
+        {
+            return IsLectureLimited;
+        }
+
+        public int GetLectureLimit()
+        {
+            return LectureLimit;
+        }
+
+        public List<Speaker> GetSpeakerList()
+        {
+            return SpeakerList;
+        }
+
+        public List<Viewer> GetViewerList()
+        {
+            return ViewerList;
         }
     }
 }

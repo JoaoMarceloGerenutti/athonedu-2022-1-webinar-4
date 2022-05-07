@@ -32,7 +32,7 @@ namespace Xispirito.View.Home
         {
             cardImage.ImageUrl = "\\View\\Images\\Test\\Lecture" + cardNumber + ".png";
 
-            int lectureTypeLenght = (Enum.GetValues(typeof(LectureType)).Length);
+            int lectureTypeLenght = (Enum.GetValues(typeof(Modality)).Length);
 
             int lectureType = randomGenerator.Next(lectureTypeLenght);
 
@@ -53,7 +53,7 @@ namespace Xispirito.View.Home
                 default:
                     throw new System.IndexOutOfRangeException();
             }
-            lblEventType.Text = Enum.GetName(typeof(LectureType), lectureType);
+            lblEventType.Text = Enum.GetName(typeof(Modality), lectureType);
 
             int lectureTime = randomGenerator.Next(15, 120);
             lblEventTime.Text = lectureTime.ToString() + " Min";

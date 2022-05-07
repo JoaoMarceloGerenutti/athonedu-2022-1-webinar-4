@@ -1,6 +1,6 @@
 ﻿namespace Xispirito.Models
 {
-    public enum LectureType
+    public enum Modality
     {
         Online = 0,
         Presencial = 1,
