@@ -83,8 +83,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Classes\Area.cs" />
+    <Compile Include="Models\Classes\BaseEntity.cs" />
     <Compile Include="Models\Classes\Lecture.cs" />
     <Compile Include="Models\Classes\LectureRepository.cs" />
+    <Compile Include="Models\Classes\Modality.cs" />
+    <Compile Include="Models\Classes\Speaker.cs" />
+    <Compile Include="Models\Classes\Viewer.cs" />
     <Compile Include="Models\Enum\LectureType.cs" />
     <Compile Include="Models\Interfaces\IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
