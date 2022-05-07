@@ -7,30 +7,35 @@ namespace Xispirito.Models.Classes
 {
     public class BaseUser : BaseEntity
     {
-        protected int UserId { get; set; }
-        protected string UserName { get; set; }
-        protected string UserEmail { get; set; }
-        protected string UserPicture { get; set; }
-        protected string UserPassword { private get; set; }
+        protected int Id { get; set; }
+        protected string Name { get; set; }
+        protected string Email { get; set; }
+        protected string Picture { get; set; }
+        protected string Password { private get; set; }
 
-        protected int GetUserId()
+        public int GetId()
         {
-            return UserId;
+            return Id;
         }
 
-        protected string GetUserName()
+        public string GetName()
         {
-            return UserName;
+            return Name;
         }
 
-        protected string GetUserEmail()
+        public string GetEmail()
         {
-            return UserEmail;
+            return Email;
         }
 
-        protected string GetUserPicture()
+        public string GetPicture()
         {
-            return UserPicture;
+            return Picture;
+        }
+
+        public string GetEncryptedPassword()
+        {
+            return Password;
         }
     }
 }

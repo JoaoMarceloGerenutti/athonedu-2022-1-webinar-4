@@ -83,6 +83,9 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Interfaces\IDatabase.cs" />
+    <Compile Include="DAL\ViewerDAL.cs" />
+    <Compile Include="Models\Classes\Administrator.cs" />
     <Compile Include="Models\Classes\Area.cs" />
     <Compile Include="Models\Abstracts\BaseEntity.cs" />
     <Compile Include="Models\Classes\Lecture.cs" />
