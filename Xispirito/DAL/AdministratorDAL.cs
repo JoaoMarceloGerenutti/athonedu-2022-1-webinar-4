@@ -133,5 +133,25 @@ namespace Xispirito.DAL
 
             return administratorList;
         }
+
+        public bool SignIn(string administratorEmail, string administratorEncryptedPassword)
+        {
+            bool validSpeaker = false;
+
+            SqlConnection conn = new SqlConnection(connectionString);
+            conn.Open();
+
+            string sql = "SELECT * FROM Viewer WHERE email_administrator = @email_administrator AND pw_administrator = @pw_administrator";
+
+            SqlCommand cmd = new SqlCommand(sql, conn);
+
+            cmd.Parameters.AddWithValue("@email_administrator", administratorEmail);
+            cmd.Parameters.AddWithValue("@pw_administrator", administratorEncryptedPassword);
+
+            SqlDataReader dr = cmd.ExecuteReader();
+            validSpeaker = dr.HasRows;
+
+            return validSpeaker;
+        }
     }
 }

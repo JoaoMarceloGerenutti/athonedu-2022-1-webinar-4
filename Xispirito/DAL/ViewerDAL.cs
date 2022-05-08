@@ -133,5 +133,25 @@ namespace Xispirito.DAL
 
             return viewerList;
         }
+
+        public bool SignIn(string viewerEmail, string viewerEncryptedPassword)
+        {
+            bool validViewer = false;
+
+            SqlConnection conn = new SqlConnection(connectionString);
+            conn.Open();
+
+            string sql = "SELECT * FROM Viewer WHERE email_viewer = @email_viewer AND pw_viwer = @pw_viwer";
+
+            SqlCommand cmd = new SqlCommand(sql, conn);
+
+            cmd.Parameters.AddWithValue("@email_viewer", viewerEmail);
+            cmd.Parameters.AddWithValue("@pw_viwer", viewerEncryptedPassword);
+
+            SqlDataReader dr = cmd.ExecuteReader();
+            validViewer = dr.HasRows;
+
+            return validViewer;
+        }
     }
 }

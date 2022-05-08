@@ -4,40 +4,99 @@
 </asp:Content>
 <asp:Content ID="Content" ContentPlaceHolderID="Content" runat="server">
     <!DOCTYPE html>
+    <link rel="stylesheet" href="Teste/Login.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>Home - Xispirito </title>
+    <div class="gradient">
+        <div class="login-wrap">
+            <div class="login-html">
+                <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Entrar</label>
+                <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Inscrever-se</label>
+                <div class="login-form">
+                    <div class="sign-in-htm">
 
-        <link rel="stylesheet" href="Login.css" />
-        <link rel="stylesheet" href="responsive.css" media="screen and (max-width: 768px)" />
+                        <asp:Login ID="Login1" runat="server">
+                            <LayoutTemplate>
+                                <div class="group">
+                                    <asp:Label ID="SignInEmailLabel" runat="server" AssociatedControlID="UserName" for="user" CssClass="label">E-mail</asp:Label>
+                                    <asp:RequiredFieldValidator ID="SignInEmailRequired" runat="server" ControlToValidate="UserName" ErrorMessage="Preencha o Campo de E-mail!" ValidationGroup="Login1">*</asp:RequiredFieldValidator>
+                                    <asp:RegularExpressionValidator ID="revSignInEmail" runat="server" ControlToValidate="UserName" ErrorMessage="Informe um E-mail Válido!" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ValidationGroup="Login1">*</asp:RegularExpressionValidator>
+                                    <asp:TextBox ID="UserName" runat="server" type="text" CssClass="input"></asp:TextBox>
+                                </div>
+                                <div class="group">
+                                    <asp:Label ID="SignInPasswordLabel" runat="server" AssociatedControlID="Password" CssClass="label">Senha</asp:Label>
+                                    <asp:RequiredFieldValidator ID="SignInPasswordRequired" runat="server" ControlToValidate="Password" ErrorMessage="A Senha é Obrigatória!" ToolTip="A senha é obrigatória." ValidationGroup="Login1">*</asp:RequiredFieldValidator>
+                                    <asp:TextBox ID="Password" runat="server" TextMode="Password" type="text" CssClass="input"></asp:TextBox>
+                                </div>
+                            </LayoutTemplate>
+                        </asp:Login>
 
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                        <div class="hr"></div>
+                        <div class="foot-lnk">
+                            <a href="#forgot">Esqueceu sua senha?</a>
+                        </div>
+                    </div>
 
-        <link rel="stylesheet" href="print.css" media="print" />
-    </head>
-    <body>
-        <section class="login">
-            <div class="login-title">
-                <h3>Login</h3>
+                    <div class="sign-up-htm">
+                        <div class="group">
+                            <label for="pass" class="label">E-mail</label>
+                            <asp:RequiredFieldValidator ID="rfvCriarEmail" runat="server" ControlToValidate="txbCriarEmail" ErrorMessage="O E-mail é Obrigatório!" ValidationGroup="register">*</asp:RequiredFieldValidator>
+                            <asp:RegularExpressionValidator ID="revCriarEmail" runat="server" ControlToValidate="txbCriarEmail" ErrorMessage="E-mail Inválido!" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ValidationGroup="register">*</asp:RegularExpressionValidator>
+                            <asp:TextBox ID="txbCriarEmail" runat="server" type="text" class="input"></asp:TextBox>
+                        </div>
+                        <div class="group">
+                            <label for="user" class="label">Nome</label>
+                            <asp:RequiredFieldValidator ID="rfvNome" runat="server" ControlToValidate="txbNome" ErrorMessage="O Nome é Obrigatório!" ForeColor="#E50914" Font-Bold="True" Font-Size="Large" ValidationGroup="register">*</asp:RequiredFieldValidator>
+                            <asp:TextBox ID="txbNome" runat="server" type="text" class="input"></asp:TextBox>
+                        </div>
+                        <div class="group">
+                            <label for="pass" class="label">Senha</label>
+                            <asp:RequiredFieldValidator ID="rfvCriarSenha" runat="server" ControlToValidate="txbCriarSenha" ErrorMessage="A Senha é Obrigatório!" ForeColor="#E50914" Font-Bold="True" Font-Size="Large" ValidationGroup="register">*</asp:RequiredFieldValidator>
+                            <asp:CompareValidator ID="cvSenha" runat="server" ControlToCompare="txbCriarSenha" ControlToValidate="txbRepetirSenha" ErrorMessage="As Senhas não coincidem!" ForeColor="#E50914" Font-Bold="True" Font-Size="Large" ValidationGroup="register">*</asp:CompareValidator>
+                            <asp:TextBox ID="txbCriarSenha" runat="server" type="password" class="input" data-type="password"></asp:TextBox>
+                        </div>
+                        <div class="group">
+                            <label for="pass" class="label">Repetir a senha</label>
+                            <asp:RequiredFieldValidator ID="rfvRepetirSenha" runat="server" ControlToValidate="txbRepetirSenha" ErrorMessage="A Repetição Senha é Obrigatório!" ForeColor="#E50914" Font-Bold="True" Font-Size="Large" ValidationGroup="register">*</asp:RequiredFieldValidator>
+                            <asp:TextBox ID="txbRepetirSenha" runat="server" type="password" class="input" data-type="password"></asp:TextBox>
+                        </div>
+                        <div class="group">
+                            <asp:ValidationSummary ID="vsCriarMensagem" runat="server" ForeColor="#E50914" ShowMessageBox="True" ShowSummary="False" ValidationGroup="register" />
+                        </div>
+                        <div class="group">
+                            <asp:Button ID="btnSignIn" runat="server" Text="Entrar" class="login-input-button-enter" CommandName="SignIn_Click" />
+                            <asp:Button ID="btnCriar" runat="server" Text="Inscrever-se" type="submit" class="button" OnClick="SignUp_Click" ValidationGroup="register" />
+                        </div>
+                        <div class="hr"></div>
+                        <div class="foot-lnk">
+                            <label class="foot-member" for="tab-1">Já é membro?</label>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="login-form-group">
-                <div>
-                    <label for="senha">Email:</label>
-                    <input class="login-input-button" type="text" id="email" />
+        </div>
+    </div>
+    <%--<section class="login">
+        <div class="login-title">
+            <h3>Login</h3>
+        </div>
+        <asp:Login ID="Login1" runat="server" OnAuthenticate="Login1_Authenticate">
+            <LayoutTemplate>
+                <div class="login-form-group">
+                    <div>
+                        <label for="senha">Email:</label>
+                        <asp:TextBox ID="UserName" runat="server" class="login-input-button" MaxLength="100" type="text"></asp:TextBox>
+                    </div>
+                    <div>
+                        <label for="senha">Senha:</label>
+                        <asp:TextBox ID="Password" runat="server" class="login-input-button" MaxLength="30" type="text"></asp:TextBox>
+                    </div>
+                    <asp:Button ID="btnSignIn" runat="server" Text="Entrar" class="login-input-button-enter" CommandName="SignIn_Click" />
                 </div>
-                <div>
-                    <label for="senha">Senha</label>
-                    <input class="login-input-button" type="text" id="senha" />
-                </div>
-                <div class="login-sign">
-                    <a href="#"><b>Cadastre-se aqui!</b></a>
-                </div>
-                <button class="login-input-button-enter" onclick="">Entrar</button>
-            </div>
-        </section>
-    </body>
-    </html>
-
+            </LayoutTemplate>
+        </asp:Login>
+        <div class="login-sign">
+            <a href="#"><b>Cadastre-se aqui!</b></a>
+        </div>
+    </section>--%>
 </asp:Content>

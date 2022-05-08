@@ -28,6 +28,11 @@ namespace Xispirito.Models
             return Email;
         }
 
+        public void SetEmail(string email)
+        {
+            Email = email;
+        }
+
         public string GetPicture()
         {
             return Picture;
@@ -36,6 +41,11 @@ namespace Xispirito.Models
         public string GetEncryptedPassword()
         {
             return Password;
+        }
+
+        public void SetEncryptedPassword(string encryptedPassword)
+        {
+            Password = encryptedPassword;
         }
     }
 }

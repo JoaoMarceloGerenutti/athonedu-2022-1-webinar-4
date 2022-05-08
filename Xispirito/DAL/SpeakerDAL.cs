@@ -136,5 +136,25 @@ namespace Xispirito.DAL
 
             return speakerList;
         }
+
+        public bool SignIn(string speakerEmail, string speakerEncryptedPassword)
+        {
+            bool validSpeaker = false;
+
+            SqlConnection conn = new SqlConnection(connectionString);
+            conn.Open();
+
+            string sql = "SELECT * FROM Viewer WHERE email_speaker = @email_speaker AND pw_speaker = @pw_speaker";
+
+            SqlCommand cmd = new SqlCommand(sql, conn);
+
+            cmd.Parameters.AddWithValue("@email_speaker", speakerEmail);
+            cmd.Parameters.AddWithValue("@pw_speaker", speakerEncryptedPassword);
+
+            SqlDataReader dr = cmd.ExecuteReader();
+            validSpeaker = dr.HasRows;
+
+            return validSpeaker;
+        }
     }
 }

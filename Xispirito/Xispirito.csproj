@@ -82,7 +82,7 @@
     <Content Include="View\Images\Xispirito.png" />
     <Content Include="View\Login\Login.aspx" />
     <Content Include="View\Login\Login.css" />
-    <Content Include="View\Login\responsive.css" />
+    <Content Include="View\Login\Teste\Login.css" />
     <Content Include="View\MasterPage\MasterPage-style.css" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -91,6 +91,7 @@
     <Compile Include="DAL\AreaDAL.cs" />
     <Compile Include="DAL\LectureDAL.cs" />
     <Compile Include="DAL\SpeakerDAL.cs" />
+    <Compile Include="Models\Classes\Cryptography.cs" />
     <Compile Include="Models\Interfaces\IDatabase.cs" />
     <Compile Include="DAL\ViewerDAL.cs" />
     <Compile Include="Models\Classes\Administrator.cs" />
