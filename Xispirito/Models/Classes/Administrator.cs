@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Xispirito.Models.Classes
+namespace Xispirito.Models
 {
     public class Administrator : BaseUser
     {

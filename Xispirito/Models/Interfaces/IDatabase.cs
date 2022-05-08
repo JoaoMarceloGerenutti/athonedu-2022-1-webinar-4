@@ -3,22 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Xispirito.Models.Interfaces
+namespace Xispirito.Models
 {
-    public interface IDatabase<User>
+    public interface IDatabase<T>
     {
-        List<User> ListUser();
+        List<T> List();
 
         // CRUD - Create.
-        void InsertUser(User user);
+        void Insert(T entity);
 
         // CRUD - Read.
-        User SelectUser(int userId);
+        T Select(int entityId);
 
         // CRUD - Update.
-        void UpdateUser(User user);
+        void Update(T entity);
 
         // CRUD - Delete.
-        void DeleteUser(int userId);
+        void Delete(int entityId);
     }
 }

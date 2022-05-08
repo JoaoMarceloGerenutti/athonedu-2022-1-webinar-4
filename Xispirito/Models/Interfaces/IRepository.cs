@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Xispirito.Models.Interfaces
+namespace Xispirito.Models
 {
     public interface IRepository<T>
     {

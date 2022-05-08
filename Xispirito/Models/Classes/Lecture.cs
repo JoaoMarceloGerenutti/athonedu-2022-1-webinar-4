@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Xispirito.Models.Classes
+namespace Xispirito.Models
 {
     public class Lecture : BaseEntity
     {
@@ -19,7 +19,7 @@ namespace Xispirito.Models.Classes
         private List<Speaker> SpeakerList { get; set; }
         private List<Viewer> ViewerList { get; set; }
 
-        public Lecture(int lectureId, string lectureName, List<Area> areaList, int lectureTime, DateTime lectureDate, string lectureDescription, Modality lectureModality, bool isLectureLimited, int lectureLimit, List<Speaker> speakerList, List<Viewer> viewerList)
+        public Lecture(int lectureId, string lectureName, List<Area> areaList, int lectureTime, DateTime lectureDate, string lectureDescription, Modality lectureModality, bool isLectureLimited, int lectureLimit, List<Speaker> speakerList, List<Viewer> viewerList, bool isActive)
         {
             LectureId = lectureId;
             LectureName = lectureName;
@@ -32,14 +32,15 @@ namespace Xispirito.Models.Classes
             LectureLimit = lectureLimit;
             SpeakerList = speakerList;
             ViewerList = viewerList;
+            IsActive = isActive;
         }
 
-        public int GetLectureId()
+        public int GetId()
         {
             return LectureId;
         }
 
-        public string GetLectureName()
+        public string GetName()
         {
             return LectureName;
         }
@@ -49,32 +50,32 @@ namespace Xispirito.Models.Classes
             return AreaList;
         }
 
-        public int GetLectureTime()
+        public int GetTime()
         {
             return LectureTime;
         }
 
-        public DateTime GetLectureDate()
+        public DateTime GetDate()
         {
             return LectureDate;
         }
 
-        public string GetLectureDescription()
+        public string GetDescription()
         {
             return LectureDescription;
         }
 
-        public Modality GetLectureModality()
+        public Modality GetModality()
         {
             return LectureModality;
         }
 
-        public bool GetIsLectureLimited()
+        public bool GetIsLimited()
         {
             return IsLectureLimited;
         }
 
-        public int GetLectureLimit()
+        public int GetLimit()
         {
             return LectureLimit;
         }

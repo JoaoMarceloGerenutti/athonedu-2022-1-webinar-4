@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
-using Xispirito.Models.Classes;
-using Xispirito.Models.Interfaces;
+using Xispirito.Models;
 
 namespace Xispirito.DAL
 {
@@ -12,28 +11,28 @@ namespace Xispirito.DAL
     {
         private string connectionString = @"Data Source=DESKTOP-29C0T41\SQLEXPRESS;Initial Catalog=XispiritoDB;Integrated Security=True";
 
-        public void InsertUser(Viewer user)
+        public void Insert(Viewer objViewer)
         {
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
 
-            string sql = "INSERT INTO Viewer VALUES (@nm_viewer, @email_viewer, @ft_viewer, @sn_viwer, @isActive)";
+            string sql = "INSERT INTO Viewer VALUES (@nm_viewer, @email_viewer, @ft_viewer, @pw_viwer, @isActive)";
 
             SqlCommand cmd = new SqlCommand(sql, conn);
 
-            cmd.Parameters.AddWithValue("@nm_viewer", user.GetId());
-            cmd.Parameters.AddWithValue("@email_viewer", user.GetEmail());
-            cmd.Parameters.AddWithValue("@ft_viewer", user.GetPicture());
-            cmd.Parameters.AddWithValue("@sn_viwer", user.GetEncryptedPassword());
-            cmd.Parameters.AddWithValue("@isActive", user.GetIsActive());
+            cmd.Parameters.AddWithValue("@nm_viewer", objViewer.GetName());
+            cmd.Parameters.AddWithValue("@email_viewer", objViewer.GetEmail());
+            cmd.Parameters.AddWithValue("@ft_viewer", objViewer.GetPicture());
+            cmd.Parameters.AddWithValue("@pw_viwer", objViewer.GetEncryptedPassword());
+            cmd.Parameters.AddWithValue("@isActive", objViewer.GetIsActive());
             cmd.ExecuteNonQuery();
 
             conn.Close();
         }
 
-        public Viewer SelectUser(int userId)
+        public Viewer Select(int viewerId)
         {
-            Viewer viewer = null;
+            Viewer objViewer = null;
 
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
@@ -42,48 +41,48 @@ namespace Xispirito.DAL
 
             SqlCommand cmd = new SqlCommand(sql, conn);
 
-            cmd.Parameters.AddWithValue("id_viewer", userId);
+            cmd.Parameters.AddWithValue("@id_viewer", viewerId);
 
             SqlDataReader dr = cmd.ExecuteReader();
 
             if (dr.HasRows && dr.Read())
             {
-                viewer = new Viewer(
-                    userId,
+                objViewer = new Viewer(
+                    viewerId,
                     dr["nm_viewer"].ToString(),
                     dr["email_viewer"].ToString(),
                     dr["ft_viewer"].ToString(),
-                    dr["sn_viwer"].ToString(),
+                    dr["pw_viwer"].ToString(),
                     Convert.ToBoolean(dr["isActive"])
                 );
             }
             conn.Close();
 
-            return viewer;
+            return objViewer;
         }
 
-        public void UpdateUser(Viewer user)
+        public void Update(Viewer objViewer)
         {
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
 
-            string sql = "UPDATE Viewer SET nm_viewer = @nm_viewer, email_viewer = @email_viewer, ft_viewer = @ft_viewer, sn_viwer = @sn_viwer, isActive = @isActive WHERE id_viewer = @id_viewer";
+            string sql = "UPDATE Viewer SET nm_viewer = @nm_viewer, email_viewer = @email_viewer, ft_viewer = @ft_viewer, pw_viwer = @pw_viwer, isActive = @isActive WHERE id_viewer = @id_viewer";
 
             SqlCommand cmd = new SqlCommand(sql, conn);
 
-            cmd.Parameters.AddWithValue("@nm_viewer", user.GetName());
-            cmd.Parameters.AddWithValue("@email_viewer", user.GetEmail());
-            cmd.Parameters.AddWithValue("@ft_viewer", user.GetPicture());
-            cmd.Parameters.AddWithValue("@sn_viwer", user.GetEncryptedPassword());
-            cmd.Parameters.AddWithValue("@isActive", user.GetIsActive());
-            cmd.Parameters.AddWithValue("@id_viewer", user.GetId());
+            cmd.Parameters.AddWithValue("@nm_viewer", objViewer.GetName());
+            cmd.Parameters.AddWithValue("@email_viewer", objViewer.GetEmail());
+            cmd.Parameters.AddWithValue("@ft_viewer", objViewer.GetPicture());
+            cmd.Parameters.AddWithValue("@pw_viwer", objViewer.GetEncryptedPassword());
+            cmd.Parameters.AddWithValue("@isActive", objViewer.GetIsActive());
+            cmd.Parameters.AddWithValue("@id_viewer", objViewer.GetId());
 
             cmd.ExecuteNonQuery();
 
             conn.Close();
         }
 
-        public void DeleteUser(int userId)
+        public void Delete(int viewerId)
         {
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
@@ -93,14 +92,14 @@ namespace Xispirito.DAL
             SqlCommand cmd = new SqlCommand(sql, conn);
 
             cmd.Parameters.AddWithValue("@isActive", false);
-            cmd.Parameters.AddWithValue("@id_viewer", userId);
+            cmd.Parameters.AddWithValue("@id_viewer", viewerId);
 
             cmd.ExecuteNonQuery();
 
             conn.Close();
         }
 
-        public List<Viewer> ListUser()
+        public List<Viewer> List()
         {
             List<Viewer> viewerList = null;
 
@@ -124,7 +123,7 @@ namespace Xispirito.DAL
                         dr["nm_viewer"].ToString(),
                         dr["email_viewer"].ToString(),
                         dr["ft_viewer"].ToString(),
-                        dr["sn_viwer"].ToString(),
+                        dr["pw_viwer"].ToString(),
                         Convert.ToBoolean(dr["isActive"])
                     );
                     viewerList.Add(objViewer);

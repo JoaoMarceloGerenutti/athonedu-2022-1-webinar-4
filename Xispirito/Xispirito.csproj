@@ -83,6 +83,10 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAL\AdministratorDAL.cs" />
+    <Compile Include="DAL\AreaDAL.cs" />
+    <Compile Include="DAL\LectureDAL.cs" />
+    <Compile Include="DAL\SpeakerDAL.cs" />
     <Compile Include="Models\Interfaces\IDatabase.cs" />
     <Compile Include="DAL\ViewerDAL.cs" />
     <Compile Include="Models\Classes\Administrator.cs" />

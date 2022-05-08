@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Xispirito.Models.Classes
+namespace Xispirito.Models
 {
     public abstract class BaseEntity
     {
@@ -16,7 +16,7 @@ namespace Xispirito.Models.Classes
 
         public void Deactivate()
         {
-            IsActive = true;
+            IsActive = false;
         }
     }
 }
