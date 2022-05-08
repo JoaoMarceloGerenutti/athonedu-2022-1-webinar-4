@@ -6,7 +6,7 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
-    <link rel="stylesheet" href="Home-style.css" />
+    <link rel="stylesheet" href="MasterPage-style.css" />
     <asp:ContentPlaceHolder ID="HeaderFooter" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -49,10 +49,12 @@
                 </div>
             </div>
         </header>
+
         <div>
             <asp:ContentPlaceHolder ID="Content" runat="server">
             </asp:ContentPlaceHolder>
         </div>
+
         <section id="footer">
                 <div class="form-group">
                     <div class="left-footer">
