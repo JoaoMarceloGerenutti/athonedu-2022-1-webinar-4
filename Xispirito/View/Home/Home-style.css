@@ -182,6 +182,7 @@ CARDS
 
 .card {
     display: flex;
+    justify-content: space-between;
     flex-direction: column;
     background-color: #70160E;
     cursor: pointer;
