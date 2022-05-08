@@ -25,7 +25,7 @@ body {
     font-size: 1.6rem;
 }
 
-section.Login {
+section.login {
     border: 0px solid black;
     border-radius: 1rem;
     box-shadow: 10px 5px 5px black;
@@ -34,34 +34,34 @@ section.Login {
     height: 45vh;
 }
 
-section.Login .container {
+section.login .container {
     width: 90%;
     max-width: 980px;
     margin: auto;
     display: flex;
 }
 
-.Login-title, h3 {
+.login-title, h3 {
     color: azure;
     text-align: center;
     margin-bottom: 4rem;
 }
 
-.form-group {
+.login-form-group {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.input-button {
+.login-input-button {
     border: .3rem solid black;
     padding: .5rem;
     margin: .5rem;
     border-radius: 2rem;
 }
 
-.input-login-button {
+.login-input-button-enter {
     margin: 5rem;
     padding: 1.4rem 4rem;
     color: azure;
@@ -70,7 +70,7 @@ section.Login .container {
     border-radius: 2rem;
 }
 
-.sign a {
+.login-sign a {
     color: azure;
     margin-top: .6rem;
     font-size: 2rem;

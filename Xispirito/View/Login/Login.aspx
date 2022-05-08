@@ -18,23 +18,23 @@
         <link rel="stylesheet" href="print.css" media="print" />
     </head>
     <body>
-        <section class="Login">
-            <div class="Login-title">
+        <section class="login">
+            <div class="login-title">
                 <h3>Login</h3>
             </div>
-            <div class="form-group">
+            <div class="login-form-group">
                 <div>
-                    <label>Email:</label>
-                    <input class="input-button" type="text" id="email" />
+                    <label for="senha">Email:</label>
+                    <input class="login-input-button" type="text" id="email" />
                 </div>
                 <div>
-                    <label>Senha</label>
-                    <input class="input-button" type="text" id="senha" />
+                    <label for="senha">Senha</label>
+                    <input class="login-input-button" type="text" id="senha" />
                 </div>
-                <div class="sign">
+                <div class="login-sign">
                     <a href="#"><b>Cadastre-se aqui!</b></a>
                 </div>
-                <button class="input-login-button" onclick="">Entrar</button>
+                <button class="login-input-button-enter" onclick="">Entrar</button>
             </div>
         </section>
     </body>
