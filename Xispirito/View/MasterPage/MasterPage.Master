@@ -1,0 +1,92 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPage.Master.cs" Inherits="Xispirito.View.MasterPage.MasterPage" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="stylesheet" href="Home-style.css" />
+    <asp:ContentPlaceHolder ID="HeaderFooter" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="frmMasterPage" runat="server">
+        <header>
+            <div class="container">
+                <nav>
+                    <ul>
+                        <li>
+                            <img src="\View\Images\Xispirito.png" alt="Xispirito" />
+                        </li>
+                        <li class="logo">
+                            <a href="../Home/Home.aspx"><b>Xispirito</b></a>
+                        </li>
+                        <li class="athon">
+                            <a href="https://athonedu.com.br">Powered by Athon</a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="menu-section">
+                    <div class="menu-toggle">
+                        <div class="one"></div>
+                        <div class="two"></div>
+                        <div class="three"></div>
+                    </div>
+                    <nav>
+                        <ul>
+                            <li>
+                                <a href="#">Ajuda</a>
+                            </li>
+                            <li>
+                                <a href="#" class="two">Econtrar Palestra</a>
+                            </li>
+                            <li>
+                                <a href="../Login/Login.aspx" class="three">Login</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <div>
+            <asp:ContentPlaceHolder ID="Content" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <section id="footer">
+                <div class="form-group">
+                    <div class="left-footer">
+                        <p class="text--medium">
+                            Sobre Nós
+                            <br />
+                            Somos uma empresa de tecnologia a desenvolvimento de software.
+                            <br />
+                            Para suporte e assistência, entre em contato conosco atáves do e-mail:
+                            <br />
+                            suporte@xispirito.com.br
+                        </p>
+                    </div>
+                    <div class="line">
+                    </div>
+                    <div class="right-footer">
+                        <p class="text--medium">
+                            Ajuda
+                        </p>
+
+                        <p class="text--medium">
+                            Fazer Cadastro
+                        </p>
+
+                        <p class="text--medium">
+                            Encontrar um Evento
+                        </p>
+
+                        <p class="text--medium">
+                            Certificados
+                        </p>
+                    </div>
+                </div>
+            </section>
+    </form>
+</body>
+</html>

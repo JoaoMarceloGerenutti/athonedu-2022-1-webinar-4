@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using Xispirito.Models;
 using AspImage = System.Web.UI.WebControls.Image;
 
-namespace Xispirito.View.Home
+namespace Xispirito.View.HomeWithMaster
 {
     public partial class Home : System.Web.UI.Page
     {

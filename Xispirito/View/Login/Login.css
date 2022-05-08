@@ -1,0 +1,77 @@
+﻿@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro");
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    outline: 0;
+}
+
+html {
+    /* a cada 1rem será considera 10px */
+    font-size: 62.5%;
+}
+
+html,
+body {
+    height: 100vh;
+    font-family: "Source Sans Pro";
+    text-rendering: optimizelegibility;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    color: azure;
+    font-size: 1.6rem;
+}
+
+section.Login {
+    border: 0px solid black;
+    border-radius: 1rem;
+    box-shadow: 10px 5px 5px black;
+    background-color: #70160E;
+    margin: 175px 30vh;
+    height: 45vh;
+}
+
+section.Login .container {
+    width: 90%;
+    max-width: 980px;
+    margin: auto;
+    display: flex;
+}
+
+.Login-title, h3 {
+    color: azure;
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-button {
+    border: .3rem solid black;
+    padding: .5rem;
+    margin: .5rem;
+    border-radius: 2rem;
+}
+
+.input-login-button {
+    margin: 5rem;
+    padding: 1.4rem 4rem;
+    color: azure;
+    background-color: #0A1539;
+    border: 0;
+    border-radius: 2rem;
+}
+
+.sign a {
+    color: azure;
+    margin-top: .6rem;
+    font-size: 2rem;
+}
