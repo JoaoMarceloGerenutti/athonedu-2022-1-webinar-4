@@ -114,17 +114,17 @@
     <Compile Include="View\Login\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
-    <Compile Include="View\MasterPage\MasterHeader.Master.cs">
-      <DependentUpon>MasterHeader.Master</DependentUpon>
+    <Compile Include="View\MasterPage\MasterPage.Master.cs">
+      <DependentUpon>MasterPage.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="View\MasterPage\MasterHeader.Master.designer.cs">
-      <DependentUpon>MasterHeader.Master</DependentUpon>
+    <Compile Include="View\MasterPage\MasterPage.Master.designer.cs">
+      <DependentUpon>MasterPage.Master</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <Content Include="View\MasterPage\MasterHeader.Master" />
+    <Content Include="View\MasterPage\MasterPage.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

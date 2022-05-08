@@ -1,22 +1,23 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/MasterPage/MasterPage.Master" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="Xispirito.View.HomeWithMaster.Home" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
+<asp:Content ID="HeaderFooter" ContentPlaceHolderID="HeaderFooter" runat="server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<!DOCTYPE html>
+<asp:Content ID="Content" ContentPlaceHolderID="Content" runat="server">
+    <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Home - Xispirito </title>
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Home - Xispirito </title>
 
-    <link rel="stylesheet" href="Home-style.css" />
-    <link rel="stylesheet" href="responsive.css" media="screen and (max-width: 768px)" />
+        <link rel="stylesheet" href="Home-style.css" />
+        <link rel="stylesheet" href="responsive.css" media="screen and (max-width: 768px)" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="print.css" media="print" />
-</head>
-<body>
+        <link rel="stylesheet" href="print.css" media="print" />
+    </head>
+    <body>
         <section class="hero">
             <div class="container">
                 <div>
@@ -123,40 +124,6 @@
                 </div>
             </section>
         </main>
-        <section id="footer">
-                <div class="form-group">
-                    <div class="left-footer">
-                        <p class="text--medium">
-                            Sobre Nós
-                            <br />
-                            Somos uma empresa de tecnologia a desenvolvimento de software.
-                            <br />
-                            Para suporte e assistência, entre em contato conosco atáves do e-mail:
-                            <br />
-                            suporte@xispirito.com.br
-                        </p>
-                    </div>
-                    <div class="line">
-                    </div>
-                    <div class="right-footer">
-                        <p class="text--medium">
-                            Ajuda
-                        </p>
-
-                        <p class="text--medium">
-                            Fazer Cadastro
-                        </p>
-
-                        <p class="text--medium">
-                            Encontrar um Evento
-                        </p>
-
-                        <p class="text--medium">
-                            Certificados
-                        </p>
-                    </div>
-                </div>
-            </section>
-        </body>
+    </body>
     </html>
 </asp:Content>
