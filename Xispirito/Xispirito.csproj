@@ -83,7 +83,7 @@
     <Content Include="View\Login\Login.aspx" />
     <Content Include="View\Login\Login.css" />
     <Content Include="View\Login\responsive.css" />
-    <Content Include="View\MasterPage\Home-style.css" />
+    <Content Include="View\MasterPage\MasterPage-style.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
