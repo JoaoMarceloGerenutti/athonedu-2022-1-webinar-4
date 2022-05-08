@@ -80,6 +80,10 @@
     <Content Include="View\Images\Test\Lecture5.png" />
     <Content Include="View\Images\Test\Lecture6.png" />
     <Content Include="View\Images\Xispirito.png" />
+    <Content Include="View\Login\Login.aspx" />
+    <Content Include="View\Login\Login.css" />
+    <Content Include="View\Login\responsive.css" />
+    <Content Include="View\MasterPage\Home-style.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -103,9 +107,24 @@
     <Compile Include="View\Home\Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
     </Compile>
+    <Compile Include="View\Login\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Login\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\MasterPage\MasterHeader.Master.cs">
+      <DependentUpon>MasterHeader.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\MasterPage\MasterHeader.Master.designer.cs">
+      <DependentUpon>MasterHeader.Master</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <Content Include="View\MasterPage\MasterHeader.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

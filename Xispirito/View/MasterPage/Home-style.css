@@ -56,7 +56,7 @@ header {
                 text-decoration: none;
                 color: white;
                 font-size: 1.4rem;
-                padding: 0.8rem 2rem;
+                padding: 0.8rem 1rem;
                 border: 1px solid white;
                 border-radius: 20%;
                 transition: all 250ms linear 0s;
@@ -337,7 +337,7 @@ MODAL
 /*=============== 
 FORM
 ==================*/
-#footer {
+#form {
     width: 100%;
     background: #70160E;
     display: flex;

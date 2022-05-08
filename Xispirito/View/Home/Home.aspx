@@ -1,9 +1,11 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="Xispirito.View.Home.Home" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/MasterPage/MasterPage.Master" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="Xispirito.View.HomeWithMaster.Home" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
+<head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Home - Xispirito </title>
 
@@ -15,44 +17,6 @@
     <link rel="stylesheet" href="print.css" media="print" />
 </head>
 <body>
-    <form id="frmHome" runat="server">
-        <header>
-            <div class="container">
-                <nav>
-                    <ul>
-                        <li>
-                            <img src="\View\Images\Xispirito.png" alt="Xispirito" />
-                        </li>
-                        <li class="logo">
-                            <a href="#"><b>Xispirito</b></a>
-                        </li>
-                        <li class="athon">
-                            <a href="https://athonedu.com.br">Powered by Athon</a>
-                        </li>
-                    </ul>
-                </nav>
-                <div class="menu-section">
-                    <div class="menu-toggle">
-                        <div class="one"></div>
-                        <div class="two"></div>
-                        <div class="three"></div>
-                    </div>
-                    <nav>
-                        <ul>
-                            <li>
-                                <a href="#">Ajuda</a>
-                            </li>
-                            <li>
-                                <a href="#" class="two">Econtrar Palestra</a>
-                            </li>
-                            <li>
-                                <a href="#" class="three">Login</a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        </header>
         <section class="hero">
             <div class="container">
                 <div>
@@ -159,64 +123,40 @@
                 </div>
             </section>
         </main>
+        <section id="footer">
+                <div class="form-group">
+                    <div class="left-footer">
+                        <p class="text--medium">
+                            Sobre Nós
+                            <br />
+                            Somos uma empresa de tecnologia a desenvolvimento de software.
+                            <br />
+                            Para suporte e assistência, entre em contato conosco atáves do e-mail:
+                            <br />
+                            suporte@xispirito.com.br
+                        </p>
+                    </div>
+                    <div class="line">
+                    </div>
+                    <div class="right-footer">
+                        <p class="text--medium">
+                            Ajuda
+                        </p>
 
-        <section id="form">
-            <div class="form-group">
-                <div class="left-footer">
-                    <p class="text--medium">
-                        Sobre Nós
-                        <br />
-                        Somos uma empresa de tecnologia a desenvolvimento de software.
-                        <br />
-                        Para suporte e assistência, entre em contato conosco atáves do e-mail:
-                        <br />
-                        suporte@xispirito.com.br
-                    </p>
-                </div>
-                <div class="line">
-                </div>
-                <div class="right-footer">
-                    <p class="text--medium">
-                        Ajuda
-                    </p>
+                        <p class="text--medium">
+                            Fazer Cadastro
+                        </p>
 
-                    <p class="text--medium">
-                        Fazer Cadastro
-                    </p>
+                        <p class="text--medium">
+                            Encontrar um Evento
+                        </p>
 
-                    <p class="text--medium">
-                        Encontrar um Evento
-                    </p>
-
-                    <p class="text--medium">
-                        Certificados
-                    </p>
-                </div>
-            </div>
-        </section>
-    </form>
-
-    <div class="modal-overlay">
-        <div class="modal">
-            <a class="close-modal">
-                <svg viewBox="0 0 20 20">
-                    <path
-                        fill="#000000"
-                        d="M15.898,4.045c-0.271-0.272-0.713-0.272-0.986,0l-4.71,4.711L5.493,4.045c-0.272-0.272-0.714-0.272-0.986,0s-0.272,0.714,0,0.986l4.709,4.711l-4.71,4.711c-0.272,0.271-0.272,0.713,0,0.986c0.136,0.136,0.314,0.203,0.492,0.203c0.179,0,0.357-0.067,0.493-0.203l4.711-4.711l4.71,4.711c0.137,0.136,0.314,0.203,0.494,0.203c0.178,0,0.355-0.067,0.492-0.203c0.273-0.273,0.273-0.715,0-0.986l-4.711-4.711l4.711-4.711C16.172,4.759,16.172,4.317,15.898,4.045z">
-                    </path>
-                </svg>
-            </a>
-            <div class="modal-content">
-                <div class="video-background">
-                    <div class="video-foreground">
-                        <iframe src="" frameborder="0" allowfullscreen=""></iframe>
+                        <p class="text--medium">
+                            Certificados
+                        </p>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-
-    <script src="scripts.js"></script>
-    <script src="menu.js"></script>
-</body>
-</html>
+            </section>
+        </body>
+    </html>
+</asp:Content>

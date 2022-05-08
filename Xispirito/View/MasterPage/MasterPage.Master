@@ -1,0 +1,58 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPage.Master.cs" Inherits="Xispirito.View.MasterPage.MasterPage" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="stylesheet" href="Home-style.css" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <header>
+            <div class="container">
+                <nav>
+                    <ul>
+                        <li>
+                            <img src="\View\Images\Xispirito.png" alt="Xispirito" />
+                        </li>
+                        <li class="logo">
+                            <a href="#"><b>Xispirito</b></a>
+                        </li>
+                        <li class="athon">
+                            <a href="https://athonedu.com.br">Powered by Athon</a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="menu-section">
+                    <div class="menu-toggle">
+                        <div class="one"></div>
+                        <div class="two"></div>
+                        <div class="three"></div>
+                    </div>
+                    <nav>
+                        <ul>
+                            <li>
+                                <a href="#">Ajuda</a>
+                            </li>
+                            <li>
+                                <a href="#" class="two">Econtrar Palestra</a>
+                            </li>
+                            <li>
+                                <a href="#" class="three">Login</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>
