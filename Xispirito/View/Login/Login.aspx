@@ -15,10 +15,10 @@
                 <div class="login-form">
                     <div class="sign-in-htm">
 
-                        <asp:Login ID="Login1" runat="server">
+                        <asp:Login ID="SignIn" runat="server" OnAuthenticate="SignIn_Authenticate" >
                             <LayoutTemplate>
                                 <div class="group">
-                                    <asp:Label ID="SignInEmailLabel" runat="server" AssociatedControlID="UserName" for="user" CssClass="label">E-mail</asp:Label>
+                                    <asp:Label ID="SignInEmailLabel" runat="server" AssociatedControlID="UserName" CssClass="label">E-mail</asp:Label>
                                     <asp:RequiredFieldValidator ID="SignInEmailRequired" runat="server" ControlToValidate="UserName" ErrorMessage="Preencha o Campo de E-mail!" ValidationGroup="Login1">*</asp:RequiredFieldValidator>
                                     <asp:RegularExpressionValidator ID="revSignInEmail" runat="server" ControlToValidate="UserName" ErrorMessage="Informe um E-mail Válido!" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ValidationGroup="Login1">*</asp:RegularExpressionValidator>
                                     <asp:TextBox ID="UserName" runat="server" type="text" CssClass="input"></asp:TextBox>
@@ -27,6 +27,16 @@
                                     <asp:Label ID="SignInPasswordLabel" runat="server" AssociatedControlID="Password" CssClass="label">Senha</asp:Label>
                                     <asp:RequiredFieldValidator ID="SignInPasswordRequired" runat="server" ControlToValidate="Password" ErrorMessage="A Senha é Obrigatória!" ToolTip="A senha é obrigatória." ValidationGroup="Login1">*</asp:RequiredFieldValidator>
                                     <asp:TextBox ID="Password" runat="server" TextMode="Password" type="text" CssClass="input"></asp:TextBox>
+                                </div>
+                                <div class="group">
+                                    <input id="check" type="checkbox" class="check" checked>
+                                    <label for="check"><span class="icon"></span> Lembrar Senha </label>
+                                </div>
+                                <div class="group">
+                                    <asp:ValidationSummary ID="vsSignIn" runat="server" ForeColor="#E50914" ShowMessageBox="True" ShowSummary="False" ValidationGroup="Login1" />
+                                </div>
+                                <div class="group">
+                                    <asp:Button ID="LoginButton" runat="server" CommandName="Login" Text="Entrar" ValidationGroup="Login1" CssClass="button"/>
                                 </div>
                             </LayoutTemplate>
                         </asp:Login>
@@ -64,7 +74,6 @@
                             <asp:ValidationSummary ID="vsCriarMensagem" runat="server" ForeColor="#E50914" ShowMessageBox="True" ShowSummary="False" ValidationGroup="register" />
                         </div>
                         <div class="group">
-                            <asp:Button ID="btnSignIn" runat="server" Text="Entrar" class="login-input-button-enter" CommandName="SignIn_Click" />
                             <asp:Button ID="btnCriar" runat="server" Text="Inscrever-se" type="submit" class="button" OnClick="SignUp_Click" ValidationGroup="register" />
                         </div>
                         <div class="hr"></div>

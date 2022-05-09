@@ -141,7 +141,7 @@ namespace Xispirito.DAL
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
 
-            string sql = "SELECT * FROM Viewer WHERE email_administrator = @email_administrator AND pw_administrator = @pw_administrator";
+            string sql = "SELECT * FROM Administrator WHERE email_administrator = @email_administrator AND pw_administrator = @pw_administrator";
 
             SqlCommand cmd = new SqlCommand(sql, conn);
 

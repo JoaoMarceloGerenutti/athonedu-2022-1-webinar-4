@@ -15,13 +15,13 @@ namespace Xispirito.View.Login
     {
 
         /// <summary>
-        /// Controle Login1.
+        /// Controle SignIn.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Login Login1;
+        protected global::System.Web.UI.WebControls.Login SignIn;
 
         /// <summary>
         /// Controle rfvCriarEmail.
@@ -121,15 +121,6 @@ namespace Xispirito.View.Login
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ValidationSummary vsCriarMensagem;
-
-        /// <summary>
-        /// Controle btnSignIn.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSignIn;
 
         /// <summary>
         /// Controle btnCriar.
