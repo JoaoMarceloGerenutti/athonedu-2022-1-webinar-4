@@ -82,7 +82,6 @@
     <Content Include="View\Images\Xispirito.png" />
     <Content Include="View\Login\Login.aspx" />
     <Content Include="View\Login\Login.css" />
-    <Content Include="View\Login\Teste\Login.css" />
     <Content Include="View\MasterPage\MasterPage-style.css" />
     <Content Include="Web.config" />
   </ItemGroup>

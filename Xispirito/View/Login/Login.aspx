@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content" ContentPlaceHolderID="Content" runat="server">
     <!DOCTYPE html>
-    <link rel="stylesheet" href="Teste/Login.css" />
+    <link rel="stylesheet" href="Login.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <div class="login-gradient">
@@ -14,18 +14,17 @@
                 <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Inscrever-se</label>
                 <div class="login-form">
                     <div class="sign-in-htm">
-
-                        <asp:Login ID="SignIn" runat="server" OnAuthenticate="SignIn_Authenticate" >
+                        <asp:Login ID="SignIn" runat="server" OnAuthenticate="SignIn_Authenticate" CssClass="sign-in-table">
                             <LayoutTemplate>
                                 <div class="group">
-                                    <asp:Label ID="SignInEmailLabel" runat="server" AssociatedControlID="UserName" CssClass="label">E-mail</asp:Label>
-                                    <asp:RequiredFieldValidator ID="SignInEmailRequired" runat="server" ControlToValidate="UserName" ErrorMessage="Preencha o Campo de E-mail!" ValidationGroup="Login1">*</asp:RequiredFieldValidator>
-                                    <asp:RegularExpressionValidator ID="revSignInEmail" runat="server" ControlToValidate="UserName" ErrorMessage="Informe um E-mail Válido!" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ValidationGroup="Login1">*</asp:RegularExpressionValidator>
+                                    <asp:Label ID="SignInEmailLabel" runat="server" AssociatedControlID="UserName" CssClass="label" >E-mail</asp:Label>
+                                    <asp:RequiredFieldValidator ID="SignInEmailRequired" runat="server" ControlToValidate="UserName" ErrorMessage="Preencha o Campo de E-mail!" ValidationGroup="SignIn" CssClass="field-validator">*</asp:RequiredFieldValidator>
+                                    <asp:RegularExpressionValidator ID="revSignInEmail" runat="server" ControlToValidate="UserName" ErrorMessage="Informe um E-mail Válido!" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ValidationGroup="SignIn" CssClass="field-validator">*</asp:RegularExpressionValidator>
                                     <asp:TextBox ID="UserName" runat="server" type="text" CssClass="input"></asp:TextBox>
                                 </div>
                                 <div class="group">
                                     <asp:Label ID="SignInPasswordLabel" runat="server" AssociatedControlID="Password" CssClass="label">Senha</asp:Label>
-                                    <asp:RequiredFieldValidator ID="SignInPasswordRequired" runat="server" ControlToValidate="Password" ErrorMessage="A Senha é Obrigatória!" ToolTip="A senha é obrigatória." ValidationGroup="Login1">*</asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="SignInPasswordRequired" runat="server" ControlToValidate="Password" ErrorMessage="A Senha é Obrigatória!" ToolTip="A senha é obrigatória." ValidationGroup="SignIn" CssClass="field-validator">*</asp:RequiredFieldValidator>
                                     <asp:TextBox ID="Password" runat="server" TextMode="Password" type="text" CssClass="input"></asp:TextBox>
                                 </div>
                                 <div class="group">
@@ -33,10 +32,10 @@
                                     <label for="check"><span class="icon"></span> Lembrar Senha </label>
                                 </div>
                                 <div class="group">
-                                    <asp:ValidationSummary ID="vsSignIn" runat="server" ForeColor="#E50914" ShowMessageBox="True" ShowSummary="False" ValidationGroup="Login1" />
+                                    <asp:ValidationSummary ID="vsSignIn" runat="server" ForeColor="#E50914" ShowMessageBox="True" ShowSummary="False" ValidationGroup="SignIn" />
                                 </div>
                                 <div class="group">
-                                    <asp:Button ID="LoginButton" runat="server" CommandName="Login" Text="Entrar" ValidationGroup="Login1" CssClass="button"/>
+                                    <asp:Button ID="LoginButton" runat="server" CommandName="Login" Text="Entrar" ValidationGroup="SignIn" CssClass="button"/>
                                 </div>
                             </LayoutTemplate>
                         </asp:Login>
@@ -50,8 +49,8 @@
                     <div class="sign-up-htm">
                         <div class="group">
                             <label for="pass" class="label">E-mail</label>
-                            <asp:RequiredFieldValidator ID="rfvCriarEmail" runat="server" ControlToValidate="txbCriarEmail" ErrorMessage="O E-mail é Obrigatório!" ValidationGroup="register">*</asp:RequiredFieldValidator>
-                            <asp:RegularExpressionValidator ID="revCriarEmail" runat="server" ControlToValidate="txbCriarEmail" ErrorMessage="E-mail Inválido!" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ValidationGroup="register">*</asp:RegularExpressionValidator>
+                            <asp:RequiredFieldValidator ID="rfvCriarEmail" runat="server" ForeColor="#E50914" Font-Bold="True" Font-Size="Large" ControlToValidate="txbCriarEmail" ErrorMessage="O E-mail é Obrigatório!" ValidationGroup="register">*</asp:RequiredFieldValidator>
+                            <asp:RegularExpressionValidator ID="revCriarEmail" runat="server" ControlToValidate="txbCriarEmail" ErrorMessage="E-mail Inválido!" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ValidationGroup="register" ForeColor="#E50914" Font-Bold="True" Font-Size="Large">*</asp:RegularExpressionValidator>
                             <asp:TextBox ID="txbCriarEmail" runat="server" type="text" class="input"></asp:TextBox>
                         </div>
                         <div class="group">
@@ -67,7 +66,7 @@
                         </div>
                         <div class="group">
                             <label for="pass" class="label">Repetir a senha</label>
-                            <asp:RequiredFieldValidator ID="rfvRepetirSenha" runat="server" ControlToValidate="txbRepetirSenha" ErrorMessage="A Repetição Senha é Obrigatório!" ForeColor="#E50914" Font-Bold="True" Font-Size="Large" ValidationGroup="register">*</asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="rfvRepetirSenha" runat="server" ControlToValidate="txbRepetirSenha" ErrorMessage="A Repetição Senha é Obrigatório!" css="field-validator" ValidationGroup="register">*</asp:RequiredFieldValidator>
                             <asp:TextBox ID="txbRepetirSenha" runat="server" type="password" class="input" data-type="password"></asp:TextBox>
                         </div>
                         <div class="group">
@@ -85,27 +84,4 @@
             </div>
         </div>
     </div>
-    <%--<section class="login">
-        <div class="login-title">
-            <h3>Login</h3>
-        </div>
-        <asp:Login ID="Login1" runat="server" OnAuthenticate="Login1_Authenticate">
-            <LayoutTemplate>
-                <div class="login-form-group">
-                    <div>
-                        <label for="senha">Email:</label>
-                        <asp:TextBox ID="UserName" runat="server" class="login-input-button" MaxLength="100" type="text"></asp:TextBox>
-                    </div>
-                    <div>
-                        <label for="senha">Senha:</label>
-                        <asp:TextBox ID="Password" runat="server" class="login-input-button" MaxLength="30" type="text"></asp:TextBox>
-                    </div>
-                    <asp:Button ID="btnSignIn" runat="server" Text="Entrar" class="login-input-button-enter" CommandName="SignIn_Click" />
-                </div>
-            </LayoutTemplate>
-        </asp:Login>
-        <div class="login-sign">
-            <a href="#"><b>Cadastre-se aqui!</b></a>
-        </div>
-    </section>--%>
 </asp:Content>
