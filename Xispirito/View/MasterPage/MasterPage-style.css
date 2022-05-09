@@ -235,7 +235,8 @@ MODAL
 FORM
 ==================*/
 #footer {
-    width: 100%;
+    color: azure;
+    font-family: "Source Sans Pro";
     background: #70160E;
     display: flex;
     align-items: center;

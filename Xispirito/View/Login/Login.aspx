@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="Teste/Login.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <div class="gradient">
+    <div class="login-gradient">
         <div class="login-wrap">
             <div class="login-html">
                 <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Entrar</label>
