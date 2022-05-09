@@ -22,7 +22,8 @@
             <div class="container">
                 <div>
                     <h2>
-                        <b>Cadastrar-se em um evento nunca foi tão simples.
+                        <b>
+                            Cadastrar-se em um evento nunca foi tão simples.
                         </b>
                     </h2>
                     <p>
