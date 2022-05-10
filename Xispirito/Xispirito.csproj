@@ -69,9 +69,10 @@
   <ItemGroup>
     <Content Include="View\Home\Home-style.css" />
     <Content Include="View\Home\Home.aspx" />
-    <Content Include="View\Home\menu.js" />
+    <Content Include="View\Home\Home-responsive.css" />
+    <Content Include="View\MasterPage\menu.js" />
     <Content Include="View\Home\print.css" />
-    <Content Include="View\Home\responsive.css" />
+    <Content Include="View\MasterPage\MasterPage-responsive.css" />
     <Content Include="View\Images\Presentation.png" />
     <Content Include="View\Images\Test\Lecture1.png" />
     <Content Include="View\Images\Test\Lecture2.png" />

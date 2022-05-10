@@ -39,7 +39,6 @@ header {
 
     header img {
         width: 60px;
-        margin-left: 20px;
         padding: 15px 0;
     }
 
@@ -49,7 +48,7 @@ header {
 
         header nav ul li {
             list-style: none;
-            margin-left: 20px;
+            margin-right: 20px;
         }
 
             header nav ul li a {
@@ -62,12 +61,12 @@ header {
                 transition: all 250ms linear 0s;
             }
 
-.two {
+.header-lecture {
     text-transform: uppercase;
     background-color: #161917;
 }
 
-.three {
+.header-user {
     border: none;
 }
 

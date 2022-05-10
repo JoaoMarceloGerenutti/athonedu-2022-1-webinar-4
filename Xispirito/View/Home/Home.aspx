@@ -10,11 +10,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>Home - Xispirito </title>
 
+        <link rel="stylesheet" href="Home-responsive.css" media="screen and (max-width: 630px)" />
         <link rel="stylesheet" href="Home-style.css" />
-        <link rel="stylesheet" href="responsive.css" media="screen and (max-width: 768px)" />
-
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
         <link rel="stylesheet" href="print.css" media="print" />
     </head>
     <body>
@@ -31,9 +28,7 @@
                     </p>
                     <a href="~" class="button">ENCONTRAR UM EVENTO DE GRAÇA</a>
                 </div>
-                <img
-                    src="\View\Images\Presentation.png"
-                    alt="" style="max-width: 40%;" />
+                <img src="\View\Images\Presentation.png" alt="" />
             </div>
         </section>
 

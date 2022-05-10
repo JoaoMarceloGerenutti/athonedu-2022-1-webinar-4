@@ -4,8 +4,10 @@
 
 <html>
 <head runat="server">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title></title>
+    <link rel="stylesheet" href="MasterPage-responsive.css" media="screen and (max-width: 870px)" />
     <link rel="stylesheet" href="MasterPage-style.css" />
     <asp:ContentPlaceHolder ID="HeaderFooter" runat="server">
     </asp:ContentPlaceHolder>
@@ -39,10 +41,16 @@
                                 <a href="#">Ajuda</a>
                             </li>
                             <li>
-                                <a href="#" class="two">Econtrar Palestra</a>
+                                <a href="#" class="header-lecture">Econtrar Palestra</a>
                             </li>
                             <li>
-                                <a href="../Login/Login.aspx" class="three">Login</a>
+                                <asp:LoginView ID="MasterLoginView" runat="server">
+                                    <AnonymousTemplate>
+                                    </AnonymousTemplate>
+                                    <LoggedInTemplate>
+                                        <%--<asp:LoginName ID="MasterLoginName" runat="server" />--%>
+                                    </LoggedInTemplate>
+                                </asp:LoginView> <asp:LoginStatus ID="MasterLoginStatus" runat="server" LogoutAction="Refresh" LogoutText="Sair" LoginText="Entrar" />
                             </li>
                         </ul>
                     </nav>
@@ -56,39 +64,39 @@
         </div>
 
         <section id="footer">
-                <div class="form-group">
-                    <div class="left-footer">
-                        <p class="text--medium">
-                            Sobre Nós
+            <div class="form-group">
+                <div class="left-footer">
+                    <p class="text--medium">
+                        Sobre Nós
                             <br />
-                            Somos uma empresa de tecnologia a desenvolvimento de software.
+                        Somos uma empresa de tecnologia a desenvolvimento de software.
                             <br />
-                            Para suporte e assistência, entre em contato conosco atáves do e-mail:
+                        Para suporte e assistência, entre em contato conosco atáves do e-mail:
                             <br />
-                            suporte@xispirito.com.br
-                        </p>
-                    </div>
-                    <div class="line">
-                    </div>
-                    <div class="right-footer">
-                        <p class="text--medium">
-                            Ajuda
-                        </p>
-
-                        <p class="text--medium">
-                            Fazer Cadastro
-                        </p>
-
-                        <p class="text--medium">
-                            Encontrar um Evento
-                        </p>
-
-                        <p class="text--medium">
-                            Certificados
-                        </p>
-                    </div>
+                        suporte@xispirito.com.br
+                    </p>
                 </div>
-            </section>
+                <div class="line">
+                </div>
+                <div class="right-footer">
+                    <p class="text--medium">
+                        Ajuda
+                    </p>
+
+                    <p class="text--medium">
+                        Fazer Cadastro
+                    </p>
+
+                    <p class="text--medium">
+                        Encontrar um Evento
+                    </p>
+
+                    <p class="text--medium">
+                        Certificados
+                    </p>
+                </div>
+            </div>
+        </section>
     </form>
 </body>
 </html>
