@@ -38,11 +38,7 @@ namespace Xispirito.View.Login
                 }
             }
 
-            if (emailFound)
-            {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "Logado com Sucesso!", "alert('Seja Bem Vindo!');", true);
-            }
-            else
+            if (!emailFound)
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Login Inválido!", "alert('Verifique seu E-mail e/ou Senha e tente novamente!');", true);
             }
@@ -52,36 +48,18 @@ namespace Xispirito.View.Login
 
         protected void SignUp_Click(object sender, EventArgs e)
         {
-            //BaseUser baseUser = new BaseUser();
+            ViewerBAL viewerBAL = new ViewerBAL();
+            bool accountFound = viewerBAL.VerifyAccount(btnSignUp.Text);
 
-            //baseUser.SetEmail(SignInEmail.Text);
-            //baseUser.SetEncryptedPassword(Cryptography.GetMD5Hash(SignInPassword.Text));
-
-            //// Viewer Login.
-            //ViewerDAL vDal = new ViewerDAL();
-            //bool emailFound = vDal.SignIn(baseUser.GetEmail(), baseUser.GetEncryptedPassword());
-            //if (!emailFound)
-            //{
-            //    // Speaker Login.
-            //    SpeakerDAL sDAL = new SpeakerDAL();
-            //    emailFound = sDAL.SignIn(baseUser.GetEmail(), baseUser.GetEncryptedPassword());
-
-            //    if (!emailFound)
-            //    {
-            //        // Administrator Login.
-            //        AdministratorDAL aDAL = new AdministratorDAL();
-            //        emailFound = aDAL.SignIn(baseUser.GetEmail(), baseUser.GetEncryptedPassword());
-            //    }
-            //}
-            
-            //if (emailFound)
-            //{
-            //    ScriptManager.RegisterStartupScript(this, this.GetType(), "Logado com Sucesso!", "alert('Seja Bem Vindo!');", true);
-            //}
-            //else
-            //{
-            //    ScriptManager.RegisterStartupScript(this, this.GetType(), "Login Inválido!", "alert('Verifique seu E-mail e/ou Senha e tente novamente!');", true);
-            //}
+            if (!accountFound)
+            {
+                viewerBAL.SignUp(SignUpName.Text, SignUpEmail.Text, SignUpPassword.Text);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Registrado com Sucesso!", "alert('Seja Bem Vindo!');", true);
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Email já Cadastrado!", "alert('Esse email já foi cadastrado!');", true);
+            }
 
             //LimpaCampos();
             //Login1.UserName = emailSalvo;

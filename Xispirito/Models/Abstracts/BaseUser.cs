@@ -11,7 +11,7 @@ namespace Xispirito.Models
         protected string Name { get; set; }
         protected string Email { get; set; }
         protected string Picture { get; set; }
-        protected string Password { private get; set; }
+        protected string EncryptedPassword { get; set; }
 
         public int GetId()
         {
@@ -40,12 +40,12 @@ namespace Xispirito.Models
 
         public string GetEncryptedPassword()
         {
-            return Password;
+            return EncryptedPassword;
         }
 
         public void SetEncryptedPassword(string encryptedPassword)
         {
-            Password = encryptedPassword;
+            EncryptedPassword = encryptedPassword;
         }
     }
 }

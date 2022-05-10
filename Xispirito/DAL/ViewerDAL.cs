@@ -65,6 +65,37 @@ namespace Xispirito.DAL
             return objViewer;
         }
 
+        public Viewer SearchEmail(string viewerEmailLowerCase)
+        {
+            Viewer objViewer = null;
+
+            SqlConnection conn = new SqlConnection(connectionString);
+            conn.Open();
+
+            string sql = "SELECT * FROM Viewer WHERE email_viewer = @email_viewer AND isActive = 1";
+
+            SqlCommand cmd = new SqlCommand(sql, conn);
+
+            cmd.Parameters.AddWithValue("@email_viewer", viewerEmailLowerCase);
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            if (dr.HasRows && dr.Read())
+            {
+                objViewer = new Viewer(
+                    Convert.ToInt32(dr["id_viewer"]),
+                    dr["nm_viewer"].ToString(),
+                    dr["email_viewer"].ToString(),
+                    dr["ft_viewer"].ToString(),
+                    dr["pw_viwer"].ToString(),
+                    Convert.ToBoolean(dr["isActive"])
+                );
+            }
+            conn.Close();
+
+            return objViewer;
+        }
+
         public void Update(Viewer objViewer)
         {
             SqlConnection conn = new SqlConnection(connectionString);
