@@ -9,7 +9,11 @@ namespace Xispirito.DAL
 {
     public class AreaDAL : IDatabase<Area>
     {
-        private string connectionString = @"Data Source=DESKTOP-29C0T41\SQLEXPRESS;Initial Catalog=XispiritoDB;Integrated Security=True";
+        //// Casa.
+        //private string connectionString = @"Data Source=DESKTOP-29C0T41\SQLEXPRESS;Initial Catalog=XispiritoDB;Integrated Security=True";
+
+        // Trabalho.
+        private string connectionString = @"Data Source=AM21\SQLEXPRESS;Initial Catalog=XispiritoDB;Integrated Security=True";
 
         public void Insert(Area objArea)
         {

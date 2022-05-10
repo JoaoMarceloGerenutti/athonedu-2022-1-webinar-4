@@ -4,8 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Xispirito.DAL;
-using Xispirito.Models;
+using Xispirito.Controller;
 
 namespace Xispirito.View.Login
 {
@@ -18,24 +17,24 @@ namespace Xispirito.View.Login
 
         protected void SignIn_Authenticate(object sender, System.Web.UI.WebControls.AuthenticateEventArgs e)
         {
-            BaseUser baseUser = new BaseUser();
-            baseUser.SetEmail(SignIn.UserName);
-            baseUser.SetEncryptedPassword(Cryptography.GetMD5Hash(SignIn.Password));
+            string email = SignIn.UserName;
+            string password = SignIn.Password;
 
             // Viewer Login.
-            ViewerDAL vDal = new ViewerDAL();
-            bool emailFound = vDal.SignIn(baseUser.GetEmail(), baseUser.GetEncryptedPassword());
+            ViewerBAL vDal = new ViewerBAL();
+            bool emailFound = vDal.SignIn(email, password);
+
             if (!emailFound)
             {
                 // Speaker Login.
-                SpeakerDAL sDAL = new SpeakerDAL();
-                emailFound = sDAL.SignIn(baseUser.GetEmail(), baseUser.GetEncryptedPassword());
+                SpeakerBAL sBAL = new SpeakerBAL();
+                emailFound = sBAL.SignIn(email, password);
 
                 if (!emailFound)
                 {
                     // Administrator Login.
-                    AdministratorDAL aDAL = new AdministratorDAL();
-                    emailFound = aDAL.SignIn(baseUser.GetEmail(), baseUser.GetEncryptedPassword());
+                    AdministratorBAL aBAL = new AdministratorBAL();
+                    emailFound = aBAL.SignIn(email, password);
                 }
             }
 
