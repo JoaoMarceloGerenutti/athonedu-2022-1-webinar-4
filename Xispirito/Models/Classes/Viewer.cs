@@ -7,13 +7,27 @@ namespace Xispirito.Models
 {
     public class Viewer : BaseUser 
     {
-        public Viewer(int viewerId, string viewerName, string viewerEmail, string viewerPicture, string viewerPassword, bool isActive)
+        public Viewer()
+        {
+
+        }
+
+        public Viewer(int viewerId, string viewerName, string viewerEmail, string viewerPicture, string viewerEncryptedPassword, bool isActive)
         {
             Id = viewerId;
             Name = viewerName;
             Email = viewerEmail;
             Picture = viewerPicture;
-            Password = viewerPassword;
+            EncryptedPassword = viewerEncryptedPassword;
+            IsActive = isActive;
+        }
+
+        public Viewer(string viewerName, string viewerEmail, string viewerPicture, string viewerEncryptedPassword, bool isActive)
+        {
+            Name = viewerName;
+            Email = viewerEmail;
+            Picture = viewerPicture;
+            EncryptedPassword = viewerEncryptedPassword;
             IsActive = isActive;
         }
     }

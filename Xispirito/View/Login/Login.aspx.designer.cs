@@ -24,111 +24,111 @@ namespace Xispirito.View.Login
         protected global::System.Web.UI.WebControls.Login SignIn;
 
         /// <summary>
-        /// Controle rfvCriarEmail.
+        /// Controle SignUpEmailRequired.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvCriarEmail;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator SignUpEmailRequired;
 
         /// <summary>
-        /// Controle revCriarEmail.
+        /// Controle revSignUpEmail.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator revCriarEmail;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revSignUpEmail;
 
         /// <summary>
-        /// Controle txbCriarEmail.
+        /// Controle SignUpEmail.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txbCriarEmail;
+        protected global::System.Web.UI.WebControls.TextBox SignUpEmail;
 
         /// <summary>
-        /// Controle rfvNome.
+        /// Controle SignUpNameRequired.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvNome;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator SignUpNameRequired;
 
         /// <summary>
-        /// Controle txbNome.
+        /// Controle SignUpName.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txbNome;
+        protected global::System.Web.UI.WebControls.TextBox SignUpName;
 
         /// <summary>
-        /// Controle rfvCriarSenha.
+        /// Controle SignUpPasswordRequired.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvCriarSenha;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator SignUpPasswordRequired;
 
         /// <summary>
-        /// Controle cvSenha.
+        /// Controle cvSignUp.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CompareValidator cvSenha;
+        protected global::System.Web.UI.WebControls.CompareValidator cvSignUp;
 
         /// <summary>
-        /// Controle txbCriarSenha.
+        /// Controle SignUpPassword.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txbCriarSenha;
+        protected global::System.Web.UI.WebControls.TextBox SignUpPassword;
 
         /// <summary>
-        /// Controle rfvRepetirSenha.
+        /// Controle SignUpRepeatPasswordRequired.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvRepetirSenha;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator SignUpRepeatPasswordRequired;
 
         /// <summary>
-        /// Controle txbRepetirSenha.
+        /// Controle SignUpRepeatPassword.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txbRepetirSenha;
+        protected global::System.Web.UI.WebControls.TextBox SignUpRepeatPassword;
 
         /// <summary>
-        /// Controle vsCriarMensagem.
+        /// Controle vsSignUp.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ValidationSummary vsCriarMensagem;
+        protected global::System.Web.UI.WebControls.ValidationSummary vsSignUp;
 
         /// <summary>
-        /// Controle btnCriar.
+        /// Controle btnSignUp.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCriar;
+        protected global::System.Web.UI.WebControls.Button btnSignUp;
     }
 }

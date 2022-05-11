@@ -35,7 +35,7 @@
                                     <asp:ValidationSummary ID="vsSignIn" runat="server" ForeColor="#E50914" ShowMessageBox="True" ShowSummary="False" ValidationGroup="SignIn" />
                                 </div>
                                 <div class="group">
-                                    <asp:Button ID="LoginButton" runat="server" CommandName="Login" Text="Entrar" ValidationGroup="SignIn" CssClass="button"/>
+                                    <asp:Button ID="btnSignIn" runat="server" CommandName="Login" Text="Entrar" ValidationGroup="SignIn" CssClass="button"/>
                                 </div>
                             </LayoutTemplate>
                         </asp:Login>
@@ -49,31 +49,31 @@
                     <div class="sign-up-htm">
                         <div class="group">
                             <label for="pass" class="label">E-mail</label>
-                            <asp:RequiredFieldValidator ID="rfvCriarEmail" runat="server" ForeColor="#E50914" Font-Bold="True" Font-Size="Large" ControlToValidate="txbCriarEmail" ErrorMessage="O E-mail é Obrigatório!" ValidationGroup="register">*</asp:RequiredFieldValidator>
-                            <asp:RegularExpressionValidator ID="revCriarEmail" runat="server" ControlToValidate="txbCriarEmail" ErrorMessage="E-mail Inválido!" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ValidationGroup="register" ForeColor="#E50914" Font-Bold="True" Font-Size="Large">*</asp:RegularExpressionValidator>
-                            <asp:TextBox ID="txbCriarEmail" runat="server" type="text" class="input"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="SignUpEmailRequired" runat="server" ControlToValidate="SignUpEmail" ErrorMessage="O E-mail é Obrigatório!" ValidationGroup="SignUp" CssClass="field-validator">*</asp:RequiredFieldValidator>
+                            <asp:RegularExpressionValidator ID="revSignUpEmail" runat="server" ControlToValidate="SignUpEmail" ErrorMessage="E-mail Inválido!" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ValidationGroup="SignUp" CssClass="field-validator">*</asp:RegularExpressionValidator>
+                            <asp:TextBox ID="SignUpEmail" runat="server" type="text" class="input"></asp:TextBox>
                         </div>
                         <div class="group">
                             <label for="user" class="label">Nome</label>
-                            <asp:RequiredFieldValidator ID="rfvNome" runat="server" ControlToValidate="txbNome" ErrorMessage="O Nome é Obrigatório!" ForeColor="#E50914" Font-Bold="True" Font-Size="Large" ValidationGroup="register">*</asp:RequiredFieldValidator>
-                            <asp:TextBox ID="txbNome" runat="server" type="text" class="input"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="SignUpNameRequired" runat="server" ControlToValidate="SignUpName" ErrorMessage="O Nome é Obrigatório!" ValidationGroup="SignUp" CssClass="field-validator">*</asp:RequiredFieldValidator>
+                            <asp:TextBox ID="SignUpName" runat="server" type="text" class="input"></asp:TextBox>
                         </div>
                         <div class="group">
                             <label for="pass" class="label">Senha</label>
-                            <asp:RequiredFieldValidator ID="rfvCriarSenha" runat="server" ControlToValidate="txbCriarSenha" ErrorMessage="A Senha é Obrigatório!" ForeColor="#E50914" Font-Bold="True" Font-Size="Large" ValidationGroup="register">*</asp:RequiredFieldValidator>
-                            <asp:CompareValidator ID="cvSenha" runat="server" ControlToCompare="txbCriarSenha" ControlToValidate="txbRepetirSenha" ErrorMessage="As Senhas não coincidem!" ForeColor="#E50914" Font-Bold="True" Font-Size="Large" ValidationGroup="register">*</asp:CompareValidator>
-                            <asp:TextBox ID="txbCriarSenha" runat="server" type="password" class="input" data-type="password"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="SignUpPasswordRequired" runat="server" ControlToValidate="SignUpPassword" ErrorMessage="A Senha é Obrigatório!" ValidationGroup="SignUp" CssClass="field-validator">*</asp:RequiredFieldValidator>
+                            <asp:CompareValidator ID="cvSignUp" runat="server" ControlToCompare="SignUpPassword" ControlToValidate="SignUpRepeatPassword" ErrorMessage="As Senhas não coincidem!" ValidationGroup="SignUp" CssClass="field-validator">*</asp:CompareValidator>
+                            <asp:TextBox ID="SignUpPassword" runat="server" type="password" class="input" data-type="password"></asp:TextBox>
                         </div>
                         <div class="group">
                             <label for="pass" class="label">Repetir a senha</label>
-                            <asp:RequiredFieldValidator ID="rfvRepetirSenha" runat="server" ControlToValidate="txbRepetirSenha" ErrorMessage="A Repetição Senha é Obrigatório!" css="field-validator" ValidationGroup="register">*</asp:RequiredFieldValidator>
-                            <asp:TextBox ID="txbRepetirSenha" runat="server" type="password" class="input" data-type="password"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="SignUpRepeatPasswordRequired" runat="server" ControlToValidate="SignUpRepeatPassword" ErrorMessage="A Repetição Senha é Obrigatório!" ValidationGroup="SignUp" CssClass="field-validator">*</asp:RequiredFieldValidator>
+                            <asp:TextBox ID="SignUpRepeatPassword" runat="server" type="password" class="input" data-type="password"></asp:TextBox>
                         </div>
                         <div class="group">
-                            <asp:ValidationSummary ID="vsCriarMensagem" runat="server" ForeColor="#E50914" ShowMessageBox="True" ShowSummary="False" ValidationGroup="register" />
+                            <asp:ValidationSummary ID="vsSignUp" runat="server" ForeColor="#E50914" ShowMessageBox="True" ShowSummary="False" ValidationGroup="SignUp" />
                         </div>
                         <div class="group">
-                            <asp:Button ID="btnCriar" runat="server" Text="Inscrever-se" type="submit" class="button" OnClick="SignUp_Click" ValidationGroup="register" />
+                            <asp:Button ID="btnSignUp" runat="server" Text="Inscrever-se" type="submit" class="button" OnClick="SignUp_Click" ValidationGroup="SignUp" />
                         </div>
                         <div class="hr"></div>
                         <div class="foot-lnk">
