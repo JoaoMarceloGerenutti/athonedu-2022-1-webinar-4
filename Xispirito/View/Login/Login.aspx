@@ -48,15 +48,15 @@
 
                     <div class="sign-up-htm">
                         <div class="group">
+                            <label for="user" class="label">Nome</label>
+                            <asp:RequiredFieldValidator ID="SignUpNameRequired" runat="server" ControlToValidate="SignUpName" ErrorMessage="O Nome é Obrigatório!" ValidationGroup="SignUp" CssClass="field-validator">*</asp:RequiredFieldValidator>
+                            <asp:TextBox ID="SignUpName" runat="server" type="text" class="input"></asp:TextBox>
+                        </div>
+                        <div class="group">
                             <label for="pass" class="label">E-mail</label>
                             <asp:RequiredFieldValidator ID="SignUpEmailRequired" runat="server" ControlToValidate="SignUpEmail" ErrorMessage="O E-mail é Obrigatório!" ValidationGroup="SignUp" CssClass="field-validator">*</asp:RequiredFieldValidator>
                             <asp:RegularExpressionValidator ID="revSignUpEmail" runat="server" ControlToValidate="SignUpEmail" ErrorMessage="E-mail Inválido!" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ValidationGroup="SignUp" CssClass="field-validator">*</asp:RegularExpressionValidator>
                             <asp:TextBox ID="SignUpEmail" runat="server" type="text" class="input"></asp:TextBox>
-                        </div>
-                        <div class="group">
-                            <label for="user" class="label">Nome</label>
-                            <asp:RequiredFieldValidator ID="SignUpNameRequired" runat="server" ControlToValidate="SignUpName" ErrorMessage="O Nome é Obrigatório!" ValidationGroup="SignUp" CssClass="field-validator">*</asp:RequiredFieldValidator>
-                            <asp:TextBox ID="SignUpName" runat="server" type="text" class="input"></asp:TextBox>
                         </div>
                         <div class="group">
                             <label for="pass" class="label">Senha</label>

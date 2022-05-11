@@ -24,6 +24,24 @@ namespace Xispirito.View.Login
         protected global::System.Web.UI.WebControls.Login SignIn;
 
         /// <summary>
+        /// Controle SignUpNameRequired.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator SignUpNameRequired;
+
+        /// <summary>
+        /// Controle SignUpName.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox SignUpName;
+
+        /// <summary>
         /// Controle SignUpEmailRequired.
         /// </summary>
         /// <remarks>
@@ -49,24 +67,6 @@ namespace Xispirito.View.Login
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox SignUpEmail;
-
-        /// <summary>
-        /// Controle SignUpNameRequired.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator SignUpNameRequired;
-
-        /// <summary>
-        /// Controle SignUpName.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox SignUpName;
 
         /// <summary>
         /// Controle SignUpPasswordRequired.
