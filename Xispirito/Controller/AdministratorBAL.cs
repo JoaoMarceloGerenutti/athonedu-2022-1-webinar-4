@@ -9,11 +9,11 @@ namespace Xispirito.Controller
 {
     public class AdministratorBAL
     {
-        private AdministratorDAL adminDAL { get; set; }
+        private AdministratorDAL administratorDAL { get; set; }
 
         public AdministratorBAL()
         {
-            adminDAL = new AdministratorDAL();
+            administratorDAL = new AdministratorDAL();
         }
 
         public bool SignIn(string email, string encryptedPassword)
@@ -23,9 +23,55 @@ namespace Xispirito.Controller
             baseUser.SetEncryptedPassword(Cryptography.GetMD5Hash(encryptedPassword));
 
             bool emailFound = false;
-            emailFound = adminDAL.SignIn(baseUser.GetEmail(), baseUser.GetEncryptedPassword());
+            emailFound = administratorDAL.SignIn(baseUser.GetEmail(), baseUser.GetEncryptedPassword());
 
             return emailFound;
+        }
+
+        public bool VerifyAccount(string email)
+        {
+            Administrator objAdministrator = new Administrator();
+            objAdministrator = administratorDAL.SearchEmail(email);
+
+            bool accountFound = false;
+            if (objAdministrator != null)
+            {
+                accountFound = true;
+            }
+
+            return accountFound;
+        }
+
+        public bool VerifyAccount(string email, string password)
+        {
+            Administrator objAdministrator = new Administrator();
+            objAdministrator = administratorDAL.SearchEmail(email, Cryptography.GetMD5Hash(password));
+
+            bool accountFound = false;
+            if (objAdministrator != null)
+            {
+                accountFound = true;
+            }
+
+            return accountFound;
+        }
+
+        public Administrator GetAccount(string email, string password)
+        {
+            Administrator objAdministrator = new Administrator();
+            objAdministrator = administratorDAL.SearchEmail(email, Cryptography.GetMD5Hash(password));
+
+            return objAdministrator;
+        }
+
+        public bool VerifyAccountStatus(Administrator objAdministrator)
+        {
+            bool accountActive = false;
+            if (objAdministrator.GetIsActive() == true)
+            {
+                accountActive = true;
+            }
+            return accountActive;
         }
     }
 }

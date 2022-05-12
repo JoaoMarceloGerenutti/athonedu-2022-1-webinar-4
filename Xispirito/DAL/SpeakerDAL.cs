@@ -9,11 +9,11 @@ namespace Xispirito.DAL
 {
     public class SpeakerDAL : IDatabase<Speaker>
     {
-        //// Casa.
-        //private string connectionString = @"Data Source=DESKTOP-29C0T41\SQLEXPRESS;Initial Catalog=XispiritoDB;Integrated Security=True";
+        // Casa.
+        private string connectionString = @"Data Source=DESKTOP-29C0T41\SQLEXPRESS;Initial Catalog=XispiritoDB;Integrated Security=True";
 
-        // Trabalho.
-        private string connectionString = @"Data Source=AM21\SQLEXPRESS;Initial Catalog=XispiritoDB;Integrated Security=True";
+        //// Trabalho.
+        //private string connectionString = @"Data Source=AM21\SQLEXPRESS;Initial Catalog=XispiritoDB;Integrated Security=True";
 
         public void Insert(Speaker objSpeaker)
         {
@@ -59,6 +59,71 @@ namespace Xispirito.DAL
                     dr["ft_speaker"].ToString(),
                     dr["pf_speaker"].ToString(),
                     dr["pw_speaker"].ToString(),
+                    Convert.ToBoolean(dr["isActive"])
+                );
+            }
+            conn.Close();
+
+            return objSpeaker;
+        }
+
+        public Speaker SearchEmail(string speakerEmail)
+        {
+            Speaker objSpeaker = null;
+
+            SqlConnection conn = new SqlConnection(connectionString);
+            conn.Open();
+
+            string sql = "SELECT * FROM Speaker WHERE email_speaker = @email_speaker";
+
+            SqlCommand cmd = new SqlCommand(sql, conn);
+
+            cmd.Parameters.AddWithValue("@email_speaker", speakerEmail);
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            if (dr.HasRows && dr.Read())
+            {
+                objSpeaker = new Speaker(
+                    Convert.ToInt32(dr["id_speaker"]),
+                    dr["nm_speaker"].ToString(),
+                    dr["email_speaker"].ToString(),
+                    dr["ft_speaker"].ToString(),
+                    dr["pf_speaker"].ToString(),
+                    dr["pw_speaker"].ToString(),
+                    Convert.ToBoolean(dr["isActive"])
+                );
+            }
+            conn.Close();
+
+            return objSpeaker;
+        }
+
+        public Speaker SearchEmail(string speakerEmail, string speakerEncryptedPassword)
+        {
+            Speaker objSpeaker = null;
+
+            SqlConnection conn = new SqlConnection(connectionString);
+            conn.Open();
+
+            string sql = "SELECT * FROM Speaker WHERE email_speaker = @email_speaker AND pw_speaker = @pw_speaker";
+
+            SqlCommand cmd = new SqlCommand(sql, conn);
+
+            cmd.Parameters.AddWithValue("@email_speaker", speakerEmail);
+            cmd.Parameters.AddWithValue("@pw_speaker", speakerEncryptedPassword);
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            if (dr.HasRows && dr.Read())
+            {
+                objSpeaker = new Speaker(
+                    Convert.ToInt32(dr["id_speaker"]),
+                    dr["nm_speaker"].ToString(),
+                    dr["email_speaker"].ToString(),
+                    dr["ft_speaker"].ToString(),
+                    dr["pf_speaker"].ToString(),
+                    speakerEncryptedPassword,
                     Convert.ToBoolean(dr["isActive"])
                 );
             }

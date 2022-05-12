@@ -16,18 +16,6 @@ namespace Xispirito.Controller
             viewerDAL = new ViewerDAL();
         }
 
-        public bool SignIn(string email, string password)
-        {
-            BaseUser baseUser = new BaseUser();
-            baseUser.SetEmail(email);
-            baseUser.SetEncryptedPassword(Cryptography.GetMD5Hash(password));
-
-            bool emailFound = false;
-            emailFound = viewerDAL.SignIn(baseUser.GetEmail(), baseUser.GetEncryptedPassword());
-
-            return emailFound;
-        }
-
         public void SignUp(string nome, string email, string password)
         {
             password = Cryptography.GetMD5Hash(password);
@@ -38,17 +26,48 @@ namespace Xispirito.Controller
 
         public bool VerifyAccount(string email)
         {
-            email = email.ToLower();
-            Viewer viewer = new Viewer();
-            viewer = viewerDAL.SearchEmail(email);
+            Viewer objViewer = new Viewer();
+            objViewer = viewerDAL.SearchEmail(email);
 
             bool accountFound = false;
-            if (viewer != null)
+            if (objViewer != null)
             {
                 accountFound = true;
             }
 
             return accountFound;
+        }
+
+        public bool VerifyAccount(string email, string password)
+        {
+            Viewer objViewer = new Viewer();
+            objViewer = viewerDAL.SearchEmail(email, Cryptography.GetMD5Hash(password));
+
+            bool accountFound = false;
+            if (objViewer != null)
+            {
+                accountFound = true;
+            }
+
+            return accountFound;
+        }
+
+        public Viewer GetAccount(string email, string password)
+        {
+            Viewer objViewer = new Viewer();
+            objViewer = viewerDAL.SearchEmail(email, Cryptography.GetMD5Hash(password));
+
+            return objViewer;
+        }
+
+        public bool VerifyAccountStatus(Viewer objViewer)
+        {
+            bool accountActive = false;
+            if (objViewer.GetIsActive() == true)
+            {
+                accountActive = true;
+            }
+            return accountActive;
         }
     }
 }
