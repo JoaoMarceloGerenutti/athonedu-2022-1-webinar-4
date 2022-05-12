@@ -9,11 +9,11 @@ namespace Xispirito.DAL
 {
     public class ViewerDAL : IDatabase<Viewer>
     {
-        //// Casa.
-        //private string connectionString = @"Data Source=DESKTOP-29C0T41\SQLEXPRESS;Initial Catalog=XispiritoDB;Integrated Security=True";
+        // Casa.
+        private string connectionString = @"Data Source=DESKTOP-29C0T41\SQLEXPRESS;Initial Catalog=XispiritoDB;Integrated Security=True";
 
-        // Trabalho.
-        private string connectionString = @"Data Source=AM21\SQLEXPRESS;Initial Catalog=XispiritoDB;Integrated Security=True";
+        //// Trabalho.
+        //private string connectionString = @"Data Source=AM21\SQLEXPRESS;Initial Catalog=XispiritoDB;Integrated Security=True";
 
         public void Insert(Viewer objViewer)
         {
@@ -65,18 +65,18 @@ namespace Xispirito.DAL
             return objViewer;
         }
 
-        public Viewer SearchEmail(string viewerEmailLowerCase)
+        public Viewer SearchEmail(string viewerEmail)
         {
             Viewer objViewer = null;
 
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
 
-            string sql = "SELECT * FROM Viewer WHERE email_viewer = @email_viewer AND isActive = 1";
+            string sql = "SELECT * FROM Viewer WHERE email_viewer = @email_viewer";
 
             SqlCommand cmd = new SqlCommand(sql, conn);
 
-            cmd.Parameters.AddWithValue("@email_viewer", viewerEmailLowerCase);
+            cmd.Parameters.AddWithValue("@email_viewer", viewerEmail);
 
             SqlDataReader dr = cmd.ExecuteReader();
 
@@ -88,6 +88,38 @@ namespace Xispirito.DAL
                     dr["email_viewer"].ToString(),
                     dr["ft_viewer"].ToString(),
                     dr["pw_viwer"].ToString(),
+                    Convert.ToBoolean(dr["isActive"])
+                );
+            }
+            conn.Close();
+
+            return objViewer;
+        }
+
+        public Viewer SearchEmail(string viewerEmail, string viewerEncryptedPassword)
+        {
+            Viewer objViewer = null;
+
+            SqlConnection conn = new SqlConnection(connectionString);
+            conn.Open();
+
+            string sql = "SELECT * FROM Viewer WHERE email_viewer = @email_viewer AND pw_viwer = @pw_viwer";
+
+            SqlCommand cmd = new SqlCommand(sql, conn);
+
+            cmd.Parameters.AddWithValue("@email_viewer", viewerEmail);
+            cmd.Parameters.AddWithValue("@pw_viwer", viewerEncryptedPassword);
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            if (dr.HasRows && dr.Read())
+            {
+                objViewer = new Viewer(
+                    Convert.ToInt32(dr["id_viewer"]),
+                    dr["nm_viewer"].ToString(),
+                    dr["email_viewer"].ToString(),
+                    dr["ft_viewer"].ToString(),
+                    viewerEncryptedPassword,
                     Convert.ToBoolean(dr["isActive"])
                 );
             }

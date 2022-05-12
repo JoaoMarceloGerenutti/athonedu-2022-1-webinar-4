@@ -16,17 +16,50 @@ namespace Xispirito.Controller
             speakerDAL = new SpeakerDAL();
         }
 
-        public bool SignIn(string email, string encryptedPassword)
+        public bool VerifyAccount(string email)
         {
-            BaseUser baseUser = new BaseUser();
-            baseUser.SetEmail(email);
-            baseUser.SetEncryptedPassword(Cryptography.GetMD5Hash(encryptedPassword));
+            Speaker objSpeaker = new Speaker();
+            objSpeaker = speakerDAL.SearchEmail(email);
 
-            bool emailFound = false;
-            emailFound = speakerDAL.SignIn(baseUser.GetEmail(), baseUser.GetEncryptedPassword());
+            bool accountFound = false;
+            if (objSpeaker != null)
+            {
+                accountFound = true;
+            }
 
-            return emailFound;
+            return accountFound;
         }
 
+        public bool VerifyAccount(string email, string password)
+        {
+            Speaker objSpeaker = new Speaker();
+            objSpeaker = speakerDAL.SearchEmail(email, Cryptography.GetMD5Hash(password));
+
+            bool accountFound = false;
+            if (objSpeaker != null)
+            {
+                accountFound = true;
+            }
+
+            return accountFound;
+        }
+
+        public Speaker GetAccount(string email, string password)
+        {
+            Speaker objSpeaker = new Speaker();
+            objSpeaker = speakerDAL.SearchEmail(email, Cryptography.GetMD5Hash(password));
+
+            return objSpeaker;
+        }
+
+        public bool VerifyAccountStatus(Speaker objSpeaker)
+        {
+            bool accountActive = false;
+            if (objSpeaker.GetIsActive() == true)
+            {
+                accountActive = true;
+            }
+            return accountActive;
+        }
     }
 }

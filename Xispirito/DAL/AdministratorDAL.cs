@@ -9,11 +9,11 @@ namespace Xispirito.DAL
 {
     public class AdministratorDAL : IDatabase<Administrator>
     {
-        //// Casa.
-        //private string connectionString = @"Data Source=DESKTOP-29C0T41\SQLEXPRESS;Initial Catalog=XispiritoDB;Integrated Security=True";
-            
-        // Trabalho.
-        private string connectionString = @"Data Source=AM21\SQLEXPRESS;Initial Catalog=XispiritoDB;Integrated Security=True";
+        // Casa.
+        private string connectionString = @"Data Source=DESKTOP-29C0T41\SQLEXPRESS;Initial Catalog=XispiritoDB;Integrated Security=True";
+
+        //// Trabalho.
+        //private string connectionString = @"Data Source=AM21\SQLEXPRESS;Initial Catalog=XispiritoDB;Integrated Security=True";
 
         public void Insert(Administrator objAdministrator)
         {
@@ -57,6 +57,69 @@ namespace Xispirito.DAL
                     dr["email_administrator"].ToString(),
                     dr["ft_administrator"].ToString(),
                     dr["pw_administrator"].ToString(),
+                    Convert.ToBoolean(dr["isActive"])
+                );
+            }
+            conn.Close();
+
+            return objAdministrator;
+        }
+
+        public Administrator SearchEmail(string administratorEmail)
+        {
+            Administrator objAdministrator = null;
+
+            SqlConnection conn = new SqlConnection(connectionString);
+            conn.Open();
+
+            string sql = "SELECT * FROM Administrator WHERE email_administrator = @email_administrator";
+
+            SqlCommand cmd = new SqlCommand(sql, conn);
+
+            cmd.Parameters.AddWithValue("@email_administrator", administratorEmail);
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            if (dr.HasRows && dr.Read())
+            {
+                objAdministrator = new Administrator(
+                    Convert.ToInt32(dr["id_administrator"]),
+                    dr["nm_administrator"].ToString(),
+                    dr["email_administrator"].ToString(),
+                    dr["ft_administrator"].ToString(),
+                    dr["pw_administrator"].ToString(),
+                    Convert.ToBoolean(dr["isActive"])
+                );
+            }
+            conn.Close();
+
+            return objAdministrator;
+        }
+
+        public Administrator SearchEmail(string administratorEmail, string administratorEncryptedPassword)
+        {
+            Administrator objAdministrator = null;
+
+            SqlConnection conn = new SqlConnection(connectionString);
+            conn.Open();
+
+            string sql = "SELECT * FROM Administrator WHERE email_administrator = @email_administrator AND pw_administrator = @pw_administrator";
+
+            SqlCommand cmd = new SqlCommand(sql, conn);
+
+            cmd.Parameters.AddWithValue("@email_administrator", administratorEmail);
+            cmd.Parameters.AddWithValue("@pw_administrator", administratorEncryptedPassword);
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            if (dr.HasRows && dr.Read())
+            {
+                objAdministrator = new Administrator(
+                    Convert.ToInt32(dr["id_administrator"]),
+                    dr["nm_administrator"].ToString(),
+                    dr["email_administrator"].ToString(),
+                    dr["ft_administrator"].ToString(),
+                    administratorEncryptedPassword,
                     Convert.ToBoolean(dr["isActive"])
                 );
             }

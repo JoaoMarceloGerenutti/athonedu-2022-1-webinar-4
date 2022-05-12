@@ -17,52 +17,121 @@ namespace Xispirito.View.Login
 
         protected void SignIn_Authenticate(object sender, System.Web.UI.WebControls.AuthenticateEventArgs e)
         {
-            string email = SignIn.UserName;
-            string password = SignIn.Password;
+            string signInEmail = SignIn.UserName;
+            string signInPassword = SignIn.Password;
 
-            // Viewer Login.
-            ViewerBAL vDal = new ViewerBAL();
-            bool emailFound = vDal.SignIn(email, password);
-
-            if (!emailFound)
+            bool accountFound = FindAccount(signInEmail, signInPassword);
+            
+            if (accountFound)
             {
-                // Speaker Login.
-                SpeakerBAL sBAL = new SpeakerBAL();
-                emailFound = sBAL.SignIn(email, password);
+                bool accountActive = false;
 
-                if (!emailFound)
+                ViewerBAL viewerBAL = new ViewerBAL();
+                accountFound = viewerBAL.VerifyAccount(signInEmail, signInPassword);
+
+                if (accountFound == false)
                 {
-                    // Administrator Login.
-                    AdministratorBAL aBAL = new AdministratorBAL();
-                    emailFound = aBAL.SignIn(email, password);
+                    SpeakerBAL speakerBAL = new SpeakerBAL();
+                    accountFound = speakerBAL.VerifyAccount(signInEmail, signInPassword);
+
+                    if (accountFound == false)
+                    {
+                        AdministratorBAL administratorBAL = new AdministratorBAL();
+                        accountFound = administratorBAL.VerifyAccount(signInEmail, signInPassword);
+
+                        if (accountFound == true)
+                        {
+                            accountActive = administratorBAL.VerifyAccountStatus(administratorBAL.GetAccount(signInEmail, signInPassword));
+                        }
+                    }
+                    else
+                    {
+                        accountActive = speakerBAL.VerifyAccountStatus(speakerBAL.GetAccount(signInEmail, signInPassword));
+                    }
+                }
+                else
+                {
+                    accountActive = viewerBAL.VerifyAccountStatus(viewerBAL.GetAccount(signInEmail, signInPassword));
+                }
+
+                if (accountActive == false)
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Email já Cadastrado!", "alert('Essa conta está inativa, entre em contato com administrador para reativa-lá!');", true);
+                    accountFound = accountActive;
                 }
             }
-
-            if (!emailFound)
+            else
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "Login Inválido!", "alert('Verifique seu E-mail e/ou Senha e tente novamente!');", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Login Inválido!", "alert('Login Inválido, verifique seu E-mail e/ou Senha e tente novamente!');", true);
             }
-
-            e.Authenticated = emailFound;
+            e.Authenticated = accountFound;
         }
 
         protected void SignUp_Click(object sender, EventArgs e)
         {
-            ViewerBAL viewerBAL = new ViewerBAL();
-            bool accountFound = viewerBAL.VerifyAccount(btnSignUp.Text);
+            bool accountFound = FindAccount(SignUpEmail.Text);
 
-            if (!accountFound)
+            if (accountFound == true)
             {
-                viewerBAL.SignUp(SignUpName.Text, SignUpEmail.Text, SignUpPassword.Text);
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "Registrado com Sucesso!", "alert('Seja Bem Vindo!');", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Email já Cadastrado!", "alert('Esse email já foi cadastrado!');", true);
+                SignIn.UserName = SignUpEmail.Text;
             }
             else
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "Email já Cadastrado!", "alert('Esse email já foi cadastrado!');", true);
+                ViewerBAL viewerBAL = new ViewerBAL();
+                viewerBAL.SignUp(SignUpName.Text, SignUpEmail.Text, SignUpPassword.Text);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Registrado com Sucesso!", "alert('Registrado com Sucesso, agora é so efetuar o Login!');", true);
             }
+            ClearSignUpFields();
+        }
 
-            //LimpaCampos();
-            //Login1.UserName = emailSalvo;
+        private void ClearSignUpFields()
+        {
+            SignUpName.Text = "";
+            SignUpEmail.Text = "";
+            SignUpPassword.Text = "";
+            SignUpRepeatPassword.Text = "";
+        }
+
+        private bool FindAccount(string email)
+        {
+            bool accountFound = false;
+            ViewerBAL viewerBAL = new ViewerBAL();
+
+            accountFound = viewerBAL.VerifyAccount(email);
+
+            if (accountFound == false)
+            {
+                SpeakerBAL speakerBAL = new SpeakerBAL();
+                accountFound = speakerBAL.VerifyAccount(email);
+
+                if (accountFound == false)
+                {
+                    AdministratorBAL administratorBAL = new AdministratorBAL();
+                    accountFound = administratorBAL.VerifyAccount(email);
+                }
+            }
+            return accountFound;
+        }
+
+        private bool FindAccount(string email, string password)
+        {
+            bool accountFound = false;
+            ViewerBAL viewerBAL = new ViewerBAL();
+            accountFound = viewerBAL.VerifyAccount(email, password);
+
+            if (accountFound == false)
+            {
+                SpeakerBAL speakerBAL = new SpeakerBAL();
+                accountFound = speakerBAL.VerifyAccount(email, password);
+
+                if (accountFound == false)
+                {
+                    AdministratorBAL administratorBAL = new AdministratorBAL();
+                    accountFound = administratorBAL.VerifyAccount(email, password);
+                }
+            }
+            return accountFound;
         }
     }
 }

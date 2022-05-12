@@ -9,6 +9,11 @@ namespace Xispirito.Models
     {
         private string SpeakerProfession { get; set; }
 
+        public Speaker()
+        {
+
+        }
+
         public Speaker(int speakerId, string speakerName, string speakerEmail, string speakerPicture, string speakerProfession, string speakerEncryptedPassword, bool isActive)
         {
             Id = speakerId;
