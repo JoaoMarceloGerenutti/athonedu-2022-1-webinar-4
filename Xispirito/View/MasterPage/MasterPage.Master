@@ -50,7 +50,7 @@
                                     <LoggedInTemplate>
                                         <%--<asp:LoginName ID="MasterLoginName" runat="server" />--%>
                                     </LoggedInTemplate>
-                                </asp:LoginView> <asp:LoginStatus ID="MasterLoginStatus" runat="server" LogoutAction="Refresh" LogoutText="Sair" LoginText="Entrar" />
+                                </asp:LoginView> <asp:LoginStatus ID="MasterLoginStatus" runat="server" LogoutAction="RedirectToLoginPage" LogoutText="Sair" LoginText="Entrar" LogoutPageUrl="~/View/Login/Login.aspx" />
                             </li>
                         </ul>
                     </nav>
