@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -9,11 +10,7 @@ namespace Xispirito.DAL
 {
     public class SpeakerDAL : IDatabase<Speaker>
     {
-        // Casa.
-        private string connectionString = @"Data Source=DESKTOP-29C0T41\SQLEXPRESS;Initial Catalog=XispiritoDB;Integrated Security=True";
-
-        //// Trabalho.
-        //private string connectionString = @"Data Source=AM21\SQLEXPRESS;Initial Catalog=XispiritoDB;Integrated Security=True";
+        private string connectionString = ConfigurationManager.ConnectionStrings["XispiritoDB"].ConnectionString;
 
         public void Insert(Speaker objSpeaker)
         {
