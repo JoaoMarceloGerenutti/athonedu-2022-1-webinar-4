@@ -51,66 +51,21 @@ namespace Xispirito.DAL
 
             if (dr.HasRows && dr.Read())
             {
-                objLecture = new Lecture(
-                    lectureId,
-                    dr["nm_lecture"].ToString(),
-                    dr["pt_lecture"].ToString(),
-                    Convert.ToInt32(dr["tm_lecture"]),
-                    Convert.ToDateTime(dr["dt_lecture"]),
-                    dr["dc_lecture"].ToString(),
-                    Convert.ToBoolean(dr["rt_lecture"]),
-                    Convert.ToInt32(dr["lt_lecture"]),
-                    Convert.ToBoolean(dr["isActive"])
-                );
+                //objLecture = new Lecture(
+                //    lectureId,
+                //    dr["nm_lecture"].ToString(),
+                //    Convert.ToInt32(dr["tm_lecture"]),
+                //    Convert.ToDateTime(dr["dt_lecture"]),
+                //    dr["dc_lecture"].ToString(),
+                //    Convert.ToBoolean(dr["mod_lecture"]),
+                //    Convert.ToBoolean(dr["rt_lecture"]),
+                //    Convert.ToInt32(dr["lt_lecture"]),
+                //    Convert.ToBoolean(dr["isActive"])
+                //);
             }
             conn.Close();
 
             return objLecture;
-        }
-
-        public List<Lecture> UpcomingLecturesList(int lectureQuantity)
-        {
-            List<Lecture> lectureList = null;
-
-            SqlConnection conn = new SqlConnection(connectionString);
-            conn.Open();
-
-            string sql = "SELECT * FROM Lecture WHERE isActive = 1 ORDER BY dt_lecture";
-
-            SqlCommand cmd = new SqlCommand(sql, conn);
-
-            SqlDataReader dr = cmd.ExecuteReader();
-
-            if (dr.HasRows)
-            {
-                lectureList = new List<Lecture>();
-
-                for (int i = 0; i < lectureQuantity; i++)
-                {
-                    if (dr.Read())
-                    {
-                        Lecture objLecture = new Lecture(
-                            Convert.ToInt32(dr["id_lecture"]),
-                            dr["nm_lecture"].ToString(),
-                            dr["pt_lecture"].ToString(),
-                            Convert.ToInt32(dr["tm_lecture"]),
-                            Convert.ToDateTime(dr["dt_lecture"]),
-                            dr["dc_lecture"].ToString(),
-                            Convert.ToBoolean(dr["rt_lecture"]),
-                            Convert.ToInt32(dr["lt_lecture"]),
-                            Convert.ToBoolean(dr["isActive"])
-                        );
-                        lectureList.Add(objLecture);
-                    }
-                    else
-                    {
-                        break;
-                    }
-                }
-            }
-            conn.Close();
-
-            return lectureList;
         }
 
         public void Update(Lecture objLecture)
