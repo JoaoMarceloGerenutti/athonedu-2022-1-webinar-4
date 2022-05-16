@@ -50,7 +50,7 @@
             </div>
             <div class="events-list">
                 <div class="events-list-title">
-                    <h3 class="events-list-title-h3">Eventos Adicionados Recentemente</h3>
+                    <h3 class="events-list-title-h3">Próximos Eventos</h3>
                 </div>
                 <section class="section">
                     <div class="recent-carousel">
