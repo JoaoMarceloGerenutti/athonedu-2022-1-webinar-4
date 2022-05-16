@@ -16,10 +16,10 @@ namespace Xispirito.Controller
             lectureDAL = new LectureDAL();
         }
 
-        public List<Lecture> GetNextLecturesList(int lectureQuantity)
+        public List<Lecture> GetUpcomingLecturesList(int lectureQuantity)
         {
             List<Lecture> lectureList = new List<Lecture>();
-            lectureList = lectureDAL.NextLecturesList(lectureQuantity);
+            lectureList = lectureDAL.UpcomingLecturesList(lectureQuantity);
 
             return lectureList;
         }

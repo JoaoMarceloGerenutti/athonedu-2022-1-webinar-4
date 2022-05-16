@@ -54,6 +54,7 @@ namespace Xispirito.DAL
                 objLecture = new Lecture(
                     lectureId,
                     dr["nm_lecture"].ToString(),
+                    dr["pt_lecture"].ToString(),
                     Convert.ToInt32(dr["tm_lecture"]),
                     Convert.ToDateTime(dr["dt_lecture"]),
                     dr["dc_lecture"].ToString(),
@@ -67,7 +68,7 @@ namespace Xispirito.DAL
             return objLecture;
         }
 
-        public List<Lecture> NextLecturesList(int lectureQuantity)
+        public List<Lecture> UpcomingLecturesList(int lectureQuantity)
         {
             List<Lecture> lectureList = null;
 
@@ -91,6 +92,7 @@ namespace Xispirito.DAL
                         Lecture objLecture = new Lecture(
                             Convert.ToInt32(dr["id_lecture"]),
                             dr["nm_lecture"].ToString(),
+                            dr["pt_lecture"].ToString(),
                             Convert.ToInt32(dr["tm_lecture"]),
                             Convert.ToDateTime(dr["dt_lecture"]),
                             dr["dc_lecture"].ToString(),
@@ -98,6 +100,7 @@ namespace Xispirito.DAL
                             Convert.ToInt32(dr["lt_lecture"]),
                             Convert.ToBoolean(dr["isActive"])
                         );
+                        lectureList.Add(objLecture);
                     }
                     else
                     {
