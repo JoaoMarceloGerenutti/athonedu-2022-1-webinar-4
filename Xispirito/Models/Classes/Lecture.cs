@@ -9,7 +9,6 @@ namespace Xispirito.Models
     {
         private int LectureId { get; set; }
         private string LectureName { get; set; }
-        private string LecturePicture { get; set; }
         private List<Area> AreaList { get; set; }
         private int LectureTime { get; set; }
         private DateTime LectureDate { get; set; }
@@ -20,29 +19,10 @@ namespace Xispirito.Models
         private List<Speaker> SpeakerList { get; set; }
         private List<Viewer> ViewerList { get; set; }
 
-        public Lecture()
-        {
-
-        }
-
-        public Lecture(int lectureId, string lectureName, string lecturePicture, int lectureTime, DateTime lectureDate, string lectureDescription, bool isLectureLimited, int lectureLimit, bool isActive)
+        public Lecture(int lectureId, string lectureName, List<Area> areaList, int lectureTime, DateTime lectureDate, string lectureDescription, Modality lectureModality, bool isLectureLimited, int lectureLimit, List<Speaker> speakerList, List<Viewer> viewerList, bool isActive)
         {
             LectureId = lectureId;
             LectureName = lectureName;
-            LecturePicture = lecturePicture;
-            LectureTime = lectureTime;
-            LectureDate = lectureDate;
-            LectureDescription = lectureDescription;
-            IsLectureLimited = isLectureLimited;
-            LectureLimit = lectureLimit;
-            IsActive = isActive;
-        }
-
-        public Lecture(int lectureId, string lectureName, string lecturePicture, List<Area> areaList, int lectureTime, DateTime lectureDate, string lectureDescription, Modality lectureModality, bool isLectureLimited, int lectureLimit, List<Speaker> speakerList, List<Viewer> viewerList, bool isActive)
-        {
-            LectureId = lectureId;
-            LectureName = lectureName;
-            LecturePicture = lecturePicture;
             AreaList = areaList;
             LectureTime = lectureTime;
             LectureDate = lectureDate;
@@ -63,11 +43,6 @@ namespace Xispirito.Models
         public string GetName()
         {
             return LectureName;
-        }
-
-        public string GetPicture()
-        {
-            return LecturePicture;
         }
 
         public List<Area> GetAreaList()

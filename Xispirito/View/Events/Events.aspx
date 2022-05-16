@@ -12,10 +12,6 @@
 
         <link rel="stylesheet" href="Events.css" />
         <link rel="stylesheet" href="print.css" media="print" />
-
-        <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-        <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
-        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     </head>
     <body>
         <section class="events-header">
@@ -29,98 +25,30 @@
         </section>
         <section class="events find-events">
             <div class="event-form-body">
-                <div class="event-form">
+                <form class="event-form">
                     <div class="event-div-first-line">
                         <div class="event-div-first-line-search">
-                            <input class="event-input-first-line-search-input" type="text" placeholder="Pesquisar por eventos" />
+                            <input class="event-input-first-line-search-input" type="text" placeholder="Pesquisar por eventos"/>
                         </div>
                         <div class="event-div-first-line-button">
-                            <input class="event-input-first-line-search-button" type="button" placeholder="Botão" />
+                            <input class="event-input-first-line-search-button" type="button" placeholder="Botão"/>
                         </div>
                     </div>
                     <div class="event-div-second-line">
                         <div class="event-div-second-line-search">
-                            <input class="event-input-second-line-search-input" type="text" placeholder="Pesquisar por eventos" />
+                            <input class="event-input-second-line-search-input" type="text" placeholder="Pesquisar por eventos"/>
                         </div>
                         <div class="event-div-second-line-button">
-                            <input class="event-input-second-line-search-button" type="button" placeholder="Botão" />
+                            <input class="event-input-second-line-search-button" type="button" placeholder="Botão"/>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
             <div class="events-list">
                 <div class="events-list-title">
-                    <h3 class="events-list-title-h3">Próximos Eventos</h3>
+                    <h3 class="events-list-title-h3">Eventos em destaque</h3>
                 </div>
-                <section class="section">
-                    <div class="recent-carousel">
-                        <div class="swiper">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <asp:ImageButton ID="ImageRecentlyAdded1" AlternateText="Não Encontrado" runat="server" />
-                                    <asp:Label ID="lblRecentlyAdded1" runat="server" CssClass="name"></asp:Label>
-                                </div>
-                                <div class="swiper-slide">
-                                    <asp:ImageButton ID="ImageRecentlyAdded2" AlternateText="Não Encontrado" runat="server" />
-                                    <asp:Label ID="lblRecentlyAdded2" runat="server" CssClass="name"></asp:Label>
-                                </div>
-                                <div class="swiper-slide">
-                                    <asp:ImageButton ID="ImageRecentlyAdded3" AlternateText="Não Encontrado" runat="server" />
-                                    <asp:Label ID="lblRecentlyAdded3" runat="server" CssClass="name"></asp:Label>
-                                </div>
-                                <div class="swiper-slide">
-                                    <asp:ImageButton ID="ImageRecentlyAdded4" AlternateText="Não Encontrado" runat="server" />
-                                    <asp:Label ID="lblRecentlyAdded4" runat="server" CssClass="name"></asp:Label>
-                                </div>
-                                <div class="swiper-slide">
-                                    <asp:ImageButton ID="ImageRecentlyAdded5" AlternateText="Não Encontrado" runat="server" />
-                                    <asp:Label ID="lblRecentlyAdded5" runat="server" CssClass="name"></asp:Label>
-                                </div>
-                                <div class="swiper-slide">
-                                    <asp:ImageButton ID="ImageRecentlyAdded6" AlternateText="Não Encontrado" runat="server" />
-                                    <asp:Label ID="lblRecentlyAdded6" runat="server" CssClass="name"></asp:Label>
-                                </div>
-                                <div class="swiper-slide">
-                                    <asp:ImageButton ID="ImageRecentlyAdded7" AlternateText="Não Encontrado" runat="server" />
-                                    <asp:Label ID="lblRecentlyAdded7" runat="server" CssClass="name"></asp:Label>
-                                </div>
-                                <div class="swiper-slide">
-                                    <asp:ImageButton ID="ImageRecentlyAdded8" AlternateText="Não Encontrado" runat="server" />
-                                    <asp:Label ID="lblRecentlyAdded8" runat="server" CssClass="name"></asp:Label>
-                                </div>
-                                <div class="swiper-slide">
-                                    <asp:ImageButton ID="ImageRecentlyAdded9" AlternateText="Não Encontrado" runat="server" />
-                                    <asp:Label ID="lblRecentlyAdded9" runat="server" CssClass="name"></asp:Label>
-                                </div>
-                                <div class="swiper-slide">
-                                    <asp:ImageButton ID="ImageRecentlyAdded10" AlternateText="Não Encontrado" runat="server" />
-                                    <asp:Label ID="lblRecentlyAdded10" runat="server" CssClass="name"></asp:Label>
-                                </div>
-                            </div>
-                            <div class="swiper-button-prev"></div>
-                            <div class="swiper-button-next"></div>
-                        </div>
-                    </div>
-                </section>
-
-                <script>
-                    var swiper = new Swiper('.swiper', {
-                        slidesPerView: 6,
-                        spaceBetween: 60,
-                        slidesPerGroup: 2,
-                        loop: true,
-                        loopFillGroupWithBlank: true,
-                        pagination: {
-                            el: '.swiper-pagination',
-                            clickable: true,
-                        },
-                        navigation: {
-                            nextE1: '.swiper-button-next',
-                            prevE1: '.swiper-button-prev',
-                        }
-                    });
-                </script>
-                <%--<section class="cards">
+                <section class="cards">
                     <div class="card">
                         <div class="image">
                             <asp:Image ID="CardImage1" runat="server" />
@@ -136,34 +64,34 @@
                         </div>
                     </div>
                     <div class="card">
-                        <div class="image">
-                            <asp:Image ID="CardImage2" runat="server" />
-                        </div>
-                        <div class="content">
-                            <p class="title text--medium">
-                                XIV Encontro Nacional de Educação Matemática
-                            </p>
-                            <div class="info">
-                                <asp:Label ID="lblTipoEvento2" runat="server" Text="Evento Online" class="type text--medium"></asp:Label>
-                                <asp:Label ID="lblTempoEvento2" runat="server" Text="00 Min" class="time text--medium"></asp:Label>
-                            </div>
+                    <div class="image">
+                        <asp:Image ID="CardImage2" runat="server" />
+                    </div>
+                    <div class="content">
+                        <p class="title text--medium">
+                            XIV Encontro Nacional de Educação Matemática
+                        </p>
+                        <div class="info">
+                            <asp:Label ID="lblTipoEvento2" runat="server" Text="Evento Online" class="type text--medium"></asp:Label>
+                            <asp:Label ID="lblTempoEvento2" runat="server" Text="00 Min" class="time text--medium"></asp:Label>
                         </div>
                     </div>
-                    <div class="card">
-                        <div class="image">
-                            <asp:Image ID="CardImage3" runat="server" />
-                        </div>
-                        <div class="content">
-                            <p class="title text--medium">
-                                XIV CASI
-                            </p>
-                            <div class="info">
-                                <asp:Label ID="lblTipoEvento3" runat="server" Text="Evento Online" class="type text--medium"></asp:Label>
-                                <asp:Label ID="lblTempoEvento3" runat="server" Text="00 Min" class="time text--medium"></asp:Label>
-                            </div>
+                </div>
+                <div class="card">
+                    <div class="image">
+                        <asp:Image ID="CardImage3" runat="server" />
+                    </div>
+                    <div class="content">
+                        <p class="title text--medium">
+                            XIV CASI
+                        </p>
+                        <div class="info">
+                            <asp:Label ID="lblTipoEvento3" runat="server" Text="Evento Online" class="type text--medium"></asp:Label>
+                            <asp:Label ID="lblTempoEvento3" runat="server" Text="00 Min" class="time text--medium"></asp:Label>
                         </div>
                     </div>
-                </section>--%>
+                </div>
+                </section>
             </div>
         </section>
     </body>

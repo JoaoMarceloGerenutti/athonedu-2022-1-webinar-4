@@ -15,183 +15,84 @@ namespace Xispirito.View.Events
     {
 
         /// <summary>
-        /// Controle ImageRecentlyAdded1.
+        /// Controle CardImage1.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImageRecentlyAdded1;
+        protected global::System.Web.UI.WebControls.Image CardImage1;
 
         /// <summary>
-        /// Controle lblRecentlyAdded1.
+        /// Controle lblTipoEvento1.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblRecentlyAdded1;
+        protected global::System.Web.UI.WebControls.Label lblTipoEvento1;
 
         /// <summary>
-        /// Controle ImageRecentlyAdded2.
+        /// Controle lblTempoEvento1.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImageRecentlyAdded2;
+        protected global::System.Web.UI.WebControls.Label lblTempoEvento1;
 
         /// <summary>
-        /// Controle lblRecentlyAdded2.
+        /// Controle CardImage2.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblRecentlyAdded2;
+        protected global::System.Web.UI.WebControls.Image CardImage2;
 
         /// <summary>
-        /// Controle ImageRecentlyAdded3.
+        /// Controle lblTipoEvento2.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImageRecentlyAdded3;
+        protected global::System.Web.UI.WebControls.Label lblTipoEvento2;
 
         /// <summary>
-        /// Controle lblRecentlyAdded3.
+        /// Controle lblTempoEvento2.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblRecentlyAdded3;
+        protected global::System.Web.UI.WebControls.Label lblTempoEvento2;
 
         /// <summary>
-        /// Controle ImageRecentlyAdded4.
+        /// Controle CardImage3.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImageRecentlyAdded4;
+        protected global::System.Web.UI.WebControls.Image CardImage3;
 
         /// <summary>
-        /// Controle lblRecentlyAdded4.
+        /// Controle lblTipoEvento3.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblRecentlyAdded4;
+        protected global::System.Web.UI.WebControls.Label lblTipoEvento3;
 
         /// <summary>
-        /// Controle ImageRecentlyAdded5.
+        /// Controle lblTempoEvento3.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImageRecentlyAdded5;
-
-        /// <summary>
-        /// Controle lblRecentlyAdded5.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblRecentlyAdded5;
-
-        /// <summary>
-        /// Controle ImageRecentlyAdded6.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImageRecentlyAdded6;
-
-        /// <summary>
-        /// Controle lblRecentlyAdded6.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblRecentlyAdded6;
-
-        /// <summary>
-        /// Controle ImageRecentlyAdded7.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImageRecentlyAdded7;
-
-        /// <summary>
-        /// Controle lblRecentlyAdded7.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblRecentlyAdded7;
-
-        /// <summary>
-        /// Controle ImageRecentlyAdded8.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImageRecentlyAdded8;
-
-        /// <summary>
-        /// Controle lblRecentlyAdded8.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblRecentlyAdded8;
-
-        /// <summary>
-        /// Controle ImageRecentlyAdded9.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImageRecentlyAdded9;
-
-        /// <summary>
-        /// Controle lblRecentlyAdded9.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblRecentlyAdded9;
-
-        /// <summary>
-        /// Controle ImageRecentlyAdded10.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImageRecentlyAdded10;
-
-        /// <summary>
-        /// Controle lblRecentlyAdded10.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblRecentlyAdded10;
+        protected global::System.Web.UI.WebControls.Label lblTempoEvento3;
     }
 }
