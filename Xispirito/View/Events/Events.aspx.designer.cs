@@ -15,22 +15,40 @@ namespace Xispirito.View.Events
     {
 
         /// <summary>
-        /// Controle ImageRecentlyAdded1.
+        /// Controle UpcomingEventImage1.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImageRecentlyAdded1;
+        protected global::System.Web.UI.WebControls.Image UpcomingEventImage1;
 
         /// <summary>
-        /// Controle lblRecentlyAdded1.
+        /// Controle TitleUpcomingEvent1.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblRecentlyAdded1;
+        protected global::System.Web.UI.WebControls.Label TitleUpcomingEvent1;
+
+        /// <summary>
+        /// Controle TypeUpcomingEvent1.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label TypeUpcomingEvent1;
+
+        /// <summary>
+        /// Controle TimeUpcomingEvent1.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label TimeUpcomingEvent1;
 
         /// <summary>
         /// Controle ImageRecentlyAdded2.

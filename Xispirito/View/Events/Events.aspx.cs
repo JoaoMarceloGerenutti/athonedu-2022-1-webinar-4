@@ -18,57 +18,82 @@ namespace Xispirito.View.Events
         {
             // Loading Upcoming Events.
             List<AspImage> upcomingLecturesImages = new List<AspImage>(GetUpcomingLecturesImages());
-            List<Label> upcomingLecturesLabels = new List<Label>(GetUpcomingLecturesLabels());
+            List<Label> upcomingLecturesTitleLabels = new List<Label>(GetUpcomingLecturesTitleLabels());
+            List<Label> upcomingLecturesTypeLabels = new List<Label>(GetUpcomingLecturesTypeLabels());
+            List<Label> upcomingLecturesTimeLabels = new List<Label>(GetUpcomingLecturesTimeLabels());
 
             List<Lecture> upcomingLectures = new List<Lecture>();
-            upcomingLectures = lectureBAL.GetUpcomingLecturesList(upcomingLecturesLabels.Count());
+            upcomingLectures = lectureBAL.GetUpcomingLecturesList(upcomingLecturesTitleLabels.Count());
 
-            LoadEventsCard(upcomingLecturesImages, upcomingLecturesLabels, upcomingLectures);
+            LoadEventsCard(upcomingLectures, upcomingLecturesImages, upcomingLecturesTitleLabels, upcomingLecturesTypeLabels, upcomingLecturesTimeLabels);
         }
 
         private List<AspImage> GetUpcomingLecturesImages()
         {
             List<AspImage> upcomingLecturesImages = new List<AspImage>();
-            upcomingLecturesImages.Add(ImageRecentlyAdded1);
-            upcomingLecturesImages.Add(ImageRecentlyAdded2);
-            upcomingLecturesImages.Add(ImageRecentlyAdded3);
-            upcomingLecturesImages.Add(ImageRecentlyAdded4);
-            upcomingLecturesImages.Add(ImageRecentlyAdded5);
-            upcomingLecturesImages.Add(ImageRecentlyAdded6);
-            upcomingLecturesImages.Add(ImageRecentlyAdded7);
-            upcomingLecturesImages.Add(ImageRecentlyAdded8);
-            upcomingLecturesImages.Add(ImageRecentlyAdded9);
-            upcomingLecturesImages.Add(ImageRecentlyAdded10);
+            upcomingLecturesImages.Add(UpcomingEventImage1);
+
+            //upcomingLecturesImages.Add(ImageRecentlyAdded2);
+            //upcomingLecturesImages.Add(ImageRecentlyAdded3);
+            //upcomingLecturesImages.Add(ImageRecentlyAdded4);
+            //upcomingLecturesImages.Add(ImageRecentlyAdded5);
+            //upcomingLecturesImages.Add(ImageRecentlyAdded6);
+            //upcomingLecturesImages.Add(ImageRecentlyAdded7);
+            //upcomingLecturesImages.Add(ImageRecentlyAdded8);
+            //upcomingLecturesImages.Add(ImageRecentlyAdded9);
+            //upcomingLecturesImages.Add(ImageRecentlyAdded10);
 
             return upcomingLecturesImages;
         }
 
-        private List<Label> GetUpcomingLecturesLabels()
+        private List<Label> GetUpcomingLecturesTitleLabels()
         {
-            List<Label> upcomingLecturesLabels = new List<Label>();
-            upcomingLecturesLabels.Add(lblRecentlyAdded1);
-            upcomingLecturesLabels.Add(lblRecentlyAdded2);
-            upcomingLecturesLabels.Add(lblRecentlyAdded3);
-            upcomingLecturesLabels.Add(lblRecentlyAdded4);
-            upcomingLecturesLabels.Add(lblRecentlyAdded5);
-            upcomingLecturesLabels.Add(lblRecentlyAdded6);
-            upcomingLecturesLabels.Add(lblRecentlyAdded7);
-            upcomingLecturesLabels.Add(lblRecentlyAdded8);
-            upcomingLecturesLabels.Add(lblRecentlyAdded9);
-            upcomingLecturesLabels.Add(lblRecentlyAdded10);
+            List<Label> upcomingLecturesTitleLabels = new List<Label>();
+            upcomingLecturesTitleLabels.Add(TitleUpcomingEvent1);
 
-            return upcomingLecturesLabels;
+            //upcomingLecturesLabels.Add(lblRecentlyAdded2);
+            //upcomingLecturesLabels.Add(lblRecentlyAdded3);
+            //upcomingLecturesLabels.Add(lblRecentlyAdded4);
+            //upcomingLecturesLabels.Add(lblRecentlyAdded5);
+            //upcomingLecturesLabels.Add(lblRecentlyAdded6);
+            //upcomingLecturesLabels.Add(lblRecentlyAdded7);
+            //upcomingLecturesLabels.Add(lblRecentlyAdded8);
+            //upcomingLecturesLabels.Add(lblRecentlyAdded9);
+            //upcomingLecturesLabels.Add(lblRecentlyAdded10);
+
+            return upcomingLecturesTitleLabels;
         }
 
-        private void LoadEventsCard(List<AspImage> aspImages, List<Label> aspLabels, List<Lecture> lectureList)
+        private List<Label> GetUpcomingLecturesTypeLabels()
+        {
+            List<Label> upcomingLecturesTypeLabels = new List<Label>();
+            upcomingLecturesTypeLabels.Add(TypeUpcomingEvent1);
+
+            return upcomingLecturesTypeLabels;
+        }
+
+        private List<Label> GetUpcomingLecturesTimeLabels()
+        {
+            List<Label> upcomingLecturesTimeLabels = new List<Label>();
+            upcomingLecturesTimeLabels.Add(TimeUpcomingEvent1);
+
+            return upcomingLecturesTimeLabels;
+        }
+
+        private void LoadEventsCard(List<Lecture> lectureList, List<AspImage> upcomingImages, List<Label> upcomingTitles, List<Label> upcomingTypes, List<Label> upcomingTimes)
         {
             if (lectureList != null)
             {
                 int index = 0;
                 foreach (Lecture lecture in lectureList)
                 {
-                    aspImages[index].ImageUrl = lecture.GetPicture();
-                    aspLabels[index].Text = lecture.GetName();
+                    upcomingImages[index].ImageUrl = lecture.GetPicture();
+                    upcomingTitles[index].Text = lecture.GetName();
+
+                    Modality modality = (Modality)lecture.GetModality();
+                    upcomingTypes[index].Text = modality.ToString();
+
+                    upcomingTimes[index].Text = lecture.GetTime().ToString() + " Min";
                     index++;
                 }
             }

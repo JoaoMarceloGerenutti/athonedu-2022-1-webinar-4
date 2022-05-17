@@ -8,7 +8,6 @@
 }
 
 html {
-    /* a cada 1rem será considera 10px */
     font-size: 62.5%;
 }
 
@@ -32,15 +31,18 @@ section.events-header {
     background: #2838b4;
     text-align: center;
 }
+
 .events-h1 {
     font-size: 4rem;
     padding-top: 3rem;
 }
+
 .events-h3 {
     display: block;
     padding: 3rem 17rem;
     color: azure;
 }
+
 h3 {
     font-size: 2rem;
     color: azure;
@@ -51,6 +53,7 @@ section.find-events {
     padding: 5rem 10rem;
     margin: auto auto;
 }
+
 .events {
     width: 100%;
     padding-right: 15px;
@@ -58,6 +61,7 @@ section.find-events {
     margin-right: auto;
     margin-left: auto;
 }
+
 .event-form-body {
     box-shadow: 0 1rem 2rem rgba(0,0,0,.15) !important;
     display: flex;
@@ -66,6 +70,7 @@ section.find-events {
     border-radius: .5rem;
     border: .1rem solid black;
 }
+
 .event-input-text {
     padding: 1rem;
     margin: 1rem;
@@ -82,10 +87,12 @@ section.find-events {
     margin: 2rem;
     height: auto;
 }
+
 /*search text input div*/
 .event-div-first-line-search {
     width: 60%;
 }
+
 .event-input-first-line-search-input {
     border: .1rem solid gray;
     border-radius: .5rem;
@@ -118,6 +125,7 @@ section.find-events {
     margin: 2rem;
     height: auto;
 }
+
 /*search text input div*/
 .event-div-second-line-search {
     width: 60%;
@@ -151,10 +159,12 @@ section.find-events {
 .events-list {
     margin-top: 3rem;
 }
+
 .events-list-title {
     margin-bottom: 3rem;
     color: black;
 }
+
 .events-list-title-h3 {
     color: black;
 }
