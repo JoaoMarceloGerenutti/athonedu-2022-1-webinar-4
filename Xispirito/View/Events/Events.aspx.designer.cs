@@ -51,165 +51,327 @@ namespace Xispirito.View.Events
         protected global::System.Web.UI.WebControls.Label TimeUpcomingEvent1;
 
         /// <summary>
-        /// Controle ImageRecentlyAdded2.
+        /// Controle UpcomingEventImage2.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImageRecentlyAdded2;
+        protected global::System.Web.UI.WebControls.Image UpcomingEventImage2;
 
         /// <summary>
-        /// Controle lblRecentlyAdded2.
+        /// Controle TitleUpcomingEvent2.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblRecentlyAdded2;
+        protected global::System.Web.UI.WebControls.Label TitleUpcomingEvent2;
 
         /// <summary>
-        /// Controle ImageRecentlyAdded3.
+        /// Controle TypeUpcomingEvent2.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImageRecentlyAdded3;
+        protected global::System.Web.UI.WebControls.Label TypeUpcomingEvent2;
 
         /// <summary>
-        /// Controle lblRecentlyAdded3.
+        /// Controle TimeUpcomingEvent2.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblRecentlyAdded3;
+        protected global::System.Web.UI.WebControls.Label TimeUpcomingEvent2;
 
         /// <summary>
-        /// Controle ImageRecentlyAdded4.
+        /// Controle UpcomingEventImage3.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImageRecentlyAdded4;
+        protected global::System.Web.UI.WebControls.Image UpcomingEventImage3;
 
         /// <summary>
-        /// Controle lblRecentlyAdded4.
+        /// Controle TitleUpcomingEvent3.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblRecentlyAdded4;
+        protected global::System.Web.UI.WebControls.Label TitleUpcomingEvent3;
 
         /// <summary>
-        /// Controle ImageRecentlyAdded5.
+        /// Controle TypeUpcomingEvent3.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImageRecentlyAdded5;
+        protected global::System.Web.UI.WebControls.Label TypeUpcomingEvent3;
 
         /// <summary>
-        /// Controle lblRecentlyAdded5.
+        /// Controle TimeUpcomingEvent3.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblRecentlyAdded5;
+        protected global::System.Web.UI.WebControls.Label TimeUpcomingEvent3;
 
         /// <summary>
-        /// Controle ImageRecentlyAdded6.
+        /// Controle UpcomingEventImage4.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImageRecentlyAdded6;
+        protected global::System.Web.UI.WebControls.Image UpcomingEventImage4;
 
         /// <summary>
-        /// Controle lblRecentlyAdded6.
+        /// Controle TitleUpcomingEvent4.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblRecentlyAdded6;
+        protected global::System.Web.UI.WebControls.Label TitleUpcomingEvent4;
 
         /// <summary>
-        /// Controle ImageRecentlyAdded7.
+        /// Controle TypeUpcomingEvent4.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImageRecentlyAdded7;
+        protected global::System.Web.UI.WebControls.Label TypeUpcomingEvent4;
 
         /// <summary>
-        /// Controle lblRecentlyAdded7.
+        /// Controle TimeUpcomingEvent4.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblRecentlyAdded7;
+        protected global::System.Web.UI.WebControls.Label TimeUpcomingEvent4;
 
         /// <summary>
-        /// Controle ImageRecentlyAdded8.
+        /// Controle UpcomingEventImage5.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImageRecentlyAdded8;
+        protected global::System.Web.UI.WebControls.Image UpcomingEventImage5;
 
         /// <summary>
-        /// Controle lblRecentlyAdded8.
+        /// Controle TitleUpcomingEvent5.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblRecentlyAdded8;
+        protected global::System.Web.UI.WebControls.Label TitleUpcomingEvent5;
 
         /// <summary>
-        /// Controle ImageRecentlyAdded9.
+        /// Controle TypeUpcomingEvent5.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImageRecentlyAdded9;
+        protected global::System.Web.UI.WebControls.Label TypeUpcomingEvent5;
 
         /// <summary>
-        /// Controle lblRecentlyAdded9.
+        /// Controle TimeUpcomingEvent5.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblRecentlyAdded9;
+        protected global::System.Web.UI.WebControls.Label TimeUpcomingEvent5;
 
         /// <summary>
-        /// Controle ImageRecentlyAdded10.
+        /// Controle UpcomingEventImage6.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImageRecentlyAdded10;
+        protected global::System.Web.UI.WebControls.Image UpcomingEventImage6;
 
         /// <summary>
-        /// Controle lblRecentlyAdded10.
+        /// Controle TitleUpcomingEvent6.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblRecentlyAdded10;
+        protected global::System.Web.UI.WebControls.Label TitleUpcomingEvent6;
+
+        /// <summary>
+        /// Controle TypeUpcomingEvent6.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label TypeUpcomingEvent6;
+
+        /// <summary>
+        /// Controle TimeUpcomingEvent6.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label TimeUpcomingEvent6;
+
+        /// <summary>
+        /// Controle UpcomingEventImage7.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image UpcomingEventImage7;
+
+        /// <summary>
+        /// Controle TitleUpcomingEvent7.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label TitleUpcomingEvent7;
+
+        /// <summary>
+        /// Controle TypeUpcomingEvent7.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label TypeUpcomingEvent7;
+
+        /// <summary>
+        /// Controle TimeUpcomingEvent7.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label TimeUpcomingEvent7;
+
+        /// <summary>
+        /// Controle UpcomingEventImage8.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image UpcomingEventImage8;
+
+        /// <summary>
+        /// Controle TitleUpcomingEvent8.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label TitleUpcomingEvent8;
+
+        /// <summary>
+        /// Controle TypeUpcomingEvent8.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label TypeUpcomingEvent8;
+
+        /// <summary>
+        /// Controle TimeUpcomingEvent8.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label TimeUpcomingEvent8;
+
+        /// <summary>
+        /// Controle UpcomingEventImage9.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image UpcomingEventImage9;
+
+        /// <summary>
+        /// Controle TitleUpcomingEvent9.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label TitleUpcomingEvent9;
+
+        /// <summary>
+        /// Controle TypeUpcomingEvent9.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label TypeUpcomingEvent9;
+
+        /// <summary>
+        /// Controle TimeUpcomingEvent9.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label TimeUpcomingEvent9;
+
+        /// <summary>
+        /// Controle UpcomingEventImage10.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image UpcomingEventImage10;
+
+        /// <summary>
+        /// Controle TitleUpcomingEvent10.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label TitleUpcomingEvent10;
+
+        /// <summary>
+        /// Controle TypeUpcomingEvent10.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label TypeUpcomingEvent10;
+
+        /// <summary>
+        /// Controle TimeUpcomingEvent10.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label TimeUpcomingEvent10;
     }
 }

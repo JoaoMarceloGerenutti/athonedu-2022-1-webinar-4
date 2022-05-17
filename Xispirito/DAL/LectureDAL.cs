@@ -58,6 +58,7 @@ namespace Xispirito.DAL
                     Convert.ToInt32(dr["tm_lecture"]),
                     Convert.ToDateTime(dr["dt_lecture"]),
                     dr["dc_lecture"].ToString(),
+                    Enum.GetName(typeof(Modality), Convert.ToInt32(dr["mod_lecture"])),
                     Convert.ToBoolean(dr["rt_lecture"]),
                     Convert.ToInt32(dr["lt_lecture"]),
                     Convert.ToBoolean(dr["isActive"])
@@ -96,6 +97,7 @@ namespace Xispirito.DAL
                             Convert.ToInt32(dr["tm_lecture"]),
                             Convert.ToDateTime(dr["dt_lecture"]),
                             dr["dc_lecture"].ToString(),
+                            Enum.GetName(typeof(Modality), Convert.ToInt32(dr["mod_lecture"])),
                             Convert.ToBoolean(dr["rt_lecture"]),
                             Convert.ToInt32(dr["lt_lecture"]),
                             Convert.ToBoolean(dr["isActive"])
