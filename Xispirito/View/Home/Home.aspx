@@ -26,9 +26,9 @@
                     <p>
                         Uma poderosa ferramenta para organização de eventos. Ganhe TEMPO e aumente a PRODUTIVIDADE ao eliminar todo o trabalho manual.
                     </p>
-                    <a href="~" class="button">ENCONTRAR UM EVENTO DE GRAÇA</a>
+                    <a href="../Events/Events.aspx" class="button">ENCONTRAR UM EVENTO DE GRAÇA</a>
                 </div>
-                <img src="\View\Images\Presentation.png" alt="" />
+                <image src="/View/Images/Presentation.png"></image>
             </div>
         </section>
 
