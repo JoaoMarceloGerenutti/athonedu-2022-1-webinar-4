@@ -14,7 +14,7 @@ namespace Xispirito.Models
         private int LectureTime { get; set; }
         private DateTime LectureDate { get; set; }
         private string LectureDescription { get; set; }
-        private Modality LectureModality { get; set; }
+        private string LectureModality { get; set; }
         private bool IsLectureLimited { get; set; }
         private int LectureLimit { get; set; }
         private List<Speaker> SpeakerList { get; set; }
@@ -25,7 +25,7 @@ namespace Xispirito.Models
 
         }
 
-        public Lecture(int lectureId, string lectureName, string lecturePicture, int lectureTime, DateTime lectureDate, string lectureDescription, bool isLectureLimited, int lectureLimit, bool isActive)
+        public Lecture(int lectureId, string lectureName, string lecturePicture, int lectureTime, DateTime lectureDate, string lectureDescription, string lectureModality, bool isLectureLimited, int lectureLimit, bool isActive)
         {
             LectureId = lectureId;
             LectureName = lectureName;
@@ -33,12 +33,13 @@ namespace Xispirito.Models
             LectureTime = lectureTime;
             LectureDate = lectureDate;
             LectureDescription = lectureDescription;
+            LectureModality = lectureModality;
             IsLectureLimited = isLectureLimited;
             LectureLimit = lectureLimit;
             IsActive = isActive;
         }
 
-        public Lecture(int lectureId, string lectureName, string lecturePicture, List<Area> areaList, int lectureTime, DateTime lectureDate, string lectureDescription, Modality lectureModality, bool isLectureLimited, int lectureLimit, List<Speaker> speakerList, List<Viewer> viewerList, bool isActive)
+        public Lecture(int lectureId, string lectureName, string lecturePicture, List<Area> areaList, int lectureTime, DateTime lectureDate, string lectureDescription, string lectureModality, bool isLectureLimited, int lectureLimit, List<Speaker> speakerList, List<Viewer> viewerList, bool isActive)
         {
             LectureId = lectureId;
             LectureName = lectureName;
@@ -90,7 +91,7 @@ namespace Xispirito.Models
             return LectureDescription;
         }
 
-        public Modality GetModality()
+        public string GetModality()
         {
             return LectureModality;
         }

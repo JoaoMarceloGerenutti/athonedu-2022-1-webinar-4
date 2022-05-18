@@ -38,14 +38,6 @@
                             <input class="event-input-first-line-search-button" type="button" placeholder="Botão" />
                         </div>
                     </div>
-                    <div class="event-div-second-line">
-                        <div class="event-div-second-line-search">
-                            <input class="event-input-second-line-search-input" type="text" placeholder="Pesquisar por eventos" />
-                        </div>
-                        <div class="event-div-second-line-button">
-                            <input class="event-input-second-line-search-button" type="button" placeholder="Botão" />
-                        </div>
-                    </div>
                 </div>
             </div>
             <div class="events-list">
@@ -57,44 +49,154 @@
                         <div class="swiper">
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide">
-                                    <asp:ImageButton ID="ImageRecentlyAdded1" AlternateText="Não Encontrado" runat="server" />
-                                    <asp:Label ID="lblRecentlyAdded1" runat="server" CssClass="name"></asp:Label>
+                                    <div class="card">
+                                        <div class="image">
+                                            <asp:Image ID="UpcomingEventImage1" runat="server" AlternateText="Imagem não encontrada" />
+                                        </div>
+                                        <div class="content">
+                                            <asp:Label ID="TitleUpcomingEvent1" runat="server" class="title text--medium"> </asp:Label>
+
+                                            <div class="info">
+                                                <asp:Label ID="TypeUpcomingEvent1" runat="server" class="type text--medium"></asp:Label>
+                                                <asp:Label ID="TimeUpcomingEvent1" runat="server" class="time text--medium"></asp:Label>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="swiper-slide">
-                                    <asp:ImageButton ID="ImageRecentlyAdded2" AlternateText="Não Encontrado" runat="server" />
-                                    <asp:Label ID="lblRecentlyAdded2" runat="server" CssClass="name"></asp:Label>
+                                    <div class="card">
+                                        <div class="image">
+                                            <asp:Image ID="UpcomingEventImage2" runat="server" AlternateText="Imagem não encontrada" />
+                                        </div>
+                                        <div class="content">
+                                            <asp:Label ID="TitleUpcomingEvent2" runat="server" class="title text--medium"> </asp:Label>
+
+                                            <div class="info">
+                                                <asp:Label ID="TypeUpcomingEvent2" runat="server" class="type text--medium"></asp:Label>
+                                                <asp:Label ID="TimeUpcomingEvent2" runat="server" class="time text--medium"></asp:Label>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="swiper-slide">
-                                    <asp:ImageButton ID="ImageRecentlyAdded3" AlternateText="Não Encontrado" runat="server" />
-                                    <asp:Label ID="lblRecentlyAdded3" runat="server" CssClass="name"></asp:Label>
+                                    <div class="card">
+                                        <div class="image">
+                                            <asp:Image ID="UpcomingEventImage3" runat="server" AlternateText="Imagem não encontrada" />
+                                        </div>
+                                        <div class="content">
+                                            <asp:Label ID="TitleUpcomingEvent3" runat="server" class="title text--medium"> </asp:Label>
+
+                                            <div class="info">
+                                                <asp:Label ID="TypeUpcomingEvent3" runat="server" class="type text--medium"></asp:Label>
+                                                <asp:Label ID="TimeUpcomingEvent3" runat="server" class="time text--medium"></asp:Label>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="swiper-slide">
-                                    <asp:ImageButton ID="ImageRecentlyAdded4" AlternateText="Não Encontrado" runat="server" />
-                                    <asp:Label ID="lblRecentlyAdded4" runat="server" CssClass="name"></asp:Label>
+                                    <div class="card">
+                                        <div class="image">
+                                            <asp:Image ID="UpcomingEventImage4" runat="server" AlternateText="Imagem não encontrada" />
+                                        </div>
+                                        <div class="content">
+                                            <asp:Label ID="TitleUpcomingEvent4" runat="server" class="title text--medium"> </asp:Label>
+
+                                            <div class="info">
+                                                <asp:Label ID="TypeUpcomingEvent4" runat="server" class="type text--medium"></asp:Label>
+                                                <asp:Label ID="TimeUpcomingEvent4" runat="server" class="time text--medium"></asp:Label>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="swiper-slide">
-                                    <asp:ImageButton ID="ImageRecentlyAdded5" AlternateText="Não Encontrado" runat="server" />
-                                    <asp:Label ID="lblRecentlyAdded5" runat="server" CssClass="name"></asp:Label>
+                                    <div class="card">
+                                        <div class="image">
+                                            <asp:Image ID="UpcomingEventImage5" runat="server" AlternateText="Imagem não encontrada" />
+                                        </div>
+                                        <div class="content">
+                                            <asp:Label ID="TitleUpcomingEvent5" runat="server" class="title text--medium"> </asp:Label>
+
+                                            <div class="info">
+                                                <asp:Label ID="TypeUpcomingEvent5" runat="server" class="type text--medium"></asp:Label>
+                                                <asp:Label ID="TimeUpcomingEvent5" runat="server" class="time text--medium"></asp:Label>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="swiper-slide">
-                                    <asp:ImageButton ID="ImageRecentlyAdded6" AlternateText="Não Encontrado" runat="server" />
-                                    <asp:Label ID="lblRecentlyAdded6" runat="server" CssClass="name"></asp:Label>
+                                    <div class="card">
+                                        <div class="image">
+                                            <asp:Image ID="UpcomingEventImage6" runat="server" AlternateText="Imagem não encontrada" />
+                                        </div>
+                                        <div class="content">
+                                            <asp:Label ID="TitleUpcomingEvent6" runat="server" class="title text--medium"> </asp:Label>
+
+                                            <div class="info">
+                                                <asp:Label ID="TypeUpcomingEvent6" runat="server" class="type text--medium"></asp:Label>
+                                                <asp:Label ID="TimeUpcomingEvent6" runat="server" class="time text--medium"></asp:Label>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="swiper-slide">
-                                    <asp:ImageButton ID="ImageRecentlyAdded7" AlternateText="Não Encontrado" runat="server" />
-                                    <asp:Label ID="lblRecentlyAdded7" runat="server" CssClass="name"></asp:Label>
+                                    <div class="card">
+                                        <div class="image">
+                                            <asp:Image ID="UpcomingEventImage7" runat="server" AlternateText="Imagem não encontrada" />
+                                        </div>
+                                        <div class="content">
+                                            <asp:Label ID="TitleUpcomingEvent7" runat="server" class="title text--medium"> </asp:Label>
+
+                                            <div class="info">
+                                                <asp:Label ID="TypeUpcomingEvent7" runat="server" class="type text--medium"></asp:Label>
+                                                <asp:Label ID="TimeUpcomingEvent7" runat="server" class="time text--medium"></asp:Label>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="swiper-slide">
-                                    <asp:ImageButton ID="ImageRecentlyAdded8" AlternateText="Não Encontrado" runat="server" />
-                                    <asp:Label ID="lblRecentlyAdded8" runat="server" CssClass="name"></asp:Label>
+                                    <div class="card">
+                                        <div class="image">
+                                            <asp:Image ID="UpcomingEventImage8" runat="server" AlternateText="Imagem não encontrada" />
+                                        </div>
+                                        <div class="content">
+                                            <asp:Label ID="TitleUpcomingEvent8" runat="server" class="title text--medium"> </asp:Label>
+
+                                            <div class="info">
+                                                <asp:Label ID="TypeUpcomingEvent8" runat="server" class="type text--medium"></asp:Label>
+                                                <asp:Label ID="TimeUpcomingEvent8" runat="server" class="time text--medium"></asp:Label>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="swiper-slide">
-                                    <asp:ImageButton ID="ImageRecentlyAdded9" AlternateText="Não Encontrado" runat="server" />
-                                    <asp:Label ID="lblRecentlyAdded9" runat="server" CssClass="name"></asp:Label>
+                                    <div class="card">
+                                        <div class="image">
+                                            <asp:Image ID="UpcomingEventImage9" runat="server" AlternateText="Imagem não encontrada" />
+                                        </div>
+                                        <div class="content">
+                                            <asp:Label ID="TitleUpcomingEvent9" runat="server" class="title text--medium"> </asp:Label>
+
+                                            <div class="info">
+                                                <asp:Label ID="TypeUpcomingEvent9" runat="server" class="type text--medium"></asp:Label>
+                                                <asp:Label ID="TimeUpcomingEvent9" runat="server" class="time text--medium"></asp:Label>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="swiper-slide">
-                                    <asp:ImageButton ID="ImageRecentlyAdded10" AlternateText="Não Encontrado" runat="server" />
-                                    <asp:Label ID="lblRecentlyAdded10" runat="server" CssClass="name"></asp:Label>
+                                    <div class="card">
+                                        <div class="image">
+                                            <asp:Image ID="UpcomingEventImage10" runat="server" AlternateText="Imagem não encontrada" />
+                                        </div>
+                                        <div class="content">
+                                            <asp:Label ID="TitleUpcomingEvent10" runat="server" class="title text--medium"> </asp:Label>
+
+                                            <div class="info">
+                                                <asp:Label ID="TypeUpcomingEvent10" runat="server" class="type text--medium"></asp:Label>
+                                                <asp:Label ID="TimeUpcomingEvent10" runat="server" class="time text--medium"></asp:Label>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="swiper-button-prev"></div>
@@ -105,9 +207,9 @@
 
                 <script>
                     var swiper = new Swiper('.swiper', {
-                        slidesPerView: 6,
-                        spaceBetween: 60,
-                        slidesPerGroup: 2,
+                        slidesPerView: 4,
+                        spaceBetween: 20,
+                        slidesPerGroup: 1,
                         loop: true,
                         loopFillGroupWithBlank: true,
                         pagination: {

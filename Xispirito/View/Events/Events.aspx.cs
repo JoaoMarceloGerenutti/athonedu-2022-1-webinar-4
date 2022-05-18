@@ -18,57 +18,99 @@ namespace Xispirito.View.Events
         {
             // Loading Upcoming Events.
             List<AspImage> upcomingLecturesImages = new List<AspImage>(GetUpcomingLecturesImages());
-            List<Label> upcomingLecturesLabels = new List<Label>(GetUpcomingLecturesLabels());
+            List<Label> upcomingLecturesTitleLabels = new List<Label>(GetUpcomingLecturesTitleLabels());
+            List<Label> upcomingLecturesTypeLabels = new List<Label>(GetUpcomingLecturesTypeLabels());
+            List<Label> upcomingLecturesTimeLabels = new List<Label>(GetUpcomingLecturesTimeLabels());
 
             List<Lecture> upcomingLectures = new List<Lecture>();
-            upcomingLectures = lectureBAL.GetUpcomingLecturesList(upcomingLecturesLabels.Count());
+            upcomingLectures = lectureBAL.GetUpcomingLecturesList(upcomingLecturesTitleLabels.Count());
 
-            LoadEventsCard(upcomingLecturesImages, upcomingLecturesLabels, upcomingLectures);
+            LoadEventsCard(upcomingLectures, upcomingLecturesImages, upcomingLecturesTitleLabels, upcomingLecturesTypeLabels, upcomingLecturesTimeLabels);
         }
 
         private List<AspImage> GetUpcomingLecturesImages()
         {
             List<AspImage> upcomingLecturesImages = new List<AspImage>();
-            upcomingLecturesImages.Add(ImageRecentlyAdded1);
-            upcomingLecturesImages.Add(ImageRecentlyAdded2);
-            upcomingLecturesImages.Add(ImageRecentlyAdded3);
-            upcomingLecturesImages.Add(ImageRecentlyAdded4);
-            upcomingLecturesImages.Add(ImageRecentlyAdded5);
-            upcomingLecturesImages.Add(ImageRecentlyAdded6);
-            upcomingLecturesImages.Add(ImageRecentlyAdded7);
-            upcomingLecturesImages.Add(ImageRecentlyAdded8);
-            upcomingLecturesImages.Add(ImageRecentlyAdded9);
-            upcomingLecturesImages.Add(ImageRecentlyAdded10);
+            upcomingLecturesImages.Add(UpcomingEventImage1);
+            upcomingLecturesImages.Add(UpcomingEventImage2);
+            upcomingLecturesImages.Add(UpcomingEventImage3);
+            upcomingLecturesImages.Add(UpcomingEventImage4);
+            upcomingLecturesImages.Add(UpcomingEventImage5);
+            upcomingLecturesImages.Add(UpcomingEventImage6);
+            upcomingLecturesImages.Add(UpcomingEventImage7);
+            upcomingLecturesImages.Add(UpcomingEventImage8);
+            upcomingLecturesImages.Add(UpcomingEventImage9);
+            upcomingLecturesImages.Add(UpcomingEventImage10);
 
             return upcomingLecturesImages;
         }
 
-        private List<Label> GetUpcomingLecturesLabels()
+        private List<Label> GetUpcomingLecturesTitleLabels()
         {
-            List<Label> upcomingLecturesLabels = new List<Label>();
-            upcomingLecturesLabels.Add(lblRecentlyAdded1);
-            upcomingLecturesLabels.Add(lblRecentlyAdded2);
-            upcomingLecturesLabels.Add(lblRecentlyAdded3);
-            upcomingLecturesLabels.Add(lblRecentlyAdded4);
-            upcomingLecturesLabels.Add(lblRecentlyAdded5);
-            upcomingLecturesLabels.Add(lblRecentlyAdded6);
-            upcomingLecturesLabels.Add(lblRecentlyAdded7);
-            upcomingLecturesLabels.Add(lblRecentlyAdded8);
-            upcomingLecturesLabels.Add(lblRecentlyAdded9);
-            upcomingLecturesLabels.Add(lblRecentlyAdded10);
+            List<Label> upcomingLecturesTitleLabels = new List<Label>();
+            upcomingLecturesTitleLabels.Add(TitleUpcomingEvent1);
+            upcomingLecturesTitleLabels.Add(TitleUpcomingEvent2);
+            upcomingLecturesTitleLabels.Add(TitleUpcomingEvent3);
+            upcomingLecturesTitleLabels.Add(TitleUpcomingEvent4);
+            upcomingLecturesTitleLabels.Add(TitleUpcomingEvent5);
+            upcomingLecturesTitleLabels.Add(TitleUpcomingEvent6);
+            upcomingLecturesTitleLabels.Add(TitleUpcomingEvent7);
+            upcomingLecturesTitleLabels.Add(TitleUpcomingEvent8);
+            upcomingLecturesTitleLabels.Add(TitleUpcomingEvent9);
+            upcomingLecturesTitleLabels.Add(TitleUpcomingEvent10);
 
-            return upcomingLecturesLabels;
+            return upcomingLecturesTitleLabels;
         }
 
-        private void LoadEventsCard(List<AspImage> aspImages, List<Label> aspLabels, List<Lecture> lectureList)
+        private List<Label> GetUpcomingLecturesTypeLabels()
+        {
+            List<Label> upcomingLecturesTypeLabels = new List<Label>();
+            upcomingLecturesTypeLabels.Add(TypeUpcomingEvent1);
+            upcomingLecturesTypeLabels.Add(TypeUpcomingEvent2);
+            upcomingLecturesTypeLabels.Add(TypeUpcomingEvent3);
+            upcomingLecturesTypeLabels.Add(TypeUpcomingEvent4);
+            upcomingLecturesTypeLabels.Add(TypeUpcomingEvent5);
+            upcomingLecturesTypeLabels.Add(TypeUpcomingEvent6);
+            upcomingLecturesTypeLabels.Add(TypeUpcomingEvent7);
+            upcomingLecturesTypeLabels.Add(TypeUpcomingEvent8);
+            upcomingLecturesTypeLabels.Add(TypeUpcomingEvent9);
+            upcomingLecturesTypeLabels.Add(TypeUpcomingEvent10);
+
+            return upcomingLecturesTypeLabels;
+        }
+
+        private List<Label> GetUpcomingLecturesTimeLabels()
+        {
+            List<Label> upcomingLecturesTimeLabels = new List<Label>();
+            upcomingLecturesTimeLabels.Add(TimeUpcomingEvent1);
+            upcomingLecturesTimeLabels.Add(TimeUpcomingEvent2);
+            upcomingLecturesTimeLabels.Add(TimeUpcomingEvent3);
+            upcomingLecturesTimeLabels.Add(TimeUpcomingEvent4);
+            upcomingLecturesTimeLabels.Add(TimeUpcomingEvent5);
+            upcomingLecturesTimeLabels.Add(TimeUpcomingEvent6);
+            upcomingLecturesTimeLabels.Add(TimeUpcomingEvent7);
+            upcomingLecturesTimeLabels.Add(TimeUpcomingEvent8);
+            upcomingLecturesTimeLabels.Add(TimeUpcomingEvent9);
+            upcomingLecturesTimeLabels.Add(TimeUpcomingEvent10);
+
+            return upcomingLecturesTimeLabels;
+        }
+
+        private void LoadEventsCard(List<Lecture> lectureList, List<AspImage> upcomingLecturesImages, List<Label> upcomingLecturesTitleLabels, List<Label> upcomingLecturesTypeLabels, List<Label> upcomingLecturesTimeLabels)
         {
             if (lectureList != null)
             {
                 int index = 0;
                 foreach (Lecture lecture in lectureList)
                 {
-                    aspImages[index].ImageUrl = lecture.GetPicture();
-                    aspLabels[index].Text = lecture.GetName();
+                    upcomingLecturesImages[index].ImageUrl = lecture.GetPicture();
+                    upcomingLecturesTitleLabels[index].Text = lecture.GetName();
+
+                    string lectureType = lecture.GetModality();
+                    upcomingLecturesTypeLabels[index].Text = lectureType;
+                    upcomingLecturesTypeLabels[index].BackColor = ModalityColor.GetModalityColor(lectureType);
+
+                    upcomingLecturesTimeLabels[index].Text = lecture.GetTime().ToString() + " Min";
                     index++;
                 }
             }

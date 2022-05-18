@@ -108,6 +108,7 @@
     <Compile Include="DAL\LectureDAL.cs" />
     <Compile Include="DAL\SpeakerDAL.cs" />
     <Compile Include="Models\Classes\Cryptography.cs" />
+    <Compile Include="Models\Classes\ModalityColor.cs" />
     <Compile Include="Models\Interfaces\IDatabase.cs" />
     <Compile Include="DAL\ViewerDAL.cs" />
     <Compile Include="Models\Classes\Administrator.cs" />

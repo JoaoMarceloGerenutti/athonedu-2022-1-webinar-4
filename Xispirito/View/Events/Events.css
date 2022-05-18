@@ -1,14 +1,6 @@
 ﻿@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro");
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    outline: 0;
-}
-
 html {
-    /* a cada 1rem será considera 10px */
     font-size: 62.5%;
 }
 
@@ -29,18 +21,21 @@ body {
 section.events-header {
     display: block;
     height: 100%;
-    background: #2838b4;
+    background: #70160E;
     text-align: center;
 }
+
 .events-h1 {
     font-size: 4rem;
     padding-top: 3rem;
 }
+
 .events-h3 {
     display: block;
     padding: 3rem 17rem;
     color: azure;
 }
+
 h3 {
     font-size: 2rem;
     color: azure;
@@ -51,6 +46,7 @@ section.find-events {
     padding: 5rem 10rem;
     margin: auto auto;
 }
+
 .events {
     width: 100%;
     padding-right: 15px;
@@ -58,6 +54,7 @@ section.find-events {
     margin-right: auto;
     margin-left: auto;
 }
+
 .event-form-body {
     box-shadow: 0 1rem 2rem rgba(0,0,0,.15) !important;
     display: flex;
@@ -66,6 +63,7 @@ section.find-events {
     border-radius: .5rem;
     border: .1rem solid black;
 }
+
 .event-input-text {
     padding: 1rem;
     margin: 1rem;
@@ -82,10 +80,12 @@ section.find-events {
     margin: 2rem;
     height: auto;
 }
+
 /*search text input div*/
 .event-div-first-line-search {
     width: 60%;
 }
+
 .event-input-first-line-search-input {
     border: .1rem solid gray;
     border-radius: .5rem;
@@ -118,6 +118,7 @@ section.find-events {
     margin: 2rem;
     height: auto;
 }
+
 /*search text input div*/
 .event-div-second-line-search {
     width: 60%;
@@ -151,10 +152,12 @@ section.find-events {
 .events-list {
     margin-top: 3rem;
 }
+
 .events-list-title {
     margin-bottom: 3rem;
     color: black;
 }
+
 .events-list-title-h3 {
     color: black;
 }
@@ -180,6 +183,7 @@ cards {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
+    height: 30rem;
     background-color: #70160E;
     cursor: pointer;
     transition: all 0.3s ease 0s;
@@ -192,7 +196,6 @@ cards {
 .image {
     width: 100%;
     padding-top: 56.25%; /* 16:9 */
-
     overflow: hidden;
     position: relative;
 }
@@ -251,3 +254,9 @@ cards {
     transform: translate(-50%, -50%);
 }
 
+#alttext-container.card-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
