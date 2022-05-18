@@ -38,14 +38,6 @@
                             <input class="event-input-first-line-search-button" type="button" placeholder="Botão" />
                         </div>
                     </div>
-                    <div class="event-div-second-line">
-                        <div class="event-div-second-line-search">
-                            <input class="event-input-second-line-search-input" type="text" placeholder="Pesquisar por eventos" />
-                        </div>
-                        <div class="event-div-second-line-button">
-                            <input class="event-input-second-line-search-button" type="button" placeholder="Botão" />
-                        </div>
-                    </div>
                 </div>
             </div>
             <div class="events-list">
