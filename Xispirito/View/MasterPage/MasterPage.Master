@@ -41,7 +41,7 @@
                                 <a href="#">Ajuda</a>
                             </li>
                             <li>
-                                <a href="#" class="header-lecture">Econtrar Palestra</a>
+                                <a href="../Events/Events.aspx" class="header-lecture">Econtrar Palestra</a>
                             </li>
                             <li>
                                 <asp:LoginView ID="MasterLoginView" runat="server">
