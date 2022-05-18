@@ -183,6 +183,7 @@ cards {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
+    height: 30rem;
     background-color: #70160E;
     cursor: pointer;
     transition: all 0.3s ease 0s;
@@ -253,3 +254,9 @@ cards {
     transform: translate(-50%, -50%);
 }
 
+#alttext-container.card-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
