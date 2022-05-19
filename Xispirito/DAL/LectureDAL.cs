@@ -17,11 +17,12 @@ namespace Xispirito.DAL
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
 
-            string sql = "INSERT INTO Lecture VALUES (@nm_lecture, @tm_lecture, dt_lecture, dc_lecture, mod_lecture, rt_lecture, lt_lecture, isActive)";
+            string sql = "INSERT INTO Lecture VALUES (@nm_lecture, @pt_lecture, @tm_lecture, dt_lecture, dc_lecture, mod_lecture, rt_lecture, lt_lecture, isActive)";
 
             SqlCommand cmd = new SqlCommand(sql, conn);
 
             cmd.Parameters.AddWithValue("@nm_lecture", objLecture.GetName());
+            cmd.Parameters.AddWithValue("@pt_lecture", objLecture.GetPicture());
             cmd.Parameters.AddWithValue("@tm_lecture", objLecture.GetTime());
             cmd.Parameters.AddWithValue("@dt_lecture", objLecture.GetDate());
             cmd.Parameters.AddWithValue("@dc_lecture", objLecture.GetDescription());

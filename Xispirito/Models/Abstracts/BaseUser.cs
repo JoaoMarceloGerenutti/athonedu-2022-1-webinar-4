@@ -18,9 +18,19 @@ namespace Xispirito.Models
             return Id;
         }
 
+        public void SetId(int id)
+        {
+            Id = id;
+        }
+
         public string GetName()
         {
             return Name;
+        }
+
+        public void SetName(string name)
+        {
+            Name = name;
         }
 
         public string GetEmail()
@@ -36,6 +46,11 @@ namespace Xispirito.Models
         public string GetPicture()
         {
             return Picture;
+        }
+
+        public void SetPicture(string pictureDirectory)
+        {
+            Picture = pictureDirectory;
         }
 
         public string GetEncryptedPassword()
