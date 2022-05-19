@@ -17,13 +17,13 @@ namespace Xispirito.DAL
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
 
-            string sql = "INSERT INTO Speaker VALUES (@nm_speaker, @email_speaker, @ft_speaker, @pf_speaker, @pw_speaker, @isActive)";
+            string sql = "INSERT INTO Speaker VALUES (@nm_speaker, @email_speaker, @pt_speaker, @pf_speaker, @pw_speaker, @isActive)";
 
             SqlCommand cmd = new SqlCommand(sql, conn);
 
-            cmd.Parameters.AddWithValue("@nm_viewer", objSpeaker.GetName());
-            cmd.Parameters.AddWithValue("@email_viewer", objSpeaker.GetEmail());
-            cmd.Parameters.AddWithValue("@ft_viewer", objSpeaker.GetPicture());
+            cmd.Parameters.AddWithValue("@nm_speaker", objSpeaker.GetName());
+            cmd.Parameters.AddWithValue("@email_speaker", objSpeaker.GetEmail());
+            cmd.Parameters.AddWithValue("@pt_speaker", objSpeaker.GetPicture());
             cmd.Parameters.AddWithValue("@pf_speaker", objSpeaker.GetSpeakerProfession());
             cmd.Parameters.AddWithValue("@pw_speaker", objSpeaker.GetEncryptedPassword());
             cmd.Parameters.AddWithValue("@isActive", objSpeaker.GetIsActive());
@@ -53,7 +53,7 @@ namespace Xispirito.DAL
                     speakerId,
                     dr["nm_speaker"].ToString(),
                     dr["email_speaker"].ToString(),
-                    dr["ft_speaker"].ToString(),
+                    dr["pt_speaker"].ToString(),
                     dr["pf_speaker"].ToString(),
                     dr["pw_speaker"].ToString(),
                     Convert.ToBoolean(dr["isActive"])
@@ -85,7 +85,7 @@ namespace Xispirito.DAL
                     Convert.ToInt32(dr["id_speaker"]),
                     dr["nm_speaker"].ToString(),
                     dr["email_speaker"].ToString(),
-                    dr["ft_speaker"].ToString(),
+                    dr["pt_speaker"].ToString(),
                     dr["pf_speaker"].ToString(),
                     dr["pw_speaker"].ToString(),
                     Convert.ToBoolean(dr["isActive"])
@@ -118,7 +118,7 @@ namespace Xispirito.DAL
                     Convert.ToInt32(dr["id_speaker"]),
                     dr["nm_speaker"].ToString(),
                     dr["email_speaker"].ToString(),
-                    dr["ft_speaker"].ToString(),
+                    dr["pt_speaker"].ToString(),
                     dr["pf_speaker"].ToString(),
                     speakerEncryptedPassword,
                     Convert.ToBoolean(dr["isActive"])
@@ -134,13 +134,13 @@ namespace Xispirito.DAL
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
 
-            string sql = "UPDATE Speaker SET nm_speaker = @nm_speaker, email_speaker = @email_speaker, ft_viewer = @ft_speaker, pw_viwer = @pw_speaker, isActive = @isActive WHERE id_viewer = @id_viewer";
+            string sql = "UPDATE Speaker SET nm_speaker = @nm_speaker, email_speaker = @email_speaker, pt_speaker = @pt_speaker, pw_viwer = @pw_speaker, isActive = @isActive WHERE id_viewer = @id_viewer";
 
             SqlCommand cmd = new SqlCommand(sql, conn);
 
             cmd.Parameters.AddWithValue("@nm_speaker", objSpeaker.GetName());
             cmd.Parameters.AddWithValue("@email_speaker", objSpeaker.GetEmail());
-            cmd.Parameters.AddWithValue("@ft_speaker", objSpeaker.GetPicture());
+            cmd.Parameters.AddWithValue("@pt_speaker", objSpeaker.GetPicture());
             cmd.Parameters.AddWithValue("@pw_speaker", objSpeaker.GetEncryptedPassword());
             cmd.Parameters.AddWithValue("@isActive", objSpeaker.GetIsActive());
             cmd.Parameters.AddWithValue("@id_speaker", objSpeaker.GetId());
@@ -190,7 +190,7 @@ namespace Xispirito.DAL
                         Convert.ToInt32(dr["id_speaker"]),
                         dr["nm_speaker"].ToString(),
                         dr["email_speaker"].ToString(),
-                        dr["ft_speaker"].ToString(),
+                        dr["pt_speaker"].ToString(),
                         dr["pf_speaker"].ToString(),
                         dr["pw_speaker"].ToString(),
                         Convert.ToBoolean(dr["isActive"])

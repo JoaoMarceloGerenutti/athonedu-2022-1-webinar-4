@@ -14,6 +14,11 @@ namespace Xispirito.Models
             return IsActive;
         }
 
+        public void SetIsActive(bool isActive)
+        {
+            IsActive = isActive;
+        }
+
         public void Deactivate()
         {
             IsActive = false;

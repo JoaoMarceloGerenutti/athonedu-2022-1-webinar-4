@@ -17,13 +17,13 @@ namespace Xispirito.DAL
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
 
-            string sql = "INSERT INTO Administrator VALUES (@nm_administrator, @email_administrator, @ft_administrator, @pw_administrator, @isActive)";
+            string sql = "INSERT INTO Administrator VALUES (@nm_administrator, @email_administrator, @pt_administrator, @pw_administrator, @isActive)";
 
             SqlCommand cmd = new SqlCommand(sql, conn);
 
             cmd.Parameters.AddWithValue("@nm_administrator", objAdministrator.GetName());
             cmd.Parameters.AddWithValue("@email_administrator", objAdministrator.GetEmail());
-            cmd.Parameters.AddWithValue("@ft_administrator", objAdministrator.GetPicture());
+            cmd.Parameters.AddWithValue("@pt_administrator", objAdministrator.GetPicture());
             cmd.Parameters.AddWithValue("@pw_administrator", objAdministrator.GetEncryptedPassword());
             cmd.Parameters.AddWithValue("@isActive", objAdministrator.GetIsActive());
             cmd.ExecuteNonQuery();
@@ -52,7 +52,7 @@ namespace Xispirito.DAL
                     administratorId,
                     dr["nm_administrator"].ToString(),
                     dr["email_administrator"].ToString(),
-                    dr["ft_administrator"].ToString(),
+                    dr["pt_administrator"].ToString(),
                     dr["pw_administrator"].ToString(),
                     Convert.ToBoolean(dr["isActive"])
                 );
@@ -83,7 +83,7 @@ namespace Xispirito.DAL
                     Convert.ToInt32(dr["id_administrator"]),
                     dr["nm_administrator"].ToString(),
                     dr["email_administrator"].ToString(),
-                    dr["ft_administrator"].ToString(),
+                    dr["pt_administrator"].ToString(),
                     dr["pw_administrator"].ToString(),
                     Convert.ToBoolean(dr["isActive"])
                 );
@@ -115,7 +115,7 @@ namespace Xispirito.DAL
                     Convert.ToInt32(dr["id_administrator"]),
                     dr["nm_administrator"].ToString(),
                     dr["email_administrator"].ToString(),
-                    dr["ft_administrator"].ToString(),
+                    dr["pt_administrator"].ToString(),
                     administratorEncryptedPassword,
                     Convert.ToBoolean(dr["isActive"])
                 );
@@ -130,13 +130,13 @@ namespace Xispirito.DAL
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
 
-            string sql = "UPDATE Administrator SET nm_administrator = @nm_administrator, email_administrator = @email_administrator, ft_administrator = @ft_administrator, pw_administrator = @pw_administrator, isActive = @isActive WHERE id_administrator = @id_administrator";
+            string sql = "UPDATE Administrator SET nm_administrator = @nm_administrator, email_administrator = @email_administrator, pt_administrator = @pt_administrator, pw_administrator = @pw_administrator, isActive = @isActive WHERE id_administrator = @id_administrator";
 
             SqlCommand cmd = new SqlCommand(sql, conn);
 
             cmd.Parameters.AddWithValue("@nm_administrator", objAdministrator.GetName());
             cmd.Parameters.AddWithValue("@email_administrator", objAdministrator.GetEmail());
-            cmd.Parameters.AddWithValue("@ft_administrator", objAdministrator.GetPicture());
+            cmd.Parameters.AddWithValue("@pt_administrator", objAdministrator.GetPicture());
             cmd.Parameters.AddWithValue("@pw_administrator", objAdministrator.GetEncryptedPassword());
             cmd.Parameters.AddWithValue("@isActive", objAdministrator.GetIsActive());
             cmd.Parameters.AddWithValue("@id_administrator", objAdministrator.GetId());
@@ -186,7 +186,7 @@ namespace Xispirito.DAL
                         Convert.ToInt32(dr["id_administrator"]),
                         dr["nm_administrator"].ToString(),
                         dr["email_administrator"].ToString(),
-                        dr["ft_administrator"].ToString(),
+                        dr["pt_administrator"].ToString(),
                         dr["pw_administrator"].ToString(),
                         Convert.ToBoolean(dr["isActive"])
                     );
