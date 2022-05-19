@@ -77,7 +77,7 @@ namespace Xispirito.DAL
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
 
-            string sql = "SELECT * FROM Lecture WHERE isActive = 1 ORDER BY dt_lecture";
+            string sql = "SELECT * FROM Lecture WHERE isActive = 1 ORDER BY dt_lecture DESC";
 
             SqlCommand cmd = new SqlCommand(sql, conn);
 
