@@ -19,8 +19,7 @@
             <div class="container">
                 <div>
                     <h2>
-                        <b>
-                            Cadastrar-se em um evento nunca foi tão simples.
+                        <b>Cadastrar-se em um evento nunca foi tão simples.
                         </b>
                     </h2>
                     <p>
@@ -36,85 +35,79 @@
             <section class="cards">
                 <div class="card">
                     <div class="image">
-                        <asp:Image ID="CardImage1" runat="server" />
+                        <asp:Image ID="UpcomingEventImage1" runat="server" />
                     </div>
                     <div class="content">
-                        <p class="title text--medium">
-                            IPVS2022 - 26º International Pig Veterinary Society Congress
-                        </p>
+                        <asp:Label ID="TitleUpcomingEvent1" runat="server" class="title text--medium"> </asp:Label>
+
                         <div class="info">
-                            <asp:Label ID="lblTipoEvento1" runat="server" Text="Evento Online" class="type text--medium"></asp:Label>
-                            <asp:Label ID="lblTempoEvento1" runat="server" Text="00 Min" class="time text--medium"></asp:Label>
+                            <asp:Label ID="TypeUpcomingEvent1" runat="server" class="type text--medium"></asp:Label>
+                            <asp:Label ID="TimeUpcomingEvent1" runat="server" class="time text--medium"></asp:Label>
                         </div>
                     </div>
                 </div>
                 <div class="card">
                     <div class="image">
-                        <asp:Image ID="CardImage2" runat="server" />
+                        <asp:Image ID="UpcomingEventImage2" runat="server" />
                     </div>
                     <div class="content">
-                        <p class="title text--medium">
-                            XIV Encontro Nacional de Educação Matemática
-                        </p>
+                        <asp:Label ID="TitleUpcomingEvent2" runat="server" class="title text--medium"> </asp:Label>
+
                         <div class="info">
-                            <asp:Label ID="lblTipoEvento2" runat="server" Text="Evento Online" class="type text--medium"></asp:Label>
-                            <asp:Label ID="lblTempoEvento2" runat="server" Text="00 Min" class="time text--medium"></asp:Label>
+                            <asp:Label ID="TypeUpcomingEvent2" runat="server" class="type text--medium"></asp:Label>
+                            <asp:Label ID="TimeUpcomingEvent2" runat="server" class="time text--medium"></asp:Label>
                         </div>
                     </div>
                 </div>
                 <div class="card">
                     <div class="image">
-                        <asp:Image ID="CardImage3" runat="server" />
+                        <asp:Image ID="UpcomingEventImage3" runat="server" />
                     </div>
                     <div class="content">
-                        <p class="title text--medium">
-                            XIV CASI
-                        </p>
+                        <asp:Label ID="TitleUpcomingEvent3" runat="server" class="title text--medium"> </asp:Label>
+
                         <div class="info">
-                            <asp:Label ID="lblTipoEvento3" runat="server" Text="Evento Online" class="type text--medium"></asp:Label>
-                            <asp:Label ID="lblTempoEvento3" runat="server" Text="00 Min" class="time text--medium"></asp:Label>
+                            <asp:Label ID="TypeUpcomingEvent3" runat="server" class="type text--medium"></asp:Label>
+                            <asp:Label ID="TimeUpcomingEvent3" runat="server" class="time text--medium"></asp:Label>
                         </div>
                     </div>
                 </div>
                 <div class="card">
                     <div class="image">
-                        <asp:Image ID="CardImage4" runat="server" />
+                        <asp:Image ID="UpcomingEventImage4" runat="server" />
                     </div>
                     <div class="content">
-                        <p class="title text--medium">
-                            Encontro Holístico - Passo Fundo
-                        </p>
+                        <asp:Label ID="TitleUpcomingEvent4" runat="server" class="title text--medium"> </asp:Label>
+
                         <div class="info">
-                            <asp:Label ID="lblTipoEvento4" runat="server" Text="Evento Online" class="type text--medium"></asp:Label>
-                            <asp:Label ID="lblTempoEvento4" runat="server" Text="00 Min" class="time text--medium"></asp:Label>
+                            <asp:Label ID="TypeUpcomingEvent4" runat="server" class="type text--medium"></asp:Label>
+                            <asp:Label ID="TimeUpcomingEvent4" runat="server" class="time text--medium"></asp:Label>
                         </div>
                     </div>
                 </div>
                 <div class="card">
                     <div class="image">
-                        <asp:Image ID="CardImage5" runat="server" />
+                        <asp:Image ID="UpcomingEventImage5" runat="server" />
                     </div>
                     <div class="content">
-                        <p class="title text--medium">
-                            VIII Congresso de Gestalt-terapia do Estado de Rio de Janeiro
-                        </p>
+                        <asp:Label ID="TitleUpcomingEvent5" runat="server" class="title text--medium"> </asp:Label>
+
                         <div class="info">
-                            <asp:Label ID="lblTipoEvento5" runat="server" Text="Evento Online" class="type text--medium"></asp:Label>
-                            <asp:Label ID="lblTempoEvento5" runat="server" Text="00 Min" class="time text--medium"></asp:Label>
+                            <asp:Label ID="TypeUpcomingEvent5" runat="server" class="type text--medium"></asp:Label>
+                            <asp:Label ID="TimeUpcomingEvent5" runat="server" class="time text--medium"></asp:Label>
                         </div>
                     </div>
                 </div>
                 <div class="card">
                     <div class="image">
-                        <asp:Image ID="CardImage6" runat="server" />
+                        <asp:Image ID="UpcomingEventImage6" runat="server" />
                     </div>
                     <div class="content">
-                        <p class="title text--medium">
-                            35º Congresso Odontológico de Bauru
-                        </p>
+                        <asp:Label ID="TitleUpcomingEvent6" runat="server" class="title text--medium"> </asp:Label>
+
                         <div class="info">
-                            <asp:Label ID="lblTipoEvento6" runat="server" Text="Evento Online" class="type text--medium"></asp:Label>
-                            <asp:Label ID="lblTempoEvento6" runat="server" Text="00 Min" class="time text--medium"></asp:Label>
+                            <asp:Label ID="TypeUpcomingEvent6" runat="server" class="type text--medium"></asp:Label>
+                            <asp:Label ID="TimeUpcomingEvent6" runat="server" class="time text--medium"></asp:Label>
                         </div>
                     </div>
                 </div>

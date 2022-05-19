@@ -1,58 +1,107 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Web.UI.WebControls;
+using Xispirito.Controller;
 using Xispirito.Models;
 using AspImage = System.Web.UI.WebControls.Image;
 
 namespace Xispirito.View.HomeWithMaster
 {
+
     public partial class Home : System.Web.UI.Page
     {
+        private LectureBAL lectureBAL = new LectureBAL();
+
         private static Color onlineColor = Color.FromArgb(75, 209, 142);
         private static Color inPersonColor = Color.FromArgb(240, 145, 22);
         private static Color hybridColor = Color.FromArgb(138, 37, 177);
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            Random randomGenerator = new Random();
+            // Loading Upcoming Events.
+            List<AspImage> upcomingLecturesImages = new List<AspImage>(GetUpcomingLecturesImages());
+            List<Label> upcomingLecturesTitleLabels = new List<Label>(GetUpcomingLecturesTitleLabels());
+            List<Label> upcomingLecturesTypeLabels = new List<Label>(GetUpcomingLecturesTypeLabels());
+            List<Label> upcomingLecturesTimeLabels = new List<Label>(GetUpcomingLecturesTimeLabels());
 
-            EventRandomizer(CardImage1, lblTipoEvento1, lblTempoEvento1, randomGenerator, 1);
-            EventRandomizer(CardImage2, lblTipoEvento2, lblTempoEvento2, randomGenerator, 2);
-            EventRandomizer(CardImage3, lblTipoEvento3, lblTempoEvento3, randomGenerator, 3);
-            EventRandomizer(CardImage4, lblTipoEvento4, lblTempoEvento4, randomGenerator, 4);
-            EventRandomizer(CardImage5, lblTipoEvento5, lblTempoEvento5, randomGenerator, 5);
-            EventRandomizer(CardImage6, lblTipoEvento6, lblTempoEvento6, randomGenerator, 6);
+            List<Lecture> upcomingLectures = new List<Lecture>();
+            upcomingLectures = lectureBAL.GetUpcomingLecturesList(upcomingLecturesTitleLabels.Count());
+
+            LoadEventsCard(upcomingLectures, upcomingLecturesImages, upcomingLecturesTitleLabels, upcomingLecturesTypeLabels, upcomingLecturesTimeLabels);
         }
 
-        private void EventRandomizer(AspImage cardImage, Label lblEventType, Label lblEventTime, Random randomGenerator, int cardNumber)
+        private List<AspImage> GetUpcomingLecturesImages()
         {
-            cardImage.ImageUrl = "\\View\\Images\\Test\\Lecture" + cardNumber + ".png";
+            List<AspImage> upcomingLecturesImages = new List<AspImage>();
+            upcomingLecturesImages.Add(UpcomingEventImage1);
+            upcomingLecturesImages.Add(UpcomingEventImage2);
+            upcomingLecturesImages.Add(UpcomingEventImage3);
+            upcomingLecturesImages.Add(UpcomingEventImage4);
+            upcomingLecturesImages.Add(UpcomingEventImage5);
+            upcomingLecturesImages.Add(UpcomingEventImage6);
 
-            int lectureTypeLenght = (Enum.GetValues(typeof(Modality)).Length);
+            return upcomingLecturesImages;
+        }
 
-            int lectureType = randomGenerator.Next(lectureTypeLenght);
+        private List<Label> GetUpcomingLecturesTitleLabels()
+        {
+            List<Label> upcomingLecturesTitleLabels = new List<Label>();
+            upcomingLecturesTitleLabels.Add(TitleUpcomingEvent1);
+            upcomingLecturesTitleLabels.Add(TitleUpcomingEvent2);
+            upcomingLecturesTitleLabels.Add(TitleUpcomingEvent3);
+            upcomingLecturesTitleLabels.Add(TitleUpcomingEvent4);
+            upcomingLecturesTitleLabels.Add(TitleUpcomingEvent5);
+            upcomingLecturesTitleLabels.Add(TitleUpcomingEvent6);
 
-            switch (lectureType)
+            return upcomingLecturesTitleLabels;
+        }
+
+        private List<Label> GetUpcomingLecturesTypeLabels()
+        {
+            List<Label> upcomingLecturesTypeLabels = new List<Label>();
+            upcomingLecturesTypeLabels.Add(TypeUpcomingEvent1);
+            upcomingLecturesTypeLabels.Add(TypeUpcomingEvent2);
+            upcomingLecturesTypeLabels.Add(TypeUpcomingEvent3);
+            upcomingLecturesTypeLabels.Add(TypeUpcomingEvent4);
+            upcomingLecturesTypeLabels.Add(TypeUpcomingEvent5);
+            upcomingLecturesTypeLabels.Add(TypeUpcomingEvent6);
+
+            return upcomingLecturesTypeLabels;
+        }
+
+        private List<Label> GetUpcomingLecturesTimeLabels()
+        {
+            List<Label> upcomingLecturesTimeLabels = new List<Label>();
+            upcomingLecturesTimeLabels.Add(TimeUpcomingEvent1);
+            upcomingLecturesTimeLabels.Add(TimeUpcomingEvent2);
+            upcomingLecturesTimeLabels.Add(TimeUpcomingEvent3);
+            upcomingLecturesTimeLabels.Add(TimeUpcomingEvent4);
+            upcomingLecturesTimeLabels.Add(TimeUpcomingEvent5);
+            upcomingLecturesTimeLabels.Add(TimeUpcomingEvent6);
+
+            return upcomingLecturesTimeLabels;
+        }
+
+        private void LoadEventsCard(List<Lecture> lectureList, List<AspImage> upcomingLecturesImages, List<Label> upcomingLecturesTitleLabels, List<Label> upcomingLecturesTypeLabels, List<Label> upcomingLecturesTimeLabels)
+        {
+            if (lectureList != null)
             {
-                case 0:
-                    lblEventType.BackColor = onlineColor;
-                    break;
+                int index = 0;
+                foreach (Lecture lecture in lectureList)
+                {
+                    upcomingLecturesImages[index].ImageUrl = lecture.GetPicture();
+                    upcomingLecturesTitleLabels[index].Text = lecture.GetName();
 
-                case 1:
-                    lblEventType.BackColor = inPersonColor;
-                    break;
+                    string lectureType = lecture.GetModality();
+                    upcomingLecturesTypeLabels[index].Text = lectureType;
+                    upcomingLecturesTypeLabels[index].BackColor = ModalityColor.GetModalityColor(lectureType);
 
-                case 2:
-                    lblEventType.BackColor = hybridColor;
-                    break;
-
-                default:
-                    throw new System.IndexOutOfRangeException();
+                    upcomingLecturesTimeLabels[index].Text = lecture.GetTime().ToString() + " Min";
+                    index++;
+                }
             }
-            lblEventType.Text = Enum.GetName(typeof(Modality), lectureType);
-
-            int lectureTime = randomGenerator.Next(15, 120);
-            lblEventTime.Text = lectureTime.ToString() + " Min";
         }
     }
 }
