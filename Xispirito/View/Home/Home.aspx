@@ -37,9 +37,12 @@
                     <div class="image">
                         <asp:Image ID="UpcomingEventImage1" runat="server" />
                     </div>
-                    <div class="content">
-                        <asp:Label ID="TitleUpcomingEvent1" runat="server" class="title text--medium"> </asp:Label>
 
+                    <div class="card-title">
+                        <asp:Label ID="TitleUpcomingEvent1" runat="server" class="title text--medium"> </asp:Label>
+                    </div>
+
+                    <div class="content">
                         <div class="info">
                             <asp:Label ID="TypeUpcomingEvent1" runat="server" class="type text--medium"></asp:Label>
                             <asp:Label ID="TimeUpcomingEvent1" runat="server" class="time text--medium"></asp:Label>
@@ -50,9 +53,12 @@
                     <div class="image">
                         <asp:Image ID="UpcomingEventImage2" runat="server" />
                     </div>
-                    <div class="content">
-                        <asp:Label ID="TitleUpcomingEvent2" runat="server" class="title text--medium"> </asp:Label>
 
+                    <div class="card-title">
+                        <asp:Label ID="TitleUpcomingEvent2" runat="server" class="title text--medium"> </asp:Label>
+                    </div>
+
+                    <div class="content">
                         <div class="info">
                             <asp:Label ID="TypeUpcomingEvent2" runat="server" class="type text--medium"></asp:Label>
                             <asp:Label ID="TimeUpcomingEvent2" runat="server" class="time text--medium"></asp:Label>
@@ -63,9 +69,12 @@
                     <div class="image">
                         <asp:Image ID="UpcomingEventImage3" runat="server" />
                     </div>
-                    <div class="content">
-                        <asp:Label ID="TitleUpcomingEvent3" runat="server" class="title text--medium"> </asp:Label>
 
+                    <div class="card-title">
+                        <asp:Label ID="TitleUpcomingEvent3" runat="server" class="title text--medium"> </asp:Label>
+                    </div>
+
+                    <div class="content">
                         <div class="info">
                             <asp:Label ID="TypeUpcomingEvent3" runat="server" class="type text--medium"></asp:Label>
                             <asp:Label ID="TimeUpcomingEvent3" runat="server" class="time text--medium"></asp:Label>
@@ -76,9 +85,12 @@
                     <div class="image">
                         <asp:Image ID="UpcomingEventImage4" runat="server" />
                     </div>
-                    <div class="content">
-                        <asp:Label ID="TitleUpcomingEvent4" runat="server" class="title text--medium"> </asp:Label>
 
+                    <div class="card-title">
+                        <asp:Label ID="TitleUpcomingEvent4" runat="server" class="title text--medium"> </asp:Label>
+                    </div>
+
+                    <div class="content">
                         <div class="info">
                             <asp:Label ID="TypeUpcomingEvent4" runat="server" class="type text--medium"></asp:Label>
                             <asp:Label ID="TimeUpcomingEvent4" runat="server" class="time text--medium"></asp:Label>
@@ -89,9 +101,12 @@
                     <div class="image">
                         <asp:Image ID="UpcomingEventImage5" runat="server" />
                     </div>
-                    <div class="content">
-                        <asp:Label ID="TitleUpcomingEvent5" runat="server" class="title text--medium"> </asp:Label>
 
+                    <div class="card-title">
+                        <asp:Label ID="TitleUpcomingEvent5" runat="server" class="title text--medium"> </asp:Label>
+                    </div>
+
+                    <div class="content">
                         <div class="info">
                             <asp:Label ID="TypeUpcomingEvent5" runat="server" class="type text--medium"></asp:Label>
                             <asp:Label ID="TimeUpcomingEvent5" runat="server" class="time text--medium"></asp:Label>
@@ -102,9 +117,12 @@
                     <div class="image">
                         <asp:Image ID="UpcomingEventImage6" runat="server" />
                     </div>
-                    <div class="content">
-                        <asp:Label ID="TitleUpcomingEvent6" runat="server" class="title text--medium"> </asp:Label>
 
+                    <div class="card-title">
+                        <asp:Label ID="TitleUpcomingEvent6" runat="server" class="title text--medium"> </asp:Label>
+                    </div>
+
+                    <div class="content">
                         <div class="info">
                             <asp:Label ID="TypeUpcomingEvent6" runat="server" class="type text--medium"></asp:Label>
                             <asp:Label ID="TimeUpcomingEvent6" runat="server" class="time text--medium"></asp:Label>

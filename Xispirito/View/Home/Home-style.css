@@ -111,18 +111,23 @@ CARDS
     background-color: #70160E;
     cursor: pointer;
     transition: all 0.3s ease 0s;
+    border-radius: 0.5rem;
 }
 
     .card:hover {
         transform: translateY(-7px);
     }
 
+.card-title {
+    margin: 20px;
+}
+
 .image {
     width: 100%;
     padding-top: 56.25%; /* 16:9 */
-
     overflow: hidden;
     position: relative;
+    border-radius: 0.5rem 0.5rem 0 0;
 }
 
     .image img {
