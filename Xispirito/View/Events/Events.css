@@ -48,11 +48,11 @@ section.find-events {
 }
 
 .events {
-    width: 100%;
+    /*width: 100%;
     padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;
-    margin-left: auto;
+    margin-left: auto;*/
 }
 
 .event-form-body {
@@ -194,12 +194,9 @@ cards {
         transform: translateY(-7px);
     }
 
-.card-title {
-    margin: 20px;
-}
-
 .image {
     width: 100%;
+    height: 35%;
     padding-top: 50%;
     overflow: hidden;
     position: relative;
@@ -215,12 +212,21 @@ cards {
         transform: translate(-50%, -50%);
     }
 
-.content {
-    margin: 20px;
+.card-title {
+    height: 45%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 20px 20px 0 20px;
 }
 
-.title {
-    margin-bottom: 20px;
+    .title {
+        height: 40%;
+        margin-bottom: 20px;
+    }
+
+.content {
+    height: 20%;
+    margin: 20px;
 }
 
 .info {
