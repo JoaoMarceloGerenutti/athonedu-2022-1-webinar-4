@@ -96,6 +96,8 @@
     <Content Include="View\Login\Login.aspx" />
     <Content Include="View\Login\Login.css" />
     <Content Include="View\MasterPage\MasterPage-style.css" />
+    <Content Include="View\Registry\Registry.aspx" />
+    <Content Include="View\Registry\Registry.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -149,6 +151,13 @@
     </Compile>
     <Compile Include="View\MasterPage\MasterPage.Master.designer.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>
+    </Compile>
+    <Compile Include="View\Registry\Registry.aspx.cs">
+      <DependentUpon>Registry.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Registry\Registry.aspx.designer.cs">
+      <DependentUpon>Registry.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
