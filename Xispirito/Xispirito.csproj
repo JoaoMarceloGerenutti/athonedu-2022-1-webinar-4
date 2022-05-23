@@ -82,6 +82,7 @@
     <Content Include="View\Home\Home.css" />
     <Content Include="View\Home\Home.aspx" />
     <Content Include="View\Home\Home-responsive.css" />
+    <Content Include="View\Images\Search.png" />
     <Content Include="View\MasterPage\menu.js" />
     <Content Include="View\Home\print.css" />
     <Content Include="View\MasterPage\MasterPage-responsive.css" />

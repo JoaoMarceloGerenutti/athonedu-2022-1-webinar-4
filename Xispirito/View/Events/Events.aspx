@@ -35,7 +35,7 @@
                             <input class="event-input-first-line-search-input" type="text" placeholder="Pesquisar por eventos" />
                         </div>
                         <div class="event-div-first-line-button">
-                            <input class="event-input-first-line-search-button" type="button" placeholder="Botão" />
+                            <asp:ImageButton ID="EventSearch" runat="server" class="event-input-first-line-search-button" ImageUrl="~/View/Images/Search.png" />
                         </div>
                     </div>
                 </div>
@@ -49,7 +49,7 @@
                         <div class="swiper">
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide">
-                                    <div class="card" >
+                                    <div class="card">
                                         <div class="card-image">
                                             <asp:ImageButton ID="UpcomingEventImage1" runat="server" AlternateText="Imagem não encontrada" OnClick="UpcomingEvent1_Click" CssClass="image" />
                                         </div>
