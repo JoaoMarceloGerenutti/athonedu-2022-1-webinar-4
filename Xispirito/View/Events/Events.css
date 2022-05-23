@@ -47,14 +47,6 @@ section.find-events {
     margin: auto auto;
 }
 
-.events {
-    /*width: 100%;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;*/
-}
-
 .event-form-body {
     box-shadow: 0 1rem 2rem rgba(0,0,0,.15) !important;
     display: flex;
@@ -194,7 +186,7 @@ cards {
         transform: translateY(-7px);
     }
 
-.image {
+.card-image {
     width: 100%;
     height: 35%;
     padding-top: 50%;
@@ -203,7 +195,7 @@ cards {
     border-radius: 0.5rem 0.5rem 0 0;
 }
 
-    .image img {
+    .card-image .image {
         height: 100%;
         width: 100%;
         position: absolute;
