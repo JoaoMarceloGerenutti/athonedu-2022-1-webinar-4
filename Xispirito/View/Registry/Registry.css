@@ -30,7 +30,7 @@ h3 {
 }
 
 .event {
-    height: 100vh;
+    height: 100%;
     padding: 0 10rem;
 }
 
@@ -52,7 +52,8 @@ h3 {
 .form-body {
     width: 100%;
     display: flex;
-    margin-top: 3rem;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
     box-shadow: 0 1rem 2rem rgb(0 0 0 / 15%) !important;
     flex-direction: column;
     border-radius: 0.5rem;
@@ -102,7 +103,6 @@ h3 {
     padding: 5px 20px;
     border-radius: 20px;
     text-decoration: none;
-    filter: brightness(90%);
     border-style: none;
     color: white;
 }
@@ -113,5 +113,24 @@ h3 {
     background-color: #70160E;
 }
 
-.event-description {
+    .registry-button:hover {
+        cursor: pointer;
+        transform: translateY(-2px);
+    }
+
+    .event-description {
+        padding: 6rem;
+    }
+
+.event-description-title {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 4rem;
+    font-size: 3.5rem;
+    font-weight: 600;
+}
+
+.event-description-text {
+    font-size: 2.5rem;
+    font-weight: 500;
 }

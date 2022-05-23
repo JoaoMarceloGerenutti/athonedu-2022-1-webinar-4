@@ -37,18 +37,24 @@
                                 <asp:Label ID="EventTime" runat="server" class="time-text"></asp:Label>
                             </div>
                             <div class="event-type">
-                                <asp:Button ID="EventType" runat="server" class="type-text"/>
+                                <asp:Button ID="EventType" runat="server" class="type-text" />
                             </div>
                         </div>
                     </div>
                     <div class="wrapper-registry">
-                        <asp:Button ID="EventSubscribe" runat="server" class="registry-button" Text="Registrar-se" />
+                        <asp:Button ID="EventSubscribe" runat="server" class="registry-button" Text="Inscrever-se" />
                     </div>
                 </div>
             </div>
 
             <div class="form-body">
                     <div class="event-description">
+                        <div class="event-description-title">
+                            <asp:Label ID="EventDescriptionTitle" runat="server" class="description-title-text" Text="Sobre a Palestra"></asp:Label>
+                        </div>
+                        <div class="event-description-text">
+                            <asp:Label ID="EventDescription" runat="server" class="description-text"></asp:Label>
+                        </div>
                     </div>
                 </div>
         </section>

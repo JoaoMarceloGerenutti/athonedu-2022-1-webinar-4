@@ -39,6 +39,8 @@ namespace Xispirito.View.Registry
 
             EventType.Text = lecture.GetModality();
             EventType.BackColor = ModalityColor.GetModalityColor(lecture.GetModality());
+
+            EventDescription.Text = lecture.GetDescription();
         }
     }
 }
