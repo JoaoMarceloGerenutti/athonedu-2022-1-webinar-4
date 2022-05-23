@@ -61,6 +61,11 @@ namespace Xispirito.Models
             return LectureId;
         }
 
+        public void SetId(int lectureId)
+        {
+            LectureId = lectureId;
+        }
+
         public string GetName()
         {
             return LectureName;

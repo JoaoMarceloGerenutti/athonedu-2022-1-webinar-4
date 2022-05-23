@@ -11,7 +11,7 @@
         <title>Home - Xispirito </title>
 
         <link rel="stylesheet" href="Home-responsive.css" media="screen and (max-width: 630px)" />
-        <link rel="stylesheet" href="Home-style.css" />
+        <link rel="stylesheet" href="Home.css" />
         <link rel="stylesheet" href="print.css" media="print" />
     </head>
     <body>
@@ -34,8 +34,8 @@
         <main>
             <section class="cards">
                 <div class="card">
-                    <div class="image">
-                        <asp:Image ID="UpcomingEventImage1" runat="server" />
+                    <div class="card-image">
+                        <asp:ImageButton ID="UpcomingEventImage1" runat="server" AlternateText="Imagem não encontrada" OnClick="UpcomingEvent1_Click" CssClass="image" />
                     </div>
 
                     <div class="card-title">
@@ -50,8 +50,8 @@
                     </div>
                 </div>
                 <div class="card">
-                    <div class="image">
-                        <asp:Image ID="UpcomingEventImage2" runat="server" />
+                    <div class="card-image">
+                        <asp:ImageButton ID="UpcomingEventImage2" runat="server" AlternateText="Imagem não encontrada" OnClick="UpcomingEvent2_Click" CssClass="image" />
                     </div>
 
                     <div class="card-title">
@@ -66,8 +66,8 @@
                     </div>
                 </div>
                 <div class="card">
-                    <div class="image">
-                        <asp:Image ID="UpcomingEventImage3" runat="server" />
+                    <div class="card-image">
+                        <asp:ImageButton ID="UpcomingEventImage3" runat="server" AlternateText="Imagem não encontrada" OnClick="UpcomingEvent3_Click" CssClass="image" />
                     </div>
 
                     <div class="card-title">
@@ -82,8 +82,8 @@
                     </div>
                 </div>
                 <div class="card">
-                    <div class="image">
-                        <asp:Image ID="UpcomingEventImage4" runat="server" />
+                    <div class="card-image">
+                        <asp:ImageButton ID="UpcomingEventImage4" runat="server" AlternateText="Imagem não encontrada" OnClick="UpcomingEvent4_Click" CssClass="image" />
                     </div>
 
                     <div class="card-title">
@@ -98,8 +98,8 @@
                     </div>
                 </div>
                 <div class="card">
-                    <div class="image">
-                        <asp:Image ID="UpcomingEventImage5" runat="server" />
+                    <div class="card-image">
+                        <asp:ImageButton ID="UpcomingEventImage5" runat="server" AlternateText="Imagem não encontrada" OnClick="UpcomingEvent5_Click" CssClass="image" />
                     </div>
 
                     <div class="card-title">
@@ -114,8 +114,8 @@
                     </div>
                 </div>
                 <div class="card">
-                    <div class="image">
-                        <asp:Image ID="UpcomingEventImage6" runat="server" />
+                    <div class="card-image">
+                        <asp:ImageButton ID="UpcomingEventImage6" runat="server" AlternateText="Imagem não encontrada" OnClick="UpcomingEvent6_Click" CssClass="image" />
                     </div>
 
                     <div class="card-title">

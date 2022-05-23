@@ -23,5 +23,13 @@ namespace Xispirito.Controller
 
             return lectureList;
         }
+
+        public Lecture GetLecture(int lectureId)
+        {
+            Lecture lecture = new Lecture();
+            lecture = lectureDAL.Select(lectureId);
+
+            return lecture;
+        }
     }
 }

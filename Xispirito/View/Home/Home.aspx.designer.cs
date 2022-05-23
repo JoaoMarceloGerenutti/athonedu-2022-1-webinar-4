@@ -21,7 +21,7 @@ namespace Xispirito.View.HomeWithMaster
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image UpcomingEventImage1;
+        protected global::System.Web.UI.WebControls.ImageButton UpcomingEventImage1;
 
         /// <summary>
         /// Controle TitleUpcomingEvent1.
@@ -57,7 +57,7 @@ namespace Xispirito.View.HomeWithMaster
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image UpcomingEventImage2;
+        protected global::System.Web.UI.WebControls.ImageButton UpcomingEventImage2;
 
         /// <summary>
         /// Controle TitleUpcomingEvent2.
@@ -93,7 +93,7 @@ namespace Xispirito.View.HomeWithMaster
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image UpcomingEventImage3;
+        protected global::System.Web.UI.WebControls.ImageButton UpcomingEventImage3;
 
         /// <summary>
         /// Controle TitleUpcomingEvent3.
@@ -129,7 +129,7 @@ namespace Xispirito.View.HomeWithMaster
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image UpcomingEventImage4;
+        protected global::System.Web.UI.WebControls.ImageButton UpcomingEventImage4;
 
         /// <summary>
         /// Controle TitleUpcomingEvent4.
@@ -165,7 +165,7 @@ namespace Xispirito.View.HomeWithMaster
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image UpcomingEventImage5;
+        protected global::System.Web.UI.WebControls.ImageButton UpcomingEventImage5;
 
         /// <summary>
         /// Controle TitleUpcomingEvent5.
@@ -201,7 +201,7 @@ namespace Xispirito.View.HomeWithMaster
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image UpcomingEventImage6;
+        protected global::System.Web.UI.WebControls.ImageButton UpcomingEventImage6;
 
         /// <summary>
         /// Controle TitleUpcomingEvent6.

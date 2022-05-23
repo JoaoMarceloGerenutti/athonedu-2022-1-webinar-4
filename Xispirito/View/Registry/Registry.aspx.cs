@@ -4,15 +4,41 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Xispirito.Controller;
+using Xispirito.Models;
 
 namespace Xispirito.View.Registry
 {
     public partial class Registry : System.Web.UI.Page
     {
+        private Lecture lecture = new Lecture();
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            BackgroundEventImage.ImageUrl = "https://images.even3.com.br/eQN3chisIZIkC9DR62dAQCCkkCc=/1100x440/smart/even3.blob.core.windows.net/banner/lojjoooo.96d0c0dd63e34c139734.jpg";
-            EventImage.ImageUrl = "https://images.even3.com.br/eQN3chisIZIkC9DR62dAQCCkkCc=/1100x440/smart/even3.blob.core.windows.net/banner/lojjoooo.96d0c0dd63e34c139734.jpg";
+            if (Request.QueryString["event"] != null)
+            {
+                lecture.SetId(Convert.ToInt32(Request.QueryString["event"]));
+                GetEventInformation(lecture.GetId());
+            }
+        }
+
+        private void GetEventInformation(int eventId)
+        {
+            LectureBAL lectureBAL = new LectureBAL();
+            lecture = lectureBAL.GetLecture(eventId);
+
+            SetEventInformation();
+        }
+
+        private void SetEventInformation()
+        {
+            BackgroundEventImage.ImageUrl = lecture.GetPicture();
+            EventImage.ImageUrl = lecture.GetPicture();
+            EventTitle.Text = lecture.GetName();
+            EventTime.Text = lecture.GetDate().ToString("MM/dd/yyyy") + " - Duração de " + lecture.GetTime().ToString() + " Minutos";
+
+            EventType.Text = lecture.GetModality();
+            EventType.BackColor = ModalityColor.GetModalityColor(lecture.GetModality());
         }
     }
 }

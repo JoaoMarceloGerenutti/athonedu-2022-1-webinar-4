@@ -79,7 +79,7 @@
     <Content Include="View\Events\Events.aspx" />
     <Content Include="View\Events\Events.css" />
     <Content Include="View\Events\print.css" />
-    <Content Include="View\Home\Home-style.css" />
+    <Content Include="View\Home\Home.css" />
     <Content Include="View\Home\Home.aspx" />
     <Content Include="View\Home\Home-responsive.css" />
     <Content Include="View\MasterPage\menu.js" />

@@ -15,11 +15,10 @@
     </head>
 
     <body>
-        <section class="event">
-            <div class="background-image">
+        <div class="background-image">
                 <asp:Image ID="BackgroundEventImage" runat="server" AlternateText="Imagem não encontrada" />
-            </div>
-
+        </div>
+        <section class="event">
             <div class="form-body">
                 <div class="event-image">
                     <asp:Image ID="EventImage" runat="server" AlternateText="Imagem não encontrada" />
@@ -30,20 +29,20 @@
                 <div class="event-information">
                     <div class="wrapper-title-time-type">
                         <div class="event-title">
-                            <asp:Label ID="EventTitle" runat="server" class="title text--medium"> </asp:Label>
+                            <asp:Label ID="EventTitle" runat="server" class="title-text"></asp:Label>
                         </div>
 
                         <div class="wrapper-time-type">
                             <div class="event-time">
-                                <asp:Label ID="EventTime" runat="server" class="time text--medium"></asp:Label>
+                                <asp:Label ID="EventTime" runat="server" class="time-text"></asp:Label>
                             </div>
                             <div class="event-type">
-                                <asp:Label ID="EventType" runat="server" class="time text--medium"></asp:Label>
+                                <asp:Button ID="EventType" runat="server" class="type-text"/>
                             </div>
                         </div>
                     </div>
                     <div class="wrapper-registry">
-                        <asp:Button ID="EventSubscribe" runat="server" Text="Button" />
+                        <asp:Button ID="EventSubscribe" runat="server" class="registry-button" Text="Registrar-se" />
                     </div>
                 </div>
             </div>
