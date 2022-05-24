@@ -1,0 +1,62 @@
+﻿body {
+}
+
+.profile {
+    padding: 2rem 8rem;
+    font-size: 1.6rem;
+}
+
+.profile-label {
+    text-align: center;
+    margin: 4rem;
+}
+
+.profile-form {
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    grid-template-rows: 1fr;
+    grid-gap: 2rem;
+    justify-items: center;
+}
+
+.profile-form-left {
+    grid-column-start: 1;
+}
+
+h4 {
+    margin-top: 2rem;
+}
+
+.profile-form-pic-speaker {
+    grid-column-start: 2;
+    grid-row: 1 / 3;
+    width: 20%;
+    border: .2rem solid white;
+    border-radius: 4rem;
+}
+
+.input-text {
+    padding: 1rem;
+    border: .1rem solid;
+    border-radius: 1rem;
+}
+
+.profile-form-set-photo-button {
+    grid-column-start: 2;
+    grid-row-start: 3;
+}
+
+.profile-form-retire-photo-button {
+    grid-column-start: 2;
+    grid-row-start: 4;
+}
+
+.profile-form-submit {
+    display: flex;
+    justify-content: center;
+    margin-top: 4rem;
+}
+
+.submit-button {
+    padding: .5rem 2.5rem;
+}
