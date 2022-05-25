@@ -30,11 +30,11 @@ h4 {
     margin-top: 2rem;
 }
 
-.profile-form-pic-speaker {
+.profile-form-pic-viewer {
     grid-column-start: 2;
     grid-row: 1 / 3;
     width: 20%;
-    border: .2rem solid black;
+    border: .2rem solid;
     border-color: rgb(111, 103, 91);
     border-radius: 4rem;
 }
@@ -48,12 +48,12 @@ h4 {
 
 .profile-form-set-photo-button {
     grid-column-start: 2;
-    grid-row-start: 4;
+    grid-row-start: 3;
 }
 
 .profile-form-retire-photo-button {
     grid-column-start: 2;
-    grid-row-start: 5;
+    grid-row-start: 4;
 }
 
 .profile-form-submit {
@@ -61,6 +61,7 @@ h4 {
     justify-content: center;
     margin-top: 4rem;
 }
+
 
 .chose-photo {
     background: #0250c4 !important;
