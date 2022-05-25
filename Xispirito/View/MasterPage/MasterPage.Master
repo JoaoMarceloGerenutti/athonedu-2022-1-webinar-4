@@ -50,7 +50,8 @@
                                     <LoggedInTemplate>
                                         <%--<asp:LoginName ID="MasterLoginName" runat="server" />--%>
                                     </LoggedInTemplate>
-                                </asp:LoginView> <asp:LoginStatus ID="MasterLoginStatus" runat="server" LogoutAction="RedirectToLoginPage" LogoutText="Sair" LoginText="Entrar" LogoutPageUrl="~/View/Login/Login.aspx" />
+                                </asp:LoginView>
+                                <asp:LoginStatus ID="MasterLoginStatus" runat="server" LogoutAction="RedirectToLoginPage" LogoutText="Sair" LoginText="Entrar" LogoutPageUrl="~/View/Login/Login.aspx" />
                             </li>
                         </ul>
                     </nav>
@@ -79,21 +80,24 @@
                 <div class="line">
                 </div>
                 <div class="right-footer">
-                    <p class="text--medium">
-                        Ajuda
-                    </p>
-
-                    <p class="text--medium">
-                        Fazer Cadastro
-                    </p>
-
-                    <p class="text--medium">
-                        Encontrar um Evento
-                    </p>
-
-                    <p class="text--medium">
-                        Certificados
-                    </p>
+                    <div>
+                        <p class="text--medium">
+                            Ajuda
+                        </p>
+                    </div>
+                    <div>
+                        <a class="text--medium" href="../Login/Login.aspx">Fazer Cadastro
+                        </a>
+                    </div>
+                    <div>
+                        <a class="text--medium" href="../Events/Events.aspx">Encontrar um Evento
+                        </a>
+                    </div>
+                    <div>
+                        <p class="text--medium">
+                            Certificados
+                        </p>
+                    </div>
                 </div>
             </div>
         </section>
