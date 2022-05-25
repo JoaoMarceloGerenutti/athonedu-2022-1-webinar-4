@@ -9,11 +9,13 @@ namespace Xispirito.Models
     {
         private int AreaId { get; set; }
         private string AreaName { get; set; }
+        private string AreaPicture { get; set; }
 
-        public Area(int areaId, string areaName, bool isActive)
+        public Area(int areaId, string areaName, string areaPicture, bool isActive)
         {
             AreaId = areaId;
             AreaName = areaName;
+            AreaPicture = areaPicture;
             IsActive = isActive;
         }
 
@@ -22,9 +24,19 @@ namespace Xispirito.Models
             return AreaId;
         }
 
-        public string GetArea()
+        public string GetName()
         {
             return AreaName;
+        }
+
+        public string GetPicture()
+        {
+            return AreaPicture;
+        }
+
+        public void SetPicture(string pictureDirectory)
+        {
+            AreaPicture = pictureDirectory;
         }
     }
 }
