@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/MasterPage/MasterPage.Master" AutoEventWireup="true" CodeBehind="Profile-Speaker.aspx.cs" Inherits="Xispirito.View.Profile_Speaker.Profile_Speaker" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/MasterPage/MasterPage.Master" AutoEventWireup="true" CodeBehind="Profile-Viewer.aspx.cs" Inherits="Xispirito.View.Profile_Viewer.Profile_Viewer" %>
 <asp:Content ID="HeaderFooter" ContentPlaceHolderID="HeaderFooter" runat="server">
 </asp:Content>
 <asp:Content ID="Content" ContentPlaceHolderID="Content" runat="server">
@@ -9,7 +9,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>Eventos - Xispirito </title>
 
-        <link rel="stylesheet" href="Profile-speaker.css" />
+        <link rel="stylesheet" href="Profile-Viewer.css" />
         <link rel="stylesheet" href="print.css" media="print" />
 
         <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
@@ -32,26 +32,23 @@
     <body>
         <section class="profile">
             <div class="profile-label">
-                <h3>Editar/Cadastrar Palestrante</h3>
+                <h3>Editar/Cadastrar Usuário</h3>
             </div>
             <div class="profile-form">
                 <div class="profile-form-left">
-                    <input class="input-text" id="name_speaker" placeholder="Informe o Nome" type="text"/>
+                    <input class="input-text" id="name_viewer" placeholder="Informe o Nome" type="text"/>
                 </div>
                 <div class="profile-form-left">
-                    <input class="input-text" id="email_speaker" placeholder="Informe o E-mail"  type="text"/>
+                    <input class="input-text" id="email_viewer" placeholder="Informe o E-mail"  type="text"/>
                 </div>
                 <div class="profile-form-left">
-                    <input class="input-text" id="profissao_speaker" placeholder="Informe a Profissão"  type="text"/>
+                    <input class="input-text" id="password_viewer" placeholder="Informe a Senha"  type="password"/>
                 </div>
                 <div class="profile-form-left">
-                    <input class="input-text" id="password_speaker" placeholder="Informe a Senha"  type="password"/>
+                    <input class="input-text" id="password_viewer_confirm" placeholder="Informe a Senha Novamente"  type="password"/>
                 </div>
-                <div class="profile-form-left">
-                    <input class="input-text" id="password_speaker_confirm" placeholder="Informe a Senha Novamente"  type="password"/>
-                </div>
-                <div class="profile-form-pic-speaker" shape="round">
-                    <img id="speaker-photo"/>
+                <div class="profile-form-pic-viewer" shape="round">
+                    <img id="viewer-photo"/>
                 </div>
                 <div class="profile-form-set-photo-button">
                     <button class="chose-photo btn btn-primary fs-4">
