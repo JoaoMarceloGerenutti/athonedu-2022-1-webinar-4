@@ -13,12 +13,16 @@ namespace Xispirito.View.Events
     public partial class Events : System.Web.UI.Page
     {
         private LectureBAL lectureBAL = new LectureBAL();
-
         private List<AspImageButton> upcomingLecturesImages;
         private List<Label> upcomingLecturesTitleLabels;
         private List<Label> upcomingLecturesTypeLabels;
         private List<Label> upcomingLecturesTimeLabels;
         private List<Lecture> upcomingLectures;
+
+        private AreaBAL areaBAL = new AreaBAL();
+        private List<AspImageButton> areaImages;
+        private List<Label> areaTitleLabels;
+        private List<Area> areaLectures;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -31,7 +35,16 @@ namespace Xispirito.View.Events
             upcomingLectures = new List<Lecture>();
             upcomingLectures = lectureBAL.GetUpcomingLecturesList(upcomingLecturesTitleLabels.Count());
 
-            LoadEventsCard(upcomingLectures, upcomingLecturesImages, upcomingLecturesTitleLabels, upcomingLecturesTypeLabels, upcomingLecturesTimeLabels);
+            LoadUpcomingEventsCard(upcomingLectures, upcomingLecturesImages, upcomingLecturesTitleLabels, upcomingLecturesTypeLabels, upcomingLecturesTimeLabels);
+
+            // Loading Area Events.
+            areaImages = new List<AspImageButton>(GetAreaImages());
+            areaTitleLabels = new List<Label>(GetAreaTitleLabels());
+
+            areaLectures = new List<Area>();
+            areaLectures = areaBAL.GetAreaList(areaTitleLabels.Count());
+
+            LoadAreaEventsCard(areaLectures, areaImages, areaTitleLabels);
         }
 
         private List<AspImageButton> GetUpcomingLecturesImages()
@@ -102,7 +115,7 @@ namespace Xispirito.View.Events
             return upcomingLecturesTimeLabels;
         }
 
-        private void LoadEventsCard(List<Lecture> lectureList, List<AspImageButton> upcomingLecturesImages, List<Label> upcomingLecturesTitleLabels, List<Label> upcomingLecturesTypeLabels, List<Label> upcomingLecturesTimeLabels)
+        private void LoadUpcomingEventsCard(List<Lecture> lectureList, List<AspImageButton> upcomingLecturesImages, List<Label> upcomingLecturesTitleLabels, List<Label> upcomingLecturesTypeLabels, List<Label> upcomingLecturesTimeLabels)
         {
             if (lectureList != null)
             {
@@ -122,7 +135,7 @@ namespace Xispirito.View.Events
             }
         }
 
-        private void EventPageRedirect(int eventId)
+        private void EventRegistryRedirect(int eventId)
         {
             Response.Redirect("~/View/Registry/Registry.aspx?event=" + eventId);
         }
@@ -135,7 +148,7 @@ namespace Xispirito.View.Events
                 if (upcomingLectures[index] != null)
                 {
                     int eventId = upcomingLectures[index].GetId();
-                    EventPageRedirect(eventId);
+                    EventRegistryRedirect(eventId);
                 }
             }
         }
@@ -148,7 +161,7 @@ namespace Xispirito.View.Events
                 if (upcomingLectures[index] != null)
                 {
                     int eventId = upcomingLectures[index].GetId();
-                    EventPageRedirect(eventId);
+                    EventRegistryRedirect(eventId);
                 }
             }
         }
@@ -161,7 +174,7 @@ namespace Xispirito.View.Events
                 if (upcomingLectures[index] != null)
                 {
                     int eventId = upcomingLectures[index].GetId();
-                    EventPageRedirect(eventId);
+                    EventRegistryRedirect(eventId);
                 }
             }
         }
@@ -174,7 +187,7 @@ namespace Xispirito.View.Events
                 if (upcomingLectures[index] != null)
                 {
                     int eventId = upcomingLectures[index].GetId();
-                    EventPageRedirect(eventId);
+                    EventRegistryRedirect(eventId);
                 }
             }
         }
@@ -187,7 +200,7 @@ namespace Xispirito.View.Events
                 if (upcomingLectures[index] != null)
                 {
                     int eventId = upcomingLectures[index].GetId();
-                    EventPageRedirect(eventId);
+                    EventRegistryRedirect(eventId);
                 }
             }
         }
@@ -200,7 +213,7 @@ namespace Xispirito.View.Events
                 if (upcomingLectures[index] != null)
                 {
                     int eventId = upcomingLectures[index].GetId();
-                    EventPageRedirect(eventId);
+                    EventRegistryRedirect(eventId);
                 }
             }
         }
@@ -213,7 +226,7 @@ namespace Xispirito.View.Events
                 if (upcomingLectures[index] != null)
                 {
                     int eventId = upcomingLectures[index].GetId();
-                    EventPageRedirect(eventId);
+                    EventRegistryRedirect(eventId);
                 }
             }
         }
@@ -226,7 +239,7 @@ namespace Xispirito.View.Events
                 if (upcomingLectures[index] != null)
                 {
                     int eventId = upcomingLectures[index].GetId();
-                    EventPageRedirect(eventId);
+                    EventRegistryRedirect(eventId);
                 }
             }
         }
@@ -239,7 +252,7 @@ namespace Xispirito.View.Events
                 if (upcomingLectures[index] != null)
                 {
                     int eventId = upcomingLectures[index].GetId();
-                    EventPageRedirect(eventId);
+                    EventRegistryRedirect(eventId);
                 }
             }
         }
@@ -252,7 +265,190 @@ namespace Xispirito.View.Events
                 if (upcomingLectures[index] != null)
                 {
                     int eventId = upcomingLectures[index].GetId();
-                    EventPageRedirect(eventId);
+                    EventRegistryRedirect(eventId);
+                }
+            }
+        }
+
+        private List<AspImageButton> GetAreaImages()
+        {
+            List<AspImageButton> areaImages = new List<AspImageButton>();
+            areaImages.Add(AreaEventImage1);
+            areaImages.Add(AreaEventImage2);
+            areaImages.Add(AreaEventImage3);
+            areaImages.Add(AreaEventImage4);
+            areaImages.Add(AreaEventImage5);
+            areaImages.Add(AreaEventImage6);
+            areaImages.Add(AreaEventImage7);
+            areaImages.Add(AreaEventImage8);
+            areaImages.Add(AreaEventImage9);
+            areaImages.Add(AreaEventImage10);
+
+            return areaImages;
+        }
+
+        private List<Label> GetAreaTitleLabels()
+        {
+            List<Label> areaTitleLabels = new List<Label>();
+            areaTitleLabels.Add(TitleArea1);
+            areaTitleLabels.Add(TitleArea2);
+            areaTitleLabels.Add(TitleArea3);
+            areaTitleLabels.Add(TitleArea4);
+            areaTitleLabels.Add(TitleArea5);
+            areaTitleLabels.Add(TitleArea6);
+            areaTitleLabels.Add(TitleArea7);
+            areaTitleLabels.Add(TitleArea8);
+            areaTitleLabels.Add(TitleArea9);
+            areaTitleLabels.Add(TitleArea10);
+
+            return areaTitleLabels;
+        }
+
+        private void LoadAreaEventsCard(List<Area> areaList, List<AspImageButton> areaImages, List<Label> areaTitleLabels)
+        {
+            if (areaList != null)
+            {
+                int index = 0;
+                foreach (Area area in areaList)
+                {
+                    areaImages[index].ImageUrl = area.GetPicture();
+                    areaTitleLabels[index].Text = area.GetName();
+                    index++;
+                }
+            }
+        }
+
+        private void EventPageListRedirect(int areaId)
+        {
+            //Response.Redirect("~/View/Registry/Registry.aspx?event=" + areaId);
+        }
+
+        protected void AreaEvent1_Click(object sender, ImageClickEventArgs e)
+        {
+            int index = 0;
+            if (areaLectures.Count() > index)
+            {
+                if (areaLectures[index] != null)
+                {
+                    int areaId = areaLectures[index].GetId();
+                    EventPageListRedirect(areaId);
+                }
+            }
+        }
+
+        protected void AreaEvent2_Click(object sender, ImageClickEventArgs e)
+        {
+            int index = 1;
+            if (areaLectures.Count() > index)
+            {
+                if (areaLectures[index] != null)
+                {
+                    int areaId = areaLectures[index].GetId();
+                    EventPageListRedirect(areaId);
+                }
+            }
+        }
+
+        protected void AreaEvent3_Click(object sender, ImageClickEventArgs e)
+        {
+            int index = 2;
+            if (areaLectures.Count() > index)
+            {
+                if (areaLectures[index] != null)
+                {
+                    int areaId = areaLectures[index].GetId();
+                    EventPageListRedirect(areaId);
+                }
+            }
+        }
+
+        protected void AreaEvent4_Click(object sender, ImageClickEventArgs e)
+        {
+            int index = 3;
+            if (areaLectures.Count() > index)
+            {
+                if (areaLectures[index] != null)
+                {
+                    int areaId = areaLectures[index].GetId();
+                    EventPageListRedirect(areaId);
+                }
+            }
+        }
+
+        protected void AreaEvent5_Click(object sender, ImageClickEventArgs e)
+        {
+            int index = 4;
+            if (areaLectures.Count() > index)
+            {
+                if (areaLectures[index] != null)
+                {
+                    int areaId = areaLectures[index].GetId();
+                    EventPageListRedirect(areaId);
+                }
+            }
+        }
+
+        protected void AreaEvent6_Click(object sender, ImageClickEventArgs e)
+        {
+            int index = 5;
+            if (areaLectures.Count() > index)
+            {
+                if (areaLectures[index] != null)
+                {
+                    int areaId = areaLectures[index].GetId();
+                    EventPageListRedirect(areaId);
+                }
+            }
+        }
+
+        protected void AreaEvent7_Click(object sender, ImageClickEventArgs e)
+        {
+            int index = 6;
+            if (areaLectures.Count() > index)
+            {
+                if (areaLectures[index] != null)
+                {
+                    int areaId = areaLectures[index].GetId();
+                    EventPageListRedirect(areaId);
+                }
+            }
+        }
+
+        protected void AreaEvent8_Click(object sender, ImageClickEventArgs e)
+        {
+            int index = 7;
+            if (areaLectures.Count() > index)
+            {
+                if (areaLectures[index] != null)
+                {
+                    int areaId = areaLectures[index].GetId();
+                    EventPageListRedirect(areaId);
+                }
+            }
+        }
+
+        protected void AreaEvent9_Click(object sender, ImageClickEventArgs e)
+        {
+            int index = 8;
+            if (areaLectures.Count() > index)
+            {
+                if (areaLectures[index] != null)
+                {
+                    int areaId = areaLectures[index].GetId();
+                    EventPageListRedirect(areaId);
+                }
+            }
+        }
+
+        protected void AreaEvent10_Click(object sender, ImageClickEventArgs e)
+        {
+            int index = 9;
+            if (areaLectures.Count() > index)
+            {
+                if (areaLectures[index] != null)
+                {
+                    int areaId = areaLectures[index].GetId();
+                    EventPageListRedirect(areaId);
                 }
             }
         }

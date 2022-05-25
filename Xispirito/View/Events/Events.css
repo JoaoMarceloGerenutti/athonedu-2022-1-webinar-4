@@ -136,7 +136,7 @@ section.find-events {
 }
 
 /*Listagem de eventos*/
-.events-list {
+.events-list, .more-events {
     margin-top: 3rem;
 }
 
@@ -235,8 +235,38 @@ cards {
 }
 
 .area-carousel .card {
-    height: 100%;
+    height: 24rem;
 }
+
+.area-carousel .card-title {
+    text-align: center;
+    margin: 10px;
+}
+
+.area-carousel .text--medium {
+    font-size: 1.9rem;
+    line-height: 2.6rem;
+}
+
+.more-events {
+    display: flex;
+    justify-content: center;
+}
+
+.button-all-events {
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: none;
+    color: white;
+    background-color: #161917;
+    font-size: 1.8rem;
+    line-height: 2.6rem;
+}
+
+    .button-all-events:hover {
+        cursor: pointer;
+        transform: translateY(-2px);
+    }
 
 #alttext-container.card-image {
     display: flex;
