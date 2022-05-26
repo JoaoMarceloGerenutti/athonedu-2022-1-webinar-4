@@ -22,7 +22,7 @@
                             <img src="\View\Images\Xispirito.png" alt="Xispirito" />
                         </li>
                         <li class="logo">
-                            <a href="../Home/Home.aspx"><b>Xispirito</b></a>
+                            <a href="/View/Home/Home.aspx"><b>Xispirito</b></a>
                         </li>
                         <li class="athon">
                             <a href="https://athonedu.com.br">Powered by Athon</a>
@@ -41,7 +41,7 @@
                                 <a href="#">Ajuda</a>
                             </li>
                             <li>
-                                <a href="../Events/Events.aspx" class="header-lecture">Econtrar Palestra</a>
+                                <a href="/View/Events/Events.aspx" class="header-lecture">Econtrar Palestra</a>
                             </li>
                             <li>
                                 <asp:LoginView ID="MasterLoginView" runat="server">
@@ -86,11 +86,11 @@
                         </p>
                     </div>
                     <div>
-                        <a class="text--medium" href="../Login/Login.aspx">Fazer Cadastro
+                        <a class="text--medium" href="/View/Login/Login.aspx">Fazer Cadastro
                         </a>
                     </div>
                     <div>
-                        <a class="text--medium" href="../Events/Events.aspx">Encontrar um Evento
+                        <a class="text--medium" href="/View/Events/Events.aspx">Encontrar um Evento
                         </a>
                     </div>
                     <div>

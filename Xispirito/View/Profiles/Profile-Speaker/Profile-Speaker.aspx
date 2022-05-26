@@ -12,8 +12,6 @@
         <link rel="stylesheet" href="Profile-speaker.css" />
         <link rel="stylesheet" href="print.css" media="print" />
 
-        <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-        
         <!-- Bootstrap Start -->
 
             <!-- CSS only -->
@@ -25,18 +23,16 @@
             integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 
         <!-- Bootstrap End -->
-
-        <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
-        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     </head>
     <body>
         <section class="profile">
             <div class="profile-label">
-                <h3>Editar/Cadastrar Palestrante</h3>
+                <h3>Editar Perfil de Palestrante</h3>
             </div>
             <div class="profile-form">
                 <div class="profile-form-left">
-                    <input class="input-text" id="name_speaker" placeholder="Informe o Nome" type="text"/>
+                    <asp:TextBox ID="NameSpeaker" runat="server" class="input-text" placeholder="Informe o Nome"></asp:TextBox>
+                    <%--<input class="input-text" id="name_speaker" placeholder="Informe o Nome" type="text"/>--%>
                 </div>
                 <div class="profile-form-left">
                     <input class="input-text" id="email_speaker" placeholder="Informe o E-mail"  type="text"/>
