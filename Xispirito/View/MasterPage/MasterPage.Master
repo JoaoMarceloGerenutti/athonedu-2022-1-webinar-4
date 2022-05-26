@@ -22,7 +22,7 @@
                             <img src="\View\Images\Xispirito.png" alt="Xispirito" />
                         </li>
                         <li class="logo">
-                            <a href="../Home/Home.aspx"><b>Xispirito</b></a>
+                            <a href="/View/Home/Home.aspx"><b>Xispirito</b></a>
                         </li>
                         <li class="athon">
                             <a href="https://athonedu.com.br">Powered by Athon</a>
