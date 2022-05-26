@@ -320,9 +320,6 @@ namespace Xispirito.View.Events
 
         private void EventPageListRedirect(int areaId)
         {
-            //TEST
-            Response.Redirect("~/View/Profiles/Profile-Speaker/Profile-Speaker.aspx");
-
             //Response.Redirect("~/View/Registry/Registry.aspx?event=" + areaId);
         }
 

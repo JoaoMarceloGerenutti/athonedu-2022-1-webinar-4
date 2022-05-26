@@ -41,7 +41,7 @@
                                 <a href="#">Ajuda</a>
                             </li>
                             <li>
-                                <a href="../Events/Events.aspx" class="header-lecture">Econtrar Palestra</a>
+                                <a href="/View/Events/Events.aspx" class="header-lecture">Econtrar Palestra</a>
                             </li>
                             <li>
                                 <asp:LoginView ID="MasterLoginView" runat="server">
@@ -86,11 +86,11 @@
                         </p>
                     </div>
                     <div>
-                        <a class="text--medium" href="../Login/Login.aspx">Fazer Cadastro
+                        <a class="text--medium" href="/View/Login/Login.aspx">Fazer Cadastro
                         </a>
                     </div>
                     <div>
-                        <a class="text--medium" href="../Events/Events.aspx">Encontrar um Evento
+                        <a class="text--medium" href="/View/Events/Events.aspx">Encontrar um Evento
                         </a>
                     </div>
                     <div>
