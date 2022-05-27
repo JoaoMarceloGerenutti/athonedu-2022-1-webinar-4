@@ -25,9 +25,12 @@ namespace Xispirito.View.Registry
                 GetEventInformation(lecture.GetId());
             }
 
-            if (true)
+            if (!IsPostBack)
             {
-
+                if (VerifyUserAlreadyRegistered())
+                {
+                    EventSubscribe.Text = "Cancelar Inscrição";
+                }
             }
         }
 
@@ -74,14 +77,18 @@ namespace Xispirito.View.Registry
 
             if (objViewer != null)
             {
+                ViewerLecture objViewerLecture = new ViewerLecture(objViewer.GetEmail(), lecture.GetId());
                 if (VerifyUserAlreadyRegistered() == false)
                 {
-                    viewerLectureBAL.RegisterUserToLecture(objViewer.GetEmail(), lecture.GetId());
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Usuário Cadastrado com Sucesso!", "alert('Cadastro a Palestra foi efetuada com sucesso!');", true);
+                    viewerLectureBAL.RegisterUserToLecture(objViewerLecture.GetViewerEmail(), objViewerLecture.GetLectureId());
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Usuário Cadastrado com Sucesso!", "alert('Cadastro a Palestra efetuado com sucesso!');", true);
+                    EventSubscribe.Text = "Cancelar Inscrição";
                 }
                 else
                 {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Usuário Já Cadastrado!", "alert('Você já está Cadastrado a essa Palestra!');", true);
+                    viewerLectureBAL.DeleteUserSubscription(objViewerLecture.GetViewerEmail(), objViewerLecture.GetLectureId());
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Inscrição Cancelada!", "alert('Sua Inscrição a Palestra foi Cancelada!');", true);
+                    EventSubscribe.Text = "Inscrever-se";
                 }
             }
             else

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Xispirito.DAL;
+using Xispirito.Models;
 
 namespace Xispirito.Controller
 {
@@ -23,8 +24,17 @@ namespace Xispirito.Controller
         public bool VerifyUserAlreadyRegistered(string viewerEmail, int lectureId)
         {
             bool userAlreadyRegistered = false;
-            userAlreadyRegistered = viewerLectureDAL.VerifyUserAlreadyRegistered(viewerEmail, lectureId);
+
+            ViewerLecture objViewerLecture = new ViewerLecture(viewerEmail, lectureId);
+            userAlreadyRegistered = viewerLectureDAL.VerifyUserAlreadyRegistered(objViewerLecture);
+
             return userAlreadyRegistered;
+        }
+
+        public void DeleteUserSubscription(string viewerEmail, int lectureId)
+        {
+            ViewerLecture objViewerLecture = new ViewerLecture(viewerEmail, lectureId);
+            viewerLectureDAL.DeleteUserSubscription(objViewerLecture);
         }
     }
 }

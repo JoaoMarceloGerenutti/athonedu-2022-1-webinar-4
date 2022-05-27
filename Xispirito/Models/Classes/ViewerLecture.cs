@@ -10,6 +10,11 @@ namespace Xispirito.Models
         private string ViewerEmail { get; set; }
         private int LectureId { get; set; }
 
+        public ViewerLecture()
+        {
+
+        }
+
         public ViewerLecture(string viewerEmail, int lectureId)
         {
             ViewerEmail = viewerEmail;
