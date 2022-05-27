@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/MasterPage/MasterPage.Master" AutoEventWireup="true" CodeBehind="Profile-Speaker.aspx.cs" Inherits="Xispirito.View.Profiles.Profile_Speaker.Profile_Speaker" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/MasterPage/MasterPage.Master" AutoEventWireup="true" CodeBehind="Speaker.aspx.cs" Inherits="Xispirito.View.Profiles.Profile_Speaker.Profile_Speaker" %>
 <asp:Content ID="HeaderFooter" ContentPlaceHolderID="HeaderFooter" runat="server">
 </asp:Content>
 <asp:Content ID="Content" ContentPlaceHolderID="Content" runat="server">
@@ -9,7 +9,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>Eventos - Xispirito </title>
 
-        <link rel="stylesheet" href="Profile-speaker.css" />
+        <link rel="stylesheet" href="Speaker.css" />
         <link rel="stylesheet" href="print.css" media="print" />
 
     </head>
@@ -29,11 +29,10 @@
                     <asp:TextBox ID="ProfissionSpeaker" runat="server" class="input-text" placeholder="Informe a Profissão" />
                 </div>
                 <div class="profile-form-left">
-                    <asp:TextBox ID="PasswordSpeaker" runat="server" class="input-text" placeholder="Informe a Senha" TextMode="Password" />
                     <h4 style="color: white;">Informe a senha:</h4>
                 </div>
                 <div class="profile-form-left">
-                    <input class="input-text" id="password_speaker" placeholder="Informe a Senha"  type="password"/>
+                    <asp:TextBox ID="PasswordSpeaker" runat="server" class="input-text" placeholder="Informe a Senha" TextMode="Password" />
                 </div>
                 <div class="profile-form-left">
                     <asp:TextBox ID="RepeatPasswordSpeaker" runat="server" class="input-text" placeholder="Informe a Senha Novamente" TextMode="Password" />

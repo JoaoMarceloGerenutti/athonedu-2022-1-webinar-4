@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/MasterPage/MasterPage.Master" AutoEventWireup="true" CodeBehind="Profile-Viewer.aspx.cs" Inherits="Xispirito.View.Profile_Viewer.Profile_Viewer" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/MasterPage/MasterPage.Master" AutoEventWireup="true" CodeBehind="Viewer.aspx.cs" Inherits="Xispirito.View.Profile_Viewer.Profile_Viewer" %>
 <asp:Content ID="HeaderFooter" ContentPlaceHolderID="HeaderFooter" runat="server">
 </asp:Content>
 <asp:Content ID="Content" ContentPlaceHolderID="Content" runat="server">
@@ -9,13 +9,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>Eventos - Xispirito </title>
 
-        <link rel="stylesheet" href="Profile-Viewer.css" />
+        <link rel="stylesheet" href="Viewer.css" />
         <link rel="stylesheet" href="print.css" media="print" />
-
-        <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-
-        <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
-        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     </head>
     <body>
         <section class="profile">
