@@ -17,7 +17,7 @@ namespace Xispirito.DAL
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
 
-            string sql = "INSERT INTO Lecture VALUES (@nm_lecture, @pt_lecture, @tm_lecture, dt_lecture, dc_lecture, mod_lecture, rt_lecture, lt_lecture, isActive)";
+            string sql = "INSERT INTO Lecture VALUES (@nm_lecture, @pt_lecture, @tm_lecture, @dt_lecture, @dc_lecture, @adr_lecture, @mod_lecture, @rt_lecture, @lt_lecture, @isActive)";
 
             SqlCommand cmd = new SqlCommand(sql, conn);
 
@@ -27,6 +27,7 @@ namespace Xispirito.DAL
             cmd.Parameters.AddWithValue("@dt_lecture", objLecture.GetDate());
             cmd.Parameters.AddWithValue("@dc_lecture", objLecture.GetDescription());
             cmd.Parameters.AddWithValue("@mod_lecture", objLecture.GetModality());
+            cmd.Parameters.AddWithValue("@adr_lecture", objLecture.GetAddress());
             cmd.Parameters.AddWithValue("@rt_lecture", objLecture.GetIsLimited());
             cmd.Parameters.AddWithValue("@lt_lecture", objLecture.GetLimit());
             cmd.Parameters.AddWithValue("@isActive", objLecture.GetIsActive());
@@ -60,6 +61,7 @@ namespace Xispirito.DAL
                     Convert.ToDateTime(dr["dt_lecture"]),
                     dr["dc_lecture"].ToString(),
                     Enum.GetName(typeof(Modality), Convert.ToInt32(dr["mod_lecture"])),
+                    dr["adr_lecture"].ToString(),
                     Convert.ToBoolean(dr["rt_lecture"]),
                     Convert.ToInt32(dr["lt_lecture"]),
                     Convert.ToBoolean(dr["isActive"])
@@ -99,6 +101,7 @@ namespace Xispirito.DAL
                             Convert.ToDateTime(dr["dt_lecture"]),
                             dr["dc_lecture"].ToString(),
                             Enum.GetName(typeof(Modality), Convert.ToInt32(dr["mod_lecture"])),
+                            dr["adr_lecture"].ToString(),
                             Convert.ToBoolean(dr["rt_lecture"]),
                             Convert.ToInt32(dr["lt_lecture"]),
                             Convert.ToBoolean(dr["isActive"])

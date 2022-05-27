@@ -16,7 +16,7 @@
 
     <body>
         <div class="background-image">
-                <asp:Image ID="BackgroundEventImage" runat="server" AlternateText="Imagem não encontrada" />
+            <asp:Image ID="BackgroundEventImage" runat="server" AlternateText="Imagem não encontrada" />
         </div>
         <section class="event">
             <div class="form-body">
@@ -32,13 +32,18 @@
                             <asp:Label ID="EventTitle" runat="server" class="title-text"></asp:Label>
                         </div>
 
-                        <div class="wrapper-time-type">
-                            <div class="event-time">
-                                <asp:Label ID="EventTime" runat="server" class="time-text"></asp:Label>
-                            </div>
+                        <div class="wrapper-type-address">
                             <div class="event-type">
                                 <asp:Button ID="EventType" runat="server" class="type-text" />
                             </div>
+
+                            <div class="event-address">
+                                <asp:Label ID="EventAddress" runat="server" Text="address-text"></asp:Label>
+                            </div>
+                        </div>
+
+                        <div class="event-time">
+                            <asp:Label ID="EventTime" runat="server" class="time-text"></asp:Label>
                         </div>
                     </div>
                     <div class="wrapper-registry">
@@ -48,15 +53,15 @@
             </div>
 
             <div class="form-body">
-                    <div class="event-description">
-                        <div class="event-description-title">
-                            <asp:Label ID="EventDescriptionTitle" runat="server" class="description-title-text" Text="Sobre a Palestra"></asp:Label>
-                        </div>
-                        <div class="event-description-text">
-                            <asp:Label ID="EventDescription" runat="server" class="description-text"></asp:Label>
-                        </div>
+                <div class="event-description">
+                    <div class="event-description-title">
+                        <asp:Label ID="EventDescriptionTitle" runat="server" class="description-title-text" Text="Sobre a Palestra"></asp:Label>
+                    </div>
+                    <div class="event-description-text">
+                        <asp:Label ID="EventDescription" runat="server" class="description-text"></asp:Label>
                     </div>
                 </div>
+            </div>
         </section>
     </body>
     </html>

@@ -42,15 +42,6 @@ namespace Xispirito.View.Registry
         protected global::System.Web.UI.WebControls.Label EventTitle;
 
         /// <summary>
-        /// Controle EventTime.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label EventTime;
-
-        /// <summary>
         /// Controle EventType.
         /// </summary>
         /// <remarks>
@@ -58,6 +49,24 @@ namespace Xispirito.View.Registry
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button EventType;
+
+        /// <summary>
+        /// Controle EventAddress.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label EventAddress;
+
+        /// <summary>
+        /// Controle EventTime.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label EventTime;
 
         /// <summary>
         /// Controle EventSubscribe.

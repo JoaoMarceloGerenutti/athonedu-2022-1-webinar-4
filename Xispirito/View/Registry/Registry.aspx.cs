@@ -34,11 +34,15 @@ namespace Xispirito.View.Registry
         {
             BackgroundEventImage.ImageUrl = lecture.GetPicture();
             EventImage.ImageUrl = lecture.GetPicture();
+
             EventTitle.Text = lecture.GetName();
-            EventTime.Text = lecture.GetDate().ToString("dd/MM/yyyy") + " - As " + lecture.GetDate().ToString("HH:mm") + " (GMT-3) - Duração de " + lecture.GetTime().ToString() + " Minutos";
 
             EventType.Text = lecture.GetModality();
             EventType.BackColor = ModalityColor.GetModalityColor(lecture.GetModality());
+
+            EventAddress.Text = lecture.GetAddress();
+
+            EventTime.Text = lecture.GetDate().ToString("dd/MM/yyyy") + " - As " + lecture.GetDate().ToString("HH:mm") + " (GMT-3) - Duração de " + lecture.GetTime().ToString() + " Minutos";
 
             EventDescription.Text = lecture.GetDescription();
         }
