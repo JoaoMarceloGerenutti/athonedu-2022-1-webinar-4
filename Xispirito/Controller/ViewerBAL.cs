@@ -52,6 +52,14 @@ namespace Xispirito.Controller
             return accountFound;
         }
 
+        public Viewer GetAccount(string email)
+        {
+            Viewer objViewer = new Viewer();
+            objViewer = viewerDAL.SearchEmail(email);
+
+            return objViewer;
+        }
+
         public Viewer GetAccount(string email, string password)
         {
             Viewer objViewer = new Viewer();

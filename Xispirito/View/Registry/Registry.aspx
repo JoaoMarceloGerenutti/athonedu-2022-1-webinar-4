@@ -47,7 +47,7 @@
                         </div>
                     </div>
                     <div class="wrapper-registry">
-                        <asp:Button ID="EventSubscribe" runat="server" class="registry-button" Text="Inscrever-se" />
+                        <asp:Button ID="EventSubscribe" runat="server" class="registry-button" Text="Inscrever-se" OnClick="Subscribe_Click" />
                     </div>
                 </div>
             </div>

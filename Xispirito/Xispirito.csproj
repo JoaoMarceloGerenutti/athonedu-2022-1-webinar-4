@@ -138,12 +138,15 @@
     <Compile Include="Controller\LectureBAL.cs" />
     <Compile Include="Controller\SpeakerBAL.cs" />
     <Compile Include="Controller\ViewerBAL.cs" />
+    <Compile Include="Controller\ViewerLectureBAL.cs" />
     <Compile Include="DAL\AdministratorDAL.cs" />
     <Compile Include="DAL\AreaDAL.cs" />
     <Compile Include="DAL\LectureDAL.cs" />
     <Compile Include="DAL\SpeakerDAL.cs" />
+    <Compile Include="DAL\ViewerLectureDAL.cs" />
     <Compile Include="Models\Classes\Cryptography.cs" />
     <Compile Include="Models\Classes\ModalityColor.cs" />
+    <Compile Include="Models\Classes\ViewerLecture.cs" />
     <Compile Include="Models\Interfaces\IDatabase.cs" />
     <Compile Include="DAL\ViewerDAL.cs" />
     <Compile Include="Models\Classes\Administrator.cs" />
