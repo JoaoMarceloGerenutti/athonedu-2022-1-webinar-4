@@ -15,12 +15,19 @@ namespace Xispirito.View.Profile_Speaker
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            Speaker objSpeaker = new Speaker();
+            objSpeaker = LoadSpeakerProfile();
 
+            NameSpeaker.Text = objSpeaker.GetName();
+            EmailSpeaker.Text = objSpeaker.GetEmail();
+            ProfissionSpeaker.Text = objSpeaker.GetSpeakerProfession();
+            ImageSpeaker.ImageUrl = objSpeaker.GetPicture();
         }
 
         private Speaker LoadSpeakerProfile()
         {
             Speaker objSpeaker = new Speaker();
+            objSpeaker = speakerBAL.GetAccount(User.Identity.Name);
 
             return objSpeaker;
         }

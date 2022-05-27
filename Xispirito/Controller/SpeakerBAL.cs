@@ -44,6 +44,14 @@ namespace Xispirito.Controller
             return accountFound;
         }
 
+        public Speaker GetAccount(string email)
+        {
+            Speaker objSpeaker = new Speaker();
+            objSpeaker = speakerDAL.SearchEmail(email);
+
+            return objSpeaker;
+        }
+
         public Speaker GetAccount(string email, string password)
         {
             Speaker objSpeaker = new Speaker();

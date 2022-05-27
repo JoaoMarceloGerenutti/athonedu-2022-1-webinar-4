@@ -130,6 +130,7 @@
     <Content Include="View\Images\Test\Direito.png" />
     <Content Include="View\Images\Test\Empreendedorismo.png" />
     <Content Include="View\Images\Test\Engenharias.png" />
+    <Content Include="View\Images\Test\Kleber.jpg" />
     <Content Include="View\Images\Test\TI.png" />
     <Content Include="View\MasterPage\menu.js" />
     <Content Include="View\Home\print.css" />

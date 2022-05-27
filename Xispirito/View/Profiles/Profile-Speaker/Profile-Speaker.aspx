@@ -31,23 +31,22 @@
             </div>
             <div class="profile-form">
                 <div class="profile-form-left">
-                    <asp:TextBox ID="NameSpeaker" runat="server" class="input-text" placeholder="Informe o Nome"></asp:TextBox>
-                    <%--<input class="input-text" id="name_speaker" placeholder="Informe o Nome" type="text"/>--%>
+                    <asp:TextBox ID="NameSpeaker" runat="server" class="input-text" placeholder="Informe o Nome" />
                 </div>
                 <div class="profile-form-left">
-                    <input class="input-text" id="email_speaker" placeholder="Informe o E-mail"  type="text"/>
+                    <asp:TextBox ID="EmailSpeaker" runat="server" class="input-text" placeholder="Informe o E-mail" ReadOnly="True" />
                 </div>
                 <div class="profile-form-left">
-                    <input class="input-text" id="profissao_speaker" placeholder="Informe a Profissão"  type="text"/>
+                    <asp:TextBox ID="ProfissionSpeaker" runat="server" class="input-text" placeholder="Informe a Profissão" />
                 </div>
                 <div class="profile-form-left">
-                    <input class="input-text" id="password_speaker" placeholder="Informe a Senha"  type="password"/>
+                    <asp:TextBox ID="PasswordSpeaker" runat="server" class="input-text" placeholder="Informe a Senha" TextMode="Password" />
                 </div>
                 <div class="profile-form-left">
-                    <input class="input-text" id="password_speaker_confirm" placeholder="Informe a Senha Novamente"  type="password"/>
+                    <asp:TextBox ID="RepeatPasswordSpeaker" runat="server" class="input-text" placeholder="Informe a Senha Novamente" TextMode="Password" />
                 </div>
                 <div class="profile-form-pic-speaker" shape="round">
-                    <img id="speaker-photo"/>
+                    <asp:Image ID="ImageSpeaker" runat="server" />
                 </div>
                 <div class="profile-form-set-photo-button">
                     <button class="chose-photo btn btn-primary fs-4">
