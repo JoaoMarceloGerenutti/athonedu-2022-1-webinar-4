@@ -1,9 +1,19 @@
-﻿body {
+﻿@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro");
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    outline: 0;
+}
+
+body {
+    font-size: 1.6rem;
 }
 
 .profile {
     background: #181a1b;
-    height: 75vh;
+    height: 80vh;
     padding: 2rem 8rem;
     font-size: 1.6rem;
 }
@@ -32,42 +42,61 @@ h4 {
 
 .profile-form-pic-speaker {
     grid-column-start: 2;
-    grid-row: 1 / 3;
-    width: 20%;
+    grid-row: 1 / 4;
+    width: 30%;
     border: .2rem solid black;
     border-color: rgb(111, 103, 91);
     border-radius: 4rem;
 }
 
 .input-text {
-    width: 25rem;
-    padding: 1rem;
+    width: 35rem;
+    padding: 1.5rem;
     border: .1rem solid;
-    border-radius: 1rem;
+    border-radius: 1.2rem;
+    font-size: 1.7rem;
 }
 
 .profile-form-set-photo-button {
     grid-column-start: 2;
-    grid-row-start: 4;
+    grid-row-start: 5;
 }
 
 .profile-form-retire-photo-button {
     grid-column-start: 2;
-    grid-row-start: 5;
+    grid-row-start: 6;
 }
 
 .profile-form-submit {
     display: flex;
     justify-content: center;
-    margin-top: 4rem;
+    margin-top: 7rem;
 }
 
 .chose-photo {
+    padding: 1rem;
+    border: 0.1rem solid #9c9cea;
+    border-radius: .5rem;
     background: #0250c4 !important;
+    color: white;
+    font-size: 1.8rem !important;
+}
+
+.delete-photo {
+    padding: 1rem 2.2rem;
+    border-radius: .5rem;
+
+    background: #6c757d;
+    color: white;
+    font-size: 1.8rem !important;
 }
 
 .submit-button {
-    background: #146c43 !important;
-    padding: .5rem 2.5rem;
+    padding: 1rem 3.5rem;
     border: .1rem solid #20af6d !important;
+    border-radius: .5rem;
+
+    background: #146c43 !important;
+    color: white;
+    font-size: 1.8rem;
 }
