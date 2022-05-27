@@ -7,7 +7,7 @@
 // </gerado automaticamente>
 //------------------------------------------------------------------------------
 
-namespace Xispirito.View.Profile_Speaker
+namespace Xispirito.View.Profiles.Profile_Speaker
 {
 
 
