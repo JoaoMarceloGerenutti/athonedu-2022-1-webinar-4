@@ -20,7 +20,7 @@
     <body>
         <section class="profile">
             <div class="profile-label">
-                <h3>Editar/Cadastrar Usuário</h3>
+                <h3 style="color: white;">Editar/Cadastrar Usuário</h3>
             </div>
             <div class="profile-form">
                 <div class="profile-form-left">
