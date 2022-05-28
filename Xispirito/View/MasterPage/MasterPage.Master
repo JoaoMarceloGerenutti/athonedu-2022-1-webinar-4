@@ -8,24 +8,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title></title>
     <link rel="stylesheet" href="MasterPage-responsive.css" media="screen and (max-width: 870px)" />
-    <link rel="stylesheet" href="MasterPage-style.css" />
+    <link rel="stylesheet" href="MasterPage.css" />
     <asp:ContentPlaceHolder ID="HeaderFooter" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
     <form id="frmMasterPage" runat="server">
         <header>
-            <div class="container">
+            <div class="header">
                 <nav>
-                    <ul>
-                        <li>
-                            <img src="\View\Images\Xispirito.png" alt="Xispirito" />
+                    <ul class="header-logo">
+                        <li class="header-li">
+                            <img class="header-logo-li-image" src="\View\Images\Xispirito.png" alt="Xispirito" />
                         </li>
-                        <li class="logo">
-                            <a href="/View/Home/Home.aspx"><b>Xispirito</b></a>
+                        <li class="header-logo header-li logo-xispirito">
+                            <a class="logo-xispirito-image" href="/View/Home/Home.aspx"><b>Xispirito</b></a>
                         </li>
-                        <li class="athon">
-                            <a href="https://athonedu.com.br">Powered by Athon</a>
+                        <li class="header-logo header-li logo-xispirito">
+                            <a class="label-powered" href="https://athonedu.com.br">Powered by Athon</a>
                         </li>
                     </ul>
                 </nav>
@@ -36,14 +36,20 @@
                         <div class="three"></div>
                     </div>
                     <nav>
-                        <ul>
-                            <li>
-                                <a href="#">Ajuda</a>
+                        <ul class="header-logo">
+                            <li class="header-li">
+                                <a class="header-buttons" href="#">Ajuda</a>
                             </li>
-                            <li>
-                                <a href="/View/Events/Events.aspx" class="header-lecture">Econtrar Palestra</a>
+                            <li class="header-li">
+                                <a class="header-buttons" href="/View/Events/Events.aspx">Econtrar Palestra</a>
                             </li>
-                            <li>
+                            <li class="header-li">
+                                <a class="header-buttons" href="/View/Events/Events.aspx">Certificados</a>
+                            </li>
+                            <li class="header-li">
+                                <img class="image-profile" src="\View\Images\Test\Lecture2.png" href="/View/Events/Events.aspx" />
+                            </li>
+                            <li class="header-li">
                                 <asp:LoginView ID="MasterLoginView" runat="server">
                                     <AnonymousTemplate>
                                     </AnonymousTemplate>
@@ -51,7 +57,7 @@
                                         <%--<asp:LoginName ID="MasterLoginName" runat="server" />--%>
                                     </LoggedInTemplate>
                                 </asp:LoginView>
-                                <asp:LoginStatus ID="MasterLoginStatus" runat="server" LogoutAction="RedirectToLoginPage" LogoutText="Sair" LoginText="Entrar" LogoutPageUrl="~/View/Login/Login.aspx" />
+                                <asp:LoginStatus class="header-buttons" ID="MasterLoginStatus" runat="server" LogoutAction="RedirectToLoginPage" LogoutText="Sair" LoginText="Entrar" LogoutPageUrl="~/View/Login/Login.aspx" />
                             </li>
                         </ul>
                     </nav>
