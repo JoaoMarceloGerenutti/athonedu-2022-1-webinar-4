@@ -107,10 +107,8 @@
                 </div>
             </div>
 
-
-
             <div class="more-events">
-                <asp:Button ID="AllEvents" runat="server" Text="Ver todos os Eventos" CssClass="button-all-events" />
+                <asp:Button ID="AllEvents" runat="server" Text="Ver todos os Eventos" CssClass="button-all-events" PostBackUrl="~/View/EventsSearch/EventsSearch.aspx" />
             </div>
         </section>
 

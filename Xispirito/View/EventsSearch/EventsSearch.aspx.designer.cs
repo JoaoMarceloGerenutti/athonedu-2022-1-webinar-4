@@ -7,20 +7,29 @@
 // </gerado automaticamente>
 //------------------------------------------------------------------------------
 
-namespace Xispirito.View.HomeWithMaster
+namespace Xispirito.View.EventsSearch
 {
 
 
-    public partial class Home
+    public partial class EventsSearch
     {
 
         /// <summary>
-        /// Controle ListViewUpcomingEvents.
+        /// Controle EventSearch.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView ListViewUpcomingEvents;
+        protected global::System.Web.UI.WebControls.ImageButton EventSearch;
+
+        /// <summary>
+        /// Controle ListViewAllEvents.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListView ListViewAllEvents;
     }
 }

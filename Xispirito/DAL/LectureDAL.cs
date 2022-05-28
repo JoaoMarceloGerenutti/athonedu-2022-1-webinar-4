@@ -72,7 +72,7 @@ namespace Xispirito.DAL
             return objLecture;
         }
 
-        public List<Lecture> UpcomingLecturesList(int lectureQuantity)
+        public List<Lecture> UpcomingLecturesList()
         {
             List<Lecture> lectureList = null;
 
@@ -89,7 +89,134 @@ namespace Xispirito.DAL
             {
                 lectureList = new List<Lecture>();
 
-                for (int i = 0; i < lectureQuantity; i++)
+                while (dr.Read())
+                {
+                    Lecture objLecture = new Lecture(
+                        Convert.ToInt32(dr["id_lecture"]),
+                        dr["nm_lecture"].ToString(),
+                        dr["pt_lecture"].ToString(),
+                        Convert.ToInt32(dr["tm_lecture"]),
+                        Convert.ToDateTime(dr["dt_lecture"]),
+                        dr["dc_lecture"].ToString(),
+                        Enum.GetName(typeof(Modality), Convert.ToInt32(dr["mod_lecture"])),
+                        dr["adr_lecture"].ToString(),
+                        Convert.ToBoolean(dr["rt_lecture"]),
+                        Convert.ToInt32(dr["lt_lecture"]),
+                        Convert.ToBoolean(dr["isActive"])
+                    );
+                    lectureList.Add(objLecture);
+                }
+            }
+            conn.Close();
+
+            return lectureList;
+        }
+
+        public List<Lecture> UpcomingLecturesList(int maxQuantity)
+        {
+            List<Lecture> lectureList = null;
+
+            SqlConnection conn = new SqlConnection(connectionString);
+            conn.Open();
+
+            string sql = "SELECT * FROM Lecture WHERE isActive = 1 ORDER BY dt_lecture DESC";
+
+            SqlCommand cmd = new SqlCommand(sql, conn);
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            if (dr.HasRows)
+            {
+                lectureList = new List<Lecture>();
+
+                for (int i = 0; i < maxQuantity; i++)
+                {
+                    if (dr.Read())
+                    {
+                        Lecture objLecture = new Lecture(
+                            Convert.ToInt32(dr["id_lecture"]),
+                            dr["nm_lecture"].ToString(),
+                            dr["pt_lecture"].ToString(),
+                            Convert.ToInt32(dr["tm_lecture"]),
+                            Convert.ToDateTime(dr["dt_lecture"]),
+                            dr["dc_lecture"].ToString(),
+                            Enum.GetName(typeof(Modality), Convert.ToInt32(dr["mod_lecture"])),
+                            dr["adr_lecture"].ToString(),
+                            Convert.ToBoolean(dr["rt_lecture"]),
+                            Convert.ToInt32(dr["lt_lecture"]),
+                            Convert.ToBoolean(dr["isActive"])
+                        );
+                        lectureList.Add(objLecture);
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+            }
+            conn.Close();
+
+            return lectureList;
+        }
+
+        public List<Lecture> LecturesList()
+        {
+            List<Lecture> lectureList = null;
+
+            SqlConnection conn = new SqlConnection(connectionString);
+            conn.Open();
+
+            string sql = "SELECT * FROM Lecture WHERE isActive = 1 ORDER BY NEWID();";
+
+            SqlCommand cmd = new SqlCommand(sql, conn);
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            if (dr.HasRows)
+            {
+                lectureList = new List<Lecture>();
+
+                while (dr.Read())
+                {
+                    Lecture objLecture = new Lecture(
+                        Convert.ToInt32(dr["id_lecture"]),
+                        dr["nm_lecture"].ToString(),
+                        dr["pt_lecture"].ToString(),
+                        Convert.ToInt32(dr["tm_lecture"]),
+                        Convert.ToDateTime(dr["dt_lecture"]),
+                        dr["dc_lecture"].ToString(),
+                        Enum.GetName(typeof(Modality), Convert.ToInt32(dr["mod_lecture"])),
+                        dr["adr_lecture"].ToString(),
+                        Convert.ToBoolean(dr["rt_lecture"]),
+                        Convert.ToInt32(dr["lt_lecture"]),
+                        Convert.ToBoolean(dr["isActive"])
+                    );
+                    lectureList.Add(objLecture);
+                }
+            }
+            conn.Close();
+
+            return lectureList;
+        }
+
+        public List<Lecture> LecturesList(int maxQuantity)
+        {
+            List<Lecture> lectureList = null;
+
+            SqlConnection conn = new SqlConnection(connectionString);
+            conn.Open();
+
+            string sql = "SELECT * FROM Lecture WHERE isActive = 1 ORDER BY NEWID();";
+
+            SqlCommand cmd = new SqlCommand(sql, conn);
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            if (dr.HasRows)
+            {
+                lectureList = new List<Lecture>();
+
+                for (int i = 0; i < maxQuantity; i++)
                 {
                     if (dr.Read())
                     {
