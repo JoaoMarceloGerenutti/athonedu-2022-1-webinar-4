@@ -15,26 +15,29 @@
     <body>
         <section class="profile">
             <div class="profile-label">
-                <h3 style="color: white;">Editar/Cadastrar Usuário</h3>
+                <h3 style="color: white;">Editar Perfil do Aluno</h3>
             </div>
             <div class="profile-form">
                 <div class="profile-form-left">
-                    <input class="input-text" id="name_viewer" placeholder="Informe o Nome" type="text"/>
+                    <h4 style="color: white;">Informações da sua Conta:</h4>
                 </div>
                 <div class="profile-form-left">
-                    <input class="input-text" id="email_viewer" placeholder="Informe o E-mail"  type="text"/>
+                    <asp:TextBox ID="NameViewer" runat="server" class="input-text" placeholder="Informe o Nome" />
                 </div>
                 <div class="profile-form-left">
-                    <h4 style="color: white;">Informe a senha:</h4>
+                    <asp:TextBox ID="EmailViewer" runat="server" class="input-text" placeholder="Informe o E-mail" ReadOnly="True" />
                 </div>
                 <div class="profile-form-left">
-                    <input class="input-text" id="password_viewer" placeholder="Informe a Senha"  type="password"/>
+                    <h4 style="color: white;">Alterar a Senha:</h4>
                 </div>
                 <div class="profile-form-left">
-                    <input class="input-text" id="password_viewer_confirm" placeholder="Informe a Senha Novamente"  type="password"/>
+                    <asp:TextBox ID="PasswordViewer" runat="server" class="input-text" placeholder="Informe a Senha" TextMode="Password" />
+                </div>
+                <div class="profile-form-left">
+                    <asp:TextBox ID="RepeatPasswordViewer" runat="server" class="input-text" placeholder="Informe a Senha Novamente" TextMode="Password" />
                 </div>
                 <div class="profile-form-pic-viewer" shape="round">
-                    <img id="viewer-photo"/>
+                    <asp:Image ID="ImageViewer" runat="server" CssClass="profile-picture"/>
                 </div>
                 <div class="profile-form-set-photo-button">
                     <button class="chose-photo btn btn-primary fs-4">

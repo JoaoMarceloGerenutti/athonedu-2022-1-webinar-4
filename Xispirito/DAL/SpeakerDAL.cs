@@ -39,7 +39,7 @@ namespace Xispirito.DAL
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
 
-            string sql = "SELECT * FROM Speaker WHERE id_speaker = @id_speaker";
+            string sql = "SELECT * FROM Speaker WHERE id_speaker = @id_speaker AND isActive = 1";
 
             SqlCommand cmd = new SqlCommand(sql, conn);
 

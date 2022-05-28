@@ -13,23 +13,44 @@ namespace Xispirito.View.Profiles.Profile_Speaker
     {
         private SpeakerBAL speakerBAL = new SpeakerBAL();
 
+        private Speaker speaker = new Speaker();
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            Speaker objSpeaker = new Speaker();
-            objSpeaker = LoadSpeakerProfile();
+            if (!Page.IsPostBack && User.Identity.IsAuthenticated)
+            {
+                if (Request.QueryString["user"] != null && User.Identity.Name == Request.QueryString["user"])
+                {
+                    speaker.SetEmail(Request.QueryString["user"]);
+                    LoadSpeakerProfile(speaker.GetEmail());
+                }
+                else
+                {
+                    Response.Redirect("~/View/Home/Home.aspx");
+                }
+            }
+        }
 
+        private void LoadSpeakerProfile(string speakerEmail)
+        {
+            speaker = GetSpeakerProfile(speakerEmail);
+
+            SetSpeakerProfile(speaker);
+        }
+
+        private Speaker GetSpeakerProfile(string speakerEmail)
+        {
+            speaker = speakerBAL.GetAccount(speakerEmail);
+
+            return speaker;
+        }
+
+        private void SetSpeakerProfile(Speaker objSpeaker)
+        {
             NameSpeaker.Text = objSpeaker.GetName();
             EmailSpeaker.Text = objSpeaker.GetEmail();
             ProfissionSpeaker.Text = objSpeaker.GetSpeakerProfession();
             ImageSpeaker.ImageUrl = objSpeaker.GetPicture();
-        }
-
-        private Speaker LoadSpeakerProfile()
-        {
-            Speaker objSpeaker = new Speaker();
-            objSpeaker = speakerBAL.GetAccount(User.Identity.Name);
-
-            return objSpeaker;
         }
     }
 }

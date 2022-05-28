@@ -47,6 +47,12 @@ h4 {
     border: .2rem solid black;
     border-color: rgb(111, 103, 91);
     border-radius: 4rem;
+    overflow: hidden;
+}
+
+.profile-picture {
+    width: 100%;
+    height: 100%;
 }
 
 .input-text {

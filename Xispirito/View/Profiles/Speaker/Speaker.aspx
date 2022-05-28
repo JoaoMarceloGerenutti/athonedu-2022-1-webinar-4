@@ -29,7 +29,7 @@
                     <asp:TextBox ID="ProfissionSpeaker" runat="server" class="input-text" placeholder="Informe a Profissão" />
                 </div>
                 <div class="profile-form-left">
-                    <h4 style="color: white;">Informe a senha:</h4>
+                    <h4 style="color: white;">Alterar a Senha:</h4>
                 </div>
                 <div class="profile-form-left">
                     <asp:TextBox ID="PasswordSpeaker" runat="server" class="input-text" placeholder="Informe a Senha" TextMode="Password" />
@@ -38,7 +38,7 @@
                     <asp:TextBox ID="RepeatPasswordSpeaker" runat="server" class="input-text" placeholder="Informe a Senha Novamente" TextMode="Password" />
                 </div>
                 <div class="profile-form-pic-speaker" shape="round">
-                    <asp:Image ID="ImageSpeaker" runat="server" />
+                    <asp:Image ID="ImageSpeaker" runat="server" CssClass="profile-picture"/>
                 </div>
                 <div class="profile-form-set-photo-button">
                     <button class="chose-photo">
