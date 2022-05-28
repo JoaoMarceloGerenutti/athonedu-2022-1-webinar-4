@@ -22,16 +22,18 @@ namespace Xispirito.View.Events
         {
             if (!Page.IsPostBack)
             {
+                int maxQuantityCards = 10;
+
                 // Loading Upcoming Events.
                 upcomingLectures = new List<Lecture>();
-                upcomingLectures = lectureBAL.GetUpcomingLecturesList(10);
+                upcomingLectures = lectureBAL.GetUpcomingLecturesList(maxQuantityCards);
 
                 ListViewUpcomingEvents.DataSource = upcomingLectures;
                 ListViewUpcomingEvents.DataBind();
 
                 // Loading Area Events.
                 areaLectures = new List<Area>();
-                areaLectures = areaBAL.GetAreaList(10);
+                areaLectures = areaBAL.GetAreaList(maxQuantityCards);
 
                 ListViewAreaEvents.DataSource = areaLectures;
                 ListViewAreaEvents.DataBind();
