@@ -21,7 +21,16 @@ namespace Xispirito.View.Events
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton EventSearch;
+        protected global::System.Web.UI.WebControls.TextBox EventSearch;
+
+        /// <summary>
+        /// Controle EventSearchImage.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton EventSearchImage;
 
         /// <summary>
         /// Controle ListViewUpcomingEvents.

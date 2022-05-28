@@ -12,17 +12,26 @@ namespace Xispirito.View.EventsSearch
     public partial class EventsSearch : System.Web.UI.Page
     {
         private LectureBAL lectureBAL = new LectureBAL();
-        private List<Lecture> upcomingLectures;
+        private List<Lecture> lecturesList;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
             {
-                // Loading Upcoming Events.
-                upcomingLectures = new List<Lecture>();
-                upcomingLectures = lectureBAL.GetLecturesList();
+                // Loading Events.
+                lecturesList = new List<Lecture>();
+                if (Request.QueryString["search"] != null)
+                {
+                    string search = Request.QueryString["search"];
+                    lecturesList = lectureBAL.SearchLecturesByName(search);
+                    EventSearch.Text = search;
+                }
+                else
+                {
+                    lecturesList = lectureBAL.GetLecturesList();
+                }
 
-                ListViewAllEvents.DataSource = upcomingLectures;
+                ListViewAllEvents.DataSource = lecturesList;
                 ListViewAllEvents.DataBind();
             }
         }
@@ -47,6 +56,11 @@ namespace Xispirito.View.EventsSearch
                 Label timeLabel = (Label)e.Item.FindControl("TimeAllEvents");
                 timeLabel.Text = lecture.GetTime().ToString() + " Min";
             }
+        }
+
+        protected void EventSearchImage_Click(object sender, ImageClickEventArgs e)
+        {
+            Response.Redirect("~/View/EventsSearch/EventsSearch.aspx?search=" + EventSearch.Text);
         }
     }
 }

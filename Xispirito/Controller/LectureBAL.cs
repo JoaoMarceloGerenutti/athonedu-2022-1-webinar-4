@@ -55,5 +55,13 @@ namespace Xispirito.Controller
 
             return lecture;
         }
+
+        public List<Lecture> SearchLecturesByName(string search)
+        {
+            List<Lecture> searchLectureList = new List<Lecture>();
+            searchLectureList = lectureDAL.SearchLecturesByName(search);
+
+            return searchLectureList;
+        }
     }
 }

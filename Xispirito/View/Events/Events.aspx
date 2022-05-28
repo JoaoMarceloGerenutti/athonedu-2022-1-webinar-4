@@ -32,10 +32,10 @@
                 <div class="event-form">
                     <div class="event-div-first-line">
                         <div class="event-div-first-line-search">
-                            <input class="event-input-first-line-search-input" type="text" placeholder="Pesquisar por eventos" />
+                            <asp:TextBox ID="EventSearch" runat="server" class="event-input-first-line-search-input" placeholder="Pesquisar por Eventos" />
                         </div>
                         <div class="event-div-first-line-button">
-                            <asp:ImageButton ID="EventSearch" runat="server" class="event-input-first-line-search-button" ImageUrl="~/View/Images/Search.png" />
+                            <asp:ImageButton ID="EventSearchImage" runat="server" class="event-input-first-line-search-button" ImageUrl="~/View/Images/Search.png" OnClick="EventSearchImage_Click" />
                         </div>
                     </div>
                 </div>

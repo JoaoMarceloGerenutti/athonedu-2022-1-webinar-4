@@ -246,6 +246,48 @@ namespace Xispirito.DAL
             return lectureList;
         }
 
+        public List<Lecture> SearchLecturesByName(string search)
+        {
+            List<Lecture> searchLectureList = null;
+
+            SqlConnection conn = new SqlConnection(connectionString);
+            conn.Open();
+
+            string sql = "SELECT * FROM Lecture WHERE isActive = 1 AND nm_lecture LIKE @search";
+
+            SqlCommand cmd = new SqlCommand(sql, conn);
+
+            cmd.Parameters.AddWithValue("@search", "%" + search + "%");
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            if (dr.HasRows)
+            {
+                searchLectureList = new List<Lecture>();
+
+                while (dr.Read())
+                {
+                    Lecture objLecture = new Lecture(
+                        Convert.ToInt32(dr["id_lecture"]),
+                        dr["nm_lecture"].ToString(),
+                        dr["pt_lecture"].ToString(),
+                        Convert.ToInt32(dr["tm_lecture"]),
+                        Convert.ToDateTime(dr["dt_lecture"]),
+                        dr["dc_lecture"].ToString(),
+                        Enum.GetName(typeof(Modality), Convert.ToInt32(dr["mod_lecture"])),
+                        dr["adr_lecture"].ToString(),
+                        Convert.ToBoolean(dr["rt_lecture"]),
+                        Convert.ToInt32(dr["lt_lecture"]),
+                        Convert.ToBoolean(dr["isActive"])
+                    );
+                    searchLectureList.Add(objLecture);
+                }
+            }
+            conn.Close();
+
+            return searchLectureList;
+        }
+
         public void Update(Lecture objLecture)
         {
             throw new NotImplementedException();

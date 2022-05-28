@@ -76,5 +76,10 @@ namespace Xispirito.View.Events
                 titleLabel.Text = area.GetName();
             }
         }
+
+        protected void EventSearchImage_Click(object sender, ImageClickEventArgs e)
+        {
+            Response.Redirect("~/View/EventsSearch/EventsSearch.aspx?search=" + EventSearch.Text);
+        }
     }
 }
