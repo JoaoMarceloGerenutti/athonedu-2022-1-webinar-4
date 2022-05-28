@@ -56,6 +56,14 @@ namespace Xispirito.Controller
             return accountFound;
         }
 
+        public Administrator GetAccount(string email)
+        {
+            Administrator objAdministrator = new Administrator();
+            objAdministrator = administratorDAL.SearchEmail(email);
+
+            return objAdministrator;
+        }
+
         public Administrator GetAccount(string email, string password)
         {
             Administrator objAdministrator = new Administrator();

@@ -44,20 +44,48 @@
                                 <a class="header-buttons" href="/View/Events/Events.aspx">Econtrar Palestra</a>
                             </li>
                             <li class="header-li">
-                                <a class="header-buttons" href="/View/Events/Events.aspx">Certificados</a>
-                            </li>
-                            <li class="header-li">
-                                <img class="image-profile" src="\View\Images\Test\Lecture2.png" href="/View/Events/Events.aspx" />
-                            </li>
-                            <li class="header-li">
-                                <asp:LoginView ID="MasterLoginView" runat="server">
+                                <asp:LoginView ID="MasterLoginView" runat="server" >
                                     <AnonymousTemplate>
+                                        <asp:LoginStatus class="header-buttons" ID="MasterLoginStatus" runat="server" LogoutAction="RedirectToLoginPage" LoginText="Entrar" LogoutPageUrl="~/View/Login/Login.aspx" />
                                     </AnonymousTemplate>
                                     <LoggedInTemplate>
-                                        <%--<asp:LoginName ID="MasterLoginName" runat="server" />--%>
+                                        <div class="action">
+                                            <div class="profile" onclick="menuToggle();">
+                                                <asp:Image ID="UserPicture" runat="server" class="image-profile" />
+                                            </div>
+                                            <div class="menu">
+                                                <div class="profile-information">
+                                                    <asp:Label ID="UserName" runat="server" CssClass="name"></asp:Label>
+                                                </div>
+                                                <div class="profile-information">
+                                                    <asp:Label ID="UserRole" runat="server" CssClass="role"></asp:Label>
+                                                </div>
+                                                <hr class="line" />
+                                                <ul>
+                                                    <li>
+                                                        <img src="\View\Images\Profile.png" />
+                                                        <asp:LinkButton ID="UserProfile" runat="server">Editar Perfil</asp:LinkButton>
+                                                    </li>
+                                                    <li>
+                                                        <img src="\View\Images\Certificates.png" />
+                                                        <asp:LinkButton ID="UserCertificates" runat="server">Meus Certificados</asp:LinkButton>
+                                                    </li>
+                                                    <li>
+                                                        <img src="\View\Images\Logout.png" />
+                                                        <asp:LoginStatus ID="MasterLoginStatus" runat="server" LogoutAction="RedirectToLoginPage" LogoutText="Sair" LogoutPageUrl="~/View/Login/Login.aspx" />
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                        <script>
+                                            function menuToggle() {
+                                                const toggleMenu = document.querySelector('.menu');
+                                                toggleMenu.classList.toggle('active');
+                                            }
+                                        </script>
                                     </LoggedInTemplate>
                                 </asp:LoginView>
-                                <asp:LoginStatus class="header-buttons" ID="MasterLoginStatus" runat="server" LogoutAction="RedirectToLoginPage" LogoutText="Sair" LoginText="Entrar" LogoutPageUrl="~/View/Login/Login.aspx" />
                             </li>
                         </ul>
                     </nav>

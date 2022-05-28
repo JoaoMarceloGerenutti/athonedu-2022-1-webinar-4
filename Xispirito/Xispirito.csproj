@@ -105,6 +105,9 @@
     <Content Include="View\Home\Home.css" />
     <Content Include="View\Home\Home.aspx" />
     <Content Include="View\Home\Home-responsive.css" />
+    <Content Include="View\Images\Certificates.png" />
+    <Content Include="View\Images\Logout.png" />
+    <Content Include="View\Images\Profile.png" />
     <Content Include="View\Images\Search.png" />
     <Content Include="View\Images\Test\Administracao.png" />
     <Content Include="View\Images\Test\Direito.png" />
