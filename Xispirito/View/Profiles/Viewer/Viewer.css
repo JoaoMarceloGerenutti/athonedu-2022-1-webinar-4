@@ -65,12 +65,12 @@ h4 {
 
 .profile-form-set-photo-button {
     grid-column-start: 2;
-    grid-row-start: 4;
+    grid-row-start: 5;
 }
 
 .profile-form-retire-photo-button {
     grid-column-start: 2;
-    grid-row-start: 5;
+    grid-row-start: 6;
 }
 
 .profile-form-submit {
