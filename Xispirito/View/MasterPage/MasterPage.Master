@@ -50,7 +50,7 @@
                                     </AnonymousTemplate>
                                     <LoggedInTemplate>
                                         <div class="action">
-                                            <div class="profile" onclick="menuToggle();">
+                                            <div class="profile-user" onclick="menuToggle();">
                                                 <asp:Image ID="UserPicture" runat="server" class="image-profile" />
                                             </div>
                                             <div class="menu">
