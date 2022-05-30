@@ -58,6 +58,7 @@ section.hero {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 3rem;
     padding: 3rem;
     background-color: #161917;
 }
