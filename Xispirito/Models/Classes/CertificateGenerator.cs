@@ -4,19 +4,20 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace Xispirito.Models
 {
 
     public static class CertificateGenerator
     {
-        public static string GenerateCertificate(Viewer viewer, Lecture lecture)
+        public static string GenerateViewerCertificate(Viewer viewer, Lecture lecture, Certificate certificate, ViewerCertificate viewerCertificate)
         {
-            string outsideProjectPath = "D:\\Visual Studio\\TCC Athon\\2022-1-webinar-4\\Xispirito\\";
-            string path = outsideProjectPath + "View\\Images\\Certificates\\";
-            string filename = "HelloWorld.pdf";
-
-            string fullpath = path + filename;
+            string outsideProjectPath = @"D:\Visual Studio\TCC Athon\2022-1-webinar-4\Xispirito\";
+            string insideProjectPath = @"View\Images\Certificates\";
+            string path = @"Viewer\";
+            string filename = viewerCertificate.GetCertificateKey() + ".pdf";
+            string fullpath = outsideProjectPath + insideProjectPath + path + filename;
 
             PdfDocument document = new PdfDocument();
             PdfPage page = document.AddPage();
@@ -26,7 +27,7 @@ namespace Xispirito.Models
 
             XGraphics gfx = XGraphics.FromPdfPage(page);
 
-            gfx.DrawImage(PdfSharp.Drawing.XImage.FromFile(path + @"\Certificate.png"), 0, 0, page.Width, page.Height);
+            gfx.DrawImage(PdfSharp.Drawing.XImage.FromFile("~" + insideProjectPath + certificate.GetCertificateModelDirectory()), 0, 0, page.Width, page.Height);
 
             XFont font = new XFont("Arial", 14, XFontStyle.Regular);
             XFont boldFont = new XFont("Arial", 12, XFontStyle.Bold);
@@ -69,6 +70,13 @@ namespace Xispirito.Models
                 boldFont, XBrushes.Black,
                 new XRect(0, textPositionY, page.Width, page.Height),
                 XStringFormats.Center
+            );
+
+            // Certificate Key.
+            gfx.DrawString(Cryptography.GetMD5Hash(viewerCertificate.GetCertificate().GetId().ToString()),
+                boldFont, XBrushes.Black,
+                new XRect(0, 0, page.Width, page.Height),
+                XStringFormats.BottomLeft
             );
 
             document.Save(fullpath);

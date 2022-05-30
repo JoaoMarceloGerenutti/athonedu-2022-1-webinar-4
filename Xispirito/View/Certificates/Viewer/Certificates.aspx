@@ -17,10 +17,7 @@
             <div class="container">
                 <div class="title-search-wrapper">
                     <div class="title">
-                        <h2>
-                            <b>Meus Certificados (0)
-                            </b>
-                        </h2>
+                        <asp:Label ID="MyCertificates" runat="server" Text="Meus Certificados " CssClass="header-title" />
                     </div>
                     <div class="certificate-search">
                         <asp:TextBox ID="SearchCertificate" runat="server" CssClass="search-box" PlaceHolder="Digite o Nome do Certificado para Filtrar" />

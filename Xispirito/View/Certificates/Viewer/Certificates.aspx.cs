@@ -12,7 +12,8 @@ namespace Xispirito.View.Certificates.Viewer
     public partial class ViewerCertificates : System.Web.UI.Page
     {
         private ViewerCertificateBAL viewerCertificateBAL = new ViewerCertificateBAL();
-        private List<Certificate> certificates;
+
+        private List<ViewerCertificate> viewerCertificates = new List<ViewerCertificate>();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -20,10 +21,19 @@ namespace Xispirito.View.Certificates.Viewer
             {
                 if (Request.QueryString["user"] != null && User.Identity.Name == Request.QueryString["user"])
                 {
-                    certificates = new List<Certificate>();
-                    certificates = viewerCertificateBAL.GetUserCertificates(User.Identity.Name);
+                    viewerCertificates = new List<ViewerCertificate>();
+                    viewerCertificates = viewerCertificateBAL.GetUserCertificates(User.Identity.Name);
 
-                    ListViewCertificates.DataSource = certificates;
+                    if (viewerCertificates != null)
+                    {
+                        MyCertificates.Text += "(" + viewerCertificates.Count + ")";
+                    }
+                    else
+                    {
+                        MyCertificates.Text += "(0)";
+                    }
+
+                    ListViewCertificates.DataSource = viewerCertificates;
                     ListViewCertificates.DataBind();
                 }
                 else
@@ -37,17 +47,16 @@ namespace Xispirito.View.Certificates.Viewer
         {
             if (e.Item.ItemType == ListViewItemType.DataItem)
             {
-                Certificate certificate = (Certificate)e.Item.DataItem;
-                Lecture lectures = (Lecture)e.Item.DataItem;
+                ViewerCertificate viewerCertificate = (ViewerCertificate)e.Item.DataItem;
 
-                //Image certificateImage = (Image)e.Item.FindControl("CertificateImage");
-                //certificateImage.ImageUrl = certificate.GetPicture();
+                Image certificateImage = (Image)e.Item.FindControl("CertificateImage");
+                certificateImage.ImageUrl = @"\View\Images\Certificates\Viewer\" + viewerCertificate.GetViewer().GetEmail() + @"\" + Cryptography.GetMD5Hash(viewerCertificate.GetCertificate().GetId().ToString()) + ".jpg";
 
-                //Label titleLabel = (Label)e.Item.FindControl("CertificateTitle");
-                //titleLabel.Text = lectures.GetName();
+                Label titleLabel = (Label)e.Item.FindControl("CertificateTitle");
+                titleLabel.Text = viewerCertificate.GetLecture().GetName();
 
-                //Label dateLabel = (Label)e.Item.FindControl("CertificateDate");
-                //dateLabel.Text = certificate.GetModality();
+                Label dateLabel = (Label)e.Item.FindControl("CertificateDate");
+                dateLabel.Text = viewerCertificate.GetLecture().GetDate().ToString("dd/MM/yyyy HH:mm");
 
                 //Button downloadButton = (Button)e.Item.FindControl("DownloadCertificate");
                 //downloadButton.PostBackUrl = certificate.GetTime().ToString();

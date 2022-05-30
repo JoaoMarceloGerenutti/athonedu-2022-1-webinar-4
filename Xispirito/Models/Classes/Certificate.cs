@@ -8,6 +8,7 @@ namespace Xispirito.Models
     public class Certificate : BaseEntity
     {
         private int CertificateId { get; set; }
+        private string CertificateModelDirectory { get; set; }
         private int LectureId { get; set; }
 
         public Certificate()
@@ -15,9 +16,10 @@ namespace Xispirito.Models
 
         }
 
-        public Certificate(int certificateId, int lectureId, bool isActive)
+        public Certificate(int certificateId, string certificateModelDirectory, int lectureId, bool isActive)
         {
             CertificateId = certificateId;
+            CertificateModelDirectory = certificateModelDirectory;
             LectureId = lectureId;
             IsActive = isActive;
         }
@@ -25,6 +27,11 @@ namespace Xispirito.Models
         public int GetId()
         {
             return CertificateId;
+        }
+
+        public string GetCertificateModelDirectory()
+        {
+            return CertificateModelDirectory;
         }
 
         public int GetLectureId()

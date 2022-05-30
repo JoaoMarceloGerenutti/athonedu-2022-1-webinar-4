@@ -7,35 +7,42 @@ namespace Xispirito.Models
 {
     public class ViewerCertificate
     {
-        private string CertificatePicture { get; set; }
-        private string ViewerEmail { get; set; }
-        private int CertificateId { get; set; }
+        private int CertificateKey { get; set; }
+        private Viewer Viewer { get; set; }
+        private Lecture Lecture { get; set; }
+        private Certificate Certificate { get; set; }
 
         public ViewerCertificate()
         {
 
         }
 
-        public ViewerCertificate(string certificatePicture, string viewerEmail, int certificateId)
+        public ViewerCertificate(int certificateKey, Viewer viewer, Lecture lecture, Certificate certificate)
         {
-            CertificatePicture = certificatePicture;
-            ViewerEmail = viewerEmail;
-            CertificateId = certificateId;
+            CertificateKey = certificateKey;
+            Viewer = viewer;
+            Lecture = lecture;
+            Certificate = certificate;
         }
 
-        public string GetCertificatePicture()
+        public int GetCertificateKey()
         {
-            return CertificatePicture;
+            return CertificateKey;
         }
 
-        public string GetViewerEmail()
+        public Viewer GetViewer()
         {
-            return ViewerEmail;
+            return Viewer;
         }
 
-        public int GetCertificateId()
+        public Lecture GetLecture()
         {
-            return CertificateId;
+            return Lecture;
+        }
+
+        public Certificate GetCertificate()
+        {
+            return Certificate;
         }
     }
 }

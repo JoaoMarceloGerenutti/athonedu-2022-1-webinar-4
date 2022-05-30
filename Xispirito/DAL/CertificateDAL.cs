@@ -17,11 +17,12 @@ namespace Xispirito.DAL
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
 
-            string sql = "INSERT INTO Certified VALUES (@id_lecture, @isActive)";
+            string sql = "INSERT INTO Certified VALUES (@mdl_certificate, @id_lecture, @isActive)";
 
             SqlCommand cmd = new SqlCommand(sql, conn);
 
-            cmd.Parameters.AddWithValue("@pt_certified", objCertificate.GetLectureId());
+            cmd.Parameters.AddWithValue("mdl_certificate", objCertificate.GetCertificateModelDirectory());
+            cmd.Parameters.AddWithValue("@id_lecture", objCertificate.GetLectureId());
             cmd.Parameters.AddWithValue("@isActive", objCertificate.GetIsActive());
             cmd.ExecuteNonQuery();
 
@@ -47,6 +48,7 @@ namespace Xispirito.DAL
             {
                 certificate = new Certificate(
                     certificateId,
+                    dr["mdl_certificate"].ToString(),
                     Convert.ToInt32(dr["id_lecture"]),
                     Convert.ToBoolean(dr["isActive"])
                 );
@@ -99,6 +101,7 @@ namespace Xispirito.DAL
                 {
                     Certificate objCertificate = new Certificate(
                         Convert.ToInt32(dr["id_certified"]),
+                        dr["mdl_certificate"].ToString(),
                         Convert.ToInt32(dr["id_lecture"]),
                         Convert.ToBoolean(dr["isActive"])
                     );

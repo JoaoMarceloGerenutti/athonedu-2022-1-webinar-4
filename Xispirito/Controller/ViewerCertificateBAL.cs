@@ -16,23 +16,12 @@ namespace Xispirito.Controller
             viewerCertificateDAL = new ViewerCertificateDAL();
         }
 
-        public List<Certificate> GetUserCertificates(string userEmail)
+        public List<ViewerCertificate> GetUserCertificates(string userEmail)
         {
             List<ViewerCertificate> viewerCertificates = null;
             viewerCertificates = viewerCertificateDAL.GetAllUserCertificates(userEmail);
 
-            CertificateDAL certificateDAL = new CertificateDAL();
-            List<Certificate> certificates = new List<Certificate>();
-
-            if (viewerCertificates != null)
-            {
-                foreach (ViewerCertificate viewerCertificate in viewerCertificates)
-                {
-                    certificates.Add(certificateDAL.Select(viewerCertificate.GetCertificateId()));
-                }
-            }
-
-            return certificates;
+            return viewerCertificates;
         }
     }
 }

@@ -17,13 +17,13 @@ namespace Xispirito.DAL
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
 
-            string sql = "INSERT INTO Viewer_Certified VALUES (@pt_certified, @email_viewer, @id_certified)";
+            string sql = "INSERT INTO Viewer_Certificate VALUES (@key_certificate, @email_viewer, @id_certified)";
 
             SqlCommand cmd = new SqlCommand(sql, conn);
 
-            cmd.Parameters.AddWithValue("@pt_certified", objViewerCertificate.GetCertificatePicture());
-            cmd.Parameters.AddWithValue("@email_viewer", objViewerCertificate.GetViewerEmail());
-            cmd.Parameters.AddWithValue("@id_certified", objViewerCertificate.GetCertificateId());
+            cmd.Parameters.AddWithValue("@key_certificate", objViewerCertificate.GetCertificateKey());
+            cmd.Parameters.AddWithValue("@email_viewer", objViewerCertificate.GetViewer().GetEmail());
+            cmd.Parameters.AddWithValue("@id_certified", objViewerCertificate.GetCertificate().GetId());
 
             cmd.ExecuteNonQuery();
             conn.Close();
@@ -36,7 +36,15 @@ namespace Xispirito.DAL
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
 
-            string sql = "SELECT * FROM Viewer_Certified WHERE email_viewer = @email_viewer";
+            string sql = "SELECT Viewer_Certificate.key_certificate,"
+               + "Viewer.*,"
+               + "Certified.*,"
+               + "Lecture.*"
+               + "FROM Viewer_Certificate "
+               + "INNER JOIN Viewer ON Viewer_Certificate.email_viewer = Viewer.email_viewer "
+               + "INNER JOIN Certified ON Viewer_Certificate.id_certified = Certified.id_certified "
+               + "INNER JOIN Lecture ON Certified.id_lecture = Lecture.id_lecture "
+               + "WHERE Viewer_Certificate.email_viewer = @email_viewer";
 
             SqlCommand cmd = new SqlCommand(sql, conn);
 
@@ -50,10 +58,41 @@ namespace Xispirito.DAL
 
                 while (dr.Read())
                 {
-                    ViewerCertificate viewerCertificate = new ViewerCertificate(
-                        dr["pt_certified"].ToString(),
+                    Viewer objViewer = new Viewer(
+                        Convert.ToInt32(dr["id_viewer"]),
+                        dr["nm_viewer"].ToString(),
                         dr["email_viewer"].ToString(),
-                        Convert.ToInt32(dr["id_certified"])
+                        dr["pt_viewer"].ToString(),
+                        dr["pw_viwer"].ToString(),
+                        Convert.ToBoolean(dr["isActive"])
+                    );
+
+                    Lecture objLecture = new Lecture(
+                        Convert.ToInt32(dr["id_lecture"]),
+                        dr["nm_lecture"].ToString(),
+                        dr["pt_lecture"].ToString(),
+                        Convert.ToInt32(dr["tm_lecture"]),
+                        Convert.ToDateTime(dr["dt_lecture"]),
+                        dr["dc_lecture"].ToString(),
+                        Enum.GetName(typeof(Modality), Convert.ToInt32(dr["mod_lecture"])),
+                        dr["adr_lecture"].ToString(),
+                        Convert.ToBoolean(dr["rt_lecture"]),
+                        Convert.ToInt32(dr["lt_lecture"]),
+                        Convert.ToBoolean(dr["isActive"])
+                    );
+
+                    Certificate objCertificate = new Certificate(
+                        Convert.ToInt32(dr["id_certified"]),
+                        dr["mdl_certificate"].ToString(),
+                        Convert.ToInt32(dr["id_lecture"]),
+                        Convert.ToBoolean(dr["isActive"])
+                    );
+
+                    ViewerCertificate viewerCertificate = new ViewerCertificate(
+                        Convert.ToInt32(dr["key_certificate"]),
+                        objViewer,
+                        objLecture,
+                        objCertificate
                     );
                     userCertificates.Add(viewerCertificate);
                 }
