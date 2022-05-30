@@ -1,0 +1,19 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using Xispirito.DAL;
+using Xispirito.Models;
+
+namespace Xispirito.Controller
+{
+    public class CertificateBAL
+    {
+        private CertificateDAL certificateDAL { get; set; }
+
+        public CertificateBAL()
+        {
+            certificateDAL = new CertificateDAL();
+        }
+    }
+}

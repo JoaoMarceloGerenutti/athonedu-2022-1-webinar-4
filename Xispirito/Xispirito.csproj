@@ -103,6 +103,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="View\Certificates\Viewer\Certificates.aspx" />
+    <Content Include="View\Certificates\Viewer\Certificates.css" />
     <Content Include="View\EventsSearch\EventsSearch.aspx" />
     <Content Include="View\EventsSearch\EventsSearch.css" />
     <Content Include="View\Events\Events.aspx" />
@@ -112,7 +114,8 @@
     <Content Include="View\Home\Home.aspx" />
     <Content Include="View\Home\Home-responsive.css" />
     <Content Include="View\Images\Certificates.png" />
-    <Content Include="View\Images\Certificates\Certificate.png" />
+    <Content Include="View\Images\Certificates\Templates\Certificate.png" />
+    <Content Include="View\Images\Certificates\Viewer\joaomarcelogerenuttii%40hotmail.com\c4ca4238a0b923820dcc509a6f75849b.jpg" />
     <Content Include="View\Images\Logout.png" />
     <Content Include="View\Images\Profile.png" />
     <Content Include="View\Images\Search.png" />
@@ -147,18 +150,24 @@
   <ItemGroup>
     <Compile Include="Controller\AdministratorBAL.cs" />
     <Compile Include="Controller\AreaBAL.cs" />
+    <Compile Include="Controller\CertificateBAL.cs" />
     <Compile Include="Controller\LectureBAL.cs" />
     <Compile Include="Controller\SpeakerBAL.cs" />
     <Compile Include="Controller\ViewerBAL.cs" />
+    <Compile Include="Controller\ViewerCertificateBAL.cs" />
     <Compile Include="Controller\ViewerLectureBAL.cs" />
     <Compile Include="DAL\AdministratorDAL.cs" />
     <Compile Include="DAL\AreaDAL.cs" />
+    <Compile Include="DAL\CertificateDAL.cs" />
     <Compile Include="DAL\LectureDAL.cs" />
     <Compile Include="DAL\SpeakerDAL.cs" />
+    <Compile Include="DAL\ViewerCertificateDAL.cs" />
     <Compile Include="DAL\ViewerLectureDAL.cs" />
+    <Compile Include="Models\Classes\Certificate.cs" />
     <Compile Include="Models\Classes\CertificateGenerator.cs" />
     <Compile Include="Models\Classes\Cryptography.cs" />
     <Compile Include="Models\Classes\ModalityColor.cs" />
+    <Compile Include="Models\Classes\ViewerCertificate.cs" />
     <Compile Include="Models\Classes\ViewerLecture.cs" />
     <Compile Include="Models\Interfaces\IDatabase.cs" />
     <Compile Include="DAL\ViewerDAL.cs" />
@@ -173,6 +182,13 @@
     <Compile Include="Models\Enum\Modality.cs" />
     <Compile Include="Models\Interfaces\IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\Certificates\Viewer\Certificates.aspx.cs">
+      <DependentUpon>Certificates.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Certificates\Viewer\Certificates.aspx.designer.cs">
+      <DependentUpon>Certificates.aspx</DependentUpon>
+    </Compile>
     <Compile Include="View\EventsSearch\EventsSearch.aspx.cs">
       <DependentUpon>EventsSearch.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

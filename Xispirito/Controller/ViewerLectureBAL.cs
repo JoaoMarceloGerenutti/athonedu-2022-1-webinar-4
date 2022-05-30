@@ -18,7 +18,8 @@ namespace Xispirito.Controller
 
         public void RegisterUserToLecture(string viewerEmail, int lectureId)
         {
-            viewerLectureDAL.RegisterUserToLecture(viewerEmail, lectureId);
+            ViewerLecture viewerLecture = new ViewerLecture(viewerEmail, lectureId);
+            viewerLectureDAL.RegisterUserToLecture(viewerLecture);
         }
 
         public bool VerifyUserAlreadyRegistered(string viewerEmail, int lectureId)

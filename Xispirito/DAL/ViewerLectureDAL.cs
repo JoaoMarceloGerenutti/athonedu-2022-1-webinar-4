@@ -12,7 +12,7 @@ namespace Xispirito.DAL
     {
         private string connectionString = ConfigurationManager.ConnectionStrings["XispiritoDB"].ConnectionString;
 
-        public void RegisterUserToLecture(string viewerEmail, int lectureId)
+        public void RegisterUserToLecture(ViewerLecture objViewerLecture)
         {
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
@@ -21,8 +21,8 @@ namespace Xispirito.DAL
 
             SqlCommand cmd = new SqlCommand(sql, conn);
 
-            cmd.Parameters.AddWithValue("@email_viewer", viewerEmail);
-            cmd.Parameters.AddWithValue("@id_lecture", lectureId);
+            cmd.Parameters.AddWithValue("@email_viewer", objViewerLecture.GetViewerEmail());
+            cmd.Parameters.AddWithValue("@id_lecture", objViewerLecture.GetLectureId());
 
             cmd.ExecuteNonQuery();
             conn.Close();
