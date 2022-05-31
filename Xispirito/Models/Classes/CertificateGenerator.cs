@@ -1,6 +1,7 @@
 ﻿using PdfSharp.Drawing;
 using PdfSharp.Pdf;
 using System.Diagnostics;
+using System.IO;
 using Xispirito.Controller;
 
 namespace Xispirito.Models
@@ -10,7 +11,12 @@ namespace Xispirito.Models
     {
         public static void GenerateViewerCertificatePDF(Viewer viewer, Lecture lecture, Certificate certificate)
         {
-            string outsideProjectPath = @"D:\Visual Studio\TCC Athon\2022-1-webinar-4\Xispirito\";
+            //// Home.
+            //string outsideProjectPath = @"D:\Visual Studio\TCC Athon\2022-1-webinar-4\Xispirito\";
+
+            // Work
+            string outsideProjectPath = @"C:\Users\MATHEUS\Desktop\TCC\2022-1-webinar-4\Xispirito\";
+
             string insideProjectPath = @"View\Images\Certificates\";
             string path = @"Viewers\";
             string userEmail = viewer.GetEmail() + @"\";
@@ -81,9 +87,8 @@ namespace Xispirito.Models
             document.Save(fullPath);
             SaveViewerCertificate(viewer.GetEmail(), certificate.GetId());
 
-            string filePath = outsideProjectPath + insideProjectPath + path + userEmail;
-            string outputPath = filePath;
-            ConvertPdfToJpg(filePath, filename, outputPath);
+            string outputPath = insideProjectPath + path + userEmail;
+            ConvertPdfToJpg(fullPath, outputPath, Cryptography.GetMD5Hash(certificate.GetId().ToString() + ".png"));
         }
 
         private static void SaveViewerCertificate(string userEmail, int certificateId)
@@ -92,9 +97,19 @@ namespace Xispirito.Models
             viewerCertificateBAL.SaveViewerCertificate(userEmail, certificateId);
         }
 
-        private static void ConvertPdfToJpg(string filePath, string fileName, string outputPath)
+        private static void ConvertPdfToJpg(string inputFilePath, string outputFilePath, string outputFileName)
         {
-            //Process.Start("", );
+            //ProcessStartInfo startInfo = new ProcessStartInfo("CMD.exe");
+            //startInfo.WindowStyle = ProcessWindowStyle.Normal;
+
+            //startInfo.WorkingDirectory = Path.GetFullPath(@"C:\Users\MATHEUS");
+
+            //startInfo.Arguments = "C/ dir";
+            ////startInfo.Arguments = "C/ magick convert -density 300 " + inputFilePath + " -resize 50% " + outputFilePath + outputFileName;
+
+            //Process.Start(startInfo);
+
+            Process.Start("cmd.exe", @"C/ dir");
         }
     }
 }
