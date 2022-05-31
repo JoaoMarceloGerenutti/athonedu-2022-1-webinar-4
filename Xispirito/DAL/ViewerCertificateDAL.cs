@@ -12,18 +12,17 @@ namespace Xispirito.DAL
     {
         private string connectionString = ConfigurationManager.ConnectionStrings["XispiritoDB"].ConnectionString;
 
-        public void RegisterUserCertificate(ViewerCertificate objViewerCertificate)
+        public void RegisterUserCertificate(string userEmail, int certificateId)
         {
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
 
-            string sql = "INSERT INTO Viewer_Certificate VALUES (@key_certificate, @email_viewer, @id_certified)";
+            string sql = "INSERT INTO Viewer_Certificate VALUES (@email_viewer, @id_certified)";
 
             SqlCommand cmd = new SqlCommand(sql, conn);
 
-            cmd.Parameters.AddWithValue("@key_certificate", objViewerCertificate.GetCertificateKey());
-            cmd.Parameters.AddWithValue("@email_viewer", objViewerCertificate.GetViewer().GetEmail());
-            cmd.Parameters.AddWithValue("@id_certified", objViewerCertificate.GetCertificate().GetId());
+            cmd.Parameters.AddWithValue("@email_viewer", userEmail);
+            cmd.Parameters.AddWithValue("@id_certified", certificateId);
 
             cmd.ExecuteNonQuery();
             conn.Close();

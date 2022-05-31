@@ -46,6 +46,9 @@
     <Reference Include="AdvancedStringBuilder, Version=0.1.0.0, Culture=neutral, PublicKeyToken=e818a2fc08933ddb, processorArchitecture=MSIL">
       <HintPath>..\packages\AdvancedStringBuilder.0.1.0\lib\net45\AdvancedStringBuilder.dll</HintPath>
     </Reference>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.9\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
     <Reference Include="LibSassHost, Version=1.3.3.0, Culture=neutral, PublicKeyToken=3e24e88796a38e46, processorArchitecture=MSIL">
       <HintPath>..\packages\LibSassHost.1.3.3\lib\net471\LibSassHost.dll</HintPath>
     </Reference>
@@ -103,8 +106,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="View\Certificates\Viewer\Certificates.aspx" />
-    <Content Include="View\Certificates\Viewer\Certificates.css" />
+    <Content Include="View\Certificates\Viewers\Certificates.aspx" />
+    <Content Include="View\Certificates\Viewers\Certificates.css" />
     <Content Include="View\EventsSearch\EventsSearch.aspx" />
     <Content Include="View\EventsSearch\EventsSearch.css" />
     <Content Include="View\Events\Events.aspx" />
@@ -115,7 +118,7 @@
     <Content Include="View\Home\Home-responsive.css" />
     <Content Include="View\Images\Certificates.png" />
     <Content Include="View\Images\Certificates\Templates\Certificate.png" />
-    <Content Include="View\Images\Certificates\Viewer\joaomarcelogerenuttii%40hotmail.com\c4ca4238a0b923820dcc509a6f75849b.jpg" />
+    <Content Include="View\Images\Certificates\Viewers\joaomarcelogerenuttii%40hotmail.com\c4ca4238a0b923820dcc509a6f75849b.jpg" />
     <Content Include="View\Images\Logout.png" />
     <Content Include="View\Images\Profile.png" />
     <Content Include="View\Images\Search.png" />
@@ -182,11 +185,11 @@
     <Compile Include="Models\Enum\Modality.cs" />
     <Compile Include="Models\Interfaces\IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="View\Certificates\Viewer\Certificates.aspx.cs">
+    <Compile Include="View\Certificates\Viewers\Certificates.aspx.cs">
       <DependentUpon>Certificates.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="View\Certificates\Viewer\Certificates.aspx.designer.cs">
+    <Compile Include="View\Certificates\Viewers\Certificates.aspx.designer.cs">
       <DependentUpon>Certificates.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\EventsSearch\EventsSearch.aspx.cs">
@@ -288,6 +291,10 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

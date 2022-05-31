@@ -67,7 +67,7 @@ namespace Xispirito.View.MasterPage
             UserProfile.PostBackUrl = "~/View/Profiles/" + userType + "/" + userType + ".aspx?user=" + user.GetEmail();
 
             LinkButton UserCertificates = (LinkButton)MasterLoginView.FindControl("UserCertificates");
-            UserCertificates.PostBackUrl = "~/View/Certificates/" + userType + "/Certificates.aspx?user=" + user.GetEmail();
+            UserCertificates.PostBackUrl = "~/View/Certificates/" + userType + "s" + "/Certificates.aspx?user=" + user.GetEmail();
         }
 
         private bool FindViewerAccount(string userEmail)

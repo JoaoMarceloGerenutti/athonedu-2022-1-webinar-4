@@ -23,5 +23,10 @@ namespace Xispirito.Controller
 
             return viewerCertificates;
         }
+
+        public void SaveViewerCertificate(string userEmail, int certificateId)
+        {
+            viewerCertificateDAL.RegisterUserCertificate(userEmail, certificateId);
+        }
     }
 }

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/MasterPage/MasterPage.Master" AutoEventWireup="true" CodeBehind="Certificates.aspx.cs" Inherits="Xispirito.View.Certificates.Viewer.ViewerCertificates" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/MasterPage/MasterPage.Master" AutoEventWireup="true" CodeBehind="Certificates.aspx.cs" Inherits="Xispirito.View.Certificates.Viewers.ViewerCertificates" %>
 
 <asp:Content ID="HeaderFooter" ContentPlaceHolderID="HeaderFooter" runat="server">
 </asp:Content>
@@ -20,7 +20,7 @@
                         <asp:Label ID="MyCertificates" runat="server" Text="Meus Certificados " CssClass="header-title" />
                     </div>
                     <div class="certificate-search">
-                        <asp:TextBox ID="SearchCertificate" runat="server" CssClass="search-box" PlaceHolder="Digite o Nome do Certificado para Filtrar" />
+                        <asp:TextBox ID="SearchCertificate" runat="server" CssClass="search-box" PlaceHolder="Digite o Nome do Certificado para Filtrar" OnTextChanged="SearchCertificate_TextChanged" />
                     </div>
                 </div>
             </div>

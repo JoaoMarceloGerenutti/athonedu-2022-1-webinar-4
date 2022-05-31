@@ -1,23 +1,22 @@
 ﻿using PdfSharp.Drawing;
 using PdfSharp.Pdf;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+using System.Diagnostics;
+using Xispirito.Controller;
 
 namespace Xispirito.Models
 {
 
     public static class CertificateGenerator
     {
-        public static string GenerateViewerCertificate(Viewer viewer, Lecture lecture, Certificate certificate, ViewerCertificate viewerCertificate)
+        public static void GenerateViewerCertificatePDF(Viewer viewer, Lecture lecture, Certificate certificate)
         {
             string outsideProjectPath = @"D:\Visual Studio\TCC Athon\2022-1-webinar-4\Xispirito\";
             string insideProjectPath = @"View\Images\Certificates\";
-            string path = @"Viewer\";
-            string filename = viewerCertificate.GetCertificateKey() + ".pdf";
-            string fullpath = outsideProjectPath + insideProjectPath + path + filename;
+            string path = @"Viewers\";
+            string userEmail = viewer.GetEmail() + @"\";
+            string filename = Cryptography.GetMD5Hash(certificate.GetId().ToString());
+            string extension = ".pdf";
+            string fullPath = outsideProjectPath + insideProjectPath + path + userEmail + filename + extension;
 
             PdfDocument document = new PdfDocument();
             PdfPage page = document.AddPage();
@@ -27,7 +26,7 @@ namespace Xispirito.Models
 
             XGraphics gfx = XGraphics.FromPdfPage(page);
 
-            gfx.DrawImage(PdfSharp.Drawing.XImage.FromFile("~" + insideProjectPath + certificate.GetCertificateModelDirectory()), 0, 0, page.Width, page.Height);
+            gfx.DrawImage(PdfSharp.Drawing.XImage.FromFile(outsideProjectPath + certificate.GetCertificateModelDirectory()), 0, 0, page.Width, page.Height);
 
             XFont font = new XFont("Arial", 14, XFontStyle.Regular);
             XFont boldFont = new XFont("Arial", 12, XFontStyle.Bold);
@@ -73,15 +72,29 @@ namespace Xispirito.Models
             );
 
             // Certificate Key.
-            gfx.DrawString(Cryptography.GetMD5Hash(viewerCertificate.GetCertificate().GetId().ToString()),
+            gfx.DrawString(Cryptography.GetMD5Hash(certificate.GetId().ToString()),
                 boldFont, XBrushes.Black,
                 new XRect(0, 0, page.Width, page.Height),
                 XStringFormats.BottomLeft
             );
 
-            document.Save(fullpath);
+            document.Save(fullPath);
+            SaveViewerCertificate(viewer.GetEmail(), certificate.GetId());
 
-            return fullpath;
+            string filePath = outsideProjectPath + insideProjectPath + path + userEmail;
+            string outputPath = filePath;
+            ConvertPdfToJpg(filePath, filename, outputPath);
+        }
+
+        private static void SaveViewerCertificate(string userEmail, int certificateId)
+        {
+            ViewerCertificateBAL viewerCertificateBAL = new ViewerCertificateBAL();
+            viewerCertificateBAL.SaveViewerCertificate(userEmail, certificateId);
+        }
+
+        private static void ConvertPdfToJpg(string filePath, string fileName, string outputPath)
+        {
+            //Process.Start("", );
         }
     }
 }

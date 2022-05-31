@@ -29,6 +29,11 @@ namespace Xispirito.Models
             return CertificateId;
         }
 
+        public void SetId(int certificateId)
+        {
+            CertificateId = certificateId;
+        }
+
         public string GetCertificateModelDirectory()
         {
             return CertificateModelDirectory;

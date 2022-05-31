@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using Xispirito.Controller;
 using Xispirito.Models;
 
-namespace Xispirito.View.Certificates.Viewer
+namespace Xispirito.View.Certificates.Viewers
 {
     public partial class ViewerCertificates : System.Web.UI.Page
     {
@@ -60,6 +60,28 @@ namespace Xispirito.View.Certificates.Viewer
 
                 //Button downloadButton = (Button)e.Item.FindControl("DownloadCertificate");
                 //downloadButton.PostBackUrl = certificate.GetTime().ToString();
+            }
+        }
+
+        protected void SearchCertificate_TextChanged(object sender, EventArgs e)
+        {
+            if (SearchCertificate.Text.ToLower() == "gerar")
+            {
+                SearchCertificate.Text = "";
+
+                Viewer viewer = new Viewer();
+                ViewerBAL viewerBAL = new ViewerBAL();
+                viewer = viewerBAL.GetAccount(User.Identity.Name);
+
+                Lecture lecture = new Lecture();
+                LectureBAL lectureBAL = new LectureBAL();
+                lecture = lectureBAL.GetLecture(4);
+
+                Certificate certificate = new Certificate();
+                CertificateBAL certificateBAL = new CertificateBAL();
+                certificate = certificateBAL.GetCertificateById(1);
+
+                CertificateGenerator.GenerateViewerCertificatePDF(viewer, lecture, certificate);
             }
         }
     }

@@ -7,7 +7,7 @@
 // </gerado automaticamente>
 //------------------------------------------------------------------------------
 
-namespace Xispirito.View.Certificates.Viewer
+namespace Xispirito.View.Certificates.Viewers
 {
 
 
