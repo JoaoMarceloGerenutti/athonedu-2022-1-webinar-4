@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.Configuration;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Xispirito.Controller;
@@ -49,8 +48,10 @@ namespace Xispirito.View.Certificates.Viewers
             {
                 ViewerCertificate viewerCertificate = (ViewerCertificate)e.Item.DataItem;
 
+                string path = @"\View\Images\Certificates\Viewers\" + viewerCertificate.GetViewer().GetEmail() + @"\" + Cryptography.GetMD5Hash(viewerCertificate.GetCertificate().GetId().ToString());
+
                 Image certificateImage = (Image)e.Item.FindControl("CertificateImage");
-                certificateImage.ImageUrl = @"\View\Images\Certificates\Viewers\" + viewerCertificate.GetViewer().GetEmail() + @"\" + Cryptography.GetMD5Hash(viewerCertificate.GetCertificate().GetId().ToString()) + ".png";
+                certificateImage.ImageUrl = path + ".png";
 
                 Label titleLabel = (Label)e.Item.FindControl("CertificateTitle");
                 titleLabel.Text = viewerCertificate.GetLecture().GetName();
@@ -58,8 +59,9 @@ namespace Xispirito.View.Certificates.Viewers
                 Label dateLabel = (Label)e.Item.FindControl("CertificateDate");
                 dateLabel.Text = viewerCertificate.GetLecture().GetDate().ToString("dd/MM/yyyy HH:mm");
 
-                //Button downloadButton = (Button)e.Item.FindControl("DownloadCertificate");
-                //downloadButton.PostBackUrl = certificate.GetTime().ToString();
+                string certificateKey = viewerCertificate.GetCertificate().GetId().ToString();
+                Button downloadButton = (Button)e.Item.FindControl("DownloadCertificate");
+                downloadButton.CommandArgument = Cryptography.GetMD5Hash(certificateKey);
             }
         }
 
@@ -86,6 +88,23 @@ namespace Xispirito.View.Certificates.Viewers
                     CertificateGenerator.GenerateViewerCertificatePDF(viewer, lecture, certificate);
                 }
             }
+        }
+
+        protected void DownloadCertificate_Click(Object sender, EventArgs e)
+        {
+            Button clickedButton = (Button)sender;
+            string certificateKey = clickedButton.CommandArgument;
+            string userPath = ConfigurationManager.AppSettings["XispiritoPath"] + @"\View\Images\Certificates\Viewers\" + User.Identity.Name + @"\" + certificateKey + ".pdf";
+
+            DownloadCertificate(userPath, certificateKey);
+        }
+
+        public void DownloadCertificate(string path, string certificateKey)
+        {
+            Response.ContentType = "application/pdf";
+            Response.AddHeader("content-disposition", "attachment; filename=" + certificateKey + ".pdf");
+            Response.TransmitFile(path);
+            Response.End();
         }
     }
 }

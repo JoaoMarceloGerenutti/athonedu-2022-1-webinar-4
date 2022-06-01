@@ -13,7 +13,8 @@ body {
 
 .profile {
     background: #181a1b;
-    height: 75vh;
+    min-height: 100vh;
+    height: 100%;
     padding: 2rem 8rem;
     font-size: 1.6rem;
 }

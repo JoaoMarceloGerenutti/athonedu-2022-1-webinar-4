@@ -47,7 +47,7 @@
                             </div>
                             <div class="right-div">
                                 <div class="download-certificate">
-                                    <asp:Button ID="DownloadCertificate" runat="server" Text="Baixar Certificado" CssClass="donwload-button" />
+                                    <asp:Button ID="DownloadCertificate" runat="server" Text="Baixar Certificado" CssClass="donwload-button" OnClick="DownloadCertificate_Click"/>
                                 </div>
                             </div>
                         </div>

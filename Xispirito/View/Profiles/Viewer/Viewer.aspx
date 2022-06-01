@@ -52,7 +52,7 @@
             </div>
             <div class="profile-form-submit">
                 <button class="submit-button px-5 py-2 btn btn-success fs-4" value="submitButton">
-                    Enviar
+                    Salvar
                 </button>
             </div>
         </section>
