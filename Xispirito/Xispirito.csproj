@@ -128,6 +128,8 @@
     <Content Include="View\Images\Test\Engenharias.png" />
     <Content Include="View\Images\Test\Kleber.jpg" />
     <Content Include="View\Images\Test\TI.png" />
+    <Content Include="View\Lectures\CRUD\Lecture-CRUD.aspx" />
+    <Content Include="View\Lectures\CRUD\Lecture-CRUD.css" />
     <Content Include="View\MasterPage\MasterPage.css" />
     <Content Include="View\MasterPage\menu.js" />
     <Content Include="View\Home\print.css" />
@@ -212,6 +214,13 @@
     </Compile>
     <Compile Include="View\Home\Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Lectures\CRUD\Lecture-CRUD.aspx.cs">
+      <DependentUpon>Lecture-CRUD.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Lectures\CRUD\Lecture-CRUD.aspx.designer.cs">
+      <DependentUpon>Lecture-CRUD.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Login\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
