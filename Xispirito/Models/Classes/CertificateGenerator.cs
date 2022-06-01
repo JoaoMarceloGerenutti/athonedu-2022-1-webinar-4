@@ -1,5 +1,6 @@
 ﻿using PdfSharp.Drawing;
 using PdfSharp.Pdf;
+using System.Configuration;
 using System.Diagnostics;
 using System.IO;
 using Xispirito.Controller;
@@ -9,20 +10,22 @@ namespace Xispirito.Models
 
     public static class CertificateGenerator
     {
+
         public static void GenerateViewerCertificatePDF(Viewer viewer, Lecture lecture, Certificate certificate)
         {
-            // Home.
-            string outsideProjectPath = @"D:\VisualStudio\TCCAthon\2022-1-webinar-4\Xispirito\";
-
-            //// Work
-            //string outsideProjectPath = @"C:\Users\MATHEUS\Desktop\TCC\2022-1-webinar-4\Xispirito\";
-
+            string outsideProjectPath = ConfigurationManager.AppSettings["XispiritoPath"];
             string insideProjectPath = @"View\Images\Certificates\";
             string path = @"Viewers\";
             string userEmail = viewer.GetEmail() + @"\";
             string fileName = Cryptography.GetMD5Hash(certificate.GetId().ToString());
             string extension = ".pdf";
             string fullPath = outsideProjectPath + insideProjectPath + path + userEmail + fileName + extension;
+
+            string folderPath = outsideProjectPath + insideProjectPath + path + viewer.GetEmail();
+            if (!File.Exists(folderPath))
+            {
+                Directory.CreateDirectory(folderPath);
+            }
 
             PdfDocument document = new PdfDocument();
             PdfPage page = document.AddPage();
@@ -106,7 +109,7 @@ namespace Xispirito.Models
             ProcessStartInfo startInfo = new ProcessStartInfo
             {
                 Arguments = arguments,
-                FileName = @"D:\Program Files\ImageMagick-7.1.0-Q16-HDRI\magick.exe"
+                FileName = ConfigurationManager.AppSettings["ImageMagickPath"]
             };
             startInfo.UseShellExecute = false;
 
