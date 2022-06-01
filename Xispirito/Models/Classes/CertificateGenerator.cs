@@ -17,7 +17,7 @@ namespace Xispirito.Models
             string insideProjectPath = @"View\Images\Certificates\";
             string path = @"Viewers\";
             string userEmail = viewer.GetEmail() + @"\";
-            string fileName = Cryptography.GetMD5Hash(certificate.GetId().ToString());
+            string fileName = Cryptography.GetMD5Hash(viewer.GetEmail() + certificate.GetId().ToString());
             string extension = ".pdf";
             string fullPath = outsideProjectPath + insideProjectPath + path + userEmail + fileName + extension;
 

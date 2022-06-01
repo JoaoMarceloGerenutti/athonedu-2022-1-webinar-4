@@ -50,5 +50,15 @@ namespace Xispirito.View.Profile_Viewer
             EmailViewer.Text = objViewer.GetEmail();
             ImageViewer.ImageUrl = objViewer.GetPicture();
         }
+
+        protected void SubmitUpdate_Click(Object sender, EventArgs e)
+        {
+            
+        }
+
+        protected void SubmitUpdate_OnClientClick(Object sender, EventArgs e)
+        {
+            Page.ClientScript.RegisterStartupScript(this.GetType(), "showPopup", "confirm('Deseja aplicar as alterações?')", true);
+        }
     }
 }

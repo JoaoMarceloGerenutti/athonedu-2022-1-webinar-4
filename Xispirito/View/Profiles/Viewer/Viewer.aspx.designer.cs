@@ -42,6 +42,15 @@ namespace Xispirito.View.Profile_Viewer
         protected global::System.Web.UI.WebControls.TextBox PasswordViewer;
 
         /// <summary>
+        /// Controle cvRepeatPasswordViewer.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator cvRepeatPasswordViewer;
+
+        /// <summary>
         /// Controle RepeatPasswordViewer.
         /// </summary>
         /// <remarks>
@@ -58,5 +67,23 @@ namespace Xispirito.View.Profile_Viewer
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Image ImageViewer;
+
+        /// <summary>
+        /// Controle vsSubmitUpdate.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary vsSubmitUpdate;
+
+        /// <summary>
+        /// Controle SubmitUpdate.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button SubmitUpdate;
     }
 }

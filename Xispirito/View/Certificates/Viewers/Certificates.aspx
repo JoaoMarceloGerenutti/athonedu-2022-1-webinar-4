@@ -19,8 +19,13 @@
                     <div class="title">
                         <asp:Label ID="MyCertificates" runat="server" Text="Meus Certificados " CssClass="header-title" />
                     </div>
-                    <div class="certificate-search">
-                        <asp:TextBox ID="SearchCertificate" runat="server" CssClass="search-box" PlaceHolder="Digite o Nome do Certificado para Filtrar" OnTextChanged="SearchCertificate_TextChanged" />
+                    <div class="filter-search-wrapper">
+                        <div class="certificate-search">
+                            <asp:TextBox ID="FilterCertificate" runat="server" CssClass="search-box" PlaceHolder="Digite o Nome do Certificado para Filtrar" />
+                        </div>
+                        <div class="search-button-inline">
+                            <asp:ImageButton ID="SearchCertificate" runat="server" class="search-button" ImageUrl="~/View/Images/BlackSearch.png" OnClick="SearchCertificate_Click" />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -47,7 +52,7 @@
                             </div>
                             <div class="right-div">
                                 <div class="download-certificate">
-                                    <asp:Button ID="DownloadCertificate" runat="server" Text="Baixar Certificado" CssClass="donwload-button" OnClick="DownloadCertificate_Click"/>
+                                    <asp:Button ID="DownloadCertificate" runat="server" Text="Baixar Certificado" CssClass="donwload-button" OnClick="DownloadCertificate_Click" />
                                 </div>
                             </div>
                         </div>

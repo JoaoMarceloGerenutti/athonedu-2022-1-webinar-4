@@ -34,6 +34,7 @@
                     <asp:TextBox ID="PasswordViewer" runat="server" class="input-text" placeholder="Informe a Senha" TextMode="Password" />
                 </div>
                 <div class="profile-form-left">
+                    <asp:CompareValidator ID="cvRepeatPasswordViewer" runat="server" ControlToCompare="PasswordViewer" ControlToValidate="RepeatPasswordViewer" ErrorMessage="As Senhas não coincidem!" ValidationGroup="SubmitUpdateGroup" CssClass="field-validator">*</asp:CompareValidator>
                     <asp:TextBox ID="RepeatPasswordViewer" runat="server" class="input-text" placeholder="Informe a Senha Novamente" TextMode="Password" />
                 </div>
                 <div class="profile-form-pic-viewer" shape="round">
@@ -50,10 +51,11 @@
                     </button>
                 </div>
             </div>
+            <div>
+                <asp:ValidationSummary ID="vsSubmitUpdate" runat="server" ForeColor="#E50914" ShowMessageBox="True" ShowSummary="False" ValidationGroup="SubmitUpdateGroup" />
+            </div>
             <div class="profile-form-submit">
-                <button class="submit-button px-5 py-2 btn btn-success fs-4" value="submitButton">
-                    Salvar
-                </button>
+                <asp:Button ID="SubmitUpdate" runat="server" class="submit-button px-5 py-2 btn btn-success fs-4" Text="Salvar Alterações" OnClick="SubmitUpdate_Click" ValidationGroup="SubmitUpdateGroup" OnClientClick="SubmitUpdate_OnClientClick" />
             </div>
         </section>
     </body>

@@ -37,7 +37,7 @@ namespace Xispirito.View.Certificates.Viewers
                 }
                 else
                 {
-                    Response.Redirect("~/View/Home/Home.aspx");
+                    Response.Redirect("~/View/Login/Login.aspx");
                 }
             }
         }
@@ -48,7 +48,8 @@ namespace Xispirito.View.Certificates.Viewers
             {
                 ViewerCertificate viewerCertificate = (ViewerCertificate)e.Item.DataItem;
 
-                string path = @"\View\Images\Certificates\Viewers\" + viewerCertificate.GetViewer().GetEmail() + @"\" + Cryptography.GetMD5Hash(viewerCertificate.GetCertificate().GetId().ToString());
+                string certificateKey = Cryptography.GetMD5Hash(viewerCertificate.GetViewer().GetEmail() + viewerCertificate.GetCertificate().GetId().ToString());
+                string path = @"\View\Images\Certificates\Viewers\" + viewerCertificate.GetViewer().GetEmail() + @"\" + certificateKey;
 
                 Image certificateImage = (Image)e.Item.FindControl("CertificateImage");
                 certificateImage.ImageUrl = path + ".png";
@@ -59,17 +60,18 @@ namespace Xispirito.View.Certificates.Viewers
                 Label dateLabel = (Label)e.Item.FindControl("CertificateDate");
                 dateLabel.Text = viewerCertificate.GetLecture().GetDate().ToString("dd/MM/yyyy HH:mm");
 
-                string certificateKey = viewerCertificate.GetCertificate().GetId().ToString();
                 Button downloadButton = (Button)e.Item.FindControl("DownloadCertificate");
-                downloadButton.CommandArgument = Cryptography.GetMD5Hash(certificateKey);
+                downloadButton.CommandArgument = certificateKey;
             }
         }
 
-        protected void SearchCertificate_TextChanged(object sender, EventArgs e)
+        protected void SearchCertificate_Click(object sender, EventArgs e)
         {
-            if (SearchCertificate.Text.ToLower() == "gerar")
+            string searh = FilterCertificate.Text;
+
+            if (searh.ToLower() == "gerar")
             {
-                SearchCertificate.Text = "";
+                FilterCertificate.Text = "";
 
                 for (int i = 1; i <= 7; i++)
                 {
