@@ -1,6 +1,7 @@
 ﻿using PdfSharp.Drawing;
 using PdfSharp.Pdf;
 using System.Diagnostics;
+using System.IO;
 using Xispirito.Controller;
 
 namespace Xispirito.Models
@@ -10,13 +11,18 @@ namespace Xispirito.Models
     {
         public static void GenerateViewerCertificatePDF(Viewer viewer, Lecture lecture, Certificate certificate)
         {
-            string outsideProjectPath = @"D:\Visual Studio\TCC Athon\2022-1-webinar-4\Xispirito\";
+            // Home.
+            string outsideProjectPath = @"D:\VisualStudio\TCCAthon\2022-1-webinar-4\Xispirito\";
+
+            //// Work
+            //string outsideProjectPath = @"C:\Users\MATHEUS\Desktop\TCC\2022-1-webinar-4\Xispirito\";
+
             string insideProjectPath = @"View\Images\Certificates\";
             string path = @"Viewers\";
             string userEmail = viewer.GetEmail() + @"\";
-            string filename = Cryptography.GetMD5Hash(certificate.GetId().ToString());
+            string fileName = Cryptography.GetMD5Hash(certificate.GetId().ToString());
             string extension = ".pdf";
-            string fullPath = outsideProjectPath + insideProjectPath + path + userEmail + filename + extension;
+            string fullPath = outsideProjectPath + insideProjectPath + path + userEmail + fileName + extension;
 
             PdfDocument document = new PdfDocument();
             PdfPage page = document.AddPage();
@@ -72,7 +78,7 @@ namespace Xispirito.Models
             );
 
             // Certificate Key.
-            gfx.DrawString(Cryptography.GetMD5Hash(certificate.GetId().ToString()),
+            gfx.DrawString(fileName,
                 boldFont, XBrushes.Black,
                 new XRect(0, 0, page.Width, page.Height),
                 XStringFormats.BottomLeft
@@ -80,10 +86,12 @@ namespace Xispirito.Models
 
             document.Save(fullPath);
             SaveViewerCertificate(viewer.GetEmail(), certificate.GetId());
+            document.Close();
 
-            string filePath = outsideProjectPath + insideProjectPath + path + userEmail;
-            string outputPath = filePath;
-            ConvertPdfToJpg(filePath, filename, outputPath);
+            string inputPath = outsideProjectPath + insideProjectPath + path + userEmail + fileName;
+            string outputPath = inputPath;
+
+            ConvertPdfToPng(inputPath, outputPath);
         }
 
         private static void SaveViewerCertificate(string userEmail, int certificateId)
@@ -92,9 +100,17 @@ namespace Xispirito.Models
             viewerCertificateBAL.SaveViewerCertificate(userEmail, certificateId);
         }
 
-        private static void ConvertPdfToJpg(string filePath, string fileName, string outputPath)
+        private static void ConvertPdfToPng(string inputFilePath, string outputFilePath)
         {
-            //Process.Start("", );
+            string arguments = string.Format(@"-density 300 {0}.pdf {1}.png", inputFilePath, outputFilePath);
+            ProcessStartInfo startInfo = new ProcessStartInfo
+            {
+                Arguments = arguments,
+                FileName = @"D:\Program Files\ImageMagick-7.1.0-Q16-HDRI\magick.exe"
+            };
+            startInfo.UseShellExecute = false;
+
+            Process.Start(startInfo).WaitForExit();
         }
     }
 }

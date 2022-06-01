@@ -50,7 +50,7 @@ namespace Xispirito.View.Certificates.Viewers
                 ViewerCertificate viewerCertificate = (ViewerCertificate)e.Item.DataItem;
 
                 Image certificateImage = (Image)e.Item.FindControl("CertificateImage");
-                certificateImage.ImageUrl = @"\View\Images\Certificates\Viewer\" + viewerCertificate.GetViewer().GetEmail() + @"\" + Cryptography.GetMD5Hash(viewerCertificate.GetCertificate().GetId().ToString()) + ".jpg";
+                certificateImage.ImageUrl = @"\View\Images\Certificates\Viewers\" + viewerCertificate.GetViewer().GetEmail() + @"\" + Cryptography.GetMD5Hash(viewerCertificate.GetCertificate().GetId().ToString()) + ".png";
 
                 Label titleLabel = (Label)e.Item.FindControl("CertificateTitle");
                 titleLabel.Text = viewerCertificate.GetLecture().GetName();
@@ -69,19 +69,22 @@ namespace Xispirito.View.Certificates.Viewers
             {
                 SearchCertificate.Text = "";
 
-                Viewer viewer = new Viewer();
-                ViewerBAL viewerBAL = new ViewerBAL();
-                viewer = viewerBAL.GetAccount(User.Identity.Name);
+                for (int i = 1; i <= 7; i++)
+                {
+                    Viewer viewer = new Viewer();
+                    ViewerBAL viewerBAL = new ViewerBAL();
+                    viewer = viewerBAL.GetAccount(User.Identity.Name);
 
-                Lecture lecture = new Lecture();
-                LectureBAL lectureBAL = new LectureBAL();
-                lecture = lectureBAL.GetLecture(4);
+                    Lecture lecture = new Lecture();
+                    LectureBAL lectureBAL = new LectureBAL();
+                    lecture = lectureBAL.GetLecture(i);
 
-                Certificate certificate = new Certificate();
-                CertificateBAL certificateBAL = new CertificateBAL();
-                certificate = certificateBAL.GetCertificateById(1);
+                    Certificate certificate = new Certificate();
+                    CertificateBAL certificateBAL = new CertificateBAL();
+                    certificate = certificateBAL.GetCertificateById(i);
 
-                CertificateGenerator.GenerateViewerCertificatePDF(viewer, lecture, certificate);
+                    CertificateGenerator.GenerateViewerCertificatePDF(viewer, lecture, certificate);
+                }
             }
         }
     }
