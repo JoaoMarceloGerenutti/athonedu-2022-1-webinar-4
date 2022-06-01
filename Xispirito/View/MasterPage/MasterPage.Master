@@ -128,9 +128,7 @@
                         </a>
                     </div>
                     <div>
-                        <p class="text--medium">
-                            Certificados
-                        </p>
+                        <asp:LinkButton ID="Certificates" runat="server" CssClass="text--medium">Certificados</asp:LinkButton>
                     </div>
                 </div>
             </div>
