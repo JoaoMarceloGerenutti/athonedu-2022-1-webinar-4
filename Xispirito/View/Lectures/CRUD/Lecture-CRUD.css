@@ -11,20 +11,19 @@ body {
     font-size: 1.6rem;
 }
 
-.profile {
+.lecture {
     background: #181a1b;
-    height: 75vh;
     padding: 2rem 8rem;
     font-size: 1.6rem;
 }
 
-.profile-label {
+.lecture-label {
     color: white;
     text-align: center;
     margin: 4rem;
 }
 
-.profile-form {
+.lecture-form {
     display: grid;
     grid-template-columns: 2fr 2fr;
     grid-template-rows: 1fr;
@@ -32,53 +31,79 @@ body {
     justify-items: center;
 }
 
-.profile-form-left {
+.lecture-form-left {
     grid-column-start: 1;
+}
+
+.lecture-form-right {
+    grid-column-start: 2;
+}
+
+.lecture-form-description {
+    grid-column-start: 1;
+    grid-row: 2 / 7;
 }
 
 h4 {
     margin-top: 2rem;
 }
 
-.profile-form-pic-viewer {
+.lecture-form-pic {
     grid-column-start: 2;
-    grid-row: 1 / 4;
-    width: 30%;
-    border: .2rem solid;
+    grid-row: 1 / 7;
+    width: 70%;
+    border: .2rem solid black;
     border-color: rgb(111, 103, 91);
     border-radius: 4rem;
     overflow: hidden;
 }
 
-.profile-picture {
+.lecture-picture {
     width: 100%;
     height: 100%;
 }
 
+.lecture-date-display {
+    display: flex;
+    justify-content: space-between;
+}
+.lecture-date {
+    width: 50%;
+    padding: 1rem;
+}
+.lecture-date-input {
+    width: 100% !important;
+    height: 100%;
+    padding: 1.5rem;
+    border: 0.1rem solid;
+    border-radius: 1.2rem;
+    font-size: 1.7rem;
+}
+
 .input-text {
     width: 35rem;
+    height: 100%;
     padding: 1.5rem;
     border: .1rem solid;
     border-radius: 1.2rem;
     font-size: 1.7rem;
 }
 
-.profile-form-set-photo-button {
+.lecture-form-set-photo-button {
     grid-column-start: 2;
-    grid-row-start: 5;
+    grid-row-start: 8;
 }
 
-.profile-form-retire-photo-button {
+.lecture-form-retire-photo-button {
     grid-column-start: 2;
-    grid-row-start: 6;
+    grid-row-start: 9;
 }
 
-.profile-form-submit {
+.lecture-form-submit {
     display: flex;
     justify-content: center;
-    margin-top: 2rem;
+    margin-top: 1rem;
 }
-
 
 .chose-photo {
     padding: 1rem;
@@ -89,13 +114,22 @@ h4 {
     font-size: 1.8rem !important;
 }
 
-
 .delete-photo {
     padding: 1rem 2.2rem;
     border-radius: .5rem;
     background: #6c757d;
     color: white;
     font-size: 1.8rem !important;
+}
+
+.lecture-address-input {
+    grid-column-start: 2;
+    grid-row-start: 10;
+}
+
+.lecture-presencial {
+    color: white;
+    text-align: center;
 }
 
 .submit-button {
@@ -105,4 +139,30 @@ h4 {
     background: #146c43 !important;
     color: white;
     font-size: 1.8rem;
+}
+
+.input-description {
+    color: white;
+    width: 35rem;
+    height: 100%;
+    padding: 1.5rem;
+    border: .1rem solid white;
+    border-radius: 1.2rem;
+    font-size: 1.7rem;
+}
+
+textarea {
+    padding: 10px;
+    max-width: 100%;
+    line-height: 1.5;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px #999;
+}
+
+.centralize-time {
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    padding-top: 2rem;
 }
