@@ -70,7 +70,7 @@ namespace Xispirito.View.MasterPage
             }
             else
             {
-                UserProfile.PostBackUrl = @"~/Lectures/CRUD/Lecture-CRUD.aspx";
+                UserProfile.PostBackUrl = @"~/View/Profiles/" + userType + "/" + userType + ".aspx";
                 UserProfile.Text = "Editar Perfil";
 
                 image.ImageUrl = @"../Images/Profile.png";

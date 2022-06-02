@@ -16,16 +16,16 @@ namespace Xispirito.View.Profile_Viewer
         private Viewer viewer = new Viewer();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Page.IsPostBack && User.Identity.IsAuthenticated)
+            if (!Page.IsPostBack)
             {
-                if (Request.QueryString["user"] != null && User.Identity.Name == Request.QueryString["user"])
+                if (User.Identity.IsAuthenticated)
                 {
-                    viewer.SetEmail(Request.QueryString["user"]);
+                    viewer.SetEmail(User.Identity.Name);
                     LoadViewerProfile(viewer.GetEmail());
                 }
                 else
                 {
-                    Response.Redirect("~/View/Home/Home.aspx");
+                    Response.Redirect("~/View/Login/Login.aspx");
                 }
             }
         }
