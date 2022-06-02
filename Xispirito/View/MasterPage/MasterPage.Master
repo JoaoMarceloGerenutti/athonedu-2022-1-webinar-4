@@ -67,11 +67,11 @@
                                                         <asp:LinkButton ID="UserProfile" runat="server"></asp:LinkButton>
                                                     </li>
                                                     <li>
-                                                        <img src="../Images/Certificates.png" />
+                                                        <img src="/View/Images/Certificates.png" />
                                                         <asp:LinkButton ID="UserCertificates" runat="server">Meus Certificados</asp:LinkButton>
                                                     </li>
                                                     <li>
-                                                        <img src="../Images/Logout.png" />
+                                                        <img src="/View/Images/Logout.png" />
                                                         <asp:LoginStatus ID="MasterLoginStatus" runat="server" LogoutAction="RedirectToLoginPage" LogoutText="Sair" LogoutPageUrl="~/View/Login/Login.aspx" />
                                                     </li>
                                                 </ul>

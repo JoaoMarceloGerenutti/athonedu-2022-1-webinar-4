@@ -15,6 +15,15 @@ namespace Xispirito.View.Lectures.CRUD
     {
 
         /// <summary>
+        /// Controle ActionLecture.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ActionLecture;
+
+        /// <summary>
         /// Controle NameLecture.
         /// </summary>
         /// <remarks>
@@ -24,31 +33,40 @@ namespace Xispirito.View.Lectures.CRUD
         protected global::System.Web.UI.WebControls.TextBox NameLecture;
 
         /// <summary>
-        /// Controle TextBox1.
+        /// Controle DescriptionLecture.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox DescriptionLecture;
 
         /// <summary>
-        /// Controle TextBox5.
+        /// Controle DateLecture.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox5;
+        protected global::System.Web.UI.WebControls.TextBox DateLecture;
 
         /// <summary>
-        /// Controle TextBox6.
+        /// Controle AddressLecture.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox6;
+        protected global::System.Web.UI.WebControls.TextBox AddressLecture;
+
+        /// <summary>
+        /// Controle LimitLecture.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox LimitLecture;
 
         /// <summary>
         /// Controle ImageLecture.

@@ -16,17 +16,17 @@
     <body>
         <section class="lecture">
             <div class="lecture-label">
-                <h3 style="color: white;">Editar/Criar Palestra</h3>
+                <asp:Label ID="ActionLecture" runat="server" class="lecture-action">Criar Palestra</asp:Label>
             </div>
             <div class="lecture-form">
                 <div class="lecture-form-left">
                     <asp:TextBox ID="NameLecture" runat="server" class="input-text" placeholder="Informe o Nome" />
                 </div>
                 <div class="lecture-form-description">
-                    <textarea class="input-text" rows="7" placeholder="Informe a Descrição"></textarea>
+                    <asp:TextBox ID="DescriptionLecture" runat="server" TextMode="MultiLine" class="input-text" rows="7" placeholder="Informe a Descrição" />
                 </div>
                 <div class="lecture-form-left">
-                    <asp:TextBox ID="TextBox1" runat="server" class="input-text" placeholder="Informe o Tempo" />
+                    <asp:TextBox ID="DateLecture" runat="server" class="input-text" placeholder="Informe a Data" />
                 </div>
                 <div class="lecture-form-left">
                     <h3 style="color: white;">Tempo da Palestra</h3>
@@ -46,10 +46,10 @@
                     </div>
                 </div>
                 <div class="lecture-address-input">
-                    <asp:TextBox ID="TextBox5" runat="server" class="input-text" placeholder="Informe o Endereço" />
+                    <asp:TextBox ID="AddressLecture" runat="server" class="input-text" placeholder="Informe o Endereço" />
                 </div>
                 <div class="lecture-form-left">
-                    <asp:TextBox ID="TextBox6" runat="server" class="input-text" placeholder="Informe o Limite de pessoas" />
+                    <asp:TextBox ID="LimitLecture" runat="server" class="input-text" placeholder="Informe o Limite de pessoas" />
                 </div>
                 <div class="lecture-form-pic" shape="round">
                     <asp:Image ID="ImageLecture" runat="server" CssClass="lecture-picture"/>

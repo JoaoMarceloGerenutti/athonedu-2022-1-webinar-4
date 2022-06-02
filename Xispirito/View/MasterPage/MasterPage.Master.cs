@@ -66,14 +66,14 @@ namespace Xispirito.View.MasterPage
                 UserProfile.PostBackUrl = "~/View/Lectures/CRUD/Lecture-CRUD.aspx";
                 UserProfile.Text = "Administrar";
 
-                image.ImageUrl = @"../Images/Administrator.png";
+                image.ImageUrl = @"~/View/Images/Administrator.png";
             }
             else
             {
                 UserProfile.PostBackUrl = @"~/View/Profiles/" + userType + "/" + userType + ".aspx";
                 UserProfile.Text = "Editar Perfil";
 
-                image.ImageUrl = @"../Images/Profile.png";
+                image.ImageUrl = @"~/View/Images/Profile.png";
             }
 
             LinkButton UserCertificates = (LinkButton)MasterLoginView.FindControl("UserCertificates");
