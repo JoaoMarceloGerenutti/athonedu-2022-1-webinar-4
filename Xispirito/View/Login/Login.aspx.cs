@@ -15,7 +15,7 @@ namespace Xispirito.View.Login
 
         }
 
-        protected void SignIn_Authenticate(object sender, System.Web.UI.WebControls.AuthenticateEventArgs e)
+        protected void SignIn_Authenticate(object sender, AuthenticateEventArgs e)
         {
             string signInEmail = SignIn.UserName;
             string signInPassword = SignIn.Password;

@@ -28,5 +28,13 @@ namespace Xispirito.Controller
         {
             viewerCertificateDAL.RegisterUserCertificate(userEmail, certificateId);
         }
+
+        public List<ViewerCertificate> GetFilterUserCertificates(string userEmail, string lectureName)
+        {
+            List<ViewerCertificate> viewerCertificates = null;
+            viewerCertificates = viewerCertificateDAL.GetFilterUserCertificates(userEmail, lectureName);
+
+            return viewerCertificates;
+        }
     }
 }

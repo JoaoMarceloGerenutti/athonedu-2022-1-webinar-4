@@ -8,7 +8,7 @@ using Xispirito.Models;
 
 namespace Xispirito.View.Certificates.Viewers
 {
-    public partial class ViewerCertificates : System.Web.UI.Page
+    public partial class ViewerCertificates : Page
     {
         private ViewerCertificateBAL viewerCertificateBAL = new ViewerCertificateBAL();
 
@@ -18,26 +18,26 @@ namespace Xispirito.View.Certificates.Viewers
         {
             if (!Page.IsPostBack && User.Identity.IsAuthenticated)
             {
-                if (Request.QueryString["user"] != null && User.Identity.Name == Request.QueryString["user"])
+                if (Request.QueryString["certificateSearch"] != null)
                 {
-                    viewerCertificates = new List<ViewerCertificate>();
+                    string search = Request.QueryString["certificateSearch"];
+                    viewerCertificates = viewerCertificateBAL.GetFilterUserCertificates(User.Identity.Name, search);
+                    FilterCertificate.Text = search;
+                }
+                else
+                {
                     viewerCertificates = viewerCertificateBAL.GetUserCertificates(User.Identity.Name);
+                }
 
-                    if (viewerCertificates != null)
-                    {
-                        MyCertificates.Text += "(" + viewerCertificates.Count + ")";
-                    }
-                    else
-                    {
-                        MyCertificates.Text += "(0)";
-                    }
-
+                if (viewerCertificates != null)
+                {
+                    MyCertificates.Text += "(" + viewerCertificates.Count + ")";
                     ListViewCertificates.DataSource = viewerCertificates;
                     ListViewCertificates.DataBind();
                 }
                 else
                 {
-                    Response.Redirect("~/View/Login/Login.aspx");
+                    MyCertificates.Text += "(0)";
                 }
             }
         }
@@ -67,9 +67,9 @@ namespace Xispirito.View.Certificates.Viewers
 
         protected void SearchCertificate_Click(object sender, EventArgs e)
         {
-            string searh = FilterCertificate.Text;
+            string search = FilterCertificate.Text;
 
-            if (searh.ToLower() == "gerar")
+            if (search.ToLower() == "gerar")
             {
                 FilterCertificate.Text = "";
 
@@ -88,6 +88,13 @@ namespace Xispirito.View.Certificates.Viewers
                     certificate = certificateBAL.GetCertificateById(i);
 
                     CertificateGenerator.GenerateViewerCertificatePDF(viewer, lecture, certificate);
+                }
+            }
+            else
+            {
+                if (search != null)
+                {
+                    Response.Redirect("~/View/Certificates/Viewers/Certificates.aspx?certificateSearch=" + search);
                 }
             }
         }
