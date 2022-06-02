@@ -63,15 +63,15 @@
                                                 <hr class="line" />
                                                 <ul>
                                                     <li>
-                                                        <img src="\View\Images\Profile.png" />
-                                                        <asp:LinkButton ID="UserProfile" runat="server">Editar Perfil</asp:LinkButton>
+                                                        <asp:Image ID="Profile" runat="server" />
+                                                        <asp:LinkButton ID="UserProfile" runat="server"></asp:LinkButton>
                                                     </li>
                                                     <li>
-                                                        <img src="\View\Images\Certificates.png" />
+                                                        <img src="../Images/Certificates.png" />
                                                         <asp:LinkButton ID="UserCertificates" runat="server">Meus Certificados</asp:LinkButton>
                                                     </li>
                                                     <li>
-                                                        <img src="\View\Images\Logout.png" />
+                                                        <img src="../Images/Logout.png" />
                                                         <asp:LoginStatus ID="MasterLoginStatus" runat="server" LogoutAction="RedirectToLoginPage" LogoutText="Sair" LogoutPageUrl="~/View/Login/Login.aspx" />
                                                     </li>
                                                 </ul>

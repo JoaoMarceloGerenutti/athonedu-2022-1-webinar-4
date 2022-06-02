@@ -11,10 +11,6 @@ namespace Xispirito.View.MasterPage
         private SpeakerBAL speakerBAL = new SpeakerBAL();
         private AdministratorBAL administratorBAL = new AdministratorBAL();
 
-        private Viewer viewer = new Viewer();
-        private Speaker speaker = new Speaker();
-        private Administrator administrator = new Administrator();
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack && Page.User.Identity.IsAuthenticated)
@@ -26,9 +22,9 @@ namespace Xispirito.View.MasterPage
 
         private void GetUserInformation()
         {
-            BaseUser user = new BaseUser();
-            string userRole = "";
-            string userType = "";
+            BaseUser user;
+            string userRole;
+            string userType;
 
             string accountEmail = Page.User.Identity.Name.ToString();
             if (FindViewerAccount(accountEmail))
@@ -63,8 +59,22 @@ namespace Xispirito.View.MasterPage
             Label UserRole = (Label)MasterLoginView.FindControl("UserRole");
             UserRole.Text = userRole;
 
+            Image image = (Image)MasterLoginView.FindControl("Profile");
             LinkButton UserProfile = (LinkButton)MasterLoginView.FindControl("UserProfile");
-            UserProfile.PostBackUrl = "~/View/Profiles/" + userType + "/" + userType + ".aspx?user=" + user.GetEmail();
+            if (userType == "Administrator")
+            {
+                UserProfile.PostBackUrl = "~/View/Lectures/CRUD/Lecture-CRUD.aspx";
+                UserProfile.Text = "Administrar";
+
+                image.ImageUrl = @"../Images/Administrator.png";
+            }
+            else
+            {
+                UserProfile.PostBackUrl = @"~/Lectures/CRUD/Lecture-CRUD.aspx";
+                UserProfile.Text = "Editar Perfil";
+
+                image.ImageUrl = @"../Images/Profile.png";
+            }
 
             LinkButton UserCertificates = (LinkButton)MasterLoginView.FindControl("UserCertificates");
             UserCertificates.PostBackUrl = "~/View/Certificates/" + userType + "s" + "/Certificates.aspx";
