@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 using Xispirito.Controller;
 using Xispirito.Models;
 
 namespace Xispirito.View.Profile_Viewer
 {
-    public partial class Profile_Viewer : System.Web.UI.Page
+    public partial class Profile_Viewer : Page
     {
         private ViewerBAL viewerBAL = new ViewerBAL();
 
@@ -32,16 +28,16 @@ namespace Xispirito.View.Profile_Viewer
 
         private void LoadViewerProfile(string viewerEmail)
         {
-            viewer = GetViewerProfile(viewerEmail);
-
+            GetViewerProfile(viewerEmail);
             SetViewerProfile(viewer);
         }
 
-        private Viewer GetViewerProfile(string viewerEmail)
+        private void GetViewerProfile(string viewerEmail)
         {
-            viewer = viewerBAL.GetAccount(viewerEmail);
+            Viewer objViewer = new Viewer();
+            objViewer = viewerBAL.GetAccount(viewerEmail);
 
-            return viewer;
+            viewer = objViewer;
         }
 
         private void SetViewerProfile(Viewer objViewer)
@@ -53,12 +49,34 @@ namespace Xispirito.View.Profile_Viewer
 
         protected void SubmitUpdate_Click(Object sender, EventArgs e)
         {
-            
-        }
+            _ = new Viewer();
+            Viewer updatedViewer = viewerBAL.GetAccount(User.Identity.Name);
 
-        protected void SubmitUpdate_OnClientClick(Object sender, EventArgs e)
-        {
-            Page.ClientScript.RegisterStartupScript(this.GetType(), "showPopup", "confirm('Deseja aplicar as alterações?')", true);
+            string updateName = NameViewer.Text;
+            if (!string.IsNullOrEmpty(updateName) && updatedViewer.GetName() != updateName)
+            {
+                updatedViewer.SetName(updateName);
+            }
+
+            if (!string.IsNullOrEmpty(PasswordViewer.Text))
+            {
+                string updatePassword = Cryptography.GetMD5Hash(PasswordViewer.Text);
+
+                if (updatedViewer.GetEncryptedPassword() != updatePassword)
+                {
+                    updatedViewer.SetEncryptedPassword(updatePassword);
+                }
+            }
+
+            if (updatedViewer != viewer)
+            {
+                viewerBAL.UpdateViewerAccount(updatedViewer);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Perfil Atualizado com Sucesso!", "alert('Perfil Atualizado com Sucesso!');", true);
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Faça algum Alteração!", "alert('Altere alguma Informação para atualizar os dados do Perfil!');", true);
+            }
         }
     }
 }

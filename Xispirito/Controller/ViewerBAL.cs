@@ -77,5 +77,10 @@ namespace Xispirito.Controller
             }
             return accountActive;
         }
+
+        public void UpdateViewerAccount(Viewer objViewer)
+        {
+            viewerDAL.Update(objViewer);
+        }
     }
 }
