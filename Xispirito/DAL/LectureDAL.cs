@@ -17,7 +17,7 @@ namespace Xispirito.DAL
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
 
-            string sql = "INSERT INTO Lecture VALUES (@nm_lecture, @pt_lecture, @tm_lecture, @dt_lecture, @dc_lecture, @adr_lecture, @mod_lecture, @rt_lecture, @lt_lecture, @isActive)";
+            string sql = "INSERT INTO Lecture VALUES (@nm_lecture, @pt_lecture, @tm_lecture, @dt_lecture, @dc_lecture, @mod_lecture, @adr_lecture, @rt_lecture, @lt_lecture, @isActive)";
 
             SqlCommand cmd = new SqlCommand(sql, conn);
 
@@ -26,7 +26,18 @@ namespace Xispirito.DAL
             cmd.Parameters.AddWithValue("@tm_lecture", objLecture.GetTime());
             cmd.Parameters.AddWithValue("@dt_lecture", objLecture.GetDate());
             cmd.Parameters.AddWithValue("@dc_lecture", objLecture.GetDescription());
-            cmd.Parameters.AddWithValue("@mod_lecture", objLecture.GetModality());
+
+            int modality = 0;
+            foreach (string enumModality in Enum.GetNames(typeof(Modality)))
+            {
+                if (objLecture.GetModality() == enumModality)
+                {
+                    break;
+                }
+                modality++;
+            }
+            cmd.Parameters.AddWithValue("@mod_lecture", modality);
+
             cmd.Parameters.AddWithValue("@adr_lecture", objLecture.GetAddress());
             cmd.Parameters.AddWithValue("@rt_lecture", objLecture.GetIsLimited());
             cmd.Parameters.AddWithValue("@lt_lecture", objLecture.GetLimit());

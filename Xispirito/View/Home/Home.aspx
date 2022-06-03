@@ -15,7 +15,8 @@
         <link rel="stylesheet" href="print.css" media="print" />
     </head>
     <body>
-        <section class="hero">
+        <div class="home-content">
+            <section class="hero">
             <div class="container">
                 <div>
                     <h2>
@@ -55,6 +56,7 @@
                 </asp:ListView>
             </section>
         </main>
+        </div>
     </body>
     </html>
 </asp:Content>

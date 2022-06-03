@@ -136,7 +136,6 @@ namespace Xispirito.View.Lectures.CRUD
                     lectureBAL.InsertLecture(objLecture);
                 }
             }
-            SaveUploadImage();
         }
 
         private Lecture GetUpdateInformation()
@@ -199,19 +198,17 @@ namespace Xispirito.View.Lectures.CRUD
             dateTimeLecture.AddHours(lectureStart.Hour);
             dateTimeLecture.AddMinutes(lectureStart.Minute);
 
-            Lecture objLecture = new Lecture(
-                lecture.GetId(),
-                NameLecture.Text,
-                lecture.GetPicture(),
-                CalculateLectureTime(lectureStart, lectureEnd),
-                dateTimeLecture,
-                DescriptionLecture.Text,
-                ModalityLecture.SelectedValue,
-                address,
-                isLimited,
-                limit,
-                true
-            );
+            Lecture objLecture = new Lecture();
+            objLecture.SetName(NameLecture.Text);
+            objLecture.SetPicture(SaveUploadImage());
+            objLecture.SetTime(CalculateLectureTime(lectureStart, lectureEnd));
+            objLecture.SetDate(dateTimeLecture);
+            objLecture.SetDescription(DescriptionLecture.Text);
+            objLecture.SetModality(ModalityLecture.SelectedValue);
+            objLecture.SetAddress(address);
+            objLecture.SetIsLimited(isLimited);
+            objLecture.SetLimit(limit);
+            objLecture.SetIsActive(true);
 
             return objLecture;
         }
@@ -223,33 +220,39 @@ namespace Xispirito.View.Lectures.CRUD
             return lectureTimeInMinutes;
         }
 
-        private void SaveUploadImage()
+        private string SaveUploadImage()
         {
+            string cryptographLectureId = Cryptography.GetMD5Hash(lecture.GetId().ToString());
+            string fileName = cryptographLectureId;
+
+            string filePath = @"\View\Images\Lectures\" + cryptographLectureId;
+
+            HttpFileCollection hfc = null;
+            HttpPostedFile hpf = null;
+
+            string clientFile = "";
+            string extension = "";
             if (LecturePhotoUpload.HasFile)
             {
                 if (LecturePhotoUpload.PostedFile.ContentType == "image/jpeg" || LecturePhotoUpload.PostedFile.ContentType == "image/png" || LecturePhotoUpload.PostedFile.ContentType == "image/gif" || LecturePhotoUpload.PostedFile.ContentType == "image/bmp")
                 {
                     try
                     {
-                        HttpFileCollection hfc = Request.Files;
-                        HttpPostedFile hpf = hfc[0];
+                        hfc = Request.Files;
+                        hpf = hfc[0];
 
                         if (hpf.ContentLength > 0)
                         {
-                            string clientFile = Path.GetFileName(hpf.FileName);
-                            string extension = Path.GetExtension(hpf.FileName);
+                            clientFile = Path.GetFileName(hpf.FileName);
+                            extension = Path.GetExtension(hpf.FileName);
 
-                            string lectureId = Cryptography.GetMD5Hash(lecture.GetId().ToString());
-                            string fileName = lectureId;
-
-                            string filePath = @"\View\Images\Lectures\" + lectureId;
                             string folderPath = ConfigurationManager.AppSettings["XispiritoPath"] + filePath;
                             if (!File.Exists(folderPath))
                             {
                                 Directory.CreateDirectory(folderPath);
                             }
 
-                            string mapPath = Server.MapPath(filePath) + fileName + extension;
+                            string mapPath = Server.MapPath(filePath) + @"\" + fileName + extension;
                             hpf.SaveAs(mapPath);
                         }
                     }
@@ -263,6 +266,7 @@ namespace Xispirito.View.Lectures.CRUD
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "Archive Invalid!", "alert('Arquivo Inválido, É permitido carregar apenas arquivos em .JPEG .PNG .GIF .BMP');", true);
                 }
             }
+            return filePath + @"\" + cryptographLectureId + extension;
         }
     }
 }

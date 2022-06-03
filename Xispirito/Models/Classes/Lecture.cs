@@ -74,9 +74,19 @@ namespace Xispirito.Models
             return LectureName;
         }
 
+        public void SetName(string lectureName)
+        {
+            LectureName = lectureName;
+        }
+
         public string GetPicture()
         {
             return LecturePicture;
+        }
+
+        public void SetPicture(string picturePath)
+        {
+            LecturePicture = picturePath;
         }
 
         public List<Area> GetAreaList()
@@ -89,9 +99,19 @@ namespace Xispirito.Models
             return LectureTime;
         }
 
+        public void SetTime(int lectureTime)
+        {
+            LectureTime = lectureTime;
+        }
+
         public DateTime GetDate()
         {
             return LectureDate;
+        }
+
+        public void SetDate(DateTime date)
+        {
+            LectureDate = date;
         }
 
         public string GetDescription()
@@ -99,9 +119,19 @@ namespace Xispirito.Models
             return LectureDescription;
         }
 
+        public void SetDescription(string description)
+        {
+            LectureDescription = description;
+        }
+
         public string GetModality()
         {
             return LectureModality;
+        }
+
+        public void SetModality(string modality)
+        {
+            LectureModality = modality;
         }
 
         public string GetAddress()
@@ -109,14 +139,29 @@ namespace Xispirito.Models
             return LectureAddress;
         }
 
+        public void SetAddress(string address)
+        {
+            LectureAddress = address;
+        }
+
         public bool GetIsLimited()
         {
             return IsLectureLimited;
         }
 
+        public void SetIsLimited(bool isLimited)
+        {
+            IsLectureLimited = isLimited;
+        }
+
         public int GetLimit()
         {
             return LectureLimit;
+        }
+
+        public void SetLimit(int limit)
+        {
+            LectureLimit = limit;
         }
 
         public List<Speaker> GetSpeakerList()
