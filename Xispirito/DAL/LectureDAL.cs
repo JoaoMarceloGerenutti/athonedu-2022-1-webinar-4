@@ -79,7 +79,7 @@ namespace Xispirito.DAL
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
 
-            string sql = "SELECT * FROM Lecture WHERE isActive = 1 ORDER BY dt_lecture DESC";
+            string sql = "SELECT * FROM Lecture WHERE isActive = 1 AND dt_lecture > GETDATE() ORDER BY dt_lecture DESC";
 
             SqlCommand cmd = new SqlCommand(sql, conn);
 
@@ -119,7 +119,7 @@ namespace Xispirito.DAL
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
 
-            string sql = "SELECT * FROM Lecture WHERE isActive = 1 ORDER BY dt_lecture DESC";
+            string sql = "SELECT * FROM Lecture WHERE isActive = 1 AND dt_lecture > GETDATE() ORDER BY dt_lecture DESC";
 
             SqlCommand cmd = new SqlCommand(sql, conn);
 
@@ -166,7 +166,7 @@ namespace Xispirito.DAL
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
 
-            string sql = "SELECT * FROM Lecture WHERE isActive = 1 ORDER BY NEWID();";
+            string sql = "SELECT * FROM Lecture WHERE isActive = 1 AND dt_lecture > GETDATE() ORDER BY NEWID();";
 
             SqlCommand cmd = new SqlCommand(sql, conn);
 
@@ -206,7 +206,7 @@ namespace Xispirito.DAL
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
 
-            string sql = "SELECT * FROM Lecture WHERE isActive = 1 ORDER BY NEWID();";
+            string sql = "SELECT * FROM Lecture WHERE isActive = 1 AND dt_lecture > GETDATE() ORDER BY NEWID();";
 
             SqlCommand cmd = new SqlCommand(sql, conn);
 
@@ -253,7 +253,7 @@ namespace Xispirito.DAL
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
 
-            string sql = "SELECT * FROM Lecture WHERE isActive = 1 AND nm_lecture LIKE @search";
+            string sql = "SELECT * FROM Lecture WHERE isActive = 1 AND nm_lecture LIKE @search AND dt_lecture > GETDATE()";
 
             SqlCommand cmd = new SqlCommand(sql, conn);
 

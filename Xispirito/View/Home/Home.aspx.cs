@@ -11,7 +11,7 @@ using AspImageButton = System.Web.UI.WebControls.ImageButton;
 namespace Xispirito.View.HomeWithMaster
 {
 
-    public partial class Home : System.Web.UI.Page
+    public partial class Home : Page
     {
         private LectureBAL lectureBAL = new LectureBAL();
 

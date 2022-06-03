@@ -63,5 +63,15 @@ namespace Xispirito.Controller
 
             return searchLectureList;
         }
+
+        public void UpdateLecture(Lecture objLecture)
+        {
+            lectureDAL.Update(objLecture);
+        }
+
+        public void InsertLecture(Lecture objLecture)
+        {
+            lectureDAL.Insert(objLecture);
+        }
     }
 }

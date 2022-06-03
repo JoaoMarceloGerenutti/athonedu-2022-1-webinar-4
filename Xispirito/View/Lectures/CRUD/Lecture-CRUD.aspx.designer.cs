@@ -24,6 +24,15 @@ namespace Xispirito.View.Lectures.CRUD
         protected global::System.Web.UI.WebControls.Label ActionLecture;
 
         /// <summary>
+        /// Controle NameLectureRequired.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator NameLectureRequired;
+
+        /// <summary>
         /// Controle NameLecture.
         /// </summary>
         /// <remarks>
@@ -31,6 +40,15 @@ namespace Xispirito.View.Lectures.CRUD
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox NameLecture;
+
+        /// <summary>
+        /// Controle DescriptionLectureRequired.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator DescriptionLectureRequired;
 
         /// <summary>
         /// Controle DescriptionLecture.
@@ -42,6 +60,15 @@ namespace Xispirito.View.Lectures.CRUD
         protected global::System.Web.UI.WebControls.TextBox DescriptionLecture;
 
         /// <summary>
+        /// Controle DateLectureRequired.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator DateLectureRequired;
+
+        /// <summary>
         /// Controle DateLecture.
         /// </summary>
         /// <remarks>
@@ -49,24 +76,6 @@ namespace Xispirito.View.Lectures.CRUD
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox DateLecture;
-
-        /// <summary>
-        /// Controle AddressLecture.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox AddressLecture;
-
-        /// <summary>
-        /// Controle LimitLecture.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox LimitLecture;
 
         /// <summary>
         /// Controle ImageLecture.
@@ -87,6 +96,33 @@ namespace Xispirito.View.Lectures.CRUD
         protected global::System.Web.UI.WebControls.DropDownList ModalityLecture;
 
         /// <summary>
+        /// Controle LimitLectureRequired.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator LimitLectureRequired;
+
+        /// <summary>
+        /// Controle LimitLecture.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox LimitLecture;
+
+        /// <summary>
+        /// Controle AddressLecture.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox AddressLecture;
+
+        /// <summary>
         /// Controle LecturePhotoUpload.
         /// </summary>
         /// <remarks>
@@ -94,5 +130,23 @@ namespace Xispirito.View.Lectures.CRUD
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload LecturePhotoUpload;
+
+        /// <summary>
+        /// Controle vsSubmitUpdate.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary vsSubmitUpdate;
+
+        /// <summary>
+        /// Controle SubmitUpdate.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button SubmitUpdate;
     }
 }

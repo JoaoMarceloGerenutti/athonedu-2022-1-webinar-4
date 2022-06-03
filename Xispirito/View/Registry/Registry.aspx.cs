@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 using Xispirito.Controller;
 using Xispirito.Models;
 
 namespace Xispirito.View.Registry
 {
-    public partial class Registry : System.Web.UI.Page
+    public partial class Registry : Page
     {
         private Lecture lecture = new Lecture();
 
@@ -23,13 +19,20 @@ namespace Xispirito.View.Registry
             {
                 lecture.SetId(Convert.ToInt32(Request.QueryString["event"]));
                 GetEventInformation(lecture.GetId());
-            }
 
-            if (!IsPostBack)
-            {
-                if (VerifyUserAlreadyRegistered())
+                if (VerifyLectureStatus())
                 {
-                    EventSubscribe.Text = "Cancelar Inscrição";
+                    if (!IsPostBack)
+                    {
+                        if (VerifyUserAlreadyRegistered())
+                        {
+                            EventSubscribe.Text = "Cancelar Inscrição";
+                        }
+                    }
+                }
+                else
+                {
+                    Response.Redirect("~/View/Home/Home.aspx");
                 }
             }
         }
@@ -62,12 +65,29 @@ namespace Xispirito.View.Registry
         {
             if (User.Identity.IsAuthenticated)
             {
-                RegisterUserToLecture();
+                if (VerifyLectureStatus())
+                {
+                    RegisterUserToLecture();
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Palestra Expirada!", "alert('Você não pode realizar Inscrição a Palestras Inativas ou em Andamento!');", true);
+                }
             }
             else
             {
                 Response.Redirect("~/View/Login/Login.aspx");
             }
+        }
+
+        private bool VerifyLectureStatus()
+        {
+            bool registrationOpen = true;
+            if (lecture.IsActive == false || lecture.GetDate() < DateTime.Now)
+            {
+                registrationOpen = false;
+            }
+            return registrationOpen;
         }
 
         private void RegisterUserToLecture()
