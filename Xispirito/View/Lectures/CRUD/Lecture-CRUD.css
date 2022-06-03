@@ -24,7 +24,7 @@ body {
 }
 
 .lecture-action {
-    font-size: 2.5rem;
+    font-size: 3.4rem;
     font-weight: 500;
 }
 
@@ -128,8 +128,8 @@ h4 {
 }
 
 .lecture-address-input {
-    grid-column-start: 2;
-    grid-row-start: 10;
+    grid-column-start: 1;
+    grid-row-start: 12;
 }
 
 .lecture-presencial {

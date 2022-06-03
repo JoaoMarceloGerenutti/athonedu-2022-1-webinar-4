@@ -4,7 +4,7 @@
 <asp:Content ID="Content" ContentPlaceHolderID="Content" runat="server">
     <!DOCTYPE html>
 
-    <html xmlns="http://www.w3.org/1999/xhtml">
+    <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>Eventos - Xispirito </title>
@@ -56,23 +56,16 @@
                 </div>
                 <div class="lecture-form-left">
                     <div class="lecture-modality">
-                        <h3 style="color: white;">Informe a Modalidade</h3>
-                        <select class="input-text">
-                            <option value="presencial">Presencial</option>
-                            <option value="online">Online</option>
-                            <option value="Hibrido">Hibrido</option>
-                        </select>
+                           <h3 style="color: white;">Informe a Modalidade</h3>
+                        <asp:DropDownList ID="ModalityLecture" runat="server" class="input-text" OnSelectedIndexChanged="ModalityLecture_SelectedIndexChanged" AutoPostBack="True" />
                     </div>
                 </div>
                 <div class="lecture-form-set-photo-button">
-                    <button class="chose-photo">
-                        Anexar uma foto
-                    </button>
+                    <asp:FileUpload ID="LecturePhotoUpload" runat="server" class="chose-photo" ToolTip="Anexar uma Foto" />
                 </div>
                 <div class="lecture-form-retire-photo-button">
                     <button class="delete-photo">
-                        Remover foto
-                    </button>
+                        Remover Foto</button>
                 </div>
             </div>
             <div class="lecture-form-submit">
