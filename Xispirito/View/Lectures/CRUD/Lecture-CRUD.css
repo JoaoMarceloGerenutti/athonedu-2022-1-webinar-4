@@ -157,8 +157,11 @@ h4 {
 }
 
 textarea {
+    max-width: 35rem;
+    min-width: 35rem;
+    min-height: 20rem;
+    max-height: 20rem;
     padding: 10px;
-    max-width: 100%;
     line-height: 1.5;
     border-radius: 5px;
     border: 1px solid #ccc;
