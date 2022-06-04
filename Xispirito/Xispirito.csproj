@@ -129,6 +129,7 @@
     <Content Include="View\Images\Test\Engenharias.png" />
     <Content Include="View\Images\Test\Kleber.jpg" />
     <Content Include="View\Images\Test\TI.png" />
+    <Content Include="View\Images\User.png" />
     <Content Include="View\Lectures\CRUD\Lecture-CRUD.aspx" />
     <Content Include="View\Lectures\CRUD\Lecture-CRUD.css" />
     <Content Include="View\MasterPage\MasterPage.css" />
@@ -271,6 +272,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="View\Images\Certificates\Viewers\" />
+    <Folder Include="View\UsersData\Administrator\" />
+    <Folder Include="View\UsersData\Speaker\" />
+    <Folder Include="View\UsersData\Viewer\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

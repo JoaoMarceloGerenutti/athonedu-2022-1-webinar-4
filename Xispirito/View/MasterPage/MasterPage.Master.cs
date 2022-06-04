@@ -51,7 +51,14 @@ namespace Xispirito.View.MasterPage
         private void SetUserInformation(BaseUser user, string userRole, string userType)
         {
             Image userPicture = (Image)MasterLoginView.FindControl("UserPicture");
-            userPicture.ImageUrl = user.GetPicture();
+            if (user.GetPicture() != "")
+            {
+                userPicture.ImageUrl = user.GetPicture();
+            }
+            else
+            {
+                userPicture.ImageUrl = @"~/View/Images/User.png";
+            }
 
             Label UserName = (Label)MasterLoginView.FindControl("UserName");
             UserName.Text = user.GetName();

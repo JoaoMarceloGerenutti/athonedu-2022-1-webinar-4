@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Configuration;
+using System.IO;
+using System.Web;
 using System.Web.UI;
 using Xispirito.Controller;
 using Xispirito.Models;
@@ -44,7 +47,64 @@ namespace Xispirito.View.Profile_Viewer
         {
             NameViewer.Text = objViewer.GetName();
             EmailViewer.Text = objViewer.GetEmail();
-            ImageViewer.ImageUrl = objViewer.GetPicture();
+
+            if (objViewer.GetPicture() != "")
+            {
+                ImageViewer.ImageUrl = objViewer.GetPicture();
+            }
+            else
+            {
+                ImageViewer.ImageUrl = @"~/View/Images/User.png";
+            }
+        }
+
+        private string SaveUploadImage()
+        {
+            string cryptographViewerEmail = Cryptography.GetMD5Hash(User.Identity.Name);
+            string fileName = cryptographViewerEmail;
+
+            string filePath = @"\View\UsersData\Viewer\" + cryptographViewerEmail;
+
+            HttpFileCollection hfc = null;
+            HttpPostedFile hpf = null;
+
+            string clientFile = "";
+            string extension = "";
+            if (ViewerPhotoUpload.HasFile)
+            {
+                if (ViewerPhotoUpload.PostedFile.ContentType == "image/jpeg" || ViewerPhotoUpload.PostedFile.ContentType == "image/png" || ViewerPhotoUpload.PostedFile.ContentType == "image/gif" || ViewerPhotoUpload.PostedFile.ContentType == "image/bmp")
+                {
+                    try
+                    {
+                        hfc = Request.Files;
+                        hpf = hfc[0];
+
+                        if (hpf.ContentLength > 0)
+                        {
+                            clientFile = Path.GetFileName(hpf.FileName);
+                            extension = Path.GetExtension(hpf.FileName);
+
+                            string folderPath = ConfigurationManager.AppSettings["XispiritoPath"] + filePath;
+                            if (!File.Exists(folderPath))
+                            {
+                                Directory.CreateDirectory(folderPath);
+                            }
+
+                            string mapPath = Server.MapPath(filePath) + @"\" + fileName + extension;
+                            hpf.SaveAs(mapPath);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "Error!", "alert('Um erro inesperado acorreu, tente novamente!');" + ex.Message, true);
+                    }
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Archive Invalid!", "alert('Arquivo Inválido, É permitido carregar apenas arquivos em .JPEG .PNG .GIF .BMP');", true);
+                }
+            }
+            return filePath + @"\" + cryptographViewerEmail + extension;
         }
 
         protected void SubmitUpdate_Click(Object sender, EventArgs e)
@@ -66,6 +126,11 @@ namespace Xispirito.View.Profile_Viewer
                 {
                     updatedViewer.SetEncryptedPassword(updatePassword);
                 }
+            }
+
+            if (ViewerPhotoUpload.HasFile)
+            {
+                updatedViewer.SetPicture(SaveUploadImage());
             }
 
             if (updatedViewer != viewer)

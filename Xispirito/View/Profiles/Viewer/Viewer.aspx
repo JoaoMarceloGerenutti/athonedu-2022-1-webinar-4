@@ -46,9 +46,9 @@
                     <asp:Image ID="ImageViewer" runat="server" CssClass="profile-picture" />
                 </div>
                 <div class="profile-form-set-photo-button">
-                    <button class="chose-photo btn btn-primary fs-4">
-                        Anexar uma foto
-                    </button>
+                    <div class="lecture-form-set-photo-button">
+                        <asp:FileUpload ID="ViewerPhotoUpload" runat="server" class="chose-photo" ToolTip="Anexar uma Foto" />
+                    </div>
                 </div>
                 <div class="profile-form-retire-photo-button">
                     <button class="delete-photo">
