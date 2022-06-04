@@ -271,10 +271,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="UsersData\Administrators\" />
+    <Folder Include="UsersData\Speakers\" />
+    <Folder Include="UsersData\Viewers\" />
     <Folder Include="View\Images\Certificates\Viewers\" />
-    <Folder Include="View\UsersData\Administrator\" />
-    <Folder Include="View\UsersData\Speaker\" />
-    <Folder Include="View\UsersData\Viewer\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -49,7 +49,7 @@ namespace Xispirito.View.Certificates.Viewers
                 ViewerCertificate viewerCertificate = (ViewerCertificate)e.Item.DataItem;
 
                 string certificateKey = Cryptography.GetMD5Hash(viewerCertificate.GetViewer().GetEmail() + viewerCertificate.GetCertificate().GetId().ToString());
-                string path = @"\View\Images\Certificates\Viewers\" + viewerCertificate.GetViewer().GetEmail() + @"\" + certificateKey;
+                string path = @"\UsersData\Viewers\" + Cryptography.GetMD5Hash(User.Identity.Name) + @"\Certificates\" + certificateKey;
 
                 Image certificateImage = (Image)e.Item.FindControl("CertificateImage");
                 certificateImage.ImageUrl = path + ".png";
@@ -103,7 +103,7 @@ namespace Xispirito.View.Certificates.Viewers
         {
             Button clickedButton = (Button)sender;
             string certificateKey = clickedButton.CommandArgument;
-            string userPath = ConfigurationManager.AppSettings["XispiritoPath"] + @"\View\Images\Certificates\Viewers\" + User.Identity.Name + @"\" + certificateKey + ".pdf";
+            string userPath = ConfigurationManager.AppSettings["XispiritoPath"] + @"\UsersData\Viewers\" + Cryptography.GetMD5Hash(User.Identity.Name) + @"\Certificates\" + certificateKey + ".pdf";
 
             DownloadCertificate(userPath, certificateKey);
         }

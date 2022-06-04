@@ -14,17 +14,23 @@ namespace Xispirito.Models
         public static void GenerateViewerCertificatePDF(Viewer viewer, Lecture lecture, Certificate certificate)
         {
             string outsideProjectPath = ConfigurationManager.AppSettings["XispiritoPath"];
-            string insideProjectPath = @"View\Images\Certificates\";
+            string insideProjectPath = @"UsersData\";
             string path = @"Viewers\";
-            string userEmail = viewer.GetEmail() + @"\";
+            string userEmail = Cryptography.GetMD5Hash(viewer.GetEmail());
+            string certificateFolder = @"\Certificates\";
             string fileName = Cryptography.GetMD5Hash(viewer.GetEmail() + certificate.GetId().ToString());
             string extension = ".pdf";
-            string fullPath = outsideProjectPath + insideProjectPath + path + userEmail + fileName + extension;
+            string fullPath = outsideProjectPath + insideProjectPath + path + userEmail + certificateFolder + fileName + extension;
 
-            string folderPath = outsideProjectPath + insideProjectPath + path + viewer.GetEmail();
+            string folderPath = outsideProjectPath + insideProjectPath + path + userEmail;
             if (!File.Exists(folderPath))
             {
                 Directory.CreateDirectory(folderPath);
+            }
+
+            if (!File.Exists(folderPath + certificateFolder))
+            {
+                Directory.CreateDirectory(folderPath + certificateFolder);
             }
 
             PdfDocument document = new PdfDocument();
@@ -91,7 +97,7 @@ namespace Xispirito.Models
             SaveViewerCertificate(viewer.GetEmail(), certificate.GetId());
             document.Close();
 
-            string inputPath = outsideProjectPath + insideProjectPath + path + userEmail + fileName;
+            string inputPath = outsideProjectPath + insideProjectPath + path + userEmail + certificateFolder + fileName;
             string outputPath = inputPath;
 
             ConvertPdfToPng(inputPath, outputPath);
