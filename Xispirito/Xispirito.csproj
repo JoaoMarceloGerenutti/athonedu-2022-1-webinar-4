@@ -132,6 +132,8 @@
     <Content Include="View\Images\User.png" />
     <Content Include="View\Lectures\CRUD\Lecture-CRUD.aspx" />
     <Content Include="View\Lectures\CRUD\Lecture-CRUD.css" />
+    <Content Include="View\Lectures\Lectures-View\Lecture-View.aspx" />
+    <Content Include="View\Lectures\Lectures-View\Lecture-View.css" />
     <Content Include="View\MasterPage\MasterPage.css" />
     <Content Include="View\MasterPage\menu.js" />
     <Content Include="View\Home\print.css" />
@@ -223,6 +225,13 @@
     </Compile>
     <Compile Include="View\Lectures\CRUD\Lecture-CRUD.aspx.designer.cs">
       <DependentUpon>Lecture-CRUD.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Lectures\Lectures-View\Lecture-View.aspx.cs">
+      <DependentUpon>Lecture-View.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Lectures\Lectures-View\Lecture-View.aspx.designer.cs">
+      <DependentUpon>Lecture-View.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Login\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
