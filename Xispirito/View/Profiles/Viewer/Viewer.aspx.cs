@@ -63,7 +63,12 @@ namespace Xispirito.View.Profile_Viewer
             string cryptographViewerEmail = Cryptography.GetMD5Hash(User.Identity.Name);
             string fileName = cryptographViewerEmail;
 
-            string filePath = @"\View\UsersData\Viewer\" + cryptographViewerEmail;
+            string filePath = @"\UsersData\Viewers\" + cryptographViewerEmail + @"\Image";
+
+            if (!File.Exists(filePath))
+            {
+                Directory.CreateDirectory(filePath);
+            }
 
             HttpFileCollection hfc = null;
             HttpPostedFile hpf = null;
