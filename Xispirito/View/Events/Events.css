@@ -68,7 +68,7 @@ section.find-events {
 /*primeira linha*/
 .event-div-first-line {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     margin: 2rem;
     height: auto;
 }
