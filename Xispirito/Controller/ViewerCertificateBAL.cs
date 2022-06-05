@@ -18,23 +18,17 @@ namespace Xispirito.Controller
 
         public List<ViewerCertificate> GetUserCertificates(string userEmail)
         {
-            List<ViewerCertificate> viewerCertificates = null;
-            viewerCertificates = viewerCertificateDAL.GetAllUserCertificates(userEmail);
+            return viewerCertificateDAL.GetAllUserCertificates(userEmail);
+        }
 
-            return viewerCertificates;
+        public List<ViewerCertificate> GetUserCertificates(string userEmail, string lectureName)
+        {
+            return viewerCertificateDAL.GetFilterUserCertificates(userEmail, lectureName); ;
         }
 
         public void SaveViewerCertificate(string userEmail, int certificateId)
         {
             viewerCertificateDAL.RegisterUserCertificate(userEmail, certificateId);
-        }
-
-        public List<ViewerCertificate> GetFilterUserCertificates(string userEmail, string lectureName)
-        {
-            List<ViewerCertificate> viewerCertificates = null;
-            viewerCertificates = viewerCertificateDAL.GetFilterUserCertificates(userEmail, lectureName);
-
-            return viewerCertificates;
         }
     }
 }

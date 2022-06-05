@@ -12,32 +12,58 @@ namespace Xispirito.View.Certificates.Viewers
     {
         private ViewerCertificateBAL viewerCertificateBAL = new ViewerCertificateBAL();
 
-        private List<ViewerCertificate> viewerCertificates = new List<ViewerCertificate>();
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack && User.Identity.IsAuthenticated)
             {
-                if (Request.QueryString["certificateSearch"] != null)
-                {
-                    string search = Request.QueryString["certificateSearch"];
-                    viewerCertificates = viewerCertificateBAL.GetFilterUserCertificates(User.Identity.Name, search);
-                    FilterCertificate.Text = search;
-                }
-                else
-                {
-                    viewerCertificates = viewerCertificateBAL.GetUserCertificates(User.Identity.Name);
-                }
+                LoadCertificatesDataBound(viewerCertificateBAL.GetUserCertificates(User.Identity.Name));
+            }
+        }
 
-                if (viewerCertificates != null)
+        private void LoadCertificatesDataBound(List<ViewerCertificate> viewerCertificates)
+        {
+            string title = "Meus Certificados ";
+            if (viewerCertificates != null)
+            {
+                MyCertificates.Text = title + "(" + viewerCertificates.Count + ")";
+                ListViewCertificates.Items.Clear();
+                ListViewCertificates.DataSource = viewerCertificates;
+                ListViewCertificates.DataBind();
+            }
+            else
+            {
+                MyCertificates.Text = title + "(0)";
+            }
+        }
+
+        protected void SearchCertificate_Click(object sender, EventArgs e)
+        {
+            string search = FilterCertificate.Text;
+
+            if (search != null)
+            {
+                LoadCertificatesDataBound(viewerCertificateBAL.GetUserCertificates(User.Identity.Name, search));
+            }
+
+            if (search.ToLower() == "gerar")
+            {
+                FilterCertificate.Text = "";
+
+                for (int i = 1; i <= 7; i++)
                 {
-                    MyCertificates.Text += "(" + viewerCertificates.Count + ")";
-                    ListViewCertificates.DataSource = viewerCertificates;
-                    ListViewCertificates.DataBind();
-                }
-                else
-                {
-                    MyCertificates.Text += "(0)";
+                    Viewer viewer = new Viewer();
+                    ViewerBAL viewerBAL = new ViewerBAL();
+                    viewer = viewerBAL.GetAccount(User.Identity.Name);
+
+                    Lecture lecture = new Lecture();
+                    LectureBAL lectureBAL = new LectureBAL();
+                    lecture = lectureBAL.GetLecture(i);
+
+                    Certificate certificate = new Certificate();
+                    CertificateBAL certificateBAL = new CertificateBAL();
+                    certificate = certificateBAL.GetCertificateById(i);
+
+                    CertificateGenerator.GenerateViewerCertificatePDF(viewer, lecture, certificate);
                 }
             }
         }
@@ -62,40 +88,6 @@ namespace Xispirito.View.Certificates.Viewers
 
                 Button downloadButton = (Button)e.Item.FindControl("DownloadCertificate");
                 downloadButton.CommandArgument = certificateKey;
-            }
-        }
-
-        protected void SearchCertificate_Click(object sender, EventArgs e)
-        {
-            string search = FilterCertificate.Text;
-
-            if (search.ToLower() == "gerar")
-            {
-                FilterCertificate.Text = "";
-
-                for (int i = 1; i <= 7; i++)
-                {
-                    Viewer viewer = new Viewer();
-                    ViewerBAL viewerBAL = new ViewerBAL();
-                    viewer = viewerBAL.GetAccount(User.Identity.Name);
-
-                    Lecture lecture = new Lecture();
-                    LectureBAL lectureBAL = new LectureBAL();
-                    lecture = lectureBAL.GetLecture(i);
-
-                    Certificate certificate = new Certificate();
-                    CertificateBAL certificateBAL = new CertificateBAL();
-                    certificate = certificateBAL.GetCertificateById(i);
-
-                    CertificateGenerator.GenerateViewerCertificatePDF(viewer, lecture, certificate);
-                }
-            }
-            else
-            {
-                if (search != null)
-                {
-                    Response.Redirect("~/View/Certificates/Viewers/Certificates.aspx?certificateSearch=" + search);
-                }
             }
         }
 

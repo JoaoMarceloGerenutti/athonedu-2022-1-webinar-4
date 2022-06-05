@@ -17,7 +17,7 @@
             <div class="container">
                 <div class="title-search-wrapper">
                     <div class="title">
-                        <asp:Label ID="MyCertificates" runat="server" Text="Meus Certificados " CssClass="header-title" />
+                        <asp:Label ID="MyCertificates" runat="server" CssClass="header-title" />
                     </div>
                     <div class="filter-search-wrapper">
                         <div class="certificate-search">
