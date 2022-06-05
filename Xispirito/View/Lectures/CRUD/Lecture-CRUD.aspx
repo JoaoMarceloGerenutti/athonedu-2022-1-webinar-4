@@ -13,6 +13,8 @@
         <link rel="stylesheet" href="Lecture-CRUD.css" />
         <link rel="stylesheet" href="print.css" media="print" />
 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">
+        </script>
     </head>
     <body>
         <section class="lecture">
@@ -58,10 +60,10 @@
                 <div class="lecture-form-left">
                     <div class="lecture-date-display">
                         <div class="lecture-date">
-                            <input type="time" class="lecture-date-input" value="startLecture" />
+                            <input type="time" class="lecture-date-input" value="startLecture" id="StartTime" runat="server" />
                         </div>
                         <div class="lecture-date">
-                            <input type="time" class="lecture-date-input" value="endLecture" />
+                            <input type="time" class="lecture-date-input" value="endLecture" id="EndTime" runat="server" />
                         </div>
                     </div>
                 </div>
@@ -93,12 +95,7 @@
                 </div>
 
                 <div class="lecture-form-set-photo-button">
-                    <asp:FileUpload ID="LecturePhotoUpload" runat="server" class="chose-photo" ToolTip="Anexar uma Foto" />
-                </div>
-                <div class="lecture-form-retire-photo-button">
-                    <button class="delete-photo">
-                        Remover Foto
-                    </button>
+                    <asp:FileUpload ID="LecturePhotoUpload" runat="server" class="chose-photo" accept="image/*" ToolTip="Anexar uma Foto" />
                 </div>
             </div>
             <div>
@@ -108,6 +105,23 @@
                 <asp:Button ID="SubmitUpdate" runat="server" Text="Salvar" class="submit-button" ValidationGroup="SubmitUpdateGroup" OnClick="SubmitUpdate_Click" />
             </div>
         </section>
+
+        <script>
+            $("#<%=LecturePhotoUpload.ClientID%>").on('change', function () {
+                if (this.files[0].type.indexOf("image") > -1) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('#<%=ImageLecture.ClientID%>').attr('src', e.target.result);
+                    }
+                    reader.readAsDataURL(this.files[0]);
+                }
+                else {
+                    $('#<%=ImageLecture.ClientID%>').attr('src', '');
+                    alert('Não é uma imagem válida')
+                }
+            });
+        </script>
+
     </body>
     </html>
 </asp:Content>

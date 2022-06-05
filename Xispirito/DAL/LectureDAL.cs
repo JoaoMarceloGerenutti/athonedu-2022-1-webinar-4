@@ -17,7 +17,7 @@ namespace Xispirito.DAL
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
 
-            string sql = "INSERT INTO Lecture VALUES (@nm_lecture, @pt_lecture, @tm_lecture, @dt_lecture, @dc_lecture, @mod_lecture, @adr_lecture, @rt_lecture, @lt_lecture, @isActive)";
+            string sql = "INSERT INTO Lecture VALUES (@nm_lecture, @pt_lecture, @tm_lecture, @dt_lecture, @dc_lecture, @mod_lecture, @adr_lecture, @lt_lecture, @isActive)";
 
             SqlCommand cmd = new SqlCommand(sql, conn);
 
@@ -39,7 +39,6 @@ namespace Xispirito.DAL
             cmd.Parameters.AddWithValue("@mod_lecture", modality);
 
             cmd.Parameters.AddWithValue("@adr_lecture", objLecture.GetAddress());
-            cmd.Parameters.AddWithValue("@rt_lecture", objLecture.GetIsLimited());
             cmd.Parameters.AddWithValue("@lt_lecture", objLecture.GetLimit());
             cmd.Parameters.AddWithValue("@isActive", objLecture.GetIsActive());
             cmd.ExecuteNonQuery();
@@ -73,7 +72,6 @@ namespace Xispirito.DAL
                     dr["dc_lecture"].ToString(),
                     Enum.GetName(typeof(Modality), Convert.ToInt32(dr["mod_lecture"])),
                     dr["adr_lecture"].ToString(),
-                    Convert.ToBoolean(dr["rt_lecture"]),
                     Convert.ToInt32(dr["lt_lecture"]),
                     Convert.ToBoolean(dr["isActive"])
                 );
@@ -83,6 +81,27 @@ namespace Xispirito.DAL
             return objLecture;
         }
 
+        public int GetLastId()
+        {
+            SqlConnection conn = new SqlConnection(connectionString);
+            conn.Open();
+
+            string sql = "SELECT MAX(id_lecture) AS LastId FROM Lecture";
+
+            SqlCommand cmd = new SqlCommand(sql, conn);
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            int lastId = 0;
+            if (dr.HasRows && dr.Read())
+            {
+                lastId = Convert.ToInt32(dr["LastId"]);
+            }
+            conn.Close();
+
+            return lastId;
+        }
+
         public List<Lecture> UpcomingLecturesList()
         {
             List<Lecture> lectureList = null;
@@ -90,7 +109,7 @@ namespace Xispirito.DAL
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
 
-            string sql = "SELECT * FROM Lecture WHERE isActive = 1 AND dt_lecture > GETDATE() ORDER BY dt_lecture DESC";
+            string sql = "SELECT * FROM Lecture WHERE isActive = 1 AND dt_lecture > GETDATE() ORDER BY dt_lecture ASC";
 
             SqlCommand cmd = new SqlCommand(sql, conn);
 
@@ -111,7 +130,6 @@ namespace Xispirito.DAL
                         dr["dc_lecture"].ToString(),
                         Enum.GetName(typeof(Modality), Convert.ToInt32(dr["mod_lecture"])),
                         dr["adr_lecture"].ToString(),
-                        Convert.ToBoolean(dr["rt_lecture"]),
                         Convert.ToInt32(dr["lt_lecture"]),
                         Convert.ToBoolean(dr["isActive"])
                     );
@@ -130,7 +148,7 @@ namespace Xispirito.DAL
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
 
-            string sql = "SELECT * FROM Lecture WHERE isActive = 1 AND dt_lecture > GETDATE() ORDER BY dt_lecture DESC";
+            string sql = "SELECT * FROM Lecture WHERE isActive = 1 AND dt_lecture > GETDATE() ORDER BY dt_lecture ASC";
 
             SqlCommand cmd = new SqlCommand(sql, conn);
 
@@ -153,7 +171,6 @@ namespace Xispirito.DAL
                             dr["dc_lecture"].ToString(),
                             Enum.GetName(typeof(Modality), Convert.ToInt32(dr["mod_lecture"])),
                             dr["adr_lecture"].ToString(),
-                            Convert.ToBoolean(dr["rt_lecture"]),
                             Convert.ToInt32(dr["lt_lecture"]),
                             Convert.ToBoolean(dr["isActive"])
                         );
@@ -198,7 +215,6 @@ namespace Xispirito.DAL
                         dr["dc_lecture"].ToString(),
                         Enum.GetName(typeof(Modality), Convert.ToInt32(dr["mod_lecture"])),
                         dr["adr_lecture"].ToString(),
-                        Convert.ToBoolean(dr["rt_lecture"]),
                         Convert.ToInt32(dr["lt_lecture"]),
                         Convert.ToBoolean(dr["isActive"])
                     );
@@ -240,7 +256,6 @@ namespace Xispirito.DAL
                             dr["dc_lecture"].ToString(),
                             Enum.GetName(typeof(Modality), Convert.ToInt32(dr["mod_lecture"])),
                             dr["adr_lecture"].ToString(),
-                            Convert.ToBoolean(dr["rt_lecture"]),
                             Convert.ToInt32(dr["lt_lecture"]),
                             Convert.ToBoolean(dr["isActive"])
                         );
@@ -287,7 +302,6 @@ namespace Xispirito.DAL
                         dr["dc_lecture"].ToString(),
                         Enum.GetName(typeof(Modality), Convert.ToInt32(dr["mod_lecture"])),
                         dr["adr_lecture"].ToString(),
-                        Convert.ToBoolean(dr["rt_lecture"]),
                         Convert.ToInt32(dr["lt_lecture"]),
                         Convert.ToBoolean(dr["isActive"])
                     );
@@ -301,7 +315,38 @@ namespace Xispirito.DAL
 
         public void Update(Lecture objLecture)
         {
-            throw new NotImplementedException();
+            SqlConnection conn = new SqlConnection(connectionString);
+            conn.Open();
+
+            string sql = "UPDATE Lecture SET nm_lecture = @nm_lecture, pt_lecture = @pt_lecture, tm_lecture = @tm_lecture, dt_lecture = @dt_lecture, dc_lecture = @dc_lecture, mod_lecture = @mod_lecture, adr_lecture = @adr_lecture, isActive = @isActive WHERE id_lecture = @id_lecture";
+
+            SqlCommand cmd = new SqlCommand(sql, conn);
+
+            cmd.Parameters.AddWithValue("@nm_lecture", objLecture.GetName());
+            cmd.Parameters.AddWithValue("@pt_lecture", objLecture.GetPicture());
+            cmd.Parameters.AddWithValue("@tm_lecture", objLecture.GetTime());
+            cmd.Parameters.AddWithValue("@dt_lecture", objLecture.GetDate());
+            cmd.Parameters.AddWithValue("@dc_lecture", objLecture.GetDescription());
+
+            int modality = 0;
+            foreach (string enumModality in Enum.GetNames(typeof(Modality)))
+            {
+                if (objLecture.GetModality() == enumModality)
+                {
+                    break;
+                }
+                modality++;
+            }
+            cmd.Parameters.AddWithValue("@mod_lecture", modality);
+
+            cmd.Parameters.AddWithValue("@adr_lecture", objLecture.GetAddress());
+            cmd.Parameters.AddWithValue("@lt_lecture", objLecture.GetLimit());
+            cmd.Parameters.AddWithValue("@isActive", objLecture.GetIsActive());
+            cmd.Parameters.AddWithValue("@id_lecture", objLecture.GetId());
+
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
         }
 
         public void Delete(int lectureId)

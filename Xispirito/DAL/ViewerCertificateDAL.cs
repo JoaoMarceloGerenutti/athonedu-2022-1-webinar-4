@@ -75,7 +75,6 @@ namespace Xispirito.DAL
                         dr["dc_lecture"].ToString(),
                         Enum.GetName(typeof(Modality), Convert.ToInt32(dr["mod_lecture"])),
                         dr["adr_lecture"].ToString(),
-                        Convert.ToBoolean(dr["rt_lecture"]),
                         Convert.ToInt32(dr["lt_lecture"]),
                         Convert.ToBoolean(dr["isActive"])
                     );
@@ -149,7 +148,6 @@ namespace Xispirito.DAL
                         dr["dc_lecture"].ToString(),
                         Enum.GetName(typeof(Modality), Convert.ToInt32(dr["mod_lecture"])),
                         dr["adr_lecture"].ToString(),
-                        Convert.ToBoolean(dr["rt_lecture"]),
                         Convert.ToInt32(dr["lt_lecture"]),
                         Convert.ToBoolean(dr["isActive"])
                     );

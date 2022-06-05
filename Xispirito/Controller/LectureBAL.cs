@@ -73,5 +73,12 @@ namespace Xispirito.Controller
         {
             lectureDAL.Insert(objLecture);
         }
+
+        public int GetNextId()
+        {
+            int nextId = lectureDAL.GetLastId();
+            nextId++;
+            return nextId;
+        }
     }
 }
