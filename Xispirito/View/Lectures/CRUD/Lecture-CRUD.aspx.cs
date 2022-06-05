@@ -11,10 +11,12 @@ namespace Xispirito.View.Lectures.CRUD
     public partial class Lecture_CRUD : Page
     {
         private AdministratorBAL administratorBAL = new AdministratorBAL();
+        private LectureBAL lectureBAL = new LectureBAL();
 
         private Administrator administrator = new Administrator();
+        private Lecture lecture = new Lecture();
 
-        private bool insertMode;
+        private bool insertMode = true;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -22,24 +24,20 @@ namespace Xispirito.View.Lectures.CRUD
             {
                 if (User.Identity.IsAuthenticated)
                 {
-                    ModalityLecture.DataSource = Enum.GetNames(typeof(Modality));
-                    ModalityLecture.DataBind();
-
                     administrator.SetEmail(User.Identity.Name);
                     administrator = administratorBAL.GetAccount(administrator.GetEmail());
 
                     if (administrator != null)
                     {
+                        ModalityLecture.DataSource = Enum.GetNames(typeof(Modality));
+                        ModalityLecture.DataBind();
+                        ModalityLecture.BackColor = ModalityColor.GetModalityColor(ModalityLecture.SelectedValue);
+
                         if (!string.IsNullOrEmpty(Request.QueryString["lectureId"]))
                         {
                             insertMode = false;
-                            Lecture lecture = new Lecture();
-                            lecture.SetId(Convert.ToInt32(Request.QueryString["lectureId"]));
-                            LoadLectureInfo(lecture.GetId());
-                        }
-                        else
-                        {
-                            insertMode = true;
+                            
+                            LoadLectureInfo();
                         }
                     }
                     else
@@ -54,53 +52,49 @@ namespace Xispirito.View.Lectures.CRUD
             }
         }
 
-        private void LoadLectureInfo(int lectureId)
+        private void LoadLectureInfo()
         {
-            SetLectureInfo(GetLectureInfo(lectureId));
+            GetLectureInfo();
+            SetLectureInfo();
         }
 
-        private Lecture GetLectureInfo(int lectureId)
+        private void GetLectureInfo()
         {
-            LectureBAL lectureBAL = new LectureBAL();
-
-            Lecture objLecture = new Lecture();
-            objLecture = lectureBAL.GetLecture(lectureId);
-
-            return objLecture;
+            lecture = lectureBAL.GetLecture(Convert.ToInt32(Request.QueryString["lectureId"]));
         }
 
-        private void SetLectureInfo(Lecture objLecture)
+        private void SetLectureInfo()
         {
             ActionLecture.Text = "Editar Palestra";
-            NameLecture.Text = objLecture.GetName();
-            DescriptionLecture.Text = objLecture.GetDescription();
-            DateLecture.Text = objLecture.GetDate().ToString("dd/MM/yyyy");
+            NameLecture.Text = lecture.GetName();
+            DescriptionLecture.Text = lecture.GetDescription();
+            DateLecture.Text = lecture.GetDate().ToString("dd/MM/yyyy");
 
-            StartTime.Value = objLecture.GetDate().ToString("HH:mm");
+            StartTime.Value = lecture.GetDate().ToString("HH:mm");
 
-            DateTime dateTime = objLecture.GetDate();
-            dateTime = dateTime.AddMinutes(objLecture.GetTime());
+            DateTime dateTime = lecture.GetDate();
+            dateTime = dateTime.AddMinutes(lecture.GetTime());
 
             EndTime.Value = dateTime.ToString("HH:mm");
 
-            ModalityLecture.SelectedValue = objLecture.GetModality();
+            ModalityLecture.SelectedValue = lecture.GetModality();
             ModalityLecture.BackColor = ModalityColor.GetModalityColor(ModalityLecture.SelectedValue);
 
-            if (objLecture.GetModality() != Enum.GetName(typeof(Modality), 0))
+            if (lecture.GetModality() != Enum.GetName(typeof(Modality), 0))
             {
                 AddressLecture.Visible = true;
-                AddressLecture.Text = objLecture.GetAddress();
+                AddressLecture.Text = lecture.GetAddress();
             }
             else
             {
                 AddressLecture.Visible = false;
             }
 
-            LimitLecture.Text = objLecture.GetLimit().ToString();
-            ImageLecture.ImageUrl = objLecture.GetPicture();
+            LimitLecture.Text = lecture.GetLimit().ToString();
+            ImageLecture.ImageUrl = lecture.GetPicture();
 
             ChangeModalityBackColor();
-            ChangeAddressVisibility(objLecture);
+            ChangeAddressVisibility();
         }
 
         private void ChangeModalityBackColor()
@@ -108,12 +102,12 @@ namespace Xispirito.View.Lectures.CRUD
             ModalityLecture.BackColor = ModalityColor.GetModalityColor(ModalityLecture.SelectedValue);
         }
 
-        private void ChangeAddressVisibility(Lecture objLecture)
+        private void ChangeAddressVisibility()
         {
             if (ModalityLecture.SelectedValue != Enum.GetName(typeof(Modality), 0))
             {
                 AddressLecture.Visible = true;
-                AddressLecture.Text = objLecture.GetAddress();
+                AddressLecture.Text = lecture.GetAddress();
             }
             else
             {
@@ -124,21 +118,23 @@ namespace Xispirito.View.Lectures.CRUD
         protected void ModalityLecture_SelectedIndexChanged(object sender, EventArgs e)
         {
             ChangeModalityBackColor();
-            ChangeAddressVisibility(GetLectureInfo(Convert.ToInt32(Request.QueryString["lectureId"])));
+            ChangeAddressVisibility();
         }
 
         protected void SubmitUpdate_Click(object sender, EventArgs e)
         {
-            Lecture objLecture = new Lecture();
+            if (!string.IsNullOrEmpty(Request.QueryString["lectureId"]))
+            {
+                insertMode = false;
+            }
 
-            LectureBAL lectureBAL = new LectureBAL();
             if (insertMode == false)
             {
                 // UPDATE
-                objLecture = GetLectureInfo(Convert.ToInt32(Request.QueryString["lectureId"]));
-                objLecture = GetInformation(objLecture.GetId());
+                GetLectureInfo();
+                lecture = GetSubmitInformation(lecture.GetId());
 
-                lectureBAL.UpdateLecture(objLecture);
+                lectureBAL.UpdateLecture(lecture);
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Palestra Editada!", "alert('Palestra Editada com Sucesso!');", true);
             }
             else
@@ -146,16 +142,16 @@ namespace Xispirito.View.Lectures.CRUD
                 if (administrator != null)
                 {
                     // INSERT
-                    objLecture.SetId(lectureBAL.GetNextId());
-                    objLecture = GetInformation(objLecture.GetId());
+                    lecture.SetId(lectureBAL.GetNextId());
+                    lecture = GetSubmitInformation(lecture.GetId());
 
-                    lectureBAL.InsertLecture(objLecture);
+                    lectureBAL.InsertLecture(lecture);
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "Palestra Cadastrada!", "alert('Palestra Cadastrada com Sucesso!');", true);
                 }
             }
         }
 
-        private Lecture GetInformation(int lectureId)
+        private Lecture GetSubmitInformation(int lectureId)
         {
             string address = "";
             if (AddressLecture.Visible)
@@ -189,7 +185,7 @@ namespace Xispirito.View.Lectures.CRUD
             DateTime endDateTime = Convert.ToDateTime(date + " " + EndTime.Value);
 
             TimeSpan timeSpan;
-            if (startDateTime.Hour < endDateTime.Hour)
+            if (startDateTime.Hour <= endDateTime.Hour)
             {
                 timeSpan = startDateTime - endDateTime;
                 minutes = Convert.ToInt32((timeSpan.TotalHours / 60) + timeSpan.TotalMinutes);

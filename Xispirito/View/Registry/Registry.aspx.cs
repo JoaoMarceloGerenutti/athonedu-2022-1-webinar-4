@@ -97,16 +97,16 @@ namespace Xispirito.View.Registry
 
             if (objViewer != null)
             {
-                ViewerLecture objViewerLecture = new ViewerLecture(objViewer.GetEmail(), lecture.GetId());
+                ViewerLecture objViewerLecture = new ViewerLecture(objViewer, lecture);
                 if (VerifyUserAlreadyRegistered() == false)
                 {
-                    viewerLectureBAL.RegisterUserToLecture(objViewerLecture.GetViewerEmail(), objViewerLecture.GetLectureId());
+                    viewerLectureBAL.RegisterUserToLecture(objViewerLecture);
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "Usuário Cadastrado com Sucesso!", "alert('Cadastro a Palestra efetuado com sucesso!');", true);
                     EventSubscribe.Text = "Cancelar Inscrição";
                 }
                 else
                 {
-                    viewerLectureBAL.DeleteUserSubscription(objViewerLecture.GetViewerEmail(), objViewerLecture.GetLectureId());
+                    viewerLectureBAL.DeleteUserSubscription(objViewerLecture);
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "Inscrição Cancelada!", "alert('Sua Inscrição a Palestra foi Cancelada!');", true);
                     EventSubscribe.Text = "Inscrever-se";
                 }
@@ -127,8 +127,17 @@ namespace Xispirito.View.Registry
 
         private bool VerifyUserAlreadyRegistered()
         {
+            Viewer objViewer = new Viewer();
+            objViewer = GetUserAccount();
+
             bool userAlreadyRegistered = false;
-            userAlreadyRegistered = viewerLectureBAL.VerifyUserAlreadyRegistered(User.Identity.Name, lecture.GetId());
+
+            if (objViewer != null)
+            {
+                ViewerLecture objViewerLecture = new ViewerLecture(objViewer, lecture);
+                userAlreadyRegistered = viewerLectureBAL.VerifyUserAlreadyRegistered(objViewerLecture);
+            }
+
             return userAlreadyRegistered;
         }
     }

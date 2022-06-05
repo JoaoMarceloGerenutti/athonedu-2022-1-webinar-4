@@ -17,7 +17,7 @@
             <div class="container">
                 <div class="title-search-wrapper">
                     <div class="title">
-                        <asp:Label ID="MyEvents" runat="server" CssClass="header-title" server="" Text="Meus Eventos " />
+                        <asp:Label ID="MyEvents" runat="server" CssClass="header-title" />
                     </div>
                     <div class="filter-search-wrapper">
                         <div class="events-search">
@@ -30,7 +30,7 @@
                 </div>
             </div>
         </section>
-       
+
         <main>
             <section class="events">
                 <asp:ListView ID="ListViewEvents" runat="server" OnItemDataBound="ListViewEvents_ItemDataBound">
@@ -41,19 +41,39 @@
                                     <asp:ImageButton ID="EventImage" runat="server" AlternateText="Imagem não encontrada" CssClass="event-preview" />
                                 </div>
 
-                                <div class="event-title-date-wrapper">
+                                <div class="event-title-modality-date-wrapper">
                                     <div class="event-title">
                                         <asp:Label ID="EventTitle" runat="server" class="title text--big" Text="Titulo" />
                                     </div>
-                                    <div class="event-date">
-                                        <asp:Label ID="EventDate" runat="server" class="date text--medium" Text="Data" />
+                                    <div class="modality-address-wrapper">
+                                        <div class="event-modality">
+                                            <asp:Label ID="EventModality" runat="server" class="modality text--big" Text="Modalidade" />
+                                        </div>
+                                        <div class="icon-address-wrapper">
+                                            <div class="event-address">
+                                                <asp:Image ID="AddressIcon" runat="server" class="address-image" ImageUrl="~/View/Images/Map.png" />
+                                                <asp:Label ID="EventAddress" runat="server" class="address text--medium" Text="Endereço" />
+                                            </div>
+                                        </div>
                                     </div>
+
+                                    <div class="icon-date-wrapper">
+                                        <div class="event-date">
+                                            <asp:Image ID="DateIcon" runat="server" class="date-image" ImageUrl="~/View/Images/RegisteredEvents.png" />
+                                            <asp:Label ID="EventDate" runat="server" class="date text--medium" Text="Data" />
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
                             <div class="right-div">
-                                <%--<div class="download-certificate">
-                                    <asp:Button ID="DownloadCertificate" runat="server" Text="Baixar Certificado" CssClass="donwload-button" OnClick="DownloadCertificate_Click" />
-                                </div>--%>
+                                <div class="watch-lecture">
+                                    <asp:Button ID="WatchLecture" runat="server" Text="Assistir Palestra" CssClass="watch-button" Visible="False" />
+                                    <%--OnClick="DownloadCertificate_Click"--%>
+                                </div>
+                                <div class="cancel-subscription">
+                                    <asp:Button ID="CancelSubscription" runat="server" Text="Cancelar Inscrição" CssClass="cancel-button" OnClick="CancelSubscription_Click" />
+                                </div>
                             </div>
                         </div>
                     </ItemTemplate>

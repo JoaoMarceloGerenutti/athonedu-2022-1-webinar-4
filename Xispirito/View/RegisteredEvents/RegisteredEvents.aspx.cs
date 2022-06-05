@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Xispirito.Controller;
@@ -11,35 +9,29 @@ namespace Xispirito.View.RegisteredEvents
 {
     public partial class RegisteredEvents : Page
     {
-        private ViewerCertificateBAL viewerCertificateBAL = new ViewerCertificateBAL();
-
-        private List<ViewerCertificate> viewerCertificates = new List<ViewerCertificate>();
+        private ViewerLectureBAL viewerLectureBAL = new ViewerLectureBAL();
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack && User.Identity.IsAuthenticated)
             {
-                if (Request.QueryString["certificateSearch"] != null)
-                {
-                    string search = Request.QueryString["certificateSearch"];
-                    viewerCertificates = viewerCertificateBAL.GetFilterUserCertificates(User.Identity.Name, search);
-                    FilterEvents.Text = search;
-                }
-                else
-                {
-                    viewerCertificates = viewerCertificateBAL.GetUserCertificates(User.Identity.Name);
-                }
+                LoadEventsDataBound(viewerLectureBAL.GetUserLecturesRegistration(User.Identity.Name));
+            }
+        }
 
-                if (viewerCertificates != null)
-                {
-                    MyEvents.Text += "(" + viewerCertificates.Count + ")";
-                    ListViewEvents.DataSource = viewerCertificates;
-                    ListViewEvents.DataBind();
-                }
-                else
-                {
-                    MyEvents.Text += "(0)";
-                }
+        private void LoadEventsDataBound(List<ViewerLecture> viewerLectures)
+        {
+            string title = "Meus Eventos ";
+            if (viewerLectures != null)
+            {
+                MyEvents.Text = title + "(" + viewerLectures.Count + ")";
+                ListViewEvents.Items.Clear();
+                ListViewEvents.DataSource = viewerLectures;
+                ListViewEvents.DataBind();
+            }
+            else
+            {
+                MyEvents.Text = title + "(0)";
             }
         }
 
@@ -49,7 +41,7 @@ namespace Xispirito.View.RegisteredEvents
 
             if (search != null)
             {
-                Response.Redirect("~/View/RegisteredEvents/RegisteredEvents.aspx?eventSearch=" + search);
+                LoadEventsDataBound(viewerLectureBAL.GetUserLecturesRegistration(User.Identity.Name, search));
             }
         }
 
@@ -57,23 +49,66 @@ namespace Xispirito.View.RegisteredEvents
         {
             if (e.Item.ItemType == ListViewItemType.DataItem)
             {
-                ViewerCertificate viewerCertificate = (ViewerCertificate)e.Item.DataItem;
+                ViewerLecture viewerLecture = (ViewerLecture)e.Item.DataItem;
 
-                string certificateKey = Cryptography.GetMD5Hash(viewerCertificate.GetViewer().GetEmail() + viewerCertificate.GetCertificate().GetId().ToString());
-                string path = @"\UsersData\Viewers\" + Cryptography.GetMD5Hash(User.Identity.Name) + @"\Certificates\" + certificateKey;
+                Image eventImage = (Image)e.Item.FindControl("EventImage");
+                eventImage.ImageUrl = viewerLecture.GetLecture().GetPicture();
 
-                Image certificateImage = (Image)e.Item.FindControl("CertificateImage");
-                certificateImage.ImageUrl = path + ".png";
+                Label titleLabel = (Label)e.Item.FindControl("EventTitle");
+                titleLabel.Text = viewerLecture.GetLecture().GetName();
 
-                Label titleLabel = (Label)e.Item.FindControl("CertificateTitle");
-                titleLabel.Text = viewerCertificate.GetLecture().GetName();
+                Label modalityLabel = (Label)e.Item.FindControl("EventModality");
+                modalityLabel.Text = viewerLecture.GetLecture().GetModality();
+                modalityLabel.ForeColor = ModalityColor.GetModalityColor(viewerLecture.GetLecture().GetModality());
 
-                Label dateLabel = (Label)e.Item.FindControl("CertificateDate");
-                dateLabel.Text = viewerCertificate.GetLecture().GetDate().ToString("dd/MM/yyyy HH:mm");
+                Image addressImage = (Image)e.Item.FindControl("AddressIcon");
+                Label addressLabel = (Label)e.Item.FindControl("EventAddress");
 
-                Button downloadButton = (Button)e.Item.FindControl("DownloadCertificate");
-                downloadButton.CommandArgument = certificateKey;
+                if (viewerLecture.GetLecture().GetModality() == Enum.GetName(typeof(Modality), 0))
+                {
+                    addressImage.Visible = false;
+                    addressLabel.Visible = false;
+                }
+                else
+                {
+                    addressLabel.Text = viewerLecture.GetLecture().GetAddress();
+                }
+
+                Label dateLabel = (Label)e.Item.FindControl("EventDate");
+                dateLabel.Text = viewerLecture.GetLecture().GetDate().ToString("dd/MM/yyyy HH:mm");
+
+                DateTime endDateTime = viewerLecture.GetLecture().GetDate();
+                endDateTime = endDateTime.AddMinutes(viewerLecture.GetLecture().GetTime());
+                dateLabel.Text += " - " + endDateTime.ToString("dd/MM/yyyy HH:mm");
+
+                Button watchButton = (Button)e.Item.FindControl("WatchLecture");
+                watchButton.CommandArgument = "";
+                watchButton.BackColor = ModalityColor.GetModalityColor(viewerLecture.GetLecture().GetModality());
+
+                if (viewerLecture.GetLecture().GetModality() != Enum.GetName(typeof(Modality), 1))
+                {
+                    if (viewerLecture.GetLecture().GetDate() <= DateTime.Now && viewerLecture.GetLecture().GetDate() < endDateTime)
+                    {
+                        watchButton.Visible = true;
+                    }
+                }
+
+                Button cancelButton = (Button)e.Item.FindControl("CancelSubscription");
+                cancelButton.CommandArgument = viewerLecture.GetLecture().GetId().ToString();
             }
+        }
+
+        protected void CancelSubscription_Click(Object sender, EventArgs e)
+        {
+            Button clickedButton = (Button)sender;
+            int lectureId = Convert.ToInt32(clickedButton.CommandArgument);
+
+            ViewerLecture objViewerLecture = new ViewerLecture();
+            objViewerLecture = viewerLectureBAL.GetUserLectureRegistration(User.Identity.Name, lectureId);
+            viewerLectureBAL.DeleteUserSubscription(objViewerLecture);
+
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Inscrição Cancelada!", "alert('Sua Inscrição a Palestra foi Cancelada!');", true);
+            LoadEventsDataBound(viewerLectureBAL.GetUserLecturesRegistration(User.Identity.Name));
         }
     }
 }

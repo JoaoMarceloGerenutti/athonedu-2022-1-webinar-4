@@ -91,7 +91,7 @@
                 </div>
 
                 <div class="lecture-address-input">
-                    <asp:TextBox ID="AddressLecture" runat="server" class="input-text" placeholder="Informe o Endereço" />
+                    <asp:TextBox ID="AddressLecture" runat="server" class="input-text" placeholder="Informe o Endereço" Visible="False" />
                 </div>
 
                 <div class="lecture-form-set-photo-button">
