@@ -50,11 +50,6 @@
                         <asp:FileUpload ID="ViewerPhotoUpload" runat="server" class="chose-photo" ToolTip="Anexar uma Foto" />
                     </div>
                 </div>
-                <div class="profile-form-retire-photo-button">
-                    <button class="delete-photo">
-                        Remover foto
-                    </button>
-                </div>
             </div>
             <div>
                 <asp:ValidationSummary ID="vsSubmitUpdate" runat="server" ShowMessageBox="True" ShowSummary="False" ValidationGroup="SubmitUpdateGroup" />

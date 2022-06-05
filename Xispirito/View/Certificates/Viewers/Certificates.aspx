@@ -38,7 +38,7 @@
                         <div class="card">
                             <div class="left-div">
                                 <div class="certificate-image">
-                                    <asp:ImageButton ID="CertificateImage" runat="server" AlternateText="Imagem não encontrada" CssClass="certifica-preview" />
+                                    <asp:ImageButton ID="CertificateImage" runat="server" AlternateText="Imagem não encontrada" CssClass="certificate-preview" />
                                 </div>
 
                                 <div class="certificate-title-date-wrapper">

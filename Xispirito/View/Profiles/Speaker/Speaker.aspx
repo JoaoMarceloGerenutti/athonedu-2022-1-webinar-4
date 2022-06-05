@@ -45,11 +45,6 @@
                         Anexar uma foto
                     </button>
                 </div>
-                <div class="profile-form-retire-photo-button">
-                    <button class="delete-photo">
-                        Remover foto
-                    </button>
-                </div>
             </div>
             <div class="profile-form-submit">
                 <button class="submit-button" value="submitButton">

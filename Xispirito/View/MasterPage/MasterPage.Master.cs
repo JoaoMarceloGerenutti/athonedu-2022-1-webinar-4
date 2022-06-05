@@ -83,6 +83,9 @@ namespace Xispirito.View.MasterPage
                 image.ImageUrl = @"~/View/Images/Profile.png";
             }
 
+            LinkButton RegisteredEvents = (LinkButton)MasterLoginView.FindControl("RegisteredEvents");
+            RegisteredEvents.PostBackUrl = "~/View/RegisteredEvents/RegisteredEvents.aspx";
+
             LinkButton UserCertificates = (LinkButton)MasterLoginView.FindControl("UserCertificates");
             UserCertificates.PostBackUrl = "~/View/Certificates/" + userType + "s" + "/Certificates.aspx";
 

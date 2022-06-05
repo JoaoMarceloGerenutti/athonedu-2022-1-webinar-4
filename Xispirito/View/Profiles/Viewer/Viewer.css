@@ -69,32 +69,17 @@ h4 {
     grid-row-start: 5;
 }
 
-.profile-form-retire-photo-button {
-    grid-column-start: 2;
-    grid-row-start: 6;
-}
-
 .profile-form-submit {
     display: flex;
     justify-content: center;
     margin-top: 2rem;
 }
 
-
 .chose-photo {
     padding: 1rem;
     border: 0.1rem solid #9c9cea;
     border-radius: .5rem;
     background: #0250c4 !important;
-    color: white;
-    font-size: 1.8rem !important;
-}
-
-
-.delete-photo {
-    padding: 1rem 2.2rem;
-    border-radius: .5rem;
-    background: #6c757d;
     color: white;
     font-size: 1.8rem !important;
 }

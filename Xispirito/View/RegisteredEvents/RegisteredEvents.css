@@ -44,11 +44,11 @@ section.hero {
     justify-content: flex-end;
 }
 
-.title-search-wrapper .filter-search-wrapper .certificate-search {
+.title-search-wrapper .filter-search-wrapper .events-search {
     width: 100%;
 }
 
-    .title-search-wrapper .filter-search-wrapper .certificate-search .search-box {
+    .title-search-wrapper .filter-search-wrapper .events-search .search-box {
         width: 100%;
         height: 100%;
         border: 0.1rem solid gray;
@@ -72,7 +72,7 @@ section.hero {
         cursor: pointer;
     }
 
-.certificates {
+.events {
     min-height: 100vh;
     height: 100%;
 }
@@ -93,34 +93,34 @@ section.hero {
     align-items: center;
 }
 
-.certificate-image {
+.event-image {
     height: 100%;
     width: 28%;
     margin-right: 30px;
     background-color: #cecece;
 }
 
-.certificate-preview {
+.event-preview {
     width: 100%;
     height: 100%;
 }
 
-.certificate-title-date-wrapper {
+.event-title-date-wrapper {
     height: 100%;
     width: 100%;
 }
 
-.certificate-title, .certificate-date {
+.event-title, .event-date {
     color: white;
 }
 
-.certificate-title {
+.event-title {
     margin-bottom: 1rem;
     font-size: 2.6rem;
     font-weight: 600;
 }
 
-.certificate-date {
+.event-date {
     font-size: 1.6rem;
     font-weight: 400;
 }

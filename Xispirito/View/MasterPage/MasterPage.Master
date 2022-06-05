@@ -67,6 +67,10 @@
                                                         <asp:LinkButton ID="UserProfile" runat="server"></asp:LinkButton>
                                                     </li>
                                                     <li>
+                                                        <img src="/View/Images/RegisteredEvents.png" />
+                                                        <asp:LinkButton ID="RegisteredEvents" runat="server">Palestras Inscritas</asp:LinkButton>
+                                                    </li>
+                                                    <li>
                                                         <img src="/View/Images/Certificates.png" />
                                                         <asp:LinkButton ID="UserCertificates" runat="server">Meus Certificados</asp:LinkButton>
                                                     </li>
@@ -77,13 +81,6 @@
                                                 </ul>
                                             </div>
                                         </div>
-
-                                        <script>
-                                            function menuToggle() {
-                                                const toggleMenu = document.querySelector('.menu');
-                                                toggleMenu.classList.toggle('active');
-                                            }
-                                        </script>
                                     </LoggedInTemplate>
                                 </asp:LoginView>
                             </li>
@@ -133,6 +130,13 @@
                 </div>
             </div>
         </section>
+
+        <script>
+            function menuToggle() {
+                const toggleMenu = document.querySelector('.menu');
+                toggleMenu.classList.toggle('active');
+            }
+        </script>
     </form>
 </body>
 </html>
