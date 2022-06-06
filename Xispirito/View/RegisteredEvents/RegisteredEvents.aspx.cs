@@ -51,8 +51,9 @@ namespace Xispirito.View.RegisteredEvents
             {
                 ViewerLecture viewerLecture = (ViewerLecture)e.Item.DataItem;
 
-                Image eventImage = (Image)e.Item.FindControl("EventImage");
+                ImageButton eventImage = (ImageButton)e.Item.FindControl("EventImage");
                 eventImage.ImageUrl = viewerLecture.GetLecture().GetPicture();
+                eventImage.PostBackUrl = "~/View/Registry/Registry.aspx?event=" + viewerLecture.GetLecture().GetId().ToString();
 
                 Label titleLabel = (Label)e.Item.FindControl("EventTitle");
                 titleLabel.Text = viewerLecture.GetLecture().GetName();

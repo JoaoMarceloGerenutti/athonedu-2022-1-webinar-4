@@ -49,18 +49,19 @@ namespace Xispirito.View.Certificates.Viewers
             {
                 FilterCertificate.Text = "";
 
-                for (int i = 1; i <= 7; i++)
-                {
-                    Viewer viewer = new Viewer();
-                    ViewerBAL viewerBAL = new ViewerBAL();
-                    viewer = viewerBAL.GetAccount(User.Identity.Name);
+                Viewer viewer = new Viewer();
+                ViewerBAL viewerBAL = new ViewerBAL();
+                viewer = viewerBAL.GetAccount(User.Identity.Name);
 
+                LectureBAL lectureBAL = new LectureBAL();
+                CertificateBAL certificateBAL = new CertificateBAL();
+
+                for (int i = 1; i <= 6; i++)
+                {
                     Lecture lecture = new Lecture();
-                    LectureBAL lectureBAL = new LectureBAL();
                     lecture = lectureBAL.GetLecture(i);
 
                     Certificate certificate = new Certificate();
-                    CertificateBAL certificateBAL = new CertificateBAL();
                     certificate = certificateBAL.GetCertificateById(i);
 
                     CertificateGenerator.GenerateViewerCertificatePDF(viewer, lecture, certificate);
