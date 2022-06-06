@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Web.UI;
 using Xispirito.Controller;
 using Xispirito.Models;
@@ -8,8 +9,10 @@ namespace Xispirito.View.Registry
     public partial class Registry : Page
     {
         private Lecture lecture = new Lecture();
+        private Administrator administrator = new Administrator();
 
         private LectureBAL lectureBAL = new LectureBAL();
+        private AdministratorBAL administratorBAL = new AdministratorBAL();
         private ViewerBAL viewerBAL = new ViewerBAL();
         private ViewerLectureBAL viewerLectureBAL = new ViewerLectureBAL();
 
@@ -17,6 +20,8 @@ namespace Xispirito.View.Registry
         {
             if (Request.QueryString["event"] != null)
             {
+                administrator = administratorBAL.GetAccount(User.Identity.Name);
+
                 lecture.SetId(Convert.ToInt32(Request.QueryString["event"]));
                 GetEventInformation(lecture.GetId());
 
@@ -24,9 +29,20 @@ namespace Xispirito.View.Registry
                 {
                     if (!IsPostBack)
                     {
-                        if (VerifyUserAlreadyRegistered())
+                        Viewer objViewer = new Viewer();
+                        objViewer = GetUserAccount();
+
+                        if (VerifyUserAlreadyRegistered(objViewer))
                         {
                             EventSubscribe.Text = "Cancelar Inscrição";
+                        }
+                        else
+                        {
+                            if (VerifyLectureHasVacancy() == false && administrator == null)
+                            {
+                                EventSubscribe.Text = "Vagas Esgotadas";
+                                EventSubscribe.BackColor = Color.FromArgb(22, 25, 23);
+                            }
                         }
                     }
                 }
@@ -35,6 +51,29 @@ namespace Xispirito.View.Registry
                     Response.Redirect("~/View/Home/Home.aspx");
                 }
             }
+        }
+
+        private bool VerifyLectureHasLimit()
+        {
+            bool isLectureLimited = false;
+            if (lecture.GetLimit() != 0)
+            {
+                isLectureLimited = true;
+            }
+            return isLectureLimited;
+        }
+
+        private bool VerifyLectureHasVacancy()
+        {
+            bool hasVacancy = true;
+            if (VerifyLectureHasLimit())
+            {
+                if (viewerLectureBAL.GetLectureRegistrationsNumber(lecture.GetId()) >= lecture.GetLimit())
+                {
+                    hasVacancy = false;
+                }
+            }
+            return hasVacancy;
         }
 
         private void GetEventInformation(int eventId)
@@ -67,11 +106,24 @@ namespace Xispirito.View.Registry
             {
                 if (VerifyLectureStatus())
                 {
-                    RegisterUserToLecture();
+                    Viewer objViewer = new Viewer();
+                    objViewer = GetUserAccount();
+
+                    if (VerifyUserAlreadyRegistered(objViewer))
+                    {
+                        CancelRegisteToLecture(objViewer);
+                    }
+                    else
+                    {
+                        if (VerifyLectureHasVacancy() && administrator == null)
+                        {
+                            RegisterUserToLecture(objViewer);
+                        }
+                    }
                 }
                 else
                 {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Palestra Expirada!", "alert('Você não pode realizar Inscrição a Palestras Inativas ou em Andamento!');", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Palestra Expirada!", "alert('Você não pode realizar/cancelar Inscrição a Palestras Inativas ou em Andamento!');", true);
                 }
             }
             else
@@ -90,26 +142,14 @@ namespace Xispirito.View.Registry
             return registrationOpen;
         }
 
-        private void RegisterUserToLecture()
+        private void RegisterUserToLecture(Viewer objViewer)
         {
-            Viewer objViewer = new Viewer();
-            objViewer = GetUserAccount();
-
             if (objViewer != null)
             {
                 ViewerLecture objViewerLecture = new ViewerLecture(objViewer, lecture);
-                if (VerifyUserAlreadyRegistered() == false)
-                {
-                    viewerLectureBAL.RegisterUserToLecture(objViewerLecture);
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Usuário Cadastrado com Sucesso!", "alert('Cadastro a Palestra efetuado com sucesso!');", true);
-                    EventSubscribe.Text = "Cancelar Inscrição";
-                }
-                else
-                {
-                    viewerLectureBAL.DeleteUserSubscription(objViewerLecture);
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Inscrição Cancelada!", "alert('Sua Inscrição a Palestra foi Cancelada!');", true);
-                    EventSubscribe.Text = "Inscrever-se";
-                }
+                viewerLectureBAL.RegisterUserToLecture(objViewerLecture);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Usuário Cadastrado com Sucesso!", "alert('Cadastro a Palestra efetuado com sucesso!');", true);
+                EventSubscribe.Text = "Cancelar Inscrição";
             }
             else
             {
@@ -117,19 +157,26 @@ namespace Xispirito.View.Registry
             }
         }
 
+        private void CancelRegisteToLecture(Viewer objViewer)
+        {
+            if (objViewer != null)
+            {
+                ViewerLecture objViewerLecture = new ViewerLecture(objViewer, lecture);
+                viewerLectureBAL.DeleteUserSubscription(objViewerLecture);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Inscrição Cancelada!", "alert('Sua Inscrição a Palestra foi Cancelada!');", true);
+                EventSubscribe.Text = "Inscrever-se";
+            }   
+        }
+
         private Viewer GetUserAccount()
         {
             Viewer objViewer = new Viewer();
             objViewer = viewerBAL.GetAccount(User.Identity.Name);
-
             return objViewer;
         }
 
-        private bool VerifyUserAlreadyRegistered()
+        private bool VerifyUserAlreadyRegistered(Viewer objViewer)
         {
-            Viewer objViewer = new Viewer();
-            objViewer = GetUserAccount();
-
             bool userAlreadyRegistered = false;
 
             if (objViewer != null)

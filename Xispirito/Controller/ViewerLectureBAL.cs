@@ -36,6 +36,11 @@ namespace Xispirito.Controller
             return viewerLectureDAL.GetUserLectureRegistration(userEmail, idLecture);
         }
 
+        public int GetLectureRegistrationsNumber(int idLecture)
+        {
+            return viewerLectureDAL.GetLectureRegistrations(idLecture);
+        }
+
         public List<ViewerLecture> GetUserLecturesRegistration(string userEmail)
         { 
             return viewerLectureDAL.GetUserLecturesRegistration(userEmail); ;

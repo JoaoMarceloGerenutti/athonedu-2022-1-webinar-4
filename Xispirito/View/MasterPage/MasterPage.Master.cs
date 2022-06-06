@@ -24,31 +24,31 @@ namespace Xispirito.View.MasterPage
         {
             BaseUser user;
             string userRole;
-            string userType;
+            UserType userType;
 
             string accountEmail = Page.User.Identity.Name.ToString();
             if (FindViewerAccount(accountEmail))
             {
                 user = viewerBAL.GetAccount(accountEmail);
                 userRole = "Aluno";
-                userType = "Viewer";
+                userType = UserType.Viewer;
             }
             else if (FindSpeakerAccount(accountEmail))
             {
                 user = speakerBAL.GetAccount(accountEmail);
                 userRole = "Palestrante";
-                userType = "Speaker";
+                userType = UserType.Speaker;
             }
             else
             {
                 user = administratorBAL.GetAccount(accountEmail);
                 userRole = "Administrador";
-                userType = "Administrator";
+                userType = UserType.Administrator;
             }
             SetUserInformation(user, userRole, userType);
         }
 
-        private void SetUserInformation(BaseUser user, string userRole, string userType)
+        private void SetUserInformation(BaseUser user, string userRole, UserType userType)
         {
             Image userPicture = (Image)MasterLoginView.FindControl("UserPicture");
             if (user.GetPicture() != "")
@@ -66,30 +66,29 @@ namespace Xispirito.View.MasterPage
             Label UserRole = (Label)MasterLoginView.FindControl("UserRole");
             UserRole.Text = userRole;
 
+            Image administrationImage = (Image)MasterLoginView.FindControl("Administrate");
+            administrationImage.ImageUrl = @"~/View/Images/Administrator.png";
+
+            LinkButton administrationMenu = (LinkButton)MasterLoginView.FindControl("AdministrationMenu");
+            administrationMenu.PostBackUrl = "~/View/Lectures/CRUD/Lecture-CRUD.aspx";
+
+            if (userType == UserType.Administrator)
+            {
+                administrationImage.Visible = true;
+                administrationMenu.Visible = true;
+            }
+
             Image image = (Image)MasterLoginView.FindControl("Profile");
+            image.ImageUrl = @"~/View/Images/Profile.png";
+
             LinkButton UserProfile = (LinkButton)MasterLoginView.FindControl("UserProfile");
-            if (userType == "Administrator")
-            {
-                UserProfile.PostBackUrl = "~/View/Lectures/CRUD/Lecture-CRUD.aspx";
-                UserProfile.Text = "Administrar";
-
-                image.ImageUrl = @"~/View/Images/Administrator.png";
-            }
-            else
-            {
-                UserProfile.PostBackUrl = @"~/View/Profiles/" + userType + "/" + userType + ".aspx";
-                UserProfile.Text = "Editar Perfil";
-
-                image.ImageUrl = @"~/View/Images/Profile.png";
-            }
+            UserProfile.PostBackUrl = @"~/View/Profiles/" + userType + "/" + userType + ".aspx";
 
             LinkButton RegisteredEvents = (LinkButton)MasterLoginView.FindControl("RegisteredEvents");
             RegisteredEvents.PostBackUrl = "~/View/RegisteredEvents/RegisteredEvents.aspx";
 
             LinkButton UserCertificates = (LinkButton)MasterLoginView.FindControl("UserCertificates");
-            UserCertificates.PostBackUrl = "~/View/Certificates/" + userType + "s" + "/Certificates.aspx";
-
-            Certificates.PostBackUrl = UserCertificates.PostBackUrl;
+            UserCertificates.PostBackUrl = "~/View/Certificates/Certificates.aspx";
         }
 
         private bool FindViewerAccount(string userEmail)

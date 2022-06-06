@@ -63,8 +63,12 @@
                                                 <hr class="line" />
                                                 <ul>
                                                     <li>
+                                                        <asp:Image ID="Administrate" runat="server" Visible="False" />
+                                                        <asp:LinkButton ID="AdministrationMenu" runat="server" Visible="False">Administrar</asp:LinkButton>
+                                                    </li>
+                                                    <li>
                                                         <asp:Image ID="Profile" runat="server" />
-                                                        <asp:LinkButton ID="UserProfile" runat="server"></asp:LinkButton>
+                                                        <asp:LinkButton ID="UserProfile" runat="server">Editar Perfil</asp:LinkButton>
                                                     </li>
                                                     <li>
                                                         <img src="/View/Images/RegisteredEvents.png" />
@@ -125,7 +129,8 @@
                         </a>
                     </div>
                     <div>
-                        <asp:LinkButton ID="Certificates" runat="server" CssClass="text--medium">Certificados</asp:LinkButton>
+                        <a class="text--medium" href="/View/Certificates/Certificates.aspx">Certificados
+                        </a>
                     </div>
                 </div>
             </div>

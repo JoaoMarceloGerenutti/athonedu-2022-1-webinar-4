@@ -66,6 +66,38 @@ namespace Xispirito.DAL
             conn.Close();
         }
 
+        public int GetLectureRegistrations(int lectureId)
+        {
+            SqlConnection conn = new SqlConnection(connectionString);
+            conn.Open();
+
+            string sql = "SELECT Viewer_Lecture.email_viewer, "
+                + "Viewer.*, "
+                + "Lecture.* "
+                + "FROM Viewer_Lecture "
+                + "INNER JOIN Viewer ON Viewer_Lecture.email_viewer = Viewer.email_viewer "
+                + "INNER JOIN Lecture ON Viewer_Lecture.id_lecture = Lecture.id_lecture "
+                + "WHERE Viewer_Lecture.id_lecture = @id_lecture AND Lecture.isActive = 1";
+
+            SqlCommand cmd = new SqlCommand(sql, conn);
+
+            cmd.Parameters.AddWithValue("@id_lecture", lectureId);
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            int registrationNumber = 0;
+            if (dr.HasRows)
+            {
+                while (dr.Read())
+                {
+                    registrationNumber++;
+                }
+            }
+            conn.Close();
+
+            return registrationNumber;
+        }
+
         public ViewerLecture GetUserLectureRegistration(string viewerEmail, int lectureId)
         {
             ViewerLecture objViewerLecture = null;
