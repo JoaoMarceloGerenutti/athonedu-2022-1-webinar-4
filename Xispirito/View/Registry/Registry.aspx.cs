@@ -11,7 +11,7 @@ namespace Xispirito.View.Registry
         private Lecture lecture = new Lecture();
         private LectureBAL lectureBAL = new LectureBAL();
 
-        private UserType userType = new UserType();
+        private UserType userType;
 
         private AdministratorBAL administratorBAL = new AdministratorBAL();
         private AdministratorLectureBAL administratorLectureBAL = new AdministratorLectureBAL();
@@ -26,9 +26,6 @@ namespace Xispirito.View.Registry
         {
             if (Request.QueryString["event"] != null)
             {
-                BaseUser baseUser = new BaseUser();
-                baseUser = GetAccount(User.Identity.Name);
-
                 lecture.SetId(Convert.ToInt32(Request.QueryString["event"]));
                 GetEventInformation(lecture.GetId());
 
@@ -36,15 +33,20 @@ namespace Xispirito.View.Registry
                 {
                     if (!IsPostBack)
                     {
-                        if (VerifyUserAlreadyRegistered(baseUser))
+                        if (VerifyLectureHasVacancy() == false || userType != UserType.Administrator)
                         {
-                            EventSubscribe.Text = "Cancelar Inscrição";
+                            EventSubscribe.Text = "Vagas Esgotadas";
+                            EventSubscribe.BackColor = Color.FromArgb(22, 25, 23);
                         }
-                        else
+
+                        if (User.Identity.IsAuthenticated)
                         {
-                            if (VerifyLectureHasVacancy() == false && userType != UserType.Administrator)
+                            BaseUser baseUser = new BaseUser();
+                            baseUser = GetAccount(User.Identity.Name);
+
+                            if (VerifyUserAlreadyRegistered(baseUser))
                             {
-                                EventSubscribe.Text = "Vagas Esgotadas";
+                                EventSubscribe.Text = "Cancelar Inscrição";
                                 EventSubscribe.BackColor = Color.FromArgb(22, 25, 23);
                             }
                         }
@@ -203,6 +205,7 @@ namespace Xispirito.View.Registry
                 }
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Usuário Cadastrado com Sucesso!", "alert('Cadastro a Palestra efetuado com sucesso!');", true);
                 EventSubscribe.Text = "Cancelar Inscrição";
+                EventSubscribe.BackColor = Color.FromArgb(22, 25, 23);
             }
             else
             {
@@ -240,6 +243,7 @@ namespace Xispirito.View.Registry
                 }
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Inscrição Cancelada!", "alert('Sua Inscrição a Palestra foi Cancelada!');", true);
                 EventSubscribe.Text = "Inscrever-se";
+                EventSubscribe.BackColor = Color.FromArgb(112, 22, 14);
             }   
         }
 

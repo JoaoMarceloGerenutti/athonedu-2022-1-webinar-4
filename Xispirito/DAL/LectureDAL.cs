@@ -318,7 +318,7 @@ namespace Xispirito.DAL
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
 
-            string sql = "UPDATE Lecture SET nm_lecture = @nm_lecture, pt_lecture = @pt_lecture, tm_lecture = @tm_lecture, dt_lecture = @dt_lecture, dc_lecture = @dc_lecture, mod_lecture = @mod_lecture, adr_lecture = @adr_lecture, isActive = @isActive WHERE id_lecture = @id_lecture";
+            string sql = "UPDATE Lecture SET nm_lecture = @nm_lecture, pt_lecture = @pt_lecture, tm_lecture = @tm_lecture, dt_lecture = @dt_lecture, dc_lecture = @dc_lecture, mod_lecture = @mod_lecture, adr_lecture = @adr_lecture, lt_lecture = @lt_lecture, isActive = @isActive WHERE id_lecture = @id_lecture";
 
             SqlCommand cmd = new SqlCommand(sql, conn);
 
