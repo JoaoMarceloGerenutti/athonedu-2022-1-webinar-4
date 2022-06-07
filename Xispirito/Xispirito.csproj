@@ -162,24 +162,30 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\AdministratorBAL.cs" />
+    <Compile Include="Controller\AdministratorLectureBAL.cs" />
     <Compile Include="Controller\AreaBAL.cs" />
     <Compile Include="Controller\CertificateBAL.cs" />
     <Compile Include="Controller\LectureBAL.cs" />
     <Compile Include="Controller\SpeakerBAL.cs" />
+    <Compile Include="Controller\SpeakerLectureBAL.cs" />
     <Compile Include="Controller\ViewerBAL.cs" />
     <Compile Include="Controller\ViewerCertificateBAL.cs" />
     <Compile Include="Controller\ViewerLectureBAL.cs" />
     <Compile Include="DAL\AdministratorDAL.cs" />
+    <Compile Include="DAL\AdministratorLectureDAL.cs" />
     <Compile Include="DAL\AreaDAL.cs" />
     <Compile Include="DAL\CertificateDAL.cs" />
     <Compile Include="DAL\LectureDAL.cs" />
     <Compile Include="DAL\SpeakerDAL.cs" />
+    <Compile Include="DAL\SpeakerLectureDAL.cs" />
     <Compile Include="DAL\ViewerCertificateDAL.cs" />
     <Compile Include="DAL\ViewerLectureDAL.cs" />
+    <Compile Include="Models\Classes\AdministratorLecture.cs" />
     <Compile Include="Models\Classes\Certificate.cs" />
     <Compile Include="Models\Classes\CertificateGenerator.cs" />
     <Compile Include="Models\Classes\Cryptography.cs" />
     <Compile Include="Models\Classes\ModalityColor.cs" />
+    <Compile Include="Models\Classes\SpeakerLecture.cs" />
     <Compile Include="Models\Classes\ViewerCertificate.cs" />
     <Compile Include="Models\Classes\ViewerLecture.cs" />
     <Compile Include="Models\Enum\UserType.cs" />

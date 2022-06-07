@@ -9,10 +9,16 @@ namespace Xispirito.View.Registry
     public partial class Registry : Page
     {
         private Lecture lecture = new Lecture();
-        private Administrator administrator = new Administrator();
-
         private LectureBAL lectureBAL = new LectureBAL();
+
+        private UserType userType = new UserType();
+
         private AdministratorBAL administratorBAL = new AdministratorBAL();
+        private AdministratorLectureBAL administratorLectureBAL = new AdministratorLectureBAL();
+
+        private SpeakerBAL speakerBAL = new SpeakerBAL();
+        private SpeakerLectureBAL speakerLectureBAL = new SpeakerLectureBAL();
+
         private ViewerBAL viewerBAL = new ViewerBAL();
         private ViewerLectureBAL viewerLectureBAL = new ViewerLectureBAL();
 
@@ -20,7 +26,8 @@ namespace Xispirito.View.Registry
         {
             if (Request.QueryString["event"] != null)
             {
-                administrator = administratorBAL.GetAccount(User.Identity.Name);
+                BaseUser baseUser = new BaseUser();
+                baseUser = GetAccount(User.Identity.Name);
 
                 lecture.SetId(Convert.ToInt32(Request.QueryString["event"]));
                 GetEventInformation(lecture.GetId());
@@ -29,16 +36,13 @@ namespace Xispirito.View.Registry
                 {
                     if (!IsPostBack)
                     {
-                        Viewer objViewer = new Viewer();
-                        objViewer = GetUserAccount();
-
-                        if (VerifyUserAlreadyRegistered(objViewer))
+                        if (VerifyUserAlreadyRegistered(baseUser))
                         {
                             EventSubscribe.Text = "Cancelar Inscrição";
                         }
                         else
                         {
-                            if (VerifyLectureHasVacancy() == false && administrator == null)
+                            if (VerifyLectureHasVacancy() == false && userType != UserType.Administrator)
                             {
                                 EventSubscribe.Text = "Vagas Esgotadas";
                                 EventSubscribe.BackColor = Color.FromArgb(22, 25, 23);
@@ -51,6 +55,33 @@ namespace Xispirito.View.Registry
                     Response.Redirect("~/View/Home/Home.aspx");
                 }
             }
+        }
+
+        private BaseUser GetAccount(string email)
+        {
+            BaseUser baseUser = new BaseUser();
+            if (!viewerBAL.VerifyAccount(email))
+            {
+                if (!speakerBAL.VerifyAccount(email))
+                {
+                    if (administratorBAL.VerifyAccount(email))
+                    {
+                        userType = UserType.Administrator;
+                        baseUser = administratorBAL.GetAccount(email);
+                    }
+                }
+                else
+                {
+                    userType = UserType.Speaker;
+                    baseUser = speakerBAL.GetAccount(email);
+                }
+            }
+            else
+            {
+                userType = UserType.Viewer;
+                baseUser = viewerBAL.GetAccount(email);
+            }
+            return baseUser;
         }
 
         private bool VerifyLectureHasLimit()
@@ -68,7 +99,7 @@ namespace Xispirito.View.Registry
             bool hasVacancy = true;
             if (VerifyLectureHasLimit())
             {
-                if (viewerLectureBAL.GetLectureRegistrationsNumber(lecture.GetId()) >= lecture.GetLimit())
+                if (viewerLectureBAL.GetLectureRegistrationsNumber(lecture.GetId()) + speakerLectureBAL.GetLectureRegistrationsNumber(lecture.GetId()) >= lecture.GetLimit())
                 {
                     hasVacancy = false;
                 }
@@ -106,18 +137,18 @@ namespace Xispirito.View.Registry
             {
                 if (VerifyLectureStatus())
                 {
-                    Viewer objViewer = new Viewer();
-                    objViewer = GetUserAccount();
+                    BaseUser baseUser = new BaseUser();
+                    baseUser = GetAccount(User.Identity.Name);
 
-                    if (VerifyUserAlreadyRegistered(objViewer))
+                    if (VerifyUserAlreadyRegistered(baseUser))
                     {
-                        CancelRegisteToLecture(objViewer);
+                        CancelRegisterToLecture(baseUser);
                     }
                     else
                     {
-                        if (VerifyLectureHasVacancy() && administrator == null)
+                        if (VerifyLectureHasVacancy() || userType == UserType.Administrator)
                         {
-                            RegisterUserToLecture(objViewer);
+                            RegisterUserToLecture(baseUser);
                         }
                     }
                 }
@@ -142,12 +173,34 @@ namespace Xispirito.View.Registry
             return registrationOpen;
         }
 
-        private void RegisterUserToLecture(Viewer objViewer)
+        private void RegisterUserToLecture(BaseUser objBaseUser)
         {
-            if (objViewer != null)
+            if (objBaseUser != null)
             {
-                ViewerLecture objViewerLecture = new ViewerLecture(objViewer, lecture);
-                viewerLectureBAL.RegisterUserToLecture(objViewerLecture);
+                if (userType == UserType.Administrator)
+                {
+                    _ = new Administrator();
+                    Administrator objAdministrator = administratorBAL.GetAccount(User.Identity.Name);
+
+                    AdministratorLecture objAdministratorLecture = new AdministratorLecture(objAdministrator, lecture);
+                    administratorLectureBAL.RegisterUserToLecture(objAdministratorLecture);
+                }
+                else if (userType == UserType.Speaker)
+                {
+                    _ = new Speaker();
+                    Speaker objSpeaker = speakerBAL.GetAccount(User.Identity.Name);
+
+                    SpeakerLecture objSpeakerLecture = new SpeakerLecture(objSpeaker, lecture);
+                    speakerLectureBAL.RegisterUserToLecture(objSpeakerLecture);
+                }
+                else
+                {
+                    _ = new Viewer();
+                    Viewer objViewer = viewerBAL.GetAccount(User.Identity.Name);
+
+                    ViewerLecture objViewerLecture = new ViewerLecture(objViewer, lecture);
+                    viewerLectureBAL.RegisterUserToLecture(objViewerLecture);
+                }
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Usuário Cadastrado com Sucesso!", "alert('Cadastro a Palestra efetuado com sucesso!');", true);
                 EventSubscribe.Text = "Cancelar Inscrição";
             }
@@ -157,34 +210,69 @@ namespace Xispirito.View.Registry
             }
         }
 
-        private void CancelRegisteToLecture(Viewer objViewer)
+        private void CancelRegisterToLecture(BaseUser objBaseUser)
         {
-            if (objViewer != null)
+            if (objBaseUser != null)
             {
-                ViewerLecture objViewerLecture = new ViewerLecture(objViewer, lecture);
-                viewerLectureBAL.DeleteUserSubscription(objViewerLecture);
+                if (userType == UserType.Administrator)
+                {
+                    _ = new Administrator();
+                    Administrator objAdministrator = administratorBAL.GetAccount(User.Identity.Name);
+
+                    AdministratorLecture objAdministratorLecture = new AdministratorLecture(objAdministrator, lecture);
+                    administratorLectureBAL.DeleteUserSubscription(objAdministratorLecture);
+                }
+                else if (userType == UserType.Speaker)
+                {
+                    _ = new Speaker();
+                    Speaker objSpeaker = speakerBAL.GetAccount(User.Identity.Name);
+
+                    SpeakerLecture objSpeakerLecture = new SpeakerLecture(objSpeaker, lecture);
+                    speakerLectureBAL.DeleteUserSubscription(objSpeakerLecture);
+                }
+                else
+                {
+                    _ = new Viewer();
+                    Viewer objViewer = viewerBAL.GetAccount(User.Identity.Name);
+
+                    ViewerLecture objViewerLecture = new ViewerLecture(objViewer, lecture);
+                    viewerLectureBAL.DeleteUserSubscription(objViewerLecture);
+                }
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Inscrição Cancelada!", "alert('Sua Inscrição a Palestra foi Cancelada!');", true);
                 EventSubscribe.Text = "Inscrever-se";
             }   
         }
 
-        private Viewer GetUserAccount()
-        {
-            Viewer objViewer = new Viewer();
-            objViewer = viewerBAL.GetAccount(User.Identity.Name);
-            return objViewer;
-        }
-
-        private bool VerifyUserAlreadyRegistered(Viewer objViewer)
+        private bool VerifyUserAlreadyRegistered(BaseUser objBaseUser)
         {
             bool userAlreadyRegistered = false;
-
-            if (objViewer != null)
+            if (objBaseUser != null)
             {
-                ViewerLecture objViewerLecture = new ViewerLecture(objViewer, lecture);
-                userAlreadyRegistered = viewerLectureBAL.VerifyUserAlreadyRegistered(objViewerLecture);
-            }
+                if (userType == UserType.Administrator)
+                {
+                    _ = new Administrator();
+                    Administrator objAdministrator = administratorBAL.GetAccount(User.Identity.Name);
 
+                    AdministratorLecture objAdministratorLecture = new AdministratorLecture(objAdministrator, lecture);
+                    userAlreadyRegistered = administratorLectureBAL.VerifyUserAlreadyRegistered(objAdministratorLecture);
+                }
+                else if (userType == UserType.Speaker)
+                {
+                    _ = new Speaker();
+                    Speaker objSpeaker = speakerBAL.GetAccount(User.Identity.Name);
+
+                    SpeakerLecture objSpeakerLecture = new SpeakerLecture(objSpeaker, lecture);
+                    userAlreadyRegistered = speakerLectureBAL.VerifyUserAlreadyRegistered(objSpeakerLecture);
+                }
+                else
+                {
+                    _ = new Viewer();
+                    Viewer objViewer = viewerBAL.GetAccount(User.Identity.Name);
+
+                    ViewerLecture objViewerLecture = new ViewerLecture(objViewer, lecture);
+                    userAlreadyRegistered = viewerLectureBAL.VerifyUserAlreadyRegistered(objViewerLecture);
+                }
+            }
             return userAlreadyRegistered;
         }
     }

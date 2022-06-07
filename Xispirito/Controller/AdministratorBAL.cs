@@ -58,18 +58,12 @@ namespace Xispirito.Controller
 
         public Administrator GetAccount(string email)
         {
-            Administrator objAdministrator = new Administrator();
-            objAdministrator = administratorDAL.SearchEmail(email);
-
-            return objAdministrator;
+            return administratorDAL.SearchEmail(email);
         }
 
         public Administrator GetAccount(string email, string password)
         {
-            Administrator objAdministrator = new Administrator();
-            objAdministrator = administratorDAL.SearchEmail(email, Cryptography.GetMD5Hash(password));
-
-            return objAdministrator;
+            return administratorDAL.SearchEmail(email, Cryptography.GetMD5Hash(password));
         }
 
         public bool VerifyAccountStatus(Administrator objAdministrator)
