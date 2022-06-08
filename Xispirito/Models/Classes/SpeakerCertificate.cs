@@ -1,21 +1,21 @@
 ﻿namespace Xispirito.Models
 {
-    public class ViewerCertificate
+    public class SpeakerCertificate
     {
         private int CertificateKey { get; set; }
-        private Viewer Viewer { get; set; }
+        private Speaker Speaker { get; set; }
         private Lecture Lecture { get; set; }
         private Certificate Certificate { get; set; }
 
-        public ViewerCertificate()
+        public SpeakerCertificate()
         {
 
         }
 
-        public ViewerCertificate(int certificateKey, Viewer viewer, Lecture lecture, Certificate certificate)
+        public SpeakerCertificate(int certificateKey, Speaker speaker, Lecture lecture, Certificate certificate)
         {
             CertificateKey = certificateKey;
-            Viewer = viewer;
+            Speaker = speaker;
             Lecture = lecture;
             Certificate = certificate;
         }
@@ -25,9 +25,9 @@
             return CertificateKey;
         }
 
-        public Viewer GetViewer()
+        public Speaker GetSpeaker()
         {
-            return Viewer;
+            return Speaker;
         }
 
         public Lecture GetLecture()

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using Xispirito.DAL;
 using Xispirito.Models;
 
@@ -18,50 +15,32 @@ namespace Xispirito.Controller
 
         public List<Lecture> GetUpcomingLecturesList()
         {
-            List<Lecture> lectureList = new List<Lecture>();
-            lectureList = lectureDAL.UpcomingLecturesList();
-
-            return lectureList;
+            return lectureDAL.UpcomingLecturesList();
         }
 
         public List<Lecture> GetUpcomingLecturesList(int maxQuantity)
         {
-            List<Lecture> lectureList = new List<Lecture>();
-            lectureList = lectureDAL.UpcomingLecturesList(maxQuantity);
-
-            return lectureList;
+            return lectureDAL.UpcomingLecturesList(maxQuantity);
         }
 
         public List<Lecture> GetLecturesList()
         {
-            List<Lecture> lectureList = new List<Lecture>();
-            lectureList = lectureDAL.LecturesList();
-
-            return lectureList;
+            return lectureDAL.LecturesList();
         }
 
         public List<Lecture> GetLecturesList(int maxQuantity)
         {
-            List<Lecture> lectureList = new List<Lecture>();
-            lectureList = lectureDAL.LecturesList(maxQuantity);
-
-            return lectureList;
+            return lectureDAL.LecturesList(maxQuantity);
         }
 
         public Lecture GetLecture(int lectureId)
         {
-            Lecture lecture = new Lecture();
-            lecture = lectureDAL.Select(lectureId);
-
-            return lecture;
+            return lectureDAL.Select(lectureId);
         }
 
         public List<Lecture> SearchLecturesByName(string search)
         {
-            List<Lecture> searchLectureList = new List<Lecture>();
-            searchLectureList = lectureDAL.SearchLecturesByName(search);
-
-            return searchLectureList;
+            return lectureDAL.SearchLecturesByName(search);
         }
 
         public void UpdateLecture(Lecture objLecture)

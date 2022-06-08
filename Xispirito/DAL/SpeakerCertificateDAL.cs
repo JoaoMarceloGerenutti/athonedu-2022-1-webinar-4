@@ -6,7 +6,7 @@ using Xispirito.Models;
 
 namespace Xispirito.DAL
 {
-    public class ViewerCertificateDAL
+    public class SpeakerCertificateDAL
     {
         private string connectionString = ConfigurationManager.ConnectionStrings["XispiritoDB"].ConnectionString;
 
@@ -15,52 +15,53 @@ namespace Xispirito.DAL
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
 
-            string sql = "INSERT INTO Viewer_Certificate VALUES (@email_viewer, @id_certified)";
+            string sql = "INSERT INTO Speaker_Certificate VALUES (@email_speaker, @id_certified)";
 
             SqlCommand cmd = new SqlCommand(sql, conn);
 
-            cmd.Parameters.AddWithValue("@email_viewer", userEmail);
+            cmd.Parameters.AddWithValue("@email_speaker", userEmail);
             cmd.Parameters.AddWithValue("@id_certified", certificateId);
 
             cmd.ExecuteNonQuery();
             conn.Close();
         }
 
-        public List<ViewerCertificate> GetAllUserCertificates(string userEmail)
+        public List<SpeakerCertificate> GetAllUserCertificates(string userEmail)
         {
-            List<ViewerCertificate> userCertificates = null;
+            List<SpeakerCertificate> userCertificates = null;
 
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
 
-            string sql = "SELECT Viewer_Certificate.key_certificate,"
-               + "Viewer.*,"
+            string sql = "SELECT Speaker_Certificate.key_certificate,"
+               + "Speaker.*,"
                + "Certified.*,"
                + "Lecture.*"
-               + "FROM Viewer_Certificate "
-               + "INNER JOIN Viewer ON Viewer_Certificate.email_viewer = Viewer.email_viewer "
-               + "INNER JOIN Certified ON Viewer_Certificate.id_certified = Certified.id_certified "
+               + "FROM Speaker_Certificate "
+               + "INNER JOIN Speaker ON Speaker_Certificate.email_speaker = Speaker.email_speaker "
+               + "INNER JOIN Certified ON Speaker_Certificate.id_certified = Certified.id_certified "
                + "INNER JOIN Lecture ON Certified.id_lecture = Lecture.id_lecture "
-               + "WHERE Viewer_Certificate.email_viewer = @email_viewer";
+               + "WHERE Speaker_Certificate.email_speaker = @email_speaker";
 
             SqlCommand cmd = new SqlCommand(sql, conn);
 
-            cmd.Parameters.AddWithValue("@email_viewer", userEmail);
+            cmd.Parameters.AddWithValue("@email_speaker", userEmail);
 
             SqlDataReader dr = cmd.ExecuteReader();
 
             if (dr.HasRows)
             {
-                userCertificates = new List<ViewerCertificate>();
+                userCertificates = new List<SpeakerCertificate>();
 
                 while (dr.Read())
                 {
-                    Viewer objViewer = new Viewer(
-                        Convert.ToInt32(dr["id_viewer"]),
-                        dr["nm_viewer"].ToString(),
-                        dr["email_viewer"].ToString(),
-                        dr["pt_viewer"].ToString(),
-                        dr["pw_viwer"].ToString(),
+                    Speaker objSpeaker = new Speaker(
+                        Convert.ToInt32(dr["id_speaker"]),
+                        dr["nm_speaker"].ToString(),
+                        dr["email_speaker"].ToString(),
+                        dr["pt_speaker"].ToString(),
+                        dr["pf_speaker"].ToString(),
+                        dr["pw_speaker"].ToString(),
                         Convert.ToBoolean(dr["isActive"])
                     );
 
@@ -84,13 +85,13 @@ namespace Xispirito.DAL
                         Convert.ToBoolean(dr["isActive"])
                     );
 
-                    ViewerCertificate viewerCertificate = new ViewerCertificate(
+                    SpeakerCertificate speakerCertificate = new SpeakerCertificate(
                         Convert.ToInt32(dr["key_certificate"]),
-                        objViewer,
+                        objSpeaker,
                         objLecture,
                         objCertificate
                     );
-                    userCertificates.Add(viewerCertificate);
+                    userCertificates.Add(speakerCertificate);
                 }
             }
             conn.Close();
@@ -98,42 +99,43 @@ namespace Xispirito.DAL
             return userCertificates;
         }
 
-        public List<ViewerCertificate> GetFilterUserCertificates(string userEmail, string lectureName)
+        public List<SpeakerCertificate> GetFilterUserCertificates(string userEmail, string lectureName)
         {
-            List<ViewerCertificate> userCertificates = null;
+            List<SpeakerCertificate> userCertificates = null;
 
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
 
-            string sql = "SELECT Viewer_Certificate.key_certificate,"
-               + "Viewer.*,"
+            string sql = "SELECT Speaker_Certificate.key_certificate,"
+               + "Speaker.*,"
                + "Certified.*,"
                + "Lecture.*"
-               + "FROM Viewer_Certificate "
-               + "INNER JOIN Viewer ON Viewer_Certificate.email_viewer = Viewer.email_viewer "
-               + "INNER JOIN Certified ON Viewer_Certificate.id_certified = Certified.id_certified "
+               + "FROM Speaker_Certificate "
+               + "INNER JOIN Speaker ON Speaker_Certificate.email_speaker = Speaker.email_speaker "
+               + "INNER JOIN Certified ON Speaker_Certificate.id_certified = Certified.id_certified "
                + "INNER JOIN Lecture ON Certified.id_lecture = Lecture.id_lecture "
-               + "WHERE Viewer_Certificate.email_viewer = @email_viewer AND Lecture.nm_lecture LIKE @lectureName";
+               + "WHERE Speaker_Certificate.email_speaker = @email_speaker AND Lecture.nm_lecture LIKE @lectureName";
 
             SqlCommand cmd = new SqlCommand(sql, conn);
 
-            cmd.Parameters.AddWithValue("@email_viewer", userEmail);
+            cmd.Parameters.AddWithValue("@email_speaker", userEmail);
             cmd.Parameters.AddWithValue("@lectureName", "%" + lectureName + "%");
 
             SqlDataReader dr = cmd.ExecuteReader();
 
             if (dr.HasRows)
             {
-                userCertificates = new List<ViewerCertificate>();
+                userCertificates = new List<SpeakerCertificate>();
 
                 while (dr.Read())
                 {
-                    Viewer objViewer = new Viewer(
-                        Convert.ToInt32(dr["id_viewer"]),
-                        dr["nm_viewer"].ToString(),
-                        dr["email_viewer"].ToString(),
-                        dr["pt_viewer"].ToString(),
-                        dr["pw_viwer"].ToString(),
+                    Speaker objSpeaker = new Speaker(
+                        Convert.ToInt32(dr["id_speaker"]),
+                        dr["nm_speaker"].ToString(),
+                        dr["email_speaker"].ToString(),
+                        dr["pt_speaker"].ToString(),
+                        dr["pf_speaker"].ToString(),
+                        dr["pw_speaker"].ToString(),
                         Convert.ToBoolean(dr["isActive"])
                     );
 
@@ -157,13 +159,13 @@ namespace Xispirito.DAL
                         Convert.ToBoolean(dr["isActive"])
                     );
 
-                    ViewerCertificate viewerCertificate = new ViewerCertificate(
+                    SpeakerCertificate speakerCertificate = new SpeakerCertificate(
                         Convert.ToInt32(dr["key_certificate"]),
-                        objViewer,
+                        objSpeaker,
                         objLecture,
                         objCertificate
                     );
-                    userCertificates.Add(viewerCertificate);
+                    userCertificates.Add(speakerCertificate);
                 }
             }
             conn.Close();

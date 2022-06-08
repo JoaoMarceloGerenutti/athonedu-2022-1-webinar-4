@@ -6,7 +6,7 @@ using Xispirito.Models;
 
 namespace Xispirito.DAL
 {
-    public class ViewerCertificateDAL
+    public class AdministratorCertificateDAL
     {
         private string connectionString = ConfigurationManager.ConnectionStrings["XispiritoDB"].ConnectionString;
 
@@ -15,52 +15,52 @@ namespace Xispirito.DAL
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
 
-            string sql = "INSERT INTO Viewer_Certificate VALUES (@email_viewer, @id_certified)";
+            string sql = "INSERT INTO Administrator_Certificate VALUES (@email_administrator, @id_certified)";
 
             SqlCommand cmd = new SqlCommand(sql, conn);
 
-            cmd.Parameters.AddWithValue("@email_viewer", userEmail);
+            cmd.Parameters.AddWithValue("@email_administrator", userEmail);
             cmd.Parameters.AddWithValue("@id_certified", certificateId);
 
             cmd.ExecuteNonQuery();
             conn.Close();
         }
 
-        public List<ViewerCertificate> GetAllUserCertificates(string userEmail)
+        public List<AdministratorCertificate> GetAllUserCertificates(string userEmail)
         {
-            List<ViewerCertificate> userCertificates = null;
+            List<AdministratorCertificate> userCertificates = null;
 
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
 
-            string sql = "SELECT Viewer_Certificate.key_certificate,"
-               + "Viewer.*,"
+            string sql = "SELECT Administrator_Certificate.key_certificate,"
+               + "Administrator.*,"
                + "Certified.*,"
                + "Lecture.*"
-               + "FROM Viewer_Certificate "
-               + "INNER JOIN Viewer ON Viewer_Certificate.email_viewer = Viewer.email_viewer "
-               + "INNER JOIN Certified ON Viewer_Certificate.id_certified = Certified.id_certified "
+               + "FROM Administrator_Certificate "
+               + "INNER JOIN Administrator ON Administrator_Certificate.email_administrator = Administrator.email_administrator "
+               + "INNER JOIN Certified ON Administrator_Certificate.id_certified = Certified.id_certified "
                + "INNER JOIN Lecture ON Certified.id_lecture = Lecture.id_lecture "
-               + "WHERE Viewer_Certificate.email_viewer = @email_viewer";
+               + "WHERE Administrator_Certificate.email_administrator = @email_administrator";
 
             SqlCommand cmd = new SqlCommand(sql, conn);
 
-            cmd.Parameters.AddWithValue("@email_viewer", userEmail);
+            cmd.Parameters.AddWithValue("@email_administrator", userEmail);
 
             SqlDataReader dr = cmd.ExecuteReader();
 
             if (dr.HasRows)
             {
-                userCertificates = new List<ViewerCertificate>();
+                userCertificates = new List<AdministratorCertificate>();
 
                 while (dr.Read())
                 {
-                    Viewer objViewer = new Viewer(
-                        Convert.ToInt32(dr["id_viewer"]),
-                        dr["nm_viewer"].ToString(),
-                        dr["email_viewer"].ToString(),
-                        dr["pt_viewer"].ToString(),
-                        dr["pw_viwer"].ToString(),
+                    Administrator objAdministrator = new Administrator(
+                        Convert.ToInt32(dr["id_administrator"]),
+                        dr["nm_administrator"].ToString(),
+                        dr["email_administrator"].ToString(),
+                        dr["pt_administrator"].ToString(),
+                        dr["pw_administrator"].ToString(),
                         Convert.ToBoolean(dr["isActive"])
                     );
 
@@ -84,13 +84,13 @@ namespace Xispirito.DAL
                         Convert.ToBoolean(dr["isActive"])
                     );
 
-                    ViewerCertificate viewerCertificate = new ViewerCertificate(
+                    AdministratorCertificate administratorCertificate = new AdministratorCertificate(
                         Convert.ToInt32(dr["key_certificate"]),
-                        objViewer,
+                        objAdministrator,
                         objLecture,
                         objCertificate
                     );
-                    userCertificates.Add(viewerCertificate);
+                    userCertificates.Add(administratorCertificate);
                 }
             }
             conn.Close();
@@ -98,42 +98,42 @@ namespace Xispirito.DAL
             return userCertificates;
         }
 
-        public List<ViewerCertificate> GetFilterUserCertificates(string userEmail, string lectureName)
+        public List<AdministratorCertificate> GetFilterUserCertificates(string userEmail, string lectureName)
         {
-            List<ViewerCertificate> userCertificates = null;
+            List<AdministratorCertificate> userCertificates = null;
 
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
 
-            string sql = "SELECT Viewer_Certificate.key_certificate,"
-               + "Viewer.*,"
+            string sql = "SELECT Administrator_Certificate.key_certificate,"
+               + "Administrator.*,"
                + "Certified.*,"
                + "Lecture.*"
-               + "FROM Viewer_Certificate "
-               + "INNER JOIN Viewer ON Viewer_Certificate.email_viewer = Viewer.email_viewer "
-               + "INNER JOIN Certified ON Viewer_Certificate.id_certified = Certified.id_certified "
+               + "FROM Administrator_Certificate "
+               + "INNER JOIN Administrator ON Administrator_Certificate.email_administrator = Administrator.email_administrator "
+               + "INNER JOIN Certified ON Administrator_Certificate.id_certified = Certified.id_certified "
                + "INNER JOIN Lecture ON Certified.id_lecture = Lecture.id_lecture "
-               + "WHERE Viewer_Certificate.email_viewer = @email_viewer AND Lecture.nm_lecture LIKE @lectureName";
+               + "WHERE Administrator_Certificate.email_administrator = @email_administrator AND Lecture.nm_lecture LIKE @lectureName";
 
             SqlCommand cmd = new SqlCommand(sql, conn);
 
-            cmd.Parameters.AddWithValue("@email_viewer", userEmail);
+            cmd.Parameters.AddWithValue("@email_administrator", userEmail);
             cmd.Parameters.AddWithValue("@lectureName", "%" + lectureName + "%");
 
             SqlDataReader dr = cmd.ExecuteReader();
 
             if (dr.HasRows)
             {
-                userCertificates = new List<ViewerCertificate>();
+                userCertificates = new List<AdministratorCertificate>();
 
                 while (dr.Read())
                 {
-                    Viewer objViewer = new Viewer(
-                        Convert.ToInt32(dr["id_viewer"]),
-                        dr["nm_viewer"].ToString(),
-                        dr["email_viewer"].ToString(),
-                        dr["pt_viewer"].ToString(),
-                        dr["pw_viwer"].ToString(),
+                    Administrator objAdministrator = new Administrator(
+                        Convert.ToInt32(dr["id_administrator"]),
+                        dr["nm_administrator"].ToString(),
+                        dr["email_administrator"].ToString(),
+                        dr["pt_administrator"].ToString(),
+                        dr["pw_administrator"].ToString(),
                         Convert.ToBoolean(dr["isActive"])
                     );
 
@@ -157,13 +157,13 @@ namespace Xispirito.DAL
                         Convert.ToBoolean(dr["isActive"])
                     );
 
-                    ViewerCertificate viewerCertificate = new ViewerCertificate(
+                    AdministratorCertificate administratorCertificate = new AdministratorCertificate(
                         Convert.ToInt32(dr["key_certificate"]),
-                        objViewer,
+                        objAdministrator,
                         objLecture,
                         objCertificate
                     );
-                    userCertificates.Add(viewerCertificate);
+                    userCertificates.Add(administratorCertificate);
                 }
             }
             conn.Close();

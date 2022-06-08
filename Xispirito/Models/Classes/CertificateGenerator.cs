@@ -10,16 +10,16 @@ namespace Xispirito.Models
 
     public static class CertificateGenerator
     {
+        private static string outsideProjectPath = ConfigurationManager.AppSettings["XispiritoPath"];
+        private static string insideProjectPath = @"UsersData\";
+        private static string certificateFolder = @"\Certificates\";
+        private static string extension = ".pdf";
 
-        public static void GenerateViewerCertificatePDF(Viewer viewer, Lecture lecture, Certificate certificate)
+        public static void GenerateViewerCertificate(Viewer viewer, Lecture lecture, Certificate certificate)
         {
-            string outsideProjectPath = ConfigurationManager.AppSettings["XispiritoPath"];
-            string insideProjectPath = @"UsersData\";
             string path = @"Viewers\";
             string userEmail = Cryptography.GetMD5Hash(viewer.GetEmail());
-            string certificateFolder = @"\Certificates\";
             string fileName = Cryptography.GetMD5Hash(viewer.GetEmail() + certificate.GetId().ToString());
-            string extension = ".pdf";
             string fullPath = outsideProjectPath + insideProjectPath + path + userEmail + certificateFolder + fileName + extension;
 
             string folderPath = outsideProjectPath + insideProjectPath + path + userEmail;
@@ -33,6 +33,74 @@ namespace Xispirito.Models
                 Directory.CreateDirectory(folderPath + certificateFolder);
             }
 
+            GeneratePDF(fileName, fullPath, viewer, lecture, certificate);
+
+            SaveViewerCertificate(viewer.GetEmail(), certificate.GetId());
+
+            string inputPath = outsideProjectPath + insideProjectPath + path + userEmail + certificateFolder + fileName;
+            string outputPath = inputPath;
+
+            ConvertPdfToPng(inputPath, outputPath);
+        }
+
+        public static void GenerateSpeakerCertificate(Speaker speaker, Lecture lecture, Certificate certificate)
+        {
+            string path = @"Speakers\";
+            string userEmail = Cryptography.GetMD5Hash(speaker.GetEmail());
+            string fileName = Cryptography.GetMD5Hash(speaker.GetEmail() + certificate.GetId().ToString());
+            string fullPath = outsideProjectPath + insideProjectPath + path + userEmail + certificateFolder + fileName + extension;
+
+            string folderPath = outsideProjectPath + insideProjectPath + path + userEmail;
+            if (!File.Exists(folderPath))
+            {
+                Directory.CreateDirectory(folderPath);
+            }
+
+            if (!File.Exists(folderPath + certificateFolder))
+            {
+                Directory.CreateDirectory(folderPath + certificateFolder);
+            }
+
+            GeneratePDF(fileName, fullPath, speaker, lecture, certificate);
+
+            SaveSpeakerCertificate(speaker.GetEmail(), certificate.GetId());
+
+            string inputPath = outsideProjectPath + insideProjectPath + path + userEmail + certificateFolder + fileName;
+            string outputPath = inputPath;
+
+            ConvertPdfToPng(inputPath, outputPath);
+        }
+
+        public static void GenerateAdministratorCertificate(Administrator administrator, Lecture lecture, Certificate certificate)
+        {
+            string path = @"Administrators\";
+            string userEmail = Cryptography.GetMD5Hash(administrator.GetEmail());
+            string fileName = Cryptography.GetMD5Hash(administrator.GetEmail() + certificate.GetId().ToString());
+            string fullPath = outsideProjectPath + insideProjectPath + path + userEmail + certificateFolder + fileName + extension;
+
+            string folderPath = outsideProjectPath + insideProjectPath + path + userEmail;
+            if (!File.Exists(folderPath))
+            {
+                Directory.CreateDirectory(folderPath);
+            }
+
+            if (!File.Exists(folderPath + certificateFolder))
+            {
+                Directory.CreateDirectory(folderPath + certificateFolder);
+            }
+
+            GeneratePDF(fileName, fullPath, administrator, lecture, certificate);
+
+            SaveAdministratorCertificate(administrator.GetEmail(), certificate.GetId());
+
+            string inputPath = outsideProjectPath + insideProjectPath + path + userEmail + certificateFolder + fileName;
+            string outputPath = inputPath;
+
+            ConvertPdfToPng(inputPath, outputPath);
+        }
+
+        private static void GeneratePDF(string fileName, string fullPath, BaseUser baseUser, Lecture lecture, Certificate certificate)
+        {
             PdfDocument document = new PdfDocument();
             PdfPage page = document.AddPage();
             page.Size = PdfSharp.PageSize.Statement;
@@ -41,20 +109,20 @@ namespace Xispirito.Models
 
             XGraphics gfx = XGraphics.FromPdfPage(page);
 
-            gfx.DrawImage(PdfSharp.Drawing.XImage.FromFile(outsideProjectPath + certificate.GetCertificateModelDirectory()), 0, 0, page.Width, page.Height);
+            gfx.DrawImage(XImage.FromFile(outsideProjectPath + certificate.GetCertificateModelDirectory()), 0, 0, page.Width, page.Height);
 
             XFont font = new XFont("Arial", 14, XFontStyle.Regular);
             XFont boldFont = new XFont("Arial", 12, XFontStyle.Bold);
 
             double textPositionY = 0;
-            string text = "Certificamos que " + viewer.GetName() + ", participou da atividade:";
+            string text = "Certificamos que " + baseUser.GetName() + ", participou da atividade:";
             gfx.DrawString(text,
                 font, XBrushes.Black,
                 new XRect(0, textPositionY, page.Width, page.Height),
                 XStringFormats.Center
             );
 
-            PdfSharp.Drawing.XSize nextText = gfx.MeasureString(text, font);
+            XSize nextText = gfx.MeasureString(text, font);
             textPositionY += nextText.Height;
 
             text = lecture.GetName() + ",";
@@ -92,21 +160,26 @@ namespace Xispirito.Models
                 new XRect(0, 0, page.Width, page.Height),
                 XStringFormats.BottomLeft
             );
-
             document.Save(fullPath);
-            SaveViewerCertificate(viewer.GetEmail(), certificate.GetId());
             document.Close();
-
-            string inputPath = outsideProjectPath + insideProjectPath + path + userEmail + certificateFolder + fileName;
-            string outputPath = inputPath;
-
-            ConvertPdfToPng(inputPath, outputPath);
         }
 
         private static void SaveViewerCertificate(string userEmail, int certificateId)
         {
             ViewerCertificateBAL viewerCertificateBAL = new ViewerCertificateBAL();
             viewerCertificateBAL.SaveViewerCertificate(userEmail, certificateId);
+        }
+
+        private static void SaveSpeakerCertificate(string userEmail, int certificateId)
+        {
+            SpeakerCertificateBAL speakerCertificateBAL = new SpeakerCertificateBAL();
+            speakerCertificateBAL.SaveViewerCertificate(userEmail, certificateId);
+        }
+
+        private static void SaveAdministratorCertificate(string userEmail, int certificateId)
+        {
+            AdministratorCertificateBAL administratorCertificateBAL = new AdministratorCertificateBAL();
+            administratorCertificateBAL.SaveViewerCertificate(userEmail, certificateId);
         }
 
         private static void ConvertPdfToPng(string inputFilePath, string outputFilePath)

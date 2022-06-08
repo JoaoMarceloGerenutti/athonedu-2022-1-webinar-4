@@ -1,21 +1,21 @@
 ﻿namespace Xispirito.Models
 {
-    public class ViewerCertificate
+    public class AdministratorCertificate
     {
         private int CertificateKey { get; set; }
-        private Viewer Viewer { get; set; }
+        private Administrator Administrator { get; set; }
         private Lecture Lecture { get; set; }
         private Certificate Certificate { get; set; }
 
-        public ViewerCertificate()
+        public AdministratorCertificate()
         {
 
         }
 
-        public ViewerCertificate(int certificateKey, Viewer viewer, Lecture lecture, Certificate certificate)
+        public AdministratorCertificate(int certificateKey, Administrator administrator, Lecture lecture, Certificate certificate)
         {
             CertificateKey = certificateKey;
-            Viewer = viewer;
+            Administrator = administrator;
             Lecture = lecture;
             Certificate = certificate;
         }
@@ -25,9 +25,9 @@
             return CertificateKey;
         }
 
-        public Viewer GetViewer()
+        public Administrator GetAdministrator()
         {
-            return Viewer;
+            return Administrator;
         }
 
         public Lecture GetLecture()
