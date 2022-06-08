@@ -215,7 +215,7 @@ namespace Xispirito.View.Certificates.Viewers
                         AdministratorCertificate administratorCertificate = (AdministratorCertificate)e.Item.DataItem;
 
                         certificateKey = Cryptography.GetMD5Hash(administratorCertificate.GetAdministrator().GetEmail() + administratorCertificate.GetCertificate().GetId().ToString());
-                        path = @"\UsersData\Administrator\" + Cryptography.GetMD5Hash(User.Identity.Name) + @"\Certificates\" + certificateKey;
+                        path = @"\UsersData\Administrators\" + Cryptography.GetMD5Hash(User.Identity.Name) + @"\Certificates\" + certificateKey;
 
                         certificateImage.ImageUrl = path + ".png";
                         titleLabel.Text = administratorCertificate.GetLecture().GetName();
