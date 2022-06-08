@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Xispirito.DAL;
+﻿using Xispirito.DAL;
 using Xispirito.Models;
 
 namespace Xispirito.Controller
@@ -54,18 +50,12 @@ namespace Xispirito.Controller
 
         public Viewer GetAccount(string email)
         {
-            Viewer objViewer = new Viewer();
-            objViewer = viewerDAL.SearchEmail(email);
-
-            return objViewer;
+            return viewerDAL.SearchEmail(email);
         }
 
         public Viewer GetAccount(string email, string password)
         {
-            Viewer objViewer = new Viewer();
-            objViewer = viewerDAL.SearchEmail(email, Cryptography.GetMD5Hash(password));
-
-            return objViewer;
+            return viewerDAL.SearchEmail(email, Cryptography.GetMD5Hash(password));
         }
 
         public bool VerifyAccountStatus(Viewer objViewer)

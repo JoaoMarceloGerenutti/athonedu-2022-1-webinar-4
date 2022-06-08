@@ -1,4 +1,5 @@
-﻿using Xispirito.DAL;
+﻿using System.Collections.Generic;
+using Xispirito.DAL;
 using Xispirito.Models;
 
 namespace Xispirito.Controller
@@ -25,6 +26,21 @@ namespace Xispirito.Controller
         public void DeleteUserSubscription(AdministratorLecture objAdministratorLecture)
         {
             administratorLectureDAL.DeleteUserSubscription(objAdministratorLecture);
+        }
+
+        public AdministratorLecture GetUserLectureRegistration(string userEmail, int idLecture)
+        {
+            return administratorLectureDAL.GetUserLectureRegistration(userEmail, idLecture);
+        }
+
+        public List<AdministratorLecture> GetUserLecturesRegistration(string userEmail)
+        {
+            return administratorLectureDAL.GetUserLecturesRegistration(userEmail); ;
+        }
+
+        public List<AdministratorLecture> GetUserLecturesRegistration(string userEmail, string search)
+        {
+            return administratorLectureDAL.GetUserLecturesRegistration(userEmail, search);
         }
     }
 }

@@ -97,5 +97,190 @@ namespace Xispirito.DAL
 
             return registrationNumber;
         }
+
+        public SpeakerLecture GetUserLectureRegistration(string speakerEmail, int lectureId)
+        {
+            SpeakerLecture objSpeakerLecture = null;
+
+            SqlConnection conn = new SqlConnection(connectionString);
+            conn.Open();
+
+            string sql = "SELECT Speaker_Lecture.email_speaker, "
+                + "Speaker.*, "
+                + "Lecture.* "
+                + "FROM Speaker_Lecture "
+                + "INNER JOIN Speaker ON Speaker_Lecture.email_speaker = Speaker.email_speaker "
+                + "INNER JOIN Lecture ON Speaker_Lecture.id_lecture = Lecture.id_lecture "
+                + "WHERE Speaker_Lecture.email_speaker = @email_speaker AND Speaker_Lecture.id_lecture = @id_lecture AND Lecture.isActive = 1";
+
+            SqlCommand cmd = new SqlCommand(sql, conn);
+
+            cmd.Parameters.AddWithValue("@email_speaker", speakerEmail);
+            cmd.Parameters.AddWithValue("@id_lecture", lectureId);
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            if (dr.HasRows && dr.Read())
+            {
+                Speaker objSpeaker = new Speaker(
+                        Convert.ToInt32(dr["id_speaker"]),
+                        dr["nm_speaker"].ToString(),
+                        speakerEmail,
+                        dr["pt_speaker"].ToString(),
+                        dr["pf_speaker"].ToString(),
+                        dr["pw_speaker"].ToString(),
+                        Convert.ToBoolean(dr["isActive"])
+                );
+
+                Lecture objLecture = new Lecture(
+                    Convert.ToInt32(dr["id_lecture"]),
+                    dr["nm_lecture"].ToString(),
+                    dr["pt_lecture"].ToString(),
+                    Convert.ToInt32(dr["tm_lecture"]),
+                    Convert.ToDateTime(dr["dt_lecture"]),
+                    dr["dc_lecture"].ToString(),
+                    Enum.GetName(typeof(Modality), Convert.ToInt32(dr["mod_lecture"])),
+                    dr["adr_lecture"].ToString(),
+                    Convert.ToInt32(dr["lt_lecture"]),
+                    Convert.ToBoolean(dr["isActive"])
+                );
+
+                objSpeakerLecture = new SpeakerLecture(
+                    objSpeaker,
+                    objLecture
+                );
+            }
+
+            conn.Close();
+
+            return objSpeakerLecture;
+        }
+
+        public List<SpeakerLecture> GetUserLecturesRegistration(string speakerEmail)
+        {
+            List<SpeakerLecture> speakerLectureList = null;
+
+            SqlConnection conn = new SqlConnection(connectionString);
+            conn.Open();
+
+            string sql = "SELECT Speaker_Lecture.email_speaker, "
+                + "Speaker.*, "
+                + "Lecture.* "
+                + "FROM Speaker_Lecture "
+                + "INNER JOIN Speaker ON Speaker_Lecture.email_speaker = Speaker.email_speaker "
+                + "INNER JOIN Lecture ON Speaker_Lecture.id_lecture = Lecture.id_lecture "
+                + "WHERE Speaker_Lecture.email_speaker = @email_speaker AND Lecture.isActive = 1";
+
+            SqlCommand cmd = new SqlCommand(sql, conn);
+
+            cmd.Parameters.AddWithValue("@email_speaker", speakerEmail);
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            if (dr.HasRows)
+            {
+                speakerLectureList = new List<SpeakerLecture>();
+
+                while (dr.Read())
+                {
+                    Speaker objSpeaker = new Speaker(
+                        Convert.ToInt32(dr["id_speaker"]),
+                        dr["nm_speaker"].ToString(),
+                        speakerEmail,
+                        dr["pt_speaker"].ToString(),
+                        dr["pf_speaker"].ToString(),
+                        dr["pw_speaker"].ToString(),
+                        Convert.ToBoolean(dr["isActive"])
+                    );
+
+                    Lecture objLecture = new Lecture(
+                        Convert.ToInt32(dr["id_lecture"]),
+                        dr["nm_lecture"].ToString(),
+                        dr["pt_lecture"].ToString(),
+                        Convert.ToInt32(dr["tm_lecture"]),
+                        Convert.ToDateTime(dr["dt_lecture"]),
+                        dr["dc_lecture"].ToString(),
+                        Enum.GetName(typeof(Modality), Convert.ToInt32(dr["mod_lecture"])),
+                        dr["adr_lecture"].ToString(),
+                        Convert.ToInt32(dr["lt_lecture"]),
+                        Convert.ToBoolean(dr["isActive"])
+                    );
+
+                    SpeakerLecture speakerLecture = new SpeakerLecture(
+                        objSpeaker,
+                        objLecture
+                    );
+                    speakerLectureList.Add(speakerLecture);
+                }
+            }
+
+            conn.Close();
+
+            return speakerLectureList;
+        }
+
+        public List<SpeakerLecture> GetUserLecturesRegistration(string speakerEmail, string search)
+        {
+            List<SpeakerLecture> speakerLectureList = null;
+
+            SqlConnection conn = new SqlConnection(connectionString);
+            conn.Open();
+
+            string sql = "SELECT Speaker_Lecture.email_speaker, "
+                + "Speaker.*, "
+                + "Lecture.* "
+                + "FROM Speaker_Lecture "
+                + "INNER JOIN Speaker ON Speaker_Lecture.email_speaker = Speaker.email_speaker "
+                + "INNER JOIN Lecture ON Speaker_Lecture.id_lecture = Lecture.id_lecture "
+                + "WHERE Speaker_Lecture.email_speaker = @email_speaker AND Lecture.nm_lecture LIKE @search AND Lecture.isActive = 1";
+
+            SqlCommand cmd = new SqlCommand(sql, conn);
+
+            cmd.Parameters.AddWithValue("@email_speaker", speakerEmail);
+            cmd.Parameters.AddWithValue("@search", "%" + search + "%");
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            if (dr.HasRows)
+            {
+                speakerLectureList = new List<SpeakerLecture>();
+
+                while (dr.Read())
+                {
+                    Speaker objSpeaker = new Speaker(
+                        Convert.ToInt32(dr["id_speaker"]),
+                        dr["nm_speaker"].ToString(),
+                        speakerEmail,
+                        dr["pt_speaker"].ToString(),
+                        dr["pf_speaker"].ToString(),
+                        dr["pw_speaker"].ToString(),
+                        Convert.ToBoolean(dr["isActive"])
+                    );
+
+                    Lecture objLecture = new Lecture(
+                        Convert.ToInt32(dr["id_lecture"]),
+                        dr["nm_lecture"].ToString(),
+                        dr["pt_lecture"].ToString(),
+                        Convert.ToInt32(dr["tm_lecture"]),
+                        Convert.ToDateTime(dr["dt_lecture"]),
+                        dr["dc_lecture"].ToString(),
+                        Enum.GetName(typeof(Modality), Convert.ToInt32(dr["mod_lecture"])),
+                        dr["adr_lecture"].ToString(),
+                        Convert.ToInt32(dr["lt_lecture"]),
+                        Convert.ToBoolean(dr["isActive"])
+                    );
+
+                    SpeakerLecture speakerLecture = new SpeakerLecture(
+                        objSpeaker,
+                        objLecture
+                    );
+                    speakerLectureList.Add(speakerLecture);
+                }
+            }
+
+            conn.Close();
+
+            return speakerLectureList;
+        }
     }
 }

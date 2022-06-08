@@ -28,9 +28,24 @@ namespace Xispirito.Controller
             speakerLectureDAL.DeleteUserSubscription(objSpeakerLecture);
         }
 
+        public SpeakerLecture GetUserLectureRegistration(string userEmail, int idLecture)
+        {
+            return speakerLectureDAL.GetUserLectureRegistration(userEmail, idLecture);
+        }
+
         public int GetLectureRegistrationsNumber(int idLecture)
         {
             return speakerLectureDAL.GetLectureRegistrations(idLecture);
+        }
+
+        public List<SpeakerLecture> GetUserLecturesRegistration(string userEmail)
+        {
+            return speakerLectureDAL.GetUserLecturesRegistration(userEmail);
+        }
+
+        public List<SpeakerLecture> GetUserLecturesRegistration(string userEmail, string search)
+        {
+            return speakerLectureDAL.GetUserLecturesRegistration(userEmail, search);
         }
     }
 }
