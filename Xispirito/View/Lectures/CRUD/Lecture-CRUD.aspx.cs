@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
-using System.Linq;
 using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 using Xispirito.Controller;
 using Xispirito.Models;
 
@@ -14,9 +11,12 @@ namespace Xispirito.View.Lectures.CRUD
     public partial class Lecture_CRUD : Page
     {
         private AdministratorBAL administratorBAL = new AdministratorBAL();
+        private LectureBAL lectureBAL = new LectureBAL();
 
         private Administrator administrator = new Administrator();
         private Lecture lecture = new Lecture();
+
+        private bool insertMode = true;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -24,20 +24,20 @@ namespace Xispirito.View.Lectures.CRUD
             {
                 if (User.Identity.IsAuthenticated)
                 {
-                    ModalityLecture.DataSource = Enum.GetNames(typeof(Modality));
-                    ModalityLecture.DataBind();
-                    ChangeModalityBackColor();
-                    ChangeAddressVisibility();
-
                     administrator.SetEmail(User.Identity.Name);
                     administrator = administratorBAL.GetAccount(administrator.GetEmail());
 
                     if (administrator != null)
                     {
+                        ModalityLecture.DataSource = Enum.GetNames(typeof(Modality));
+                        ModalityLecture.DataBind();
+                        ModalityLecture.BackColor = ModalityColor.GetModalityColor(ModalityLecture.SelectedValue);
+
                         if (!string.IsNullOrEmpty(Request.QueryString["lectureId"]))
                         {
-                            lecture.SetId(Convert.ToInt32(Request.QueryString["lectureId"]));
-                            LoadLectureInfo(lecture.GetId());
+                            insertMode = false;
+                            
+                            LoadLectureInfo();
                         }
                     }
                     else
@@ -52,28 +52,30 @@ namespace Xispirito.View.Lectures.CRUD
             }
         }
 
-        private void LoadLectureInfo(int lectureId)
+        private void LoadLectureInfo()
         {
-            GetLectureInfo(lectureId);
-            SetLectureInfo(lecture);
+            GetLectureInfo();
+            SetLectureInfo();
         }
 
-        private void GetLectureInfo(int lectureId)
+        private void GetLectureInfo()
         {
-            LectureBAL lectureBAL = new LectureBAL();
-
-            Lecture objLecture = new Lecture();
-            objLecture = lectureBAL.GetLecture(lectureId);
-
-            lecture = objLecture;
+            lecture = lectureBAL.GetLecture(Convert.ToInt32(Request.QueryString["lectureId"]));
         }
 
-        private void SetLectureInfo(Lecture objLecture)
+        private void SetLectureInfo()
         {
             ActionLecture.Text = "Editar Palestra";
             NameLecture.Text = lecture.GetName();
             DescriptionLecture.Text = lecture.GetDescription();
             DateLecture.Text = lecture.GetDate().ToString("dd/MM/yyyy");
+
+            StartTime.Value = lecture.GetDate().ToString("HH:mm");
+
+            DateTime dateTime = lecture.GetDate();
+            dateTime = dateTime.AddMinutes(lecture.GetTime());
+
+            EndTime.Value = dateTime.ToString("HH:mm");
 
             ModalityLecture.SelectedValue = lecture.GetModality();
             ModalityLecture.BackColor = ModalityColor.GetModalityColor(ModalityLecture.SelectedValue);
@@ -90,6 +92,9 @@ namespace Xispirito.View.Lectures.CRUD
 
             LimitLecture.Text = lecture.GetLimit().ToString();
             ImageLecture.ImageUrl = lecture.GetPicture();
+
+            ChangeModalityBackColor();
+            ChangeAddressVisibility();
         }
 
         private void ChangeModalityBackColor()
@@ -118,114 +123,112 @@ namespace Xispirito.View.Lectures.CRUD
 
         protected void SubmitUpdate_Click(object sender, EventArgs e)
         {
-            Lecture objLecture = new Lecture();
+            if (!string.IsNullOrEmpty(Request.QueryString["lectureId"]))
+            {
+                insertMode = false;
+            }
 
-            LectureBAL lectureBAL = new LectureBAL();
-            if (lecture.GetName() != null)
+            if (insertMode == false)
             {
                 // UPDATE
-                objLecture = GetUpdateInformation();
-                lectureBAL.UpdateLecture(objLecture);
+                GetLectureInfo();
+                lecture = GetSubmitInformation(lecture.GetId());
+
+                lectureBAL.UpdateLecture(lecture);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Palestra Editada!", "alert('Palestra Editada com Sucesso!');", true);
             }
             else
             {
                 if (administrator != null)
                 {
                     // INSERT
-                    objLecture = GetInsertInformation();
-                    lectureBAL.InsertLecture(objLecture);
+                    lecture.SetId(lectureBAL.GetNextId());
+                    lecture = GetSubmitInformation(lecture.GetId());
+
+                    lectureBAL.InsertLecture(lecture);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Palestra Cadastrada!", "alert('Palestra Cadastrada com Sucesso!');", true);
+                    LoadLectureInfo();
                 }
             }
         }
 
-        private Lecture GetUpdateInformation()
+        private Lecture GetSubmitInformation(int lectureId)
         {
-            DateTime lectureStart = DateTime.Now;
-            DateTime lectureEnd = DateTime.Now;
-            lectureEnd.AddHours(1);
-
             string address = "";
             if (AddressLecture.Visible)
             {
                 address = AddressLecture.Text;
             }
 
-            int limit = Convert.ToInt32(LimitLecture.Text);
-            bool isLimited = false;
-            if (limit > 0)
+            string picturePath = SaveUploadImage(lectureId);
+            if (string.IsNullOrEmpty(picturePath))
             {
-                isLimited = true;
+                picturePath = lecture.GetPicture();
             }
 
+            int limit = Convert.ToInt32(LimitLecture.Text);
+
             Lecture objLecture = new Lecture(
-                lecture.GetId(),
+                lectureId,
                 NameLecture.Text,
-                lecture.GetPicture(),
-                CalculateLectureTime(lectureStart, lectureEnd),
-                Convert.ToDateTime(DateLecture.Text),
+                picturePath,
+                CalculateLectureTime(),
+                Convert.ToDateTime(DateLecture.Text + " " + StartTime.Value),
                 DescriptionLecture.Text,
                 ModalityLecture.SelectedValue,
                 address,
-                isLimited,
                 limit,
                 true
             );
-
             return objLecture;
         }
 
-        private Lecture GetInsertInformation()
+        private int CalculateLectureTime()
         {
-            // Adaptar para funcional depois.
-            DateTime lectureStart = DateTime.Now;
-            DateTime lectureEnd = DateTime.Now;
-            lectureEnd.AddHours(1);
+            int minutes;
 
-            string address = "";
-            if (AddressLecture.Visible)
+            string date = DateLecture.Text;
+            DateTime startDateTime = Convert.ToDateTime(date + " " + StartTime.Value);
+            DateTime endDateTime = Convert.ToDateTime(date + " " + EndTime.Value);
+
+            TimeSpan timeSpan;
+            if (startDateTime.Hour <= endDateTime.Hour)
             {
-                address = AddressLecture.Text;
+                timeSpan = startDateTime - endDateTime;
+                minutes = Convert.ToInt32((timeSpan.TotalHours / 60) + timeSpan.TotalMinutes);
+            }
+            else
+            {
+                double dayHours;
+                dayHours = ((startDateTime.Hour - endDateTime.Hour) - 24) * -1;
+
+                double dayMinutes;
+                if (startDateTime.Minute > endDateTime.Minute)
+                {
+                    dayMinutes = (startDateTime.Minute - endDateTime.Minute);
+                }
+                else
+                {
+                    dayMinutes = (endDateTime.Minute - startDateTime.Minute);
+                }
+                minutes = Convert.ToInt32((dayHours * 60) + dayMinutes);
             }
 
-            int limit = Convert.ToInt32(LimitLecture.Text);
-            bool isLimited = false;
-            if (limit > 0)
+            if (minutes < 0)
             {
-                isLimited = true;
+                minutes = minutes * -1;
             }
 
-            DateTime dateTimeLecture = Convert.ToDateTime(DateLecture.Text);
-            dateTimeLecture.AddHours(lectureStart.Hour);
-            dateTimeLecture.AddMinutes(lectureStart.Minute);
-
-            Lecture objLecture = new Lecture();
-            objLecture.SetName(NameLecture.Text);
-            objLecture.SetPicture(SaveUploadImage());
-            objLecture.SetTime(CalculateLectureTime(lectureStart, lectureEnd));
-            objLecture.SetDate(dateTimeLecture);
-            objLecture.SetDescription(DescriptionLecture.Text);
-            objLecture.SetModality(ModalityLecture.SelectedValue);
-            objLecture.SetAddress(address);
-            objLecture.SetIsLimited(isLimited);
-            objLecture.SetLimit(limit);
-            objLecture.SetIsActive(true);
-
-            return objLecture;
+            return minutes;
         }
 
-        private int CalculateLectureTime(DateTime lectureStart, DateTime lectureEnd)
+        private string SaveUploadImage(int lectureId)
         {
-            Random random = new Random();
-            int lectureTimeInMinutes = random.Next(20, 180);
-            return lectureTimeInMinutes;
-        }
+            string cryptographLectureId = "";
+            string fileName = "";
 
-        private string SaveUploadImage()
-        {
-            string cryptographLectureId = Cryptography.GetMD5Hash(lecture.GetId().ToString());
-            string fileName = cryptographLectureId;
-
-            string filePath = @"\View\Images\Lectures\" + cryptographLectureId;
+            string filePath = "";
+            string fullPath = "";
 
             HttpFileCollection hfc = null;
             HttpPostedFile hpf = null;
@@ -234,6 +237,11 @@ namespace Xispirito.View.Lectures.CRUD
             string extension = "";
             if (LecturePhotoUpload.HasFile)
             {
+                cryptographLectureId = Cryptography.GetMD5Hash(lectureId.ToString());
+                fileName = cryptographLectureId;
+
+                filePath = @"\View\Images\Lectures\" + cryptographLectureId;
+
                 if (LecturePhotoUpload.PostedFile.ContentType == "image/jpeg" || LecturePhotoUpload.PostedFile.ContentType == "image/png" || LecturePhotoUpload.PostedFile.ContentType == "image/gif" || LecturePhotoUpload.PostedFile.ContentType == "image/bmp")
                 {
                     try
@@ -254,6 +262,7 @@ namespace Xispirito.View.Lectures.CRUD
 
                             string mapPath = Server.MapPath(filePath) + @"\" + fileName + extension;
                             hpf.SaveAs(mapPath);
+                            fullPath = filePath + @"\" + fileName + extension;
                         }
                     }
                     catch (Exception ex)
@@ -266,7 +275,7 @@ namespace Xispirito.View.Lectures.CRUD
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "Archive Invalid!", "alert('Arquivo Inválido, É permitido carregar apenas arquivos em .JPEG .PNG .GIF .BMP');", true);
                 }
             }
-            return filePath + @"\" + cryptographLectureId + extension;
+            return fullPath;
         }
     }
 }

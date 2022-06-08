@@ -1,34 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace Xispirito.Models
+﻿namespace Xispirito.Models
 {
     public class ViewerLecture : BaseEntity
     {
-        private string ViewerEmail { get; set; }
-        private int LectureId { get; set; }
+        private Viewer Viewer { get; set; }
+        private Lecture Lecture { get; set; }
 
         public ViewerLecture()
         {
 
         }
 
-        public ViewerLecture(string viewerEmail, int lectureId)
+        public ViewerLecture(Viewer viewer, Lecture lecture)
         {
-            ViewerEmail = viewerEmail;
-            LectureId = lectureId;
+            Viewer = viewer;
+            Lecture = lecture;
         }
 
-        public string GetViewerEmail()
+        public Viewer GetViewer()
         {
-            return ViewerEmail;
+            return Viewer;
         }
 
-        public int GetLectureId()
+        public Lecture GetLecture()
         {
-            return LectureId;
+            return Lecture;
         }
     }
 }

@@ -17,7 +17,7 @@
             <div class="container">
                 <div class="title-search-wrapper">
                     <div class="title">
-                        <asp:Label ID="MyCertificates" runat="server" Text="Meus Certificados " CssClass="header-title" />
+                        <asp:Label ID="MyCertificates" runat="server" CssClass="header-title" />
                     </div>
                     <div class="filter-search-wrapper">
                         <div class="certificate-search">
@@ -38,7 +38,7 @@
                         <div class="card">
                             <div class="left-div">
                                 <div class="certificate-image">
-                                    <asp:ImageButton ID="CertificateImage" runat="server" AlternateText="Imagem não encontrada" CssClass="certifica-preview" />
+                                    <asp:ImageButton ID="CertificateImage" runat="server" AlternateText="Imagem não encontrada" CssClass="certificate-preview" />
                                 </div>
 
                                 <div class="certificate-title-date-wrapper">

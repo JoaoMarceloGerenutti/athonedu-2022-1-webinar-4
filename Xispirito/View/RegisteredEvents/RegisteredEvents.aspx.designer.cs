@@ -7,47 +7,47 @@
 // </gerado automaticamente>
 //------------------------------------------------------------------------------
 
-namespace Xispirito.View.MasterPage
+namespace Xispirito.View.RegisteredEvents
 {
 
 
-    public partial class MasterPage
+    public partial class RegisteredEvents
     {
 
         /// <summary>
-        /// Controle HeaderFooter.
+        /// Controle MyEvents.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder HeaderFooter;
+        protected global::System.Web.UI.WebControls.Label MyEvents;
 
         /// <summary>
-        /// Controle frmMasterPage.
+        /// Controle FilterEvents.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm frmMasterPage;
+        protected global::System.Web.UI.WebControls.TextBox FilterEvents;
 
         /// <summary>
-        /// Controle MasterLoginView.
+        /// Controle SearchEvents.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LoginView MasterLoginView;
+        protected global::System.Web.UI.WebControls.ImageButton SearchEvents;
 
         /// <summary>
-        /// Controle Content.
+        /// Controle ListViewEvents.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder Content;
+        protected global::System.Web.UI.WebControls.ListView ListViewEvents;
     }
 }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Xispirito.DAL;
+﻿using Xispirito.DAL;
 using Xispirito.Models;
 
 namespace Xispirito.Controller

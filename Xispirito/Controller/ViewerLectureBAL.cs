@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using Xispirito.DAL;
 using Xispirito.Models;
 
@@ -16,26 +13,39 @@ namespace Xispirito.Controller
             viewerLectureDAL = new ViewerLectureDAL();
         }
 
-        public void RegisterUserToLecture(string viewerEmail, int lectureId)
+        public void RegisterUserToLecture(ViewerLecture objViewerLecture)
         {
-            ViewerLecture viewerLecture = new ViewerLecture(viewerEmail, lectureId);
-            viewerLectureDAL.RegisterUserToLecture(viewerLecture);
+            viewerLectureDAL.RegisterUserToLecture(objViewerLecture);
         }
 
-        public bool VerifyUserAlreadyRegistered(string viewerEmail, int lectureId)
+        public bool VerifyUserAlreadyRegistered(ViewerLecture objViewerLecture)
         {
-            bool userAlreadyRegistered = false;
-
-            ViewerLecture objViewerLecture = new ViewerLecture(viewerEmail, lectureId);
-            userAlreadyRegistered = viewerLectureDAL.VerifyUserAlreadyRegistered(objViewerLecture);
-
-            return userAlreadyRegistered;
+            return viewerLectureDAL.VerifyUserAlreadyRegistered(objViewerLecture); ;
         }
 
-        public void DeleteUserSubscription(string viewerEmail, int lectureId)
+        public void DeleteUserSubscription(ViewerLecture objViewerLecture)
         {
-            ViewerLecture objViewerLecture = new ViewerLecture(viewerEmail, lectureId);
             viewerLectureDAL.DeleteUserSubscription(objViewerLecture);
+        }
+
+        public ViewerLecture GetUserLectureRegistration(string userEmail, int idLecture)
+        {
+            return viewerLectureDAL.GetUserLectureRegistration(userEmail, idLecture);
+        }
+
+        public int GetLectureRegistrationsNumber(int idLecture)
+        {
+            return viewerLectureDAL.GetLectureRegistrations(idLecture);
+        }
+
+        public List<ViewerLecture> GetUserLecturesRegistration(string userEmail)
+        { 
+            return viewerLectureDAL.GetUserLecturesRegistration(userEmail); ;
+        }
+
+        public List<ViewerLecture> GetUserLecturesRegistration(string userEmail, string search)
+        {
+            return viewerLectureDAL.GetUserLecturesRegistration(userEmail, search);
         }
     }
 }

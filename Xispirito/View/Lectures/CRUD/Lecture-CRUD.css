@@ -57,6 +57,7 @@ h4 {
     grid-column-start: 2;
     grid-row: 1 / 4;
     width: 70%;
+    max-height: 410px;
     border: .2rem solid black;
     border-color: rgb(111, 103, 91);
     border-radius: 4rem;
@@ -99,11 +100,6 @@ h4 {
 .lecture-form-set-photo-button {
     grid-column-start: 2;
     grid-row-start: 4;
-}
-
-.lecture-form-retire-photo-button {
-    grid-column-start: 2;
-    grid-row-start: 5;
 }
 
 .lecture-form-submit {
@@ -156,6 +152,11 @@ h4 {
     color: white;
     font-size: 1.8rem;
 }
+
+    .submit-button:hover {
+        cursor: pointer;
+        transform: translateY(-3px)
+    }
 
 .input-description {
     color: white;

@@ -112,8 +112,8 @@
     <Content Include="View\AdminOptions\Lectures\Lectures-List.css" />
     <Content Include="View\AdminOptions\Users\View-Users.aspx" />
     <Content Include="View\AdminOptions\Users\View-Users.css" />
-    <Content Include="View\Certificates\Viewers\Certificates.aspx" />
-    <Content Include="View\Certificates\Viewers\Certificates.css" />
+    <Content Include="View\Certificates\Certificates.aspx" />
+    <Content Include="View\Certificates\Certificates.css" />
     <Content Include="View\EventsSearch\EventsSearch.aspx" />
     <Content Include="View\EventsSearch\EventsSearch.css" />
     <Content Include="View\Events\Events.aspx" />
@@ -127,7 +127,9 @@
     <Content Include="View\Images\Certificates.png" />
     <Content Include="View\Images\Certificates\Templates\Certificate.png" />
     <Content Include="View\Images\Logout.png" />
+    <Content Include="View\Images\Map.png" />
     <Content Include="View\Images\Profile.png" />
+    <Content Include="View\Images\RegisteredEvents.png" />
     <Content Include="View\Images\Search.png" />
     <Content Include="View\Images\Test\Administracao.png" />
     <Content Include="View\Images\Test\Direito.png" />
@@ -156,6 +158,8 @@
     <Content Include="View\Login\Login.css" />
     <Content Include="View\Profiles\Viewer\Viewer.aspx" />
     <Content Include="View\Profiles\Viewer\Viewer.css" />
+    <Content Include="View\RegisteredEvents\RegisteredEvents.css" />
+    <Content Include="View\RegisteredEvents\RegisteredEvents.aspx" />
     <Content Include="View\Registry\Registry.aspx" />
     <Content Include="View\Registry\Registry.css" />
     <Content Include="View\Profiles\Speaker\Speaker.aspx" />
@@ -164,26 +168,39 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\AdministratorBAL.cs" />
+    <Compile Include="Controller\AdministratorCertificateBAL.cs" />
+    <Compile Include="Controller\SpeakerCertificateBAL.cs" />
+    <Compile Include="DAL\AdministratorCertificateDAL.cs" />
+    <Compile Include="Controller\AdministratorLectureBAL.cs" />
     <Compile Include="Controller\AreaBAL.cs" />
     <Compile Include="Controller\CertificateBAL.cs" />
     <Compile Include="Controller\LectureBAL.cs" />
     <Compile Include="Controller\SpeakerBAL.cs" />
+    <Compile Include="Controller\SpeakerLectureBAL.cs" />
     <Compile Include="Controller\ViewerBAL.cs" />
     <Compile Include="Controller\ViewerCertificateBAL.cs" />
     <Compile Include="Controller\ViewerLectureBAL.cs" />
     <Compile Include="DAL\AdministratorDAL.cs" />
+    <Compile Include="DAL\AdministratorLectureDAL.cs" />
     <Compile Include="DAL\AreaDAL.cs" />
     <Compile Include="DAL\CertificateDAL.cs" />
     <Compile Include="DAL\LectureDAL.cs" />
+    <Compile Include="DAL\SpeakerCertificateDAL.cs" />
     <Compile Include="DAL\SpeakerDAL.cs" />
+    <Compile Include="DAL\SpeakerLectureDAL.cs" />
     <Compile Include="DAL\ViewerCertificateDAL.cs" />
     <Compile Include="DAL\ViewerLectureDAL.cs" />
+    <Compile Include="Models\Classes\AdministratorCertificate.cs" />
+    <Compile Include="Models\Classes\AdministratorLecture.cs" />
     <Compile Include="Models\Classes\Certificate.cs" />
     <Compile Include="Models\Classes\CertificateGenerator.cs" />
     <Compile Include="Models\Classes\Cryptography.cs" />
     <Compile Include="Models\Classes\ModalityColor.cs" />
+    <Compile Include="Models\Classes\SpeakerCertificate.cs" />
+    <Compile Include="Models\Classes\SpeakerLecture.cs" />
     <Compile Include="Models\Classes\ViewerCertificate.cs" />
     <Compile Include="Models\Classes\ViewerLecture.cs" />
+    <Compile Include="Models\Enum\UserType.cs" />
     <Compile Include="Models\Interfaces\IDatabase.cs" />
     <Compile Include="DAL\ViewerDAL.cs" />
     <Compile Include="Models\Classes\Administrator.cs" />
@@ -218,11 +235,11 @@
     <Compile Include="View\AdminOptions\Users\View-Users.aspx.designer.cs">
       <DependentUpon>View-Users.aspx</DependentUpon>
     </Compile>
-    <Compile Include="View\Certificates\Viewers\Certificates.aspx.cs">
+    <Compile Include="View\Certificates\Certificates.aspx.cs">
       <DependentUpon>Certificates.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="View\Certificates\Viewers\Certificates.aspx.designer.cs">
+    <Compile Include="View\Certificates\Certificates.aspx.designer.cs">
       <DependentUpon>Certificates.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\EventsSearch\EventsSearch.aspx.cs">
@@ -280,6 +297,13 @@
     </Compile>
     <Compile Include="View\Profiles\Viewer\Viewer.aspx.designer.cs">
       <DependentUpon>Viewer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\RegisteredEvents\RegisteredEvents.aspx.cs">
+      <DependentUpon>RegisteredEvents.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\RegisteredEvents\RegisteredEvents.aspx.designer.cs">
+      <DependentUpon>RegisteredEvents.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Registry\Registry.aspx.cs">
       <DependentUpon>Registry.aspx</DependentUpon>

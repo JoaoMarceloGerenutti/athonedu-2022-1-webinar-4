@@ -6,39 +6,39 @@ using Xispirito.Models;
 
 namespace Xispirito.DAL
 {
-    public class ViewerLectureDAL
+    public class SpeakerLectureDAL
     {
         private string connectionString = ConfigurationManager.ConnectionStrings["XispiritoDB"].ConnectionString;
 
-        public void RegisterUserToLecture(ViewerLecture objViewerLecture)
+        public void RegisterUserToLecture(SpeakerLecture objSpeakerLecture)
         {
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
 
-            string sql = "INSERT INTO Viewer_Lecture VALUES (@email_viewer, @id_lecture)";
+            string sql = "INSERT INTO Speaker_Lecture VALUES (@email_speaker, @id_lecture)";
 
             SqlCommand cmd = new SqlCommand(sql, conn);
 
-            cmd.Parameters.AddWithValue("@email_viewer", objViewerLecture.GetViewer().GetEmail());
-            cmd.Parameters.AddWithValue("@id_lecture", objViewerLecture.GetLecture().GetId());
+            cmd.Parameters.AddWithValue("@email_speaker", objSpeakerLecture.GetSpeaker().GetEmail());
+            cmd.Parameters.AddWithValue("@id_lecture", objSpeakerLecture.GetLecture().GetId());
 
             cmd.ExecuteNonQuery();
             conn.Close();
         }
 
-        public bool VerifyUserAlreadyRegistered(ViewerLecture objViewerLecture)
+        public bool VerifyUserAlreadyRegistered(SpeakerLecture objSpeakerLecture)
         {
             bool userAlreadyRegistered = false;
 
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
 
-            string sql = "SELECT * FROM Viewer_Lecture WHERE email_viewer = @email_viewer AND id_lecture = @id_lecture";
+            string sql = "SELECT * FROM Speaker_Lecture WHERE email_speaker = @email_speaker AND id_lecture = @id_lecture";
 
             SqlCommand cmd = new SqlCommand(sql, conn);
 
-            cmd.Parameters.AddWithValue("@email_viewer", objViewerLecture.GetViewer().GetEmail());
-            cmd.Parameters.AddWithValue("@id_lecture", objViewerLecture.GetLecture().GetId());
+            cmd.Parameters.AddWithValue("@email_speaker", objSpeakerLecture.GetSpeaker().GetEmail());
+            cmd.Parameters.AddWithValue("@id_lecture", objSpeakerLecture.GetLecture().GetId());
 
             SqlDataReader dr = cmd.ExecuteReader();
 
@@ -50,17 +50,17 @@ namespace Xispirito.DAL
             return userAlreadyRegistered;
         }
 
-        public void DeleteUserSubscription(ViewerLecture objViewerLecture)
+        public void DeleteUserSubscription(SpeakerLecture objSpeakerLecture)
         {
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
 
-            string sql = "DELETE FROM Viewer_Lecture WHERE email_viewer = @email_viewer AND id_lecture = @id_lecture";
+            string sql = "DELETE FROM Speaker_Lecture WHERE email_speaker = @email_speaker AND id_lecture = @id_lecture";
 
             SqlCommand cmd = new SqlCommand(sql, conn);
 
-            cmd.Parameters.AddWithValue("@email_viewer", objViewerLecture.GetViewer().GetEmail());
-            cmd.Parameters.AddWithValue("@id_lecture", objViewerLecture.GetLecture().GetId());
+            cmd.Parameters.AddWithValue("@email_speaker", objSpeakerLecture.GetSpeaker().GetEmail());
+            cmd.Parameters.AddWithValue("@id_lecture", objSpeakerLecture.GetLecture().GetId());
 
             cmd.ExecuteNonQuery();
             conn.Close();
@@ -71,13 +71,13 @@ namespace Xispirito.DAL
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
 
-            string sql = "SELECT Viewer_Lecture.email_viewer, "
-                + "Viewer.*, "
+            string sql = "SELECT Speaker_Lecture.email_speaker, "
+                + "Speaker.*, "
                 + "Lecture.* "
-                + "FROM Viewer_Lecture "
-                + "INNER JOIN Viewer ON Viewer_Lecture.email_viewer = Viewer.email_viewer "
-                + "INNER JOIN Lecture ON Viewer_Lecture.id_lecture = Lecture.id_lecture "
-                + "WHERE Viewer_Lecture.id_lecture = @id_lecture AND Lecture.isActive = 1";
+                + "FROM Speaker_Lecture "
+                + "INNER JOIN Speaker ON Speaker_Lecture.email_speaker = Speaker.email_speaker "
+                + "INNER JOIN Lecture ON Speaker_Lecture.id_lecture = Lecture.id_lecture "
+                + "WHERE Speaker_Lecture.id_lecture = @id_lecture AND Lecture.isActive = 1";
 
             SqlCommand cmd = new SqlCommand(sql, conn);
 
@@ -98,38 +98,39 @@ namespace Xispirito.DAL
             return registrationNumber;
         }
 
-        public ViewerLecture GetUserLectureRegistration(string viewerEmail, int lectureId)
+        public SpeakerLecture GetUserLectureRegistration(string speakerEmail, int lectureId)
         {
-            ViewerLecture objViewerLecture = null;
+            SpeakerLecture objSpeakerLecture = null;
 
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
 
-            string sql = "SELECT Viewer_Lecture.email_viewer, "
-                + "Viewer.*, "
+            string sql = "SELECT Speaker_Lecture.email_speaker, "
+                + "Speaker.*, "
                 + "Lecture.* "
-                + "FROM Viewer_Lecture "
-                + "INNER JOIN Viewer ON Viewer_Lecture.email_viewer = Viewer.email_viewer "
-                + "INNER JOIN Lecture ON Viewer_Lecture.id_lecture = Lecture.id_lecture "
-                + "WHERE Viewer_Lecture.email_viewer = @email_viewer AND Viewer_Lecture.id_lecture = @id_lecture AND Lecture.isActive = 1";
+                + "FROM Speaker_Lecture "
+                + "INNER JOIN Speaker ON Speaker_Lecture.email_speaker = Speaker.email_speaker "
+                + "INNER JOIN Lecture ON Speaker_Lecture.id_lecture = Lecture.id_lecture "
+                + "WHERE Speaker_Lecture.email_speaker = @email_speaker AND Speaker_Lecture.id_lecture = @id_lecture AND Lecture.isActive = 1";
 
             SqlCommand cmd = new SqlCommand(sql, conn);
 
-            cmd.Parameters.AddWithValue("@email_viewer", viewerEmail);
+            cmd.Parameters.AddWithValue("@email_speaker", speakerEmail);
             cmd.Parameters.AddWithValue("@id_lecture", lectureId);
 
             SqlDataReader dr = cmd.ExecuteReader();
 
             if (dr.HasRows && dr.Read())
             {
-                Viewer objViewer = new Viewer(
-                        Convert.ToInt32(dr["id_viewer"]),
-                        dr["nm_viewer"].ToString(),
-                        viewerEmail,
-                        dr["pt_viewer"].ToString(),
-                        dr["pw_viwer"].ToString(),
+                Speaker objSpeaker = new Speaker(
+                        Convert.ToInt32(dr["id_speaker"]),
+                        dr["nm_speaker"].ToString(),
+                        speakerEmail,
+                        dr["pt_speaker"].ToString(),
+                        dr["pf_speaker"].ToString(),
+                        dr["pw_speaker"].ToString(),
                         Convert.ToBoolean(dr["isActive"])
-                    );
+                );
 
                 Lecture objLecture = new Lecture(
                     Convert.ToInt32(dr["id_lecture"]),
@@ -144,50 +145,51 @@ namespace Xispirito.DAL
                     Convert.ToBoolean(dr["isActive"])
                 );
 
-                objViewerLecture = new ViewerLecture(
-                    objViewer,
+                objSpeakerLecture = new SpeakerLecture(
+                    objSpeaker,
                     objLecture
                 );
             }
 
             conn.Close();
 
-            return objViewerLecture;
+            return objSpeakerLecture;
         }
 
-        public List<ViewerLecture> GetUserLecturesRegistration(string viewerEmail)
+        public List<SpeakerLecture> GetUserLecturesRegistration(string speakerEmail)
         {
-            List<ViewerLecture> viewerLectureList = null;
+            List<SpeakerLecture> speakerLectureList = null;
 
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
 
-            string sql = "SELECT Viewer_Lecture.email_viewer, "
-                + "Viewer.*, "
+            string sql = "SELECT Speaker_Lecture.email_speaker, "
+                + "Speaker.*, "
                 + "Lecture.* "
-                + "FROM Viewer_Lecture "
-                + "INNER JOIN Viewer ON Viewer_Lecture.email_viewer = Viewer.email_viewer "
-                + "INNER JOIN Lecture ON Viewer_Lecture.id_lecture = Lecture.id_lecture "
-                + "WHERE Viewer_Lecture.email_viewer = @email_viewer AND Lecture.isActive = 1";
+                + "FROM Speaker_Lecture "
+                + "INNER JOIN Speaker ON Speaker_Lecture.email_speaker = Speaker.email_speaker "
+                + "INNER JOIN Lecture ON Speaker_Lecture.id_lecture = Lecture.id_lecture "
+                + "WHERE Speaker_Lecture.email_speaker = @email_speaker AND Lecture.isActive = 1";
 
             SqlCommand cmd = new SqlCommand(sql, conn);
 
-            cmd.Parameters.AddWithValue("@email_viewer", viewerEmail);
+            cmd.Parameters.AddWithValue("@email_speaker", speakerEmail);
 
             SqlDataReader dr = cmd.ExecuteReader();
 
             if (dr.HasRows)
             {
-                viewerLectureList = new List<ViewerLecture>();
+                speakerLectureList = new List<SpeakerLecture>();
 
                 while (dr.Read())
                 {
-                    Viewer objViewer = new Viewer(
-                        Convert.ToInt32(dr["id_viewer"]),
-                        dr["nm_viewer"].ToString(),
-                        viewerEmail,
-                        dr["pt_viewer"].ToString(),
-                        dr["pw_viwer"].ToString(),
+                    Speaker objSpeaker = new Speaker(
+                        Convert.ToInt32(dr["id_speaker"]),
+                        dr["nm_speaker"].ToString(),
+                        speakerEmail,
+                        dr["pt_speaker"].ToString(),
+                        dr["pf_speaker"].ToString(),
+                        dr["pw_speaker"].ToString(),
                         Convert.ToBoolean(dr["isActive"])
                     );
 
@@ -204,53 +206,54 @@ namespace Xispirito.DAL
                         Convert.ToBoolean(dr["isActive"])
                     );
 
-                    ViewerLecture viewerLecture = new ViewerLecture(
-                        objViewer,
+                    SpeakerLecture speakerLecture = new SpeakerLecture(
+                        objSpeaker,
                         objLecture
                     );
-                    viewerLectureList.Add(viewerLecture);
+                    speakerLectureList.Add(speakerLecture);
                 }
             }
 
             conn.Close();
 
-            return viewerLectureList;
+            return speakerLectureList;
         }
 
-        public List<ViewerLecture> GetUserLecturesRegistration(string viewerEmail, string search)
+        public List<SpeakerLecture> GetUserLecturesRegistration(string speakerEmail, string search)
         {
-            List<ViewerLecture> viewerLectureList = null;
+            List<SpeakerLecture> speakerLectureList = null;
 
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
 
-            string sql = "SELECT Viewer_Lecture.email_viewer, "
-                + "Viewer.*, "
+            string sql = "SELECT Speaker_Lecture.email_speaker, "
+                + "Speaker.*, "
                 + "Lecture.* "
-                + "FROM Viewer_Lecture "
-                + "INNER JOIN Viewer ON Viewer_Lecture.email_viewer = Viewer.email_viewer "
-                + "INNER JOIN Lecture ON Viewer_Lecture.id_lecture = Lecture.id_lecture "
-                + "WHERE Viewer_Lecture.email_viewer = @email_viewer AND Lecture.nm_lecture LIKE @search AND Lecture.isActive = 1";
+                + "FROM Speaker_Lecture "
+                + "INNER JOIN Speaker ON Speaker_Lecture.email_speaker = Speaker.email_speaker "
+                + "INNER JOIN Lecture ON Speaker_Lecture.id_lecture = Lecture.id_lecture "
+                + "WHERE Speaker_Lecture.email_speaker = @email_speaker AND Lecture.nm_lecture LIKE @search AND Lecture.isActive = 1";
 
             SqlCommand cmd = new SqlCommand(sql, conn);
 
-            cmd.Parameters.AddWithValue("@email_viewer", viewerEmail);
+            cmd.Parameters.AddWithValue("@email_speaker", speakerEmail);
             cmd.Parameters.AddWithValue("@search", "%" + search + "%");
 
             SqlDataReader dr = cmd.ExecuteReader();
 
             if (dr.HasRows)
             {
-                viewerLectureList = new List<ViewerLecture>();
+                speakerLectureList = new List<SpeakerLecture>();
 
                 while (dr.Read())
                 {
-                    Viewer objViewer = new Viewer(
-                        Convert.ToInt32(dr["id_viewer"]),
-                        dr["nm_viewer"].ToString(),
-                        viewerEmail,
-                        dr["pt_viewer"].ToString(),
-                        dr["pw_viwer"].ToString(),
+                    Speaker objSpeaker = new Speaker(
+                        Convert.ToInt32(dr["id_speaker"]),
+                        dr["nm_speaker"].ToString(),
+                        speakerEmail,
+                        dr["pt_speaker"].ToString(),
+                        dr["pf_speaker"].ToString(),
+                        dr["pw_speaker"].ToString(),
                         Convert.ToBoolean(dr["isActive"])
                     );
 
@@ -267,17 +270,17 @@ namespace Xispirito.DAL
                         Convert.ToBoolean(dr["isActive"])
                     );
 
-                    ViewerLecture viewerLecture = new ViewerLecture(
-                        objViewer,
+                    SpeakerLecture speakerLecture = new SpeakerLecture(
+                        objSpeaker,
                         objLecture
                     );
-                    viewerLectureList.Add(viewerLecture);
+                    speakerLectureList.Add(speakerLecture);
                 }
             }
 
             conn.Close();
 
-            return viewerLectureList;
+            return speakerLectureList;
         }
     }
 }
