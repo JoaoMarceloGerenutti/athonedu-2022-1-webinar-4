@@ -39,6 +39,10 @@ namespace Xispirito.View.Certificates.Viewers
                     LoadViewerCertificatesDataBound(viewerCertificateBAL.GetUserCertificates(User.Identity.Name));
                 }
             }
+            else
+            {
+                Response.Redirect("~/View/Login/Login.aspx");
+            }
         }
 
         private void LoadViewerCertificatesDataBound(List<ViewerCertificate> viewerCertificates)

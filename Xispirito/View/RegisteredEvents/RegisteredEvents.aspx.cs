@@ -38,6 +38,10 @@ namespace Xispirito.View.RegisteredEvents
                     LoadViewerEventsDataBound(viewerLectureBAL.GetUserLecturesRegistration(User.Identity.Name));
                 }
             }
+            else
+            {
+                Response.Redirect("~/View/Login/Login.aspx");
+            }
         }
 
         private BaseUser GetAccount(string email)
