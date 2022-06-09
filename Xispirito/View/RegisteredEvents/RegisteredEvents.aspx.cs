@@ -188,7 +188,7 @@ namespace Xispirito.View.RegisteredEvents
                     endDateTime = endDateTime.AddMinutes(administratorLecture.GetLecture().GetTime());
                     dateLabel.Text += " - " + endDateTime.ToString("dd/MM/yyyy HH:mm");
 
-                    watchButton.CommandArgument = "";
+                    watchButton.PostBackUrl = "~/View/Lectures/ViewLectures/ViewLecture.aspx?lectureId=" + administratorLecture.GetLecture().GetId().ToString();
                     watchButton.BackColor = ModalityColor.GetModalityColor(administratorLecture.GetLecture().GetModality());
 
                     if (administratorLecture.GetLecture().GetModality() != Enum.GetName(typeof(Modality), 1))
@@ -229,7 +229,7 @@ namespace Xispirito.View.RegisteredEvents
                     endDateTime = endDateTime.AddMinutes(speakerLecture.GetLecture().GetTime());
                     dateLabel.Text += " - " + endDateTime.ToString("dd/MM/yyyy HH:mm");
 
-                    watchButton.CommandArgument = "";
+                    watchButton.PostBackUrl = "~/View/Lectures/ViewLectures/ViewLecture.aspx?lectureId=" + speakerLecture.GetLecture().GetId().ToString();
                     watchButton.BackColor = ModalityColor.GetModalityColor(speakerLecture.GetLecture().GetModality());
 
                     if (speakerLecture.GetLecture().GetModality() != Enum.GetName(typeof(Modality), 1))
@@ -270,7 +270,7 @@ namespace Xispirito.View.RegisteredEvents
                     endDateTime = endDateTime.AddMinutes(viewerLecture.GetLecture().GetTime());
                     dateLabel.Text += " - " + endDateTime.ToString("dd/MM/yyyy HH:mm");
 
-                    watchButton.CommandArgument = "";
+                    watchButton.PostBackUrl = "~/View/Lectures/ViewLectures/ViewLecture.aspx?lectureId=" + viewerLecture.GetLecture().GetId().ToString();
                     watchButton.BackColor = ModalityColor.GetModalityColor(viewerLecture.GetLecture().GetModality());
 
                     if (viewerLecture.GetLecture().GetModality() != Enum.GetName(typeof(Modality), 1))
@@ -297,24 +297,24 @@ namespace Xispirito.View.RegisteredEvents
 
                 if (userType == UserType.Administrator)
                 {
-                    AdministratorLecture objAdministratorLecture = new AdministratorLecture();
-                    objAdministratorLecture = administratorLectureBAL.GetUserLectureRegistration(User.Identity.Name, lectureId);
+                    _ = new AdministratorLecture();
+                    AdministratorLecture objAdministratorLecture = administratorLectureBAL.GetUserLectureRegistration(User.Identity.Name, lectureId);
                     administratorLectureBAL.DeleteUserSubscription(objAdministratorLecture);
 
                     LoadAdministratorEventsDataBound(administratorLectureBAL.GetUserLecturesRegistration(User.Identity.Name));
                 }
                 else if (userType == UserType.Speaker)
                 {
-                    SpeakerLecture objSpeakerLecture = new SpeakerLecture();
-                    objSpeakerLecture = speakerLectureBAL.GetUserLectureRegistration(User.Identity.Name, lectureId);
+                    _ = new SpeakerLecture();
+                    SpeakerLecture objSpeakerLecture = speakerLectureBAL.GetUserLectureRegistration(User.Identity.Name, lectureId);
                     speakerLectureBAL.DeleteUserSubscription(objSpeakerLecture);
 
                     LoadSpeakerEventsDataBound(speakerLectureBAL.GetUserLecturesRegistration(User.Identity.Name));
                 }
                 else
                 {
-                    ViewerLecture objViewerLecture = new ViewerLecture();
-                    objViewerLecture = viewerLectureBAL.GetUserLectureRegistration(User.Identity.Name, lectureId);
+                    _ = new ViewerLecture();
+                    ViewerLecture objViewerLecture = viewerLectureBAL.GetUserLectureRegistration(User.Identity.Name, lectureId);
                     viewerLectureBAL.DeleteUserSubscription(objViewerLecture);
 
                     LoadViewerEventsDataBound(viewerLectureBAL.GetUserLecturesRegistration(User.Identity.Name));

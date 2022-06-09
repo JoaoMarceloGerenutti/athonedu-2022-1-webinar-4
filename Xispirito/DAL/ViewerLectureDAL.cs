@@ -129,7 +129,7 @@ namespace Xispirito.DAL
                         dr["pt_viewer"].ToString(),
                         dr["pw_viwer"].ToString(),
                         Convert.ToBoolean(dr["isActive"])
-                    );
+                );
 
                 Lecture objLecture = new Lecture(
                     Convert.ToInt32(dr["id_lecture"]),

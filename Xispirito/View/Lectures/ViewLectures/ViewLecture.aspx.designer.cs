@@ -7,7 +7,7 @@
 // </gerado automaticamente>
 //------------------------------------------------------------------------------
 
-namespace Xispirito.View.Lectures.Lectures_View
+namespace Xispirito.View.Lectures.ViewLecture
 {
 
 

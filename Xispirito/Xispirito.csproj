@@ -140,8 +140,8 @@
     <Content Include="View\Images\User.png" />
     <Content Include="View\Lectures\CRUD\Lecture-CRUD.aspx" />
     <Content Include="View\Lectures\CRUD\Lecture-CRUD.css" />
-    <Content Include="View\Lectures\Lectures-View\Lecture-View.aspx" />
-    <Content Include="View\Lectures\Lectures-View\Lecture-View.css" />
+    <Content Include="View\Lectures\ViewLectures\ViewLecture.aspx" />
+    <Content Include="View\Lectures\ViewLectures\ViewLecture.css" />
     <Content Include="View\MasterPage\MasterPage.css" />
     <Content Include="View\MasterPage\menu.js" />
     <Content Include="View\Home\print.css" />
@@ -169,7 +169,9 @@
   <ItemGroup>
     <Compile Include="Controller\AdministratorBAL.cs" />
     <Compile Include="Controller\AdministratorCertificateBAL.cs" />
+    <Compile Include="Controller\AdministratorWatchedLectureBAL.cs" />
     <Compile Include="Controller\SpeakerCertificateBAL.cs" />
+    <Compile Include="Controller\ViewerWatchedLectureBAL.cs" />
     <Compile Include="DAL\AdministratorCertificateDAL.cs" />
     <Compile Include="Controller\AdministratorLectureBAL.cs" />
     <Compile Include="Controller\AreaBAL.cs" />
@@ -182,6 +184,7 @@
     <Compile Include="Controller\ViewerLectureBAL.cs" />
     <Compile Include="DAL\AdministratorDAL.cs" />
     <Compile Include="DAL\AdministratorLectureDAL.cs" />
+    <Compile Include="DAL\AdministratorWatchedLectureDAL.cs" />
     <Compile Include="DAL\AreaDAL.cs" />
     <Compile Include="DAL\CertificateDAL.cs" />
     <Compile Include="DAL\LectureDAL.cs" />
@@ -190,16 +193,20 @@
     <Compile Include="DAL\SpeakerLectureDAL.cs" />
     <Compile Include="DAL\ViewerCertificateDAL.cs" />
     <Compile Include="DAL\ViewerLectureDAL.cs" />
+    <Compile Include="DAL\ViewerWatchedLectureDAL.cs" />
     <Compile Include="Models\Classes\AdministratorCertificate.cs" />
     <Compile Include="Models\Classes\AdministratorLecture.cs" />
+    <Compile Include="Models\Classes\AdministratorWatchedLecture.cs" />
     <Compile Include="Models\Classes\Certificate.cs" />
     <Compile Include="Models\Classes\CertificateGenerator.cs" />
     <Compile Include="Models\Classes\Cryptography.cs" />
     <Compile Include="Models\Classes\ModalityColor.cs" />
     <Compile Include="Models\Classes\SpeakerCertificate.cs" />
     <Compile Include="Models\Classes\SpeakerLecture.cs" />
+    <Compile Include="Models\Classes\SpeakerWatchedLecture.cs" />
     <Compile Include="Models\Classes\ViewerCertificate.cs" />
     <Compile Include="Models\Classes\ViewerLecture.cs" />
+    <Compile Include="Models\Classes\ViewerWatchedLecture.cs" />
     <Compile Include="Models\Enum\UserType.cs" />
     <Compile Include="Models\Interfaces\IDatabase.cs" />
     <Compile Include="DAL\ViewerDAL.cs" />
@@ -270,12 +277,12 @@
     <Compile Include="View\Lectures\CRUD\Lecture-CRUD.aspx.designer.cs">
       <DependentUpon>Lecture-CRUD.aspx</DependentUpon>
     </Compile>
-    <Compile Include="View\Lectures\Lectures-View\Lecture-View.aspx.cs">
-      <DependentUpon>Lecture-View.aspx</DependentUpon>
+    <Compile Include="View\Lectures\ViewLectures\ViewLecture.aspx.cs">
+      <DependentUpon>ViewLecture.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="View\Lectures\Lectures-View\Lecture-View.aspx.designer.cs">
-      <DependentUpon>Lecture-View.aspx</DependentUpon>
+    <Compile Include="View\Lectures\ViewLectures\ViewLecture.aspx.designer.cs">
+      <DependentUpon>ViewLecture.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Login\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>

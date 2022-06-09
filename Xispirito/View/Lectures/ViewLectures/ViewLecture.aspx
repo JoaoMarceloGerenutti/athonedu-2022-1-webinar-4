@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/MasterPage/MasterPage.Master" AutoEventWireup="true" CodeBehind="Lecture-View.aspx.cs" Inherits="Xispirito.View.Lectures.Lectures_View.Lecture_View" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/MasterPage/MasterPage.Master" AutoEventWireup="true" CodeBehind="ViewLecture.aspx.cs" Inherits="Xispirito.View.Lectures.ViewLecture.Lecture_View" %>
 <asp:Content ID="HeaderFooter" ContentPlaceHolderID="HeaderFooter" runat="server">
 </asp:Content>
 <asp:Content ID="Content" ContentPlaceHolderID="Content" runat="server">
@@ -9,7 +9,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>Eventos - Xispirito </title>
 
-        <link rel="stylesheet" href="Lecture-View.css" />
+        <link rel="stylesheet" href="ViewLecture.css" />
         <link rel="stylesheet" href="print.css" media="print" />
 
     </head>
