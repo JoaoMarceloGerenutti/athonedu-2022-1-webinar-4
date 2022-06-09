@@ -40,7 +40,10 @@ namespace Xispirito.View.Lectures.ViewLecture
                     {
                         if (administratorLectureBAL.GetUserLectureRegistration(User.Identity.Name, lectureId) != null)
                         {
-                            administratorWatchedLectureBAL.RegisterUserToLecture(User.Identity.Name, lectureId);
+                            if (!administratorWatchedLectureBAL.VerifyRegisterToLecture(User.Identity.Name, lectureId))
+                            {
+                                administratorWatchedLectureBAL.RegisterUserToLecture(User.Identity.Name, lectureId);
+                            }
                             userFound = true;
                         }
                     }
@@ -48,7 +51,10 @@ namespace Xispirito.View.Lectures.ViewLecture
                     {
                         if (speakerLectureBAL.GetUserLectureRegistration(User.Identity.Name, lectureId) != null)
                         {
-                            speakerWatchedLectureBAL.RegisterUserToLecture(User.Identity.Name, lectureId);
+                            if (!speakerWatchedLectureBAL.VerifyRegisterToLecture(User.Identity.Name, lectureId))
+                            {
+                                speakerWatchedLectureBAL.RegisterUserToLecture(User.Identity.Name, lectureId);
+                            }
                             userFound = true;
                         }
                     }
@@ -56,7 +62,10 @@ namespace Xispirito.View.Lectures.ViewLecture
                     {
                         if (viewerLectureBAL.GetUserLectureRegistration(User.Identity.Name, lectureId) != null)
                         {
-                            viewerWatchedLectureBAL.GetUserLectureRegistration(User.Identity.Name, lectureId);
+                            if (!viewerWatchedLectureBAL.VerifyRegisterToLecture(User.Identity.Name, lectureId))
+                            {
+                                viewerWatchedLectureBAL.RegisterUserToLecture(User.Identity.Name, lectureId);
+                            }
                             userFound = true;
                         }
                     }

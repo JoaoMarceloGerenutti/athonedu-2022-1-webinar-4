@@ -171,6 +171,8 @@
     <Compile Include="Controller\AdministratorCertificateBAL.cs" />
     <Compile Include="Controller\AdministratorWatchedLectureBAL.cs" />
     <Compile Include="Controller\SpeakerCertificateBAL.cs" />
+    <Compile Include="Controller\SpeakerWatchedLectureBAL.cs" />
+    <Compile Include="DAL\SpeakerWatchedLectureDAL.cs" />
     <Compile Include="Controller\ViewerWatchedLectureBAL.cs" />
     <Compile Include="DAL\AdministratorCertificateDAL.cs" />
     <Compile Include="Controller\AdministratorLectureBAL.cs" />

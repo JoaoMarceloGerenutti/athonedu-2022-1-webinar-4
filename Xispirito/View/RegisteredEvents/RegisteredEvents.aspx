@@ -68,7 +68,7 @@
                             </div>
                             <div class="right-div">
                                 <div class="watch-lecture">
-                                    <asp:Button ID="WatchLecture" runat="server" Text="Assistir Palestra" CssClass="watch-button" Visible="True" />
+                                    <asp:Button ID="WatchLecture" runat="server" Text="Assistir Palestra" CssClass="watch-button" Visible="False" />
                                 </div>
                                 <div class="cancel-subscription">
                                     <asp:Button ID="CancelSubscription" runat="server" Text="Cancelar Inscrição" CssClass="cancel-button" OnClick="CancelSubscription_Click" />

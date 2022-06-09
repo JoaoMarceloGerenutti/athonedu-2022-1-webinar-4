@@ -28,6 +28,36 @@ namespace Xispirito.DAL
             conn.Close();
         }
 
+        public bool VerifyRegisterToLecture(AdministratorWatchedLecture objAdministratorWatchedLecture)
+        {
+            SqlConnection conn = new SqlConnection(connectionString);
+            conn.Open();
+
+            string sql = "SELECT Administrator_Watched_Lecture.email_administrator, "
+                + "Administrator.*, "
+                + "Lecture.* "
+                + "FROM Administrator_Watched_Lecture "
+                + "INNER JOIN Administrator ON Administrator_Watched_Lecture.email_administrator = Administrator.email_administrator "
+                + "INNER JOIN Lecture ON Administrator_Watched_Lecture.id_lecture = Lecture.id_lecture "
+                + "WHERE Administrator_Watched_Lecture.email_administrator = @email_administrator AND Administrator_Watched_Lecture.id_lecture = @id_lecture AND Lecture.isActive = 1";
+
+            SqlCommand cmd = new SqlCommand(sql, conn);
+
+            cmd.Parameters.AddWithValue("@email_administrator", objAdministratorWatchedLecture.GetAdministrator().GetEmail());
+            cmd.Parameters.AddWithValue("@id_lecture", objAdministratorWatchedLecture.GetLecture().GetId());
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            bool userAlreadyRegisteredToLecture = false;
+            if (dr.HasRows)
+            {
+                userAlreadyRegisteredToLecture = true;
+            }
+            conn.Close();
+
+            return userAlreadyRegisteredToLecture;
+        }
+
         public void DeleteUserAttendance(string userEmail)
         {
             SqlConnection conn = new SqlConnection(connectionString);

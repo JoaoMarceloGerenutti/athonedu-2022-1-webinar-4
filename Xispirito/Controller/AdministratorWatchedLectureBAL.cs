@@ -8,6 +8,9 @@ namespace Xispirito.Controller
     {
         private AdministratorWatchedLectureDAL administratorWatchedLectureDAL { get; set; }
 
+        private AdministratorBAL administratorBAL = new AdministratorBAL();
+        private LectureBAL lectureBAL = new LectureBAL();
+
         public AdministratorWatchedLectureBAL()
         {
             administratorWatchedLectureDAL = new AdministratorWatchedLectureDAL();
@@ -15,11 +18,14 @@ namespace Xispirito.Controller
 
         public void RegisterUserToLecture(string userEmail, int idLecture)
         {
-            AdministratorBAL administratorBAL = new AdministratorBAL();
-            LectureBAL lectureBAL = new LectureBAL();
-
             AdministratorWatchedLecture objAdministratorWatchedLecture = new AdministratorWatchedLecture(administratorBAL.GetAccount(userEmail), lectureBAL.GetLecture(idLecture));
             administratorWatchedLectureDAL.RegisterUserAttendance(objAdministratorWatchedLecture);
+        }
+
+        public bool VerifyRegisterToLecture(string userEmail, int idLecture)
+        {
+            AdministratorWatchedLecture objAdministratorWatchedLecture = new AdministratorWatchedLecture(administratorBAL.GetAccount(userEmail), lectureBAL.GetLecture(idLecture));
+            return administratorWatchedLectureDAL.VerifyRegisterToLecture(objAdministratorWatchedLecture);
         }
 
         public void DeleteUserAttendance(string userEmail)
