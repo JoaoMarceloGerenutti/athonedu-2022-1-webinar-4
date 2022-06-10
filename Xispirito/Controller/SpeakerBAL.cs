@@ -1,4 +1,5 @@
-﻿using Xispirito.DAL;
+﻿using System.Collections.Generic;
+using Xispirito.DAL;
 using Xispirito.Models;
 
 namespace Xispirito.Controller
@@ -64,6 +65,21 @@ namespace Xispirito.Controller
                 accountActive = true;
             }
             return accountActive;
+        }
+
+        public List<Speaker> GetAdministratorSpeakerList()
+        {
+            return speakerDAL.List();
+        }
+
+        public List<Speaker> GetAdministratorSpeakerList(string search)
+        {
+            return speakerDAL.List(search);
+        }
+
+        public void DeleteSpeaker(int speakerId)
+        {
+            speakerDAL.Delete(speakerId);
         }
     }
 }

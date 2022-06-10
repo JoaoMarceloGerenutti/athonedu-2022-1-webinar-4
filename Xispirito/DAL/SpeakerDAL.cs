@@ -160,7 +160,7 @@ namespace Xispirito.DAL
             SqlCommand cmd = new SqlCommand(sql, conn);
 
             cmd.Parameters.AddWithValue("@isActive", false);
-            cmd.Parameters.AddWithValue("@id_viewer", speakerId);
+            cmd.Parameters.AddWithValue("@id_speaker", speakerId);
 
             cmd.ExecuteNonQuery();
 
@@ -174,9 +174,46 @@ namespace Xispirito.DAL
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
 
-            string sql = "SELECT * FROM Speaker Where isActive = 1";
+            string sql = "SELECT * FROM Speaker WHERE isActive = 1";
 
             SqlCommand cmd = new SqlCommand(sql, conn);
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            if (dr.HasRows)
+            {
+                speakerList = new List<Speaker>();
+
+                while (dr.Read())
+                {
+                    Speaker objSpeaker = new Speaker(
+                        Convert.ToInt32(dr["id_speaker"]),
+                        dr["nm_speaker"].ToString(),
+                        dr["email_speaker"].ToString(),
+                        dr["pt_speaker"].ToString(),
+                        dr["pf_speaker"].ToString(),
+                        dr["pw_speaker"].ToString(),
+                        Convert.ToBoolean(dr["isActive"])
+                    );
+                    speakerList.Add(objSpeaker);
+                }
+            }
+            conn.Close();
+
+            return speakerList;
+        }
+
+        public List<Speaker> List(string search)
+        {
+            List<Speaker> speakerList = null;
+
+            SqlConnection conn = new SqlConnection(connectionString);
+            conn.Open();
+
+            string sql = "SELECT * FROM Speaker WHERE nm_speaker LIKE @nm_speaker AND isActive = 1";
+
+            SqlCommand cmd = new SqlCommand(sql, conn);
+            cmd.Parameters.AddWithValue("@nm_speaker", "%" + search + "%");
 
             SqlDataReader dr = cmd.ExecuteReader();
 

@@ -23,25 +23,28 @@ namespace Xispirito.View.Certificates.Viewers
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Page.IsPostBack && User.Identity.IsAuthenticated)
+            if (!Page.IsPostBack)
             {
-                GetAccountType(User.Identity.Name);
-                if (userType == UserType.Administrator)
+                if (User.Identity.IsAuthenticated)
                 {
-                    LoadAdministratorCertificatesDataBound(administratorCertificateBAL.GetUserCertificates(User.Identity.Name));
-                }
-                else if (userType == UserType.Speaker)
-                {
-                    LoadSpeakerCertificatesDataBound(speakerCertificateBAL.GetUserCertificates(User.Identity.Name));
+                    GetAccountType(User.Identity.Name);
+                    if (userType == UserType.Administrator)
+                    {
+                        LoadAdministratorCertificatesDataBound(administratorCertificateBAL.GetUserCertificates(User.Identity.Name));
+                    }
+                    else if (userType == UserType.Speaker)
+                    {
+                        LoadSpeakerCertificatesDataBound(speakerCertificateBAL.GetUserCertificates(User.Identity.Name));
+                    }
+                    else
+                    {
+                        LoadViewerCertificatesDataBound(viewerCertificateBAL.GetUserCertificates(User.Identity.Name));
+                    }
                 }
                 else
                 {
-                    LoadViewerCertificatesDataBound(viewerCertificateBAL.GetUserCertificates(User.Identity.Name));
+                    Response.Redirect("~/View/Login/Login.aspx");
                 }
-            }
-            else
-            {
-                Response.Redirect("~/View/Login/Login.aspx");
             }
         }
 

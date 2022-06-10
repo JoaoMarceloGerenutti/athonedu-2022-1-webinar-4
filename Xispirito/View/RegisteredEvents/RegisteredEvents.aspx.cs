@@ -22,25 +22,28 @@ namespace Xispirito.View.RegisteredEvents
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Page.IsPostBack && User.Identity.IsAuthenticated)
+            if (!Page.IsPostBack)
             {
-                GetAccount(User.Identity.Name);
-                if (userType == UserType.Administrator)
+                if (User.Identity.IsAuthenticated)
                 {
-                    LoadAdministratorEventsDataBound(administratorLectureBAL.GetUserLecturesRegistration(User.Identity.Name));
-                }
-                else if (userType == UserType.Speaker)
-                {
-                    LoadSpeakerEventsDataBound(speakerLectureBAL.GetUserLecturesRegistration(User.Identity.Name));
+                    GetAccount(User.Identity.Name);
+                    if (userType == UserType.Administrator)
+                    {
+                        LoadAdministratorEventsDataBound(administratorLectureBAL.GetUserLecturesRegistration(User.Identity.Name));
+                    }
+                    else if (userType == UserType.Speaker)
+                    {
+                        LoadSpeakerEventsDataBound(speakerLectureBAL.GetUserLecturesRegistration(User.Identity.Name));
+                    }
+                    else
+                    {
+                        LoadViewerEventsDataBound(viewerLectureBAL.GetUserLecturesRegistration(User.Identity.Name));
+                    }
                 }
                 else
                 {
-                    LoadViewerEventsDataBound(viewerLectureBAL.GetUserLecturesRegistration(User.Identity.Name));
+                    Response.Redirect("~/View/Login/Login.aspx");
                 }
-            }
-            else
-            {
-                Response.Redirect("~/View/Login/Login.aspx");
             }
         }
 

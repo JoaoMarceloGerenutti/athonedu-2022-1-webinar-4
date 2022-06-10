@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/MasterPage/MasterPage.Master" AutoEventWireup="true" CodeBehind="View-Users.aspx.cs" Inherits="Xispirito.View.AdminOptions.Admin_Options" %>
+
 <asp:Content ID="HeaderFooter" ContentPlaceHolderID="HeaderFooter" runat="server">
 </asp:Content>
 <asp:Content ID="Content" ContentPlaceHolderID="Content" runat="server">
@@ -16,50 +17,41 @@
     <body>
         <section class="users-list">
             <h3 style="text-align: center; color: white;">Lista de Palestrantes</h3>
-            <div class="create-speaker">
-                <input type="text" class="users-filter-input" placeholder="Pesquisar Palestrantes" />
-                <button class="create-speaker-button">Cadastrar Palestrante</button>
+            <div class="create-user">
+                <div class="filter-search-wrapper">
+                    <div class="events-search">
+                        <asp:TextBox ID="FilterUsers" runat="server" CssClass="users-filter-input" PlaceHolder="Pesquisar Palestrantes" />
+                    </div>
+                    <div class="search-button-inline">
+                        <asp:ImageButton ID="SearchUsers" runat="server" CssClass="search-button" ImageUrl="~/View/Images/Search.png" OnClick="SearchUsers_Click" />
+                    </div>
+                </div>
+                <asp:Button ID="CreateUser" runat="server" CssClass="create-user-button" Text="Cadastrar Palestrante" PostBackUrl="~/View/Lectures/CRUD/Lecture-CRUD.aspx" />
             </div>
             <table class="users-list-table">
                 <tr>
                     <th>Nome</th>
                     <th>Email</th>
-                    <th>Profissão</th>
                     <th>Ações</th>
                 </tr>
-                <tr>
-                    <td>Vinícius Martins Granso</td>
-                    <td>viniciusmartinsg@hotmail.com</td>
-                    <td>Faz programa 😏</td>
-                    <td>
-                        <div class="buttons-actions">
-                            <button class="button-edit">Editar</button>
-                            <button class="button-delete">Excluir</button>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>João Marcelo Gerenutti</td>
-                    <td>joaozinhogamer721@stackoverflow.macoratti.com</td>
-                    <td>Faz programa com C#</td>
-                    <td>
-                        <div class="buttons-actions">
-                            <button class="button-edit">Editar</button>
-                            <button class="button-delete">Excluir</button>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Mathias Matheus Alves de Souza</td>
-                    <td>mathiasmatheuszinho2002</td>
-                    <td>Maninho que da drop na tabela de usuários na prod</td>
-                    <td>
-                        <div class="buttons-actions">
-                            <button class="button-edit">Editar</button>
-                            <button class="button-delete">Excluir</button>
-                        </div>
-                    </td>
-                </tr>
+                <asp:ListView ID="ListViewUsers" runat="server" OnItemDataBound="ListViewUsers_ItemDataBound">
+                    <ItemTemplate>
+                        <tr>
+                            <td>
+                                <asp:Label ID="UserName" runat="server" />
+                            </td>
+                            <td>
+                                <asp:Label ID="UserEmail" runat="server" />
+                            </td>
+                            <td>
+                                <div class="buttons-actions">
+                                    <asp:Button ID="EditUser" runat="server" CssClass="button-edit" Text="Editar" />
+                                    <asp:Button ID="DeleteUser" runat="server" CssClass="button-delete" Text="Excluir" OnClick="DeleteUser_Click" />
+                                </div>
+                            </td>
+                        </tr>
+                    </ItemTemplate>
+                </asp:ListView>
             </table>
         </section>
     </body>
