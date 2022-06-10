@@ -45,6 +45,16 @@ body {
     border-radius: 2rem;
 }
 
+.admin-options-list-left:hover {
+    cursor: pointer;
+    transform: translateY(-5px);
+}
+
+.admin-options-list-right:hover {
+    cursor: pointer;
+    transform: translateY(-5px);
+}
+
 .admin-options-image {
     min-width: 20rem;
     max-width: 20rem;

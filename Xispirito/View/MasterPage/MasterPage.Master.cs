@@ -70,7 +70,7 @@ namespace Xispirito.View.MasterPage
             administrationImage.ImageUrl = @"~/View/Images/Administrator.png";
 
             LinkButton administrationMenu = (LinkButton)MasterLoginView.FindControl("AdministrationMenu");
-            administrationMenu.PostBackUrl = "~/View/Lectures/CRUD/Lecture-CRUD.aspx";
+            administrationMenu.PostBackUrl = "~/View/AdminOptions/AdminOptions.aspx";
 
             if (userType == UserType.Administrator)
             {

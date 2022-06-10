@@ -59,5 +59,20 @@ namespace Xispirito.Controller
             nextId++;
             return nextId;
         }
+
+        public List<Lecture> GetAdministratorLectureList()
+        {
+            return lectureDAL.List();
+        }
+
+        public List<Lecture> GetAdministratorLectureList(string search)
+        {
+            return lectureDAL.List(search);
+        }
+
+        public void DeleteLecture(int lectureId)
+        {
+            lectureDAL.Delete(lectureId);
+        }
     }
 }

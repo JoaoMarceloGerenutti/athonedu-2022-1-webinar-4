@@ -20,13 +20,14 @@
                 <div class="admin-options-list-left">
                     <h3 style="text-align: center; color: white;">Listagem de Palestrantes</h3>
                     <div class="align-image">
-                        <img src="https://www.kindpng.com/picc/m/173-1731325_person-icon-png-transparent-png.png" class="admin-options-image"/>
+                        <asp:ImageButton ID="SpeakerList" runat="server" CssClass="admin-options-image" PostBackUrl="~/View/AdminOptions/Users/View-Users.aspx" ImageUrl="/View/Images/Speaker.png" />
+                        <img src="" class=""/>
                     </div>
                 </div>
                 <div class="admin-options-list-right">
                     <h3 style="text-align: center; color: white;">Listagem de Palestras</h3>
                     <div class="align-image">
-                        <img src="https://icon-library.com/images/video-icon-flat/video-icon-flat-2.jpg" class="admin-options-image"/>
+                        <asp:ImageButton ID="LectureList" runat="server" CssClass="admin-options-image" PostBackUrl="~/View/AdminOptions/Lectures/Lectures-List.aspx" ImageUrl="/View/Images/Lecture.png" />
                     </div>
                 </div>
             </div>

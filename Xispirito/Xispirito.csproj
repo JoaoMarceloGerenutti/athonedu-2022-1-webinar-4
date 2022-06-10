@@ -126,11 +126,13 @@
     <Content Include="View\Images\BlackSearch.png" />
     <Content Include="View\Images\Certificates.png" />
     <Content Include="View\Images\Certificates\Templates\Certificate.png" />
+    <Content Include="View\Images\Lecture.png" />
     <Content Include="View\Images\Logout.png" />
     <Content Include="View\Images\Map.png" />
     <Content Include="View\Images\Profile.png" />
     <Content Include="View\Images\RegisteredEvents.png" />
     <Content Include="View\Images\Search.png" />
+    <Content Include="View\Images\Speaker.png" />
     <Content Include="View\Images\Test\Administracao.png" />
     <Content Include="View\Images\Test\Direito.png" />
     <Content Include="View\Images\Test\Empreendedorismo.png" />

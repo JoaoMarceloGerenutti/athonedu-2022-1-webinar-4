@@ -351,12 +351,98 @@ namespace Xispirito.DAL
 
         public void Delete(int lectureId)
         {
-            throw new NotImplementedException();
+            SqlConnection conn = new SqlConnection(connectionString);
+            conn.Open();
+
+            string sql = "UPDATE Lecture SET isActive = @isActive WHERE id_lecture = @id_lecture";
+
+            SqlCommand cmd = new SqlCommand(sql, conn);
+
+            cmd.Parameters.AddWithValue("@isActive", false);
+            cmd.Parameters.AddWithValue("@id_lecture", lectureId);
+
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
         }
 
         public List<Lecture> List()
         {
-            throw new NotImplementedException();
+            List<Lecture> lectureList = null;
+
+            SqlConnection conn = new SqlConnection(connectionString);
+            conn.Open();
+
+            string sql = "SELECT * FROM Lecture WHERE isActive = 1";
+
+            SqlCommand cmd = new SqlCommand(sql, conn);
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            if (dr.HasRows)
+            {
+                lectureList = new List<Lecture>();
+
+                while (dr.Read())
+                {
+                    Lecture objLecture = new Lecture(
+                        Convert.ToInt32(dr["id_lecture"]),
+                        dr["nm_lecture"].ToString(),
+                        dr["pt_lecture"].ToString(),
+                        Convert.ToInt32(dr["tm_lecture"]),
+                        Convert.ToDateTime(dr["dt_lecture"]),
+                        dr["dc_lecture"].ToString(),
+                        Enum.GetName(typeof(Modality), Convert.ToInt32(dr["mod_lecture"])),
+                        dr["adr_lecture"].ToString(),
+                        Convert.ToInt32(dr["lt_lecture"]),
+                        Convert.ToBoolean(dr["isActive"])
+                    );
+                    lectureList.Add(objLecture);
+                }
+            }
+            conn.Close();
+
+            return lectureList;
+        }
+
+        public List<Lecture> List(string search)
+        {
+            List<Lecture> lectureList = null;
+
+            SqlConnection conn = new SqlConnection(connectionString);
+            conn.Open();
+
+            string sql = "SELECT * FROM Lecture WHERE nm_lecture LIKE @nm_lecture AND isActive = 1";
+
+            SqlCommand cmd = new SqlCommand(sql, conn);
+            cmd.Parameters.AddWithValue("@nm_lecture", "%" + search + "%");
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            if (dr.HasRows)
+            {
+                lectureList = new List<Lecture>();
+
+                while (dr.Read())
+                {
+                    Lecture objLecture = new Lecture(
+                        Convert.ToInt32(dr["id_lecture"]),
+                        dr["nm_lecture"].ToString(),
+                        dr["pt_lecture"].ToString(),
+                        Convert.ToInt32(dr["tm_lecture"]),
+                        Convert.ToDateTime(dr["dt_lecture"]),
+                        dr["dc_lecture"].ToString(),
+                        Enum.GetName(typeof(Modality), Convert.ToInt32(dr["mod_lecture"])),
+                        dr["adr_lecture"].ToString(),
+                        Convert.ToInt32(dr["lt_lecture"]),
+                        Convert.ToBoolean(dr["isActive"])
+                    );
+                    lectureList.Add(objLecture);
+                }
+            }
+            conn.Close();
+
+            return lectureList;
         }
     }
 }
