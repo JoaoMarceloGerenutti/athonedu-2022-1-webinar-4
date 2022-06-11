@@ -110,6 +110,8 @@
     <Content Include="View\AdminOptions\AdminOptions.css" />
     <Content Include="View\AdminOptions\Lectures\Lectures-List.aspx" />
     <Content Include="View\AdminOptions\Lectures\Lectures-List.css" />
+    <Content Include="View\AdminOptions\Users\Create-Speaker\Create-Speaker.aspx" />
+    <Content Include="View\AdminOptions\Users\Create-Speaker\Create-Speaker.css" />
     <Content Include="View\AdminOptions\Users\View-Users.aspx" />
     <Content Include="View\AdminOptions\Users\View-Users.css" />
     <Content Include="View\Certificates\Certificates.aspx" />
@@ -238,6 +240,13 @@
     </Compile>
     <Compile Include="View\AdminOptions\Lectures\Lectures-List.aspx.designer.cs">
       <DependentUpon>Lectures-List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\AdminOptions\Users\Create-Speaker\Create-Speaker.aspx.cs">
+      <DependentUpon>Create-Speaker.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\AdminOptions\Users\Create-Speaker\Create-Speaker.aspx.designer.cs">
+      <DependentUpon>Create-Speaker.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\AdminOptions\Users\View-Users.aspx.cs">
       <DependentUpon>View-Users.aspx</DependentUpon>
