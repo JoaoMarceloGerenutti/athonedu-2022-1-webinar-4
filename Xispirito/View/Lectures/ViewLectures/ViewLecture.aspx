@@ -14,13 +14,15 @@
 
     </head>
     <body>
-        <section class="lecture-view">
+        <section class="lecture-view">            
             <div class="lecture-view-button">
                 <button class="lecture-view-button-options">__<br />__<br />__</button>
             </div>
             
             <h3 style="text-align: center; color: white;">Assistir Palestra</h3>
-
+            <div class="back-button-line">
+                <button class="back-button">Sair da Palestra</button>
+            </div>
             <div class="lecture-view-iframe">
                 <iframe #iframe src="https://www.youtube.com/embed/6Qq2OMFh8Pc" width="100%" height="100%" allowfullscreen></iframe>
             </div>
