@@ -18,6 +18,7 @@
         <section class="lectures-list">
             <h3 style="text-align: center; color: white;">Lista de Palestras</h3>
             <div class="create-lecture">
+                <button class="back-button">Voltar</button>
                 <div class="filter-search-wrapper">
                     <div class="events-search">
                         <asp:TextBox ID="FilterEvents" runat="server" CssClass="lectures-filter-input" PlaceHolder="Pesquisar Palestras" />
