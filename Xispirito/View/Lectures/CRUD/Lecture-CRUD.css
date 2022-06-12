@@ -116,16 +116,7 @@ h4 {
     color: white;
     font-size: 1.8rem !important;
 }
-
-.delete-photo {
-    padding: 1rem 2.2rem;
-    border-radius: .5rem;
-    background: #6c757d;
-    color: white;
-    font-size: 1.8rem !important;
-}
-
-    .chose-photo:hover, .delete-photo:hover {
+    .chose-photo:hover{
         cursor: pointer;
     }
 
