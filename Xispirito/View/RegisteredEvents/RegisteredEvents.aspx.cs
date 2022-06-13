@@ -77,49 +77,52 @@ namespace Xispirito.View.RegisteredEvents
         private void LoadViewerEventsDataBound(List<ViewerLecture> viewerLectures)
         {
             string title = "Meus Eventos ";
+
+            ListViewEvents.Items.Clear();
             if (viewerLectures != null)
             {
                 MyEvents.Text = title + "(" + viewerLectures.Count + ")";
-                ListViewEvents.Items.Clear();
                 ListViewEvents.DataSource = viewerLectures;
-                ListViewEvents.DataBind();
             }
             else
             {
                 MyEvents.Text = title + "(0)";
             }
+            ListViewEvents.DataBind();
         }
 
         private void LoadSpeakerEventsDataBound(List<SpeakerLecture> speakerLectures)
         {
             string title = "Meus Eventos ";
+
+            ListViewEvents.Items.Clear();
             if (speakerLectures != null)
             {
                 MyEvents.Text = title + "(" + speakerLectures.Count + ")";
-                ListViewEvents.Items.Clear();
                 ListViewEvents.DataSource = speakerLectures;
-                ListViewEvents.DataBind();
             }
             else
             {
                 MyEvents.Text = title + "(0)";
             }
+            ListViewEvents.DataBind();
         }
 
         private void LoadAdministratorEventsDataBound(List<AdministratorLecture> administratorLectures)
         {
             string title = "Meus Eventos ";
+
+            ListViewEvents.Items.Clear();
             if (administratorLectures != null)
             {
                 MyEvents.Text = title + "(" + administratorLectures.Count + ")";
-                ListViewEvents.Items.Clear();
                 ListViewEvents.DataSource = administratorLectures;
-                ListViewEvents.DataBind();
             }
             else
             {
                 MyEvents.Text = title + "(0)";
             }
+            ListViewEvents.DataBind();
         }
 
         protected void SearchEvents_Click(object sender, EventArgs e)
