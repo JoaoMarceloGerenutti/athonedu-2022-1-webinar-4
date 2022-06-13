@@ -125,6 +125,7 @@
     <Content Include="View\Home\Home.aspx" />
     <Content Include="View\Home\Home-responsive.css" />
     <Content Include="View\Images\Administrator.png" />
+    <Content Include="View\Images\AdminOptions.png" />
     <Content Include="View\Images\BlackSearch.png" />
     <Content Include="View\Images\Certificates.png" />
     <Content Include="View\Images\Certificates\Templates\Certificate.png" />
@@ -144,6 +145,7 @@
     <Content Include="View\Images\Test\Kleber.jpg" />
     <Content Include="View\Images\Test\TI.png" />
     <Content Include="View\Images\User.png" />
+    <Content Include="View\Images\UserList.png" />
     <Content Include="View\Lectures\CRUD\Lecture-CRUD.aspx" />
     <Content Include="View\Lectures\CRUD\Lecture-CRUD.css" />
     <Content Include="View\Lectures\WatchLectures\WatchLecture.css" />
