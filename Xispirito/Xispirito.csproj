@@ -133,6 +133,7 @@
     <Content Include="View\Images\Map.png" />
     <Content Include="View\Images\Profile.png" />
     <Content Include="View\Images\RegisteredEvents.png" />
+    <Content Include="View\Images\Return.png" />
     <Content Include="View\Images\Search.png" />
     <Content Include="View\Images\Speaker.png" />
     <Content Include="View\Images\Test\Administracao.png" />
