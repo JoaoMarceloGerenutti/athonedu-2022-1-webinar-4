@@ -19,7 +19,7 @@
     <body>
         <section class="lecture">
             <div class="back-button-line">
-                <button class="back-button">Voltar</button>
+                <asp:ImageButton ID="Return" runat="server" CssClass="back-button" ImageUrl="~/View/Images/Return.png" PostBackUrl="~/View/AdminOptions/Lectures/Lectures-List.aspx" />
             </div>
             <div class="lecture-label">
                 <asp:Label ID="ActionLecture" runat="server" class="lecture-action">Criar Palestra</asp:Label>
