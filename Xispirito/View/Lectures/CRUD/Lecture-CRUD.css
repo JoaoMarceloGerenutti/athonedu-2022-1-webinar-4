@@ -116,16 +116,7 @@ h4 {
     color: white;
     font-size: 1.8rem !important;
 }
-
-.delete-photo {
-    padding: 1rem 2.2rem;
-    border-radius: .5rem;
-    background: #6c757d;
-    color: white;
-    font-size: 1.8rem !important;
-}
-
-    .chose-photo:hover, .delete-photo:hover {
+    .chose-photo:hover{
         cursor: pointer;
     }
 
@@ -185,4 +176,19 @@ textarea {
     justify-content: space-between;
     color: white;
     padding-top: 2rem;
+}
+
+.back-button-line {
+    width: 10%;
+    height: 4rem;
+}
+
+.back-button {
+    width: 8rem;
+    height: 100%;
+    border: .1rem solid white;
+    border-radius: 1rem;
+    background: #000;
+    color: white;
+    font-size: 1.7rem;
 }

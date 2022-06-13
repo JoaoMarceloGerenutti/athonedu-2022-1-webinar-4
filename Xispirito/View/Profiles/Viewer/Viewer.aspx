@@ -12,6 +12,9 @@
 
         <link rel="stylesheet" href="Viewer.css" />
         <link rel="stylesheet" href="print.css" media="print" />
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">
+        </script>
     </head>
     <body>
         <section class="profile">
@@ -47,7 +50,7 @@
                 </div>
                 <div class="profile-form-set-photo-button">
                     <div class="lecture-form-set-photo-button">
-                        <asp:FileUpload ID="ViewerPhotoUpload" runat="server" class="chose-photo" ToolTip="Anexar uma Foto" />
+                        <asp:FileUpload ID="ViewerPhotoUpload" runat="server" class="chose-photo" accept="image/*" ToolTip="Anexar uma Foto" />
                     </div>
                 </div>
             </div>
@@ -58,6 +61,23 @@
                 <asp:Button ID="SubmitUpdate" runat="server" class="submit-button px-5 py-2 btn btn-success fs-4" Text="Salvar Alterações" ValidationGroup="SubmitUpdateGroup" OnClick="SubmitUpdate_Click" />
             </div>
         </section>
+
+        <script>
+            $("#<%=ViewerPhotoUpload.ClientID%>").on('change', function () {
+                if (this.files[0].type.indexOf("image") > -1) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('#<%=ImageViewer.ClientID%>').attr('src', e.target.result);
+                    }
+                    reader.readAsDataURL(this.files[0]);
+                }
+                else {
+                    $('#<%=ImageViewer.ClientID%>').attr('src', '');
+                    alert('Não é uma imagem válida')
+                }
+            });
+        </script>
+
     </body>
     </html>
 </asp:Content>

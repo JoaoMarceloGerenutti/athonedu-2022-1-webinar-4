@@ -18,6 +18,9 @@
     </head>
     <body>
         <section class="lecture">
+            <div class="back-button-line">
+                <button class="back-button">Voltar</button>
+            </div>
             <div class="lecture-label">
                 <asp:Label ID="ActionLecture" runat="server" class="lecture-action">Criar Palestra</asp:Label>
             </div>

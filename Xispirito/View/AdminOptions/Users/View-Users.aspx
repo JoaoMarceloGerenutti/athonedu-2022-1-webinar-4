@@ -18,6 +18,7 @@
         <section class="users-list">
             <h3 style="text-align: center; color: white;">Lista de Palestrantes</h3>
             <div class="create-user">
+                <button class="back-button">Voltar</button>
                 <div class="filter-search-wrapper">
                     <div class="events-search">
                         <asp:TextBox ID="FilterUsers" runat="server" CssClass="users-filter-input" PlaceHolder="Pesquisar Palestrantes" />
