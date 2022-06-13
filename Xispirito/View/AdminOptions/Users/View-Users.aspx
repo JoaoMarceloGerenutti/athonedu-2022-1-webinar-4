@@ -46,7 +46,7 @@
                             </td>
                             <td>
                                 <div class="buttons-actions">
-                                    <asp:Button ID="EditUser" runat="server" CssClass="button-edit" Text="Editar" />
+                                    <%--<asp:Button ID="EditUser" runat="server" CssClass="button-edit" Text="Editar" />--%>
                                     <asp:Button ID="DeleteUser" runat="server" CssClass="button-delete" Text="Excluir" OnClick="DeleteUser_Click" />
                                 </div>
                             </td>
