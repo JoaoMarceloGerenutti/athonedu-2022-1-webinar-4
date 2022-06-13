@@ -46,8 +46,8 @@ namespace Xispirito.View.AdminOptions.Lectures
             if (lectures != null)
             {
                 ListViewLectures.DataSource = lectures;
-                ListViewLectures.DataBind();
             }
+            ListViewLectures.DataBind();
         }
 
         protected void ListViewLectures_ItemDataBound(object sender, ListViewItemEventArgs e)
