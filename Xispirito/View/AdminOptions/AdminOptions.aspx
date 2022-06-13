@@ -21,7 +21,6 @@
                     <h3 style="text-align: center; color: white;">Listagem de Palestrantes</h3>
                     <div class="align-image">
                         <asp:ImageButton ID="SpeakerList" runat="server" CssClass="admin-options-image" PostBackUrl="~/View/AdminOptions/Users/View-Users.aspx" ImageUrl="/View/Images/Speaker.png" />
-                        <img src="" class=""/>
                     </div>
                 </div>
                 <div class="admin-options-list-right">

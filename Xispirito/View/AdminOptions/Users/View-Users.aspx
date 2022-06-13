@@ -18,7 +18,7 @@
         <section class="users-list">
             <h3 style="text-align: center; color: white;">Lista de Palestrantes</h3>
             <div class="create-user">
-                <button class="back-button">Voltar</button>
+                <asp:ImageButton ID="Return" runat="server" CssClass="back-button" ImageUrl="~/View/Images/Return.png" PostBackUrl="~/View/AdminOptions/AdminOptions.aspx" />
                 <div class="filter-search-wrapper">
                     <div class="events-search">
                         <asp:TextBox ID="FilterUsers" runat="server" CssClass="users-filter-input" PlaceHolder="Pesquisar Palestrantes" />
@@ -27,7 +27,7 @@
                         <asp:ImageButton ID="SearchUsers" runat="server" CssClass="search-button" ImageUrl="~/View/Images/Search.png" OnClick="SearchUsers_Click" />
                     </div>
                 </div>
-                <asp:Button ID="CreateUser" runat="server" CssClass="create-user-button" Text="Cadastrar Palestrante" PostBackUrl="~/View/Lectures/CRUD/Lecture-CRUD.aspx" />
+                <asp:Button ID="CreateUser" runat="server" CssClass="create-user-button" Text="Cadastrar Palestrante" PostBackUrl="~/View/AdminOptions/Users/Create-Speaker/Create-Speaker.aspx" />
             </div>
             <table class="users-list-table">
                 <tr>

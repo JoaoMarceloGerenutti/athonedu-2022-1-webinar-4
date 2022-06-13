@@ -64,8 +64,8 @@ namespace Xispirito.View.AdminOptions
             if (speakers != null)
             {
                 ListViewUsers.DataSource = speakers;
-                ListViewUsers.DataBind();
             }
+            ListViewUsers.DataBind();
         }
 
         protected void SearchUsers_Click(object sender, EventArgs e)
