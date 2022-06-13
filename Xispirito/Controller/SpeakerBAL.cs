@@ -81,5 +81,15 @@ namespace Xispirito.Controller
         {
             speakerDAL.Delete(speakerId);
         }
+
+        public int GetLastIndexSpeaker()
+        {
+            return speakerDAL.GetLastIndexSpeaker();
+        }
+
+        public void InsertGenerateSpeaker(Speaker objSpeaker)
+        {
+            speakerDAL.InsertGenerateSpeaker(objSpeaker);
+        }
     }
 }

@@ -32,6 +32,24 @@ namespace Xispirito.DAL
             conn.Close();
         }
 
+        public void InsertGenerateSpeaker(Speaker objSpeaker)
+        {
+            SqlConnection conn = new SqlConnection(connectionString);
+            conn.Open();
+
+            string sql = "INSERT INTO Speaker (nm_speaker, email_speaker, pw_speaker, isActive) VALUES (@nm_speaker, @email_speaker, @pw_speaker, @isActive)";
+
+            SqlCommand cmd = new SqlCommand(sql, conn);
+
+            cmd.Parameters.AddWithValue("@nm_speaker", objSpeaker.GetName());
+            cmd.Parameters.AddWithValue("@email_speaker", objSpeaker.GetEmail());
+            cmd.Parameters.AddWithValue("@pw_speaker", objSpeaker.GetEncryptedPassword());
+            cmd.Parameters.AddWithValue("@isActive", true);
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+        }
+
         public Speaker Select(int speakerId)
         {
             Speaker objSpeaker = null;
@@ -238,6 +256,28 @@ namespace Xispirito.DAL
             conn.Close();
 
             return speakerList;
+        }
+
+        public int GetLastIndexSpeaker()
+        {
+            int index = 0;
+
+            SqlConnection conn = new SqlConnection(connectionString);
+            conn.Open();
+
+            string sql = "SELECT MAX(id_speaker) AS LastIndex FROM Speaker";
+
+            SqlCommand cmd = new SqlCommand(sql, conn);
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            if (dr.HasRows && dr.Read())
+            {
+                index = Convert.ToInt32(dr["LastIndex"]);
+            }
+            conn.Close();
+
+            return index;
         }
 
         public bool SignIn(string speakerEmail, string speakerEncryptedPassword)

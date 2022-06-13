@@ -61,3 +61,14 @@ body {
     font-weight: bold;
     border: .1rem solid darkgray;
 }
+
+    .create-password:hover {
+        cursor: pointer;
+        transform: translateY(-3px);
+    }
+
+.field-validator {
+    color: #E50914;
+    font: bold;
+    font-size: large;
+}
