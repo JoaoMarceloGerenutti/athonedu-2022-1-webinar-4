@@ -131,6 +131,7 @@
     <Content Include="View\Images\Lecture.png" />
     <Content Include="View\Images\Logout.png" />
     <Content Include="View\Images\Map.png" />
+    <Content Include="View\Images\Menu.png" />
     <Content Include="View\Images\Profile.png" />
     <Content Include="View\Images\RegisteredEvents.png" />
     <Content Include="View\Images\Return.png" />
@@ -145,8 +146,8 @@
     <Content Include="View\Images\User.png" />
     <Content Include="View\Lectures\CRUD\Lecture-CRUD.aspx" />
     <Content Include="View\Lectures\CRUD\Lecture-CRUD.css" />
-    <Content Include="View\Lectures\ViewLectures\ViewLecture.aspx" />
-    <Content Include="View\Lectures\ViewLectures\ViewLecture.css" />
+    <Content Include="View\Lectures\WatchLectures\WatchLecture.css" />
+    <Content Include="View\Lectures\WatchLectures\WatchLecture.aspx" />
     <Content Include="View\MasterPage\MasterPage.css" />
     <Content Include="View\MasterPage\menu.js" />
     <Content Include="View\Home\print.css" />
@@ -291,12 +292,12 @@
     <Compile Include="View\Lectures\CRUD\Lecture-CRUD.aspx.designer.cs">
       <DependentUpon>Lecture-CRUD.aspx</DependentUpon>
     </Compile>
-    <Compile Include="View\Lectures\ViewLectures\ViewLecture.aspx.cs">
-      <DependentUpon>ViewLecture.aspx</DependentUpon>
+    <Compile Include="View\Lectures\WatchLectures\WatchLecture.aspx.cs">
+      <DependentUpon>WatchLecture.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="View\Lectures\ViewLectures\ViewLecture.aspx.designer.cs">
-      <DependentUpon>ViewLecture.aspx</DependentUpon>
+    <Compile Include="View\Lectures\WatchLectures\WatchLecture.aspx.designer.cs">
+      <DependentUpon>WatchLecture.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Login\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>

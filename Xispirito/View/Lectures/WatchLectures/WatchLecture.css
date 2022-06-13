@@ -29,18 +29,38 @@ body {
 }
 
 .lecture-view-button {
+    display: flex;
     position: absolute;
     left: 0;
+    align-items: center;
+    justify-content: center;
+    height: 4rem;
+    width: 5rem;
+    border-radius: 0 4rem 4rem 0;
+    background: #70160E;
 }
 
 .lecture-view-button-options {
-    height: 6rem;
-    width: 7rem;
-    border-radius: 0 4rem 4rem 0;
-    background: #70160E;
-    color: white;
-    font-size: 1.6rem;
-    padding-bottom: 7rem;
+    height: 32px;
+    width: 32px;
+}
+
+.action .menu::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    right: 28px;
+    width: 20px;
+    height: 20px;
+    background: #161917;
+    transform: rotate(45deg);
+}
+
+.action .menu.active {
+    top: 100px;
+    visibility: visible;
+    opacity: 1;
+    z-index: 100;
 }
 
 .back-button-line {

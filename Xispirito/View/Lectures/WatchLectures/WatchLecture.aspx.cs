@@ -7,9 +7,9 @@ using System.Web.UI.WebControls;
 using Xispirito.Controller;
 using Xispirito.Models;
 
-namespace Xispirito.View.Lectures.ViewLecture
+namespace Xispirito.View.Lectures.ViewLectures
 {
-    public partial class Lecture_View : Page
+    public partial class WatchLecture : Page
     {
         UserType userType;
 
@@ -27,65 +27,67 @@ namespace Xispirito.View.Lectures.ViewLecture
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Page.IsPostBack && User.Identity.IsAuthenticated)
+            if (!Page.IsPostBack)
             {
-                if (!string.IsNullOrEmpty(Request.QueryString["lectureId"]))
+                if (User.Identity.IsAuthenticated)
                 {
-                    int lectureId = Convert.ToInt32(Request.QueryString["lectureId"]);
-
-                    GetAccount(User.Identity.Name);
-
-                    bool userFound = false;
-                    if (userType == UserType.Administrator)
+                    if (!string.IsNullOrEmpty(Request.QueryString["lectureId"]))
                     {
-                        if (administratorLectureBAL.GetUserLectureRegistration(User.Identity.Name, lectureId) != null)
+                        int lectureId = Convert.ToInt32(Request.QueryString["lectureId"]);
+
+                        GetAccount(User.Identity.Name);
+
+                        bool userFound = false;
+                        if (userType == UserType.Administrator)
                         {
-                            if (!administratorWatchedLectureBAL.VerifyRegisterToLecture(User.Identity.Name, lectureId))
+                            if (administratorLectureBAL.GetUserLectureRegistration(User.Identity.Name, lectureId) != null)
                             {
-                                administratorWatchedLectureBAL.RegisterUserToLecture(User.Identity.Name, lectureId);
+                                if (!administratorWatchedLectureBAL.VerifyRegisterToLecture(User.Identity.Name, lectureId))
+                                {
+                                    administratorWatchedLectureBAL.RegisterUserToLecture(User.Identity.Name, lectureId);
+                                }
+                                userFound = true;
                             }
-                            userFound = true;
                         }
-                    }
-                    else if (userType == UserType.Speaker)
-                    {
-                        if (speakerLectureBAL.GetUserLectureRegistration(User.Identity.Name, lectureId) != null)
+                        else if (userType == UserType.Speaker)
                         {
-                            if (!speakerWatchedLectureBAL.VerifyRegisterToLecture(User.Identity.Name, lectureId))
+                            if (speakerLectureBAL.GetUserLectureRegistration(User.Identity.Name, lectureId) != null)
                             {
-                                speakerWatchedLectureBAL.RegisterUserToLecture(User.Identity.Name, lectureId);
+                                if (!speakerWatchedLectureBAL.VerifyRegisterToLecture(User.Identity.Name, lectureId))
+                                {
+                                    speakerWatchedLectureBAL.RegisterUserToLecture(User.Identity.Name, lectureId);
+                                }
+                                userFound = true;
                             }
-                            userFound = true;
+                        }
+                        else
+                        {
+                            if (viewerLectureBAL.GetUserLectureRegistration(User.Identity.Name, lectureId) != null)
+                            {
+                                if (!viewerWatchedLectureBAL.VerifyRegisterToLecture(User.Identity.Name, lectureId))
+                                {
+                                    viewerWatchedLectureBAL.RegisterUserToLecture(User.Identity.Name, lectureId);
+                                }
+                                userFound = true;
+                            }
+                        }
+
+                        if (!userFound)
+                        {
+                            Response.Redirect("~/View/Home/Home.aspx");
                         }
                     }
                     else
-                    {
-                        if (viewerLectureBAL.GetUserLectureRegistration(User.Identity.Name, lectureId) != null)
-                        {
-                            if (!viewerWatchedLectureBAL.VerifyRegisterToLecture(User.Identity.Name, lectureId))
-                            {
-                                viewerWatchedLectureBAL.RegisterUserToLecture(User.Identity.Name, lectureId);
-                            }
-                            userFound = true;
-                        }
-                    }
-
-                    if (!userFound)
                     {
                         Response.Redirect("~/View/Home/Home.aspx");
                     }
                 }
                 else
                 {
-                    Response.Redirect("~/View/Home/Home.aspx");
+                    Response.Redirect("~/View/Login/Login.aspx");
                 }
             }
-            else
-            {
-                Response.Redirect("~/View/Login/Login.aspx");
-            }
         }
-
         private BaseUser GetAccount(string email)
         {
             BaseUser baseUser = new BaseUser();

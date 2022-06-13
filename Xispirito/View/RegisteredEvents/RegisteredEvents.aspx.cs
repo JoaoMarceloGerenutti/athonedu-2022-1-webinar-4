@@ -194,7 +194,7 @@ namespace Xispirito.View.RegisteredEvents
                     endDateTime = endDateTime.AddMinutes(administratorLecture.GetLecture().GetTime());
                     dateLabel.Text += " - " + endDateTime.ToString("dd/MM/yyyy HH:mm");
 
-                    watchButton.PostBackUrl = "~/View/Lectures/ViewLectures/ViewLecture.aspx?lectureId=" + administratorLecture.GetLecture().GetId().ToString();
+                    watchButton.PostBackUrl = "~/View/Lectures/WatchLectures/WatchLecture.aspx?lectureId=" + administratorLecture.GetLecture().GetId().ToString();
                     watchButton.BackColor = ModalityColor.GetModalityColor(administratorLecture.GetLecture().GetModality());
 
                     if (administratorLecture.GetLecture().GetModality() != Enum.GetName(typeof(Modality), 1))
@@ -235,7 +235,7 @@ namespace Xispirito.View.RegisteredEvents
                     endDateTime = endDateTime.AddMinutes(speakerLecture.GetLecture().GetTime());
                     dateLabel.Text += " - " + endDateTime.ToString("dd/MM/yyyy HH:mm");
 
-                    watchButton.PostBackUrl = "~/View/Lectures/ViewLectures/ViewLecture.aspx?lectureId=" + speakerLecture.GetLecture().GetId().ToString();
+                    watchButton.PostBackUrl = "~/View/Lectures/WatchLectures/WatchLecture.aspx?lectureId=" + speakerLecture.GetLecture().GetId().ToString();
                     watchButton.BackColor = ModalityColor.GetModalityColor(speakerLecture.GetLecture().GetModality());
 
                     if (speakerLecture.GetLecture().GetModality() != Enum.GetName(typeof(Modality), 1))
@@ -276,7 +276,7 @@ namespace Xispirito.View.RegisteredEvents
                     endDateTime = endDateTime.AddMinutes(viewerLecture.GetLecture().GetTime());
                     dateLabel.Text += " - " + endDateTime.ToString("dd/MM/yyyy HH:mm");
 
-                    watchButton.PostBackUrl = "~/View/Lectures/ViewLectures/ViewLecture.aspx?lectureId=" + viewerLecture.GetLecture().GetId().ToString();
+                    watchButton.PostBackUrl = "~/View/Lectures/WatchLectures/WatchLecture.aspx?lectureId=" + viewerLecture.GetLecture().GetId().ToString();
                     watchButton.BackColor = ModalityColor.GetModalityColor(viewerLecture.GetLecture().GetModality());
 
                     if (viewerLecture.GetLecture().GetModality() != Enum.GetName(typeof(Modality), 1))
