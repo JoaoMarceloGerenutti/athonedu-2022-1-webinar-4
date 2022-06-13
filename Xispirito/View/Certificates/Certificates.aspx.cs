@@ -51,49 +51,52 @@ namespace Xispirito.View.Certificates.Viewers
         private void LoadViewerCertificatesDataBound(List<ViewerCertificate> viewerCertificates)
         {
             string title = "Meus Certificados ";
+
+            ListViewCertificates.Items.Clear();
             if (viewerCertificates != null)
             {
                 MyCertificates.Text = title + "(" + viewerCertificates.Count + ")";
-                ListViewCertificates.Items.Clear();
                 ListViewCertificates.DataSource = viewerCertificates;
-                ListViewCertificates.DataBind();
             }
             else
             {
                 MyCertificates.Text = title + "(0)";
             }
+            ListViewCertificates.DataBind();
         }
 
         private void LoadAdministratorCertificatesDataBound(List<AdministratorCertificate> administratorCertificates)
         {
             string title = "Meus Certificados ";
+
+            ListViewCertificates.Items.Clear();
             if (administratorCertificates != null)
             {
                 MyCertificates.Text = title + "(" + administratorCertificates.Count + ")";
-                ListViewCertificates.Items.Clear();
                 ListViewCertificates.DataSource = administratorCertificates;
-                ListViewCertificates.DataBind();
             }
             else
             {
                 MyCertificates.Text = title + "(0)";
             }
+            ListViewCertificates.DataBind();
         }
 
         private void LoadSpeakerCertificatesDataBound(List<SpeakerCertificate> speakerCertificates)
         {
             string title = "Meus Certificados ";
+
+            ListViewCertificates.Items.Clear();
             if (speakerCertificates != null)
             {
                 MyCertificates.Text = title + "(" + speakerCertificates.Count + ")";
-                ListViewCertificates.Items.Clear();
                 ListViewCertificates.DataSource = speakerCertificates;
-                ListViewCertificates.DataBind();
             }
             else
             {
                 MyCertificates.Text = title + "(0)";
             }
+            ListViewCertificates.DataBind();
         }
 
         private void GetAccountType(string email)
@@ -125,77 +128,92 @@ namespace Xispirito.View.Certificates.Viewers
             if (search != null && User.Identity.IsAuthenticated)
             {
                 GetAccountType(User.Identity.Name);
-                if (userType == UserType.Administrator)
+                if (search.ToLower() == "gerar")
                 {
-                    LoadAdministratorCertificatesDataBound(administratorCertificateBAL.GetUserCertificates(User.Identity.Name, search));
-                }
-                else if (userType == UserType.Speaker)
-                {
-                    LoadSpeakerCertificatesDataBound(speakerCertificateBAL.GetUserCertificates(User.Identity.Name, search));
+                    int limit = 3;
+
+                    FilterCertificate.Text = "";
+
+                    LectureBAL lectureBAL = new LectureBAL();
+                    CertificateBAL certificateBAL = new CertificateBAL();
+                    if (userType == UserType.Administrator)
+                    {
+                        _ = new Administrator();
+                        AdministratorBAL administratorBAL = new AdministratorBAL();
+                        Administrator administrator = administratorBAL.GetAccount(User.Identity.Name);
+
+                        for (int i = 1; i <= limit; i++)
+                        {
+                            _ = new Lecture();
+                            Lecture lecture = lectureBAL.GetLecture(i);
+
+                            _ = new Certificate();
+                            Certificate certificate = certificateBAL.GetCertificateById(i);
+
+                            CertificateGenerator.GenerateAdministratorCertificate(administrator, lecture, certificate);
+                        }
+                    }
+                    else if (userType == UserType.Speaker)
+                    {
+                        _ = new Speaker();
+                        SpeakerBAL speakerBAL = new SpeakerBAL();
+                        Speaker speaker = speakerBAL.GetAccount(User.Identity.Name);
+
+                        for (int i = 1; i <= limit; i++)
+                        {
+                            _ = new Lecture();
+                            Lecture lecture = lectureBAL.GetLecture(i);
+
+                            _ = new Certificate();
+                            Certificate certificate = certificateBAL.GetCertificateById(i);
+
+                            CertificateGenerator.GenerateSpeakerCertificate(speaker, lecture, certificate);
+                        }
+                    }
+                    else
+                    {
+                        _ = new Viewer();
+                        ViewerBAL viewerBAL = new ViewerBAL();
+                        Viewer viewer = viewerBAL.GetAccount(User.Identity.Name);
+
+                        for (int i = 1; i <= limit; i++)
+                        {
+                            _ = new Lecture();
+                            Lecture lecture = lectureBAL.GetLecture(i);
+
+                            _ = new Certificate();
+                            Certificate certificate = certificateBAL.GetCertificateById(i);
+
+                            CertificateGenerator.GenerateViewerCertificate(viewer, lecture, certificate);
+                        }
+                    }
+
+                    if (userType == UserType.Administrator)
+                    {
+                        LoadAdministratorCertificatesDataBound(administratorCertificateBAL.GetUserCertificates(User.Identity.Name));
+                    }
+                    else if (userType == UserType.Speaker)
+                    {
+                        LoadSpeakerCertificatesDataBound(speakerCertificateBAL.GetUserCertificates(User.Identity.Name));
+                    }
+                    else
+                    {
+                        LoadViewerCertificatesDataBound(viewerCertificateBAL.GetUserCertificates(User.Identity.Name));
+                    }
                 }
                 else
                 {
-                    LoadViewerCertificatesDataBound(viewerCertificateBAL.GetUserCertificates(User.Identity.Name, search));
-                }
-            }
-
-            if (search.ToLower() == "gerar")
-            {
-                int limit = 7;
-
-                FilterCertificate.Text = "";
-
-                LectureBAL lectureBAL = new LectureBAL();
-                CertificateBAL certificateBAL = new CertificateBAL();
-                if (userType == UserType.Administrator)
-                {
-                    _ = new Administrator();
-                    AdministratorBAL administratorBAL = new AdministratorBAL();
-                    Administrator administrator = administratorBAL.GetAccount(User.Identity.Name);
-
-                    for (int i = 1; i <= limit; i++)
+                    if (userType == UserType.Administrator)
                     {
-                        _ = new Lecture();
-                        Lecture lecture = lectureBAL.GetLecture(i);
-
-                        _ = new Certificate();
-                        Certificate certificate = certificateBAL.GetCertificateById(i);
-
-                        CertificateGenerator.GenerateAdministratorCertificate(administrator, lecture, certificate);
+                        LoadAdministratorCertificatesDataBound(administratorCertificateBAL.GetUserCertificates(User.Identity.Name, search));
                     }
-                }
-                else if (userType == UserType.Speaker)
-                {
-                    _ = new Speaker();
-                    SpeakerBAL speakerBAL = new SpeakerBAL();
-                    Speaker speaker = speakerBAL.GetAccount(User.Identity.Name);
-
-                    for (int i = 1; i <= limit; i++)
+                    else if (userType == UserType.Speaker)
                     {
-                        _ = new Lecture();
-                        Lecture lecture = lectureBAL.GetLecture(i);
-
-                        _ = new Certificate();
-                        Certificate certificate = certificateBAL.GetCertificateById(i);
-
-                        CertificateGenerator.GenerateSpeakerCertificate(speaker, lecture, certificate);
+                        LoadSpeakerCertificatesDataBound(speakerCertificateBAL.GetUserCertificates(User.Identity.Name, search));
                     }
-                }
-                else
-                {
-                    _ = new Viewer();
-                    ViewerBAL viewerBAL = new ViewerBAL();
-                    Viewer viewer = viewerBAL.GetAccount(User.Identity.Name);
-
-                    for (int i = 1; i <= limit; i++)
+                    else
                     {
-                        _ = new Lecture();
-                        Lecture lecture = lectureBAL.GetLecture(i);
-
-                        _ = new Certificate();
-                        Certificate certificate = certificateBAL.GetCertificateById(i);
-
-                        CertificateGenerator.GenerateViewerCertificate(viewer, lecture, certificate);
+                        LoadViewerCertificatesDataBound(viewerCertificateBAL.GetUserCertificates(User.Identity.Name, search));
                     }
                 }
             }
