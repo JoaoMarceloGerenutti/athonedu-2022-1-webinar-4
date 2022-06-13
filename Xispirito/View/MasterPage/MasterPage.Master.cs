@@ -112,5 +112,18 @@ namespace Xispirito.View.MasterPage
             }
             return accountFound;
         }
+
+        public void DownloadDocument()
+        {
+            Response.ContentType = "application/pdf";
+            Response.AddHeader("content-disposition", "attachment; filename=Ajuda.pdf");
+            Response.TransmitFile(@"~\Document\Help.pdf");
+            Response.End();
+        }
+
+        protected void Help_Click(object sender, EventArgs e)
+        {
+            DownloadDocument();
+        }
     }
 }

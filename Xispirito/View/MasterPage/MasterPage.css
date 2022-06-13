@@ -71,11 +71,13 @@ header {
     transition: all 250ms linear 0s;
     text-decoration: none;
     text-transform: uppercase;
+    background-color: #70160E;
     color: white;
     font-size: 1.6rem;
 }
 
     .header-buttons:hover {
+        cursor: pointer;
         background: rgba(255,255,255, 0.15)
     }
 
@@ -240,4 +242,17 @@ FORM
     align-self: center;
     min-width: 45%;
     margin-left: 4rem;
+}
+
+.help-footer {
+    text-decoration: underline;
+    border: none;
+    background-color: #70160E;
+    color: white;
+    font-size: 1.6rem;
+    font-weight: 500;
+}
+
+.help-footer:hover {
+    cursor: pointer;
 }

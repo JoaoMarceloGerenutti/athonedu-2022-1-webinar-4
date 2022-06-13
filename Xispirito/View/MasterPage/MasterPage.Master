@@ -38,7 +38,7 @@
                     <nav>
                         <ul class="header-logo">
                             <li class="header-li">
-                                <a class="header-buttons" href="#">Ajuda</a>
+                                <asp:Button ID="Help" runat="server" Text="Ajuda" CssClass="header-buttons" OnClick="Help_Click" />
                             </li>
                             <li class="header-li">
                                 <a class="header-buttons" href="/View/Events/Events.aspx">Econtrar Palestra</a>
@@ -116,9 +116,7 @@
                 </div>
                 <div class="right-footer">
                     <div>
-                        <p class="text--medium">
-                            Ajuda
-                        </p>
+                        <asp:Button ID="HelpFooter" runat="server" Text="Ajuda" class="help-footer" OnClick="Help_Click" />
                     </div>
                     <div>
                         <a class="text--medium" href="/View/Login/Login.aspx">Fazer Cadastro

@@ -345,6 +345,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Document\Help.pdf" />
     <None Include="packages.config" />
     <Content Include="View\MasterPage\MasterPage.Master" />
     <None Include="Web.Debug.config">
