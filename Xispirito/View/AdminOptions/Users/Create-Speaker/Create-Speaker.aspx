@@ -18,7 +18,7 @@
             <h3 style="text-align: center; color: white; font-size: 3rem; font-weight: bold;">Cadastrar Informações Básicas do Palestrante</h3>
             <div style="width: 75%">
                 <div class="back-button-inline">
-                    <button class="back-button">Voltar</button>
+                    <asp:ImageButton ID="Return" runat="server" CssClass="back-button" ImageUrl="~/View/Images/Return.png" PostBackUrl="~/View/AdminOptions/Users/View-Users.aspx" />
                 </div>
             </div>
             <div style="width: 100%; padding-top: 5rem;">

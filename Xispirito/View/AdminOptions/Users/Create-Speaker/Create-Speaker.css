@@ -31,14 +31,13 @@ body {
 }
 
 .back-button {
-    width: 8rem;
-    height: 3rem;
-    border: .1rem solid white;
-    border-radius: 1rem;
-    background: #000;
-    color: white;
-    font-size: 1.7rem;
+    width: 40px;
+    height: 40px;
 }
+
+    .back-button:hover {
+        transform: translateY(-3px);
+    }
 
 .speaker-inputs-admin {
     display: flex;
