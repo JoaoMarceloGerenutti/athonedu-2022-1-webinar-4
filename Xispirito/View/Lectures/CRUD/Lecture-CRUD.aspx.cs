@@ -147,7 +147,8 @@ namespace Xispirito.View.Lectures.CRUD
 
                     lectureBAL.InsertLecture(lecture);
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "Palestra Cadastrada!", "alert('Palestra Cadastrada com Sucesso!');", true);
-                    LoadLectureInfo();
+
+                    Response.Redirect("~/View/Lectures/CRUD/Lecture-CRUD.aspx?lectureId=" + lecture.GetId());
                 }
             }
         }
